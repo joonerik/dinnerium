@@ -56,7 +56,7 @@
                     <release>14</release>
                     <compilerArgs>
                         <!--
-                            <arg>--enable-preview</arg>
+                            <arg>dash dash enable-preview</arg>
                         -->
                     </compilerArgs>
                 </configuration>
@@ -67,7 +67,7 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <!--
-                        <argLine>--enable-preview</argLine>
+                        <argLine>dash dash enable-preview</argLine>
                     -->
                 </configuration>
             </plugin>
@@ -78,7 +78,7 @@
                 <configuration>
                     <options>
                         <!--
-                            <option>--enable-preview</option>
+                            <option>dash dash enable-preview</option>
                         -->
                     </options>
                     <mainClass>dinnerium.ui.App</mainClass>
