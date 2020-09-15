@@ -57,7 +57,7 @@
                     <options>
                         <option>--enable-preview</option>
                     </options>
-                    <mainClass>dinnerium.App</mainClass>
+                    <mainClass>dinnerium.ui.App</mainClass>
                 </configuration>
             </plugin>
             <plugin>
