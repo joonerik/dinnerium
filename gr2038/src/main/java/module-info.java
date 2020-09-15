@@ -9,5 +9,5 @@ module gr2038 {
 
     exports dinnerium.ui;
 
-    opens dinnerium to javafx.fxml;
+    opens dinnerium.ui to javafx.fxml;
 }
