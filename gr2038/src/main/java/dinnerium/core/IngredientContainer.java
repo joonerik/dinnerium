@@ -4,9 +4,25 @@ import java.util.Collection;
 
 public class IngredientContainer {
 
-    Collection<Ingredient> ingredients;
+    private Collection<Ingredient> ingredients;
+
+    public IngredientContainer(){
+
+    }
+
+    public IngredientContainer(Collection<Ingredient> ingredients) {
+        this.setIngredients(ingredients);
+    }
+
+    public void setIngredients(Collection<Ingredient> ingredients) {
+        if(ingredients.isEmpty())
+            throw new IllegalArgumentException("ERROR: You cannot make an IngredientContainer based on an invalid collection");
+        this.ingredients = ingredients;
+    }
 
     public void addIngredient(Ingredient ingredient) {
+        if(ingredient == null)
+            throw new IllegalArgumentException("Ingredient null! Cannot add to IngredientContainer");
         this.ingredients.add(ingredient);
     }
 

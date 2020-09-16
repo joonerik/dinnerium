@@ -10,17 +10,14 @@ public class Quantity {
     private double amount;
     private String unit;
 
-    public Quantity() {
-    }
+    public Quantity() {}
 
     public Quantity(double amount, String unit) {
-        this.amount = Math.round(amount * 100.0) / 100.0;
-        this.unit = checkUnit(unit);
+        this.setAmount(amount);
+        this.setUnit(unit);
     }
 
-
     private String checkUnit(String unit) throws IllegalArgumentException {
-
         if(!units.contains(unit)) {
             throw new IllegalArgumentException("ERROR - Invalid unit!");
         }
@@ -35,11 +32,7 @@ public class Quantity {
         return unit;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
+    public void setAmount(double amount) { this.amount = Math.round(amount * 100.0) / 100.0;}
 
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
+    public void setUnit(String unit) {this.unit = checkUnit(unit);}
 }
