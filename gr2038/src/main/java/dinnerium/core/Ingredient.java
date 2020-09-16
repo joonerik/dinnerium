@@ -2,11 +2,16 @@ package dinnerium.core;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 public class Ingredient {
 
-    Quantity quantity;
-    String name;
+    private Quantity quantity;
+    private String name;
+
+    public Ingredient() {
+    }
 
     public Ingredient(String name, Quantity quantity) {
 
@@ -36,5 +41,10 @@ public class Ingredient {
 
     public void setName(String name) {
         this.name = checkIngredientName(name);
+    }
+
+
+    public void setQuantity(Quantity quantity) {
+        this.quantity = quantity;
     }
 }
