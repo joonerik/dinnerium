@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeInstructions {
+    // class not finalized as its not a part of assignment 1
 
     private List<String> instructions = new ArrayList<>();
     private int number;

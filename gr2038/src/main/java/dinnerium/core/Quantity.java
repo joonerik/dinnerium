@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class Quantity {
 
-    public static final ArrayList<String> units = new ArrayList<String>(Arrays.asList("stk", "dl", "gram"));
+    public static final ArrayList<String> units = new ArrayList<>(Arrays.asList("stk", "dl", "gram"));
     private double amount;
     private String unit;
 

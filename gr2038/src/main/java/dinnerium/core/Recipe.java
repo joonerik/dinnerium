@@ -2,6 +2,9 @@ package dinnerium.core;
 
 public class Recipe {
 
+    // class not finalized as its not a part of assignment 1
+
+
     private IngredientContainer ingredientContainer;
     private RecipeInstructions recipeInstructions;
     private Metadata metadata;
