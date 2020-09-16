@@ -2,8 +2,6 @@ package dinnerium.core;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 
 public class Ingredient {
 
@@ -24,7 +22,7 @@ public class Ingredient {
 
         Pattern p = Pattern.compile("^[ A-Za-z]+$");
         Matcher m = p.matcher(name);
-        if(!name.isEmpty() && m.matches()) {
+        if(name.isEmpty() || !m.matches()) {
             throw new IllegalArgumentException("ERROR - Invalid ingredient name!");
         }
 

@@ -12,16 +12,9 @@ import java.nio.file.Paths;
 
 public class HandlePersistency {
 
-    static String i;
-
     public static void writeJsonToFile(Ingredient ingredient) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        System.out.println("Nesten suksess");
         mapper.writeValue(new File("src/main/data.json"), ingredient);
-        /*i = mapper.writeValueAsString(ingredient);
-        System.out.println(i);*/
-        System.out.println("suksess");
-        System.out.println(mapper.writeValueAsString(ingredient));
     }
 
     public static Ingredient loadDataFromFile() throws IOException {
