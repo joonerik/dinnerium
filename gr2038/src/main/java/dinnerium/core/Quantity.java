@@ -10,7 +10,10 @@ public class Quantity {
 
     public Quantity(double amount, String unit) {
         this.amount = Math.round(amount);
+        checkUnit(unit);
+    }
 
+    private void checkUnit(String unit) throws IllegalArgumentException {
         if(units.contains(unit)) {
             this.unit = unit;
         } else {

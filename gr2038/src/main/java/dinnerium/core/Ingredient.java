@@ -11,7 +11,11 @@ public class Ingredient {
     public Ingredient(Quantity quantity, String name) {
 
         this.quantity = quantity;
+        checkIngredientName(name);
 
+    }
+
+    private void checkIngredientName(String name) throws IllegalArgumentException{
         Pattern p = Pattern.compile("^[ A-Za-z]+$");
         Matcher m = p.matcher(name);
 
