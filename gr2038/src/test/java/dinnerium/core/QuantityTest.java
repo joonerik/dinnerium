@@ -19,6 +19,7 @@ public class QuantityTest {
         Quantity q = new Quantity(1.0, "dl");
 
         assertEquals(1.0, q.getAmount());
+        //assertTrue(1.0 == q.getAmount());
     }
 
     @Test

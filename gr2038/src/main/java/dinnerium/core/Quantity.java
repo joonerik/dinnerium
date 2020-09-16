@@ -1,12 +1,13 @@
 package dinnerium.core;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 
 public class Quantity {
 
-    public static final ArrayList<String> units = new ArrayList<String>(Arrays.asList("stk", "dl", "gram"));
+    public static final List<String> units = Collections.unmodifiableList(Arrays.asList("stk", "dl", "gram"));
     private double amount;
     private String unit;
 
