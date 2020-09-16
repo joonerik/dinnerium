@@ -1,14 +1,12 @@
 package dinnerium.json;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.databind.node.TextNode;
 import java.io.IOException;
 import dinnerium.core.Ingredient;
 import dinnerium.core.IngredientContainer;
@@ -25,7 +23,7 @@ public class IngredientContainerDeserializer extends JsonDeserializer<Ingredient
             IngredientContainer ingredients = new IngredientContainer();
             JsonNode ingredientsNode = objectNode.get("ingredients");
             if (ingredientsNode instanceof ArrayNode) {
-                for (JsonNode elementNode : ((ArrayNode) ingredientsNode)) {
+                for (JsonNode elementNode : (ingredientsNode)) {
                     Ingredient ingredient = ingredientDeserializer.deserialize(elementNode);
                     if (ingredient != null) {
                         ingredients.addIngredient(ingredient);
