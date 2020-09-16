@@ -24,8 +24,4 @@ public class IngredientContainerTest {
 
         assertEquals(ict, ic.getIngredients());
     }
-
-    @Test
-    void getIngredientAmountTest() {
-    }
 }
