@@ -1,5 +1,6 @@
 package dinnerium.core;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class IngredientContainer {
@@ -7,7 +8,7 @@ public class IngredientContainer {
     private Collection<Ingredient> ingredients;
 
     public IngredientContainer(){
-
+        this.ingredients = new ArrayList<>();
     }
 
     public IngredientContainer(Collection<Ingredient> ingredients) {
