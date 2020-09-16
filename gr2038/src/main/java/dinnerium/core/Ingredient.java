@@ -7,8 +7,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Ingredient {
 
-    Quantity quantity;
-    String name;
+    private Quantity quantity;
+    private String name;
+
+    public Ingredient() {
+    }
 
     public Ingredient(Quantity quantity, String name) {
 
@@ -30,5 +33,13 @@ public class Ingredient {
 
     public String getName() {
         return name;
+    }
+
+    public void setQuantity(Quantity quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

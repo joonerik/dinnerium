@@ -1,17 +1,20 @@
 package dinnerium.core;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class Quantity {
 
-    public static final ArrayList<String> units = new ArrayList<String>();
+    public static final ArrayList<String> units = new ArrayList<String>(Arrays.asList("stk", "gram"));
     private double amount;
     private String unit;
 
+    public Quantity() {
+    }
+
     public Quantity(double amount, String unit) {
         this.amount = Math.round(amount);
-        units.add("stk");
         if(units.contains(unit)) {
             this.unit = unit;
         } else {
@@ -25,5 +28,13 @@ public class Quantity {
 
     public String getUnit() {
         return unit;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 }

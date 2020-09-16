@@ -14,9 +14,15 @@ public class AppController {
     void initialize() throws Exception {
         System.out.println("Controller kjører");
         HandlePersistency hp = new HandlePersistency();
-        Quantity quantity = new Quantity(2.0, "stk");
+        Quantity quantity = new Quantity(3.0, "stk");
         Ingredient ingredient = new Ingredient(quantity, "Egg");
         hp.writeJsonToFile(ingredient);
+
+        Ingredient x = hp.loadDataFromFile();
+        System.out.println(x.getName());
+        System.out.println(x.getQuantity().getAmount());
+
     }
+
 
 }
