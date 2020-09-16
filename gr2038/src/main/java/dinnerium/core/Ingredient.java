@@ -2,6 +2,8 @@ package dinnerium.core;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 public class Ingredient {
 
@@ -20,5 +22,13 @@ public class Ingredient {
         } else {
             throw new IllegalArgumentException("ERROR - Invalid ingredient name!");
         }
+    }
+
+    public Quantity getQuantity() {
+        return quantity;
+    }
+
+    public String getName() {
+        return name;
     }
 }
