@@ -1,10 +1,11 @@
 package dinnerium.core;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class IngredientContainer {
 
-    private Collection<Ingredient> ingredients;
+    private Collection<Ingredient> ingredients = new ArrayList<>();
 
     public IngredientContainer(){
 

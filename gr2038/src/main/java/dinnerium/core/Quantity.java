@@ -35,4 +35,9 @@ public class Quantity {
     public void setAmount(double amount) { this.amount = Math.round(amount * 100.0) / 100.0;}
 
     public void setUnit(String unit) {this.unit = checkUnit(unit);}
+
+    @Override
+    public String toString() {
+        return amount + " " + unit;
+    }
 }

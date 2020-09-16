@@ -31,7 +31,7 @@ public class AppController {
     @FXML
     TableView<Ingredient> ingredientTableView;
     @FXML
-    TableColumn<Quantity, String> quantityColumn;
+    TableColumn<Ingredient, Quantity> quantityColumn;
     @FXML
     TableColumn<Ingredient, String> itemColumn;
 
@@ -41,20 +41,17 @@ public class AppController {
     }
 
     private void setup() {
-
         unitComboBox.getItems().setAll(Quantity.units);
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        itemColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
         try {
             IngredientContainer ingredientContainer = HandlePersistency.loadDataFromFile();
             this.ingredientContainer = ingredientContainer;
         } catch (IOException e) {
-            throw new IllegalArgumentException("error in setup");
+            this.ingredientContainer = new IngredientContainer();
         }
-        ObservableList<Ingredient> observableList =
-                FXCollections.observableArrayList((this.ingredientContainer.getIngredients()));
-        ingredientTableView.setItems(observableList);
-        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("unit"));
-        itemColumn.setCellValueFactory(new PropertyValueFactory<>("ingredient"));
-
+        updateTableView();
     }
 
     @FXML
@@ -62,12 +59,19 @@ public class AppController {
         Quantity quantity = new Quantity(Double.valueOf(amountInput.getText()), unitComboBox.getSelectionModel().getSelectedItem());
         Ingredient ingredient = new Ingredient(quantity, nameInput.getText());
         this.ingredientContainer.addIngredient(ingredient);
+        updateTableView();
         try {
             HandlePersistency.writeJsonToFile(ingredientContainer);
         } catch (Exception e) {
             throw new IllegalArgumentException("Could not write to file");
         }
 
+    }
+
+    private void updateTableView() {
+        ObservableList<Ingredient> observableList =
+                FXCollections.observableArrayList((this.ingredientContainer.getIngredients()));
+        ingredientTableView.setItems(observableList);
     }
 
 }
