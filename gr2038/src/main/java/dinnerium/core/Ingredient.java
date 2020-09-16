@@ -10,19 +10,31 @@ public class Ingredient {
 
     public Ingredient(String name, Quantity quantity) {
 
-        checkIngredientName(name);
+        this.name = checkIngredientName(name);
         this.quantity = quantity;
 
     }
 
-    private void checkIngredientName(String name) throws IllegalArgumentException{
+    private String checkIngredientName(String name) throws IllegalArgumentException {
+
         Pattern p = Pattern.compile("^[ A-Za-z]+$");
         Matcher m = p.matcher(name);
-
         if(!name.isEmpty() && m.matches()) {
-            this.name = name;
-        } else {
             throw new IllegalArgumentException("ERROR - Invalid ingredient name!");
         }
+
+        return name;
+    }
+
+    public Quantity getQuantity() {
+        return quantity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = checkIngredientName(name);
     }
 }
