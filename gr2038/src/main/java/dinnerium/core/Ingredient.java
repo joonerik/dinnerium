@@ -13,7 +13,7 @@ public class Ingredient {
     public Ingredient() {
     }
 
-    public Ingredient(String name, Quantity quantity) {
+    public Ingredient(Quantity quantity, String name) {
 
         this.name = checkIngredientName(name);
         this.quantity = quantity;

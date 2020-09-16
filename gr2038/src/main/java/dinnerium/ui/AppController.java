@@ -12,15 +12,13 @@ public class AppController {
 
     @FXML
     void initialize() throws Exception {
-        System.out.println("Controller kjører");
-        HandlePersistency hp = new HandlePersistency();
-        Quantity quantity = new Quantity(3.0, "stk");
+        /*Quantity quantity = new Quantity(3.0, "stk");
         Ingredient ingredient = new Ingredient(quantity, "Egg");
-        hp.writeJsonToFile(ingredient);
+        HandlePersistency.writeJsonToFile(ingredient);
 
-        Ingredient x = hp.loadDataFromFile();
+        Ingredient x = HandlePersistency.loadDataFromFile();
         System.out.println(x.getName());
-        System.out.println(x.getQuantity().getAmount());
+        System.out.println(x.getQuantity().getAmount());*/
 
     }
 
@@ -29,15 +27,15 @@ public class AppController {
     @FXML
     TextField quantityInput;
     @FXML
-    ComboBox unitComboBox;
+    ComboBox<String> unitComboBox;
     @FXML
     Button addButton;
     @FXML
     TableView<String> ingredientTableView;
     @FXML
-    TableColumn quantityColumn;
+    TableColumn<String, String> quantityColumn;
     @FXML
-    TableColumn itemColumn;
+    TableColumn<String, String> itemColumn;
 
 
     @FXML
