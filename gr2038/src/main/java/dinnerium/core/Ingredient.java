@@ -8,10 +8,10 @@ public class Ingredient {
     Quantity quantity;
     String name;
 
-    public Ingredient(Quantity quantity, String name) {
+    public Ingredient(String name, Quantity quantity) {
 
-        this.quantity = quantity;
         checkIngredientName(name);
+        this.quantity = quantity;
 
     }
 
