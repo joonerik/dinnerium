@@ -22,19 +22,19 @@ public class QuantityDeserializer extends JsonDeserializer<Quantity> {
     Quantity deserialize(JsonNode jsonNode) {
         if (jsonNode instanceof ObjectNode) {
             ObjectNode objectNode = (ObjectNode) jsonNode;
-            Quantity quantity = new Quantity();
-            // remove empty object. Save the variables underneath and construct the object afterwards
-
+            Double amount = null;
+            String unit = null;
+            
             JsonNode amountNode = objectNode.get("amount");
             if (amountNode instanceof DoubleNode) {
-                quantity.setAmount((amountNode).asDouble());
+                amount = ((amountNode).asDouble());
             }
 
             JsonNode unitNode = objectNode.get("unit");
             if (unitNode instanceof TextNode) {
-                quantity.setUnit((unitNode).asText());
+                unit = ((unitNode).asText());
             }
-            return quantity;
+            return new Quantity(amount, unit);
         }
         return null;
     }

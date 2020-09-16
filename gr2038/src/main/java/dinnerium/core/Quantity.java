@@ -11,8 +11,6 @@ public class Quantity {
     private double amount;
     private String unit;
 
-    public Quantity() {}
-
     public Quantity(double amount, String unit) {
         this.setAmount(amount);
         this.setUnit(unit);
