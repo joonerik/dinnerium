@@ -24,6 +24,7 @@ public class QuantityDeserializer extends JsonDeserializer<Quantity> {
         if (jsonNode instanceof ObjectNode) {
             ObjectNode objectNode = (ObjectNode) jsonNode;
             Quantity quantity = new Quantity();
+            // remove empty object. Save the variables underneath and construct the object afterwards
 
             JsonNode amountNode = objectNode.get("amount");
             if (amountNode instanceof DoubleNode) {
