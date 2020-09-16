@@ -10,21 +10,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" style="-fx-background-color: #42404B;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dinnerium.ui.AppController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.6" prefWidth="936" style="-fx-background-color: #42404B;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dinnerium.ui.AppController">
     <children>
         <Pane prefHeight="512.0" prefWidth="550.0" style="-fx-background-color: D31D4D; -fx-border-color: grey; -fx-border-width: 1;">
             <children>
                 <TextField layoutX="70.0" layoutY="18.0" prefHeight="25.0" prefWidth="411.0" style="-fx-background-color: lightgrey; -fx-background-radius: 10;" />
             </children>
         </Pane>
-        <Pane layoutY="512.0" prefHeight="512.0" prefWidth="550.0" style="-fx-background-color: D31D4D; -fx-border-width: 1; -fx-border-color: grey;">
+        <Pane layoutY="512.0" prefHeight="512.0" prefWidth="550.0" style="-fx-background-color: D31D4D; -fx-border-width: 1; -fx-border-color: grey;" visible="false">
             <children>
                 <TextField layoutX="70.0" layoutY="18.0" prefHeight="25.0" prefWidth="411.0" style="-fx-background-color: lightgrey; -fx-background-radius: 10;" />
             </children>
         </Pane>
-        <Pane layoutX="550.0" prefHeight="83.0" prefWidth="203.0" style="-fx-background-color: #7D7C84;" />
-        <Pane layoutX="753.0" prefHeight="83.0" prefWidth="203.0" style="-fx-background-color: #D31D4D; -fx-border-radius: 0 0 20 0; -fx-background-radius: 0 0 20 0;" />
-        <ScrollPane layoutX="550.0" layoutY="83.0" prefHeight="941.0" prefWidth="890.0">
+        <Pane layoutX="550.0" prefHeight="83.0" prefWidth="203.0" style="-fx-background-color: #7D7C84;" visible="false" />
+        <Pane layoutX="753.0" prefHeight="83.0" prefWidth="203.0" style="-fx-background-color: #D31D4D; -fx-border-radius: 0 0 20 0; -fx-background-radius: 0 0 20 0;" visible="false" />
+        <ScrollPane layoutX="550.0" layoutY="83.0" prefHeight="941.0" prefWidth="890.0" visible="false">
             <content>
                 <AnchorPane layoutX="225.0" minHeight="0.0" minWidth="0.0" prefHeight="1400.0" prefWidth="890.0" style="-fx-background-color: #42404B;">
                     <children>
@@ -107,5 +107,6 @@
                 </AnchorPane>
             </content>
         </ScrollPane>
+      <TextField layoutX="14.0" layoutY="626.0" />
     </children>
 </AnchorPane>
