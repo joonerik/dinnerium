@@ -144,8 +144,8 @@
                 <version>4.0.4</version>
                 <configuration>
                     <xmlOutput>false</xmlOutput>
-                    <!--<htmlOutput>true</htmlOutput>
-                    <htmlOutputDirectory>target/site</htmlOutputDirectory>-->
+                    <htmlOutput>true</htmlOutput>
+                    <htmlOutputDirectory>target/site</htmlOutputDirectory>
                 </configuration>
                 <executions>
                     <execution>
