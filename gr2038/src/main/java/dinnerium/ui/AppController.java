@@ -12,9 +12,6 @@ import dinnerium.json.HandlePersistency;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class AppController {
 
@@ -40,14 +37,14 @@ public class AppController {
         setup();
     }
 
+    // need to handle throws from init!!
     private void setup() {
         unitComboBox.getItems().setAll(Quantity.units);
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         itemColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         try {
-            IngredientContainer ingredientContainer = HandlePersistency.loadDataFromFile();
-            this.ingredientContainer = ingredientContainer;
+            this.ingredientContainer = HandlePersistency.loadDataFromFile();
         } catch (IOException e) {
             this.ingredientContainer = new IngredientContainer();
         }

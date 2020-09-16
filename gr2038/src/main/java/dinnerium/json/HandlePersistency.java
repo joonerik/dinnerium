@@ -1,7 +1,6 @@
 package dinnerium.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dinnerium.core.Ingredient;
 import dinnerium.core.IngredientContainer;
 
 import java.io.File;
