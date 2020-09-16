@@ -1,7 +1,7 @@
 package dinnerium.ui;
 
-//import javafx.fxml.FXML;
-//import javafx.scene.control.Button;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
 
 import dinnerium.core.Ingredient;
 import dinnerium.core.Quantity;
@@ -25,4 +25,23 @@ public class AppController {
     }
 
 
+    TextField nameInput;
+    @FXML
+    TextField quantityInput;
+    @FXML
+    ComboBox unitComboBox;
+    @FXML
+    Button addButton;
+    @FXML
+    TableView<String> ingredientTableView;
+    @FXML
+    TableColumn quantityColumn;
+    @FXML
+    TableColumn itemColumn;
+
+
+    @FXML
+    private void addIngredient() {
+
+    }
 }

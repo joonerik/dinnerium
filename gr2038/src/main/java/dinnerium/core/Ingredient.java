@@ -13,18 +13,22 @@ public class Ingredient {
     public Ingredient() {
     }
 
-    public Ingredient(Quantity quantity, String name) {
+    public Ingredient(String name, Quantity quantity) {
 
+        this.name = checkIngredientName(name);
         this.quantity = quantity;
+
+    }
+
+    private String checkIngredientName(String name) throws IllegalArgumentException {
 
         Pattern p = Pattern.compile("^[ A-Za-z]+$");
         Matcher m = p.matcher(name);
-
         if(!name.isEmpty() && m.matches()) {
-            this.name = name;
-        } else {
             throw new IllegalArgumentException("ERROR - Invalid ingredient name!");
         }
+
+        return name;
     }
 
     public Quantity getQuantity() {
@@ -35,11 +39,12 @@ public class Ingredient {
         return name;
     }
 
-    public void setQuantity(Quantity quantity) {
-        this.quantity = quantity;
+    public void setName(String name) {
+        this.name = checkIngredientName(name);
     }
 
-    public void setName(String name) {
-        this.name = name;
+
+    public void setQuantity(Quantity quantity) {
+        this.quantity = quantity;
     }
 }

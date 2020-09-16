@@ -14,12 +14,17 @@ public class Quantity {
     }
 
     public Quantity(double amount, String unit) {
-        this.amount = Math.round(amount);
-        if(units.contains(unit)) {
-            this.unit = unit;
-        } else {
+        this.amount = Math.round(amount * 100.0) / 100.0;
+        this.unit = checkUnit(unit);
+    }
+
+
+    private String checkUnit(String unit) throws IllegalArgumentException {
+
+        if(!units.contains(unit)) {
             throw new IllegalArgumentException("ERROR - Invalid unit!");
         }
+        return unit;
     }
 
     public double getAmount() {
