@@ -9,10 +9,6 @@ import dinnerium.core.IngredientContainer;
 
 public class IngredientContainerSerializer extends JsonSerializer<IngredientContainer> {
 
-    /*
-     * format: { "text": "...", "checked": false }
-     */
-
     @Override
     public void serialize(IngredientContainer ic, JsonGenerator jsonGen, SerializerProvider serializerProvider)
             throws IOException {

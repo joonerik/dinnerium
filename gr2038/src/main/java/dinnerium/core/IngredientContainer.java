@@ -5,10 +5,10 @@ import java.util.Collection;
 
 public class IngredientContainer {
 
-    private Collection<Ingredient> ingredients = new ArrayList<>();
+    private Collection<Ingredient> ingredients;
 
     public IngredientContainer(){
-
+        this.ingredients = new ArrayList<>();
     }
 
     public IngredientContainer(Collection<Ingredient> ingredients) {
