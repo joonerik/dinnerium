@@ -1,3 +1,6 @@
+
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.idi.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2020/gr2038/gr2038/)
+
 En README.md-fil (evt. en fil som README.md lenker til) inni prosjektet skal beskrive hva appen handler om og 
 er ment å gjøre (når den er mer eller mindre ferdig). Ha med et illustrerende skjermbilde, så det er lettere å forstå. 
 Det må også være minst én brukerhistorie for funksjonaliteten dere starter med.
@@ -30,17 +33,8 @@ Dette er en vanlig organisering for prosjekter som bygges med maven (og gradle).
 
 
 
-
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.idi.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2020/gr2038/gr2038/tree/mappestruktur-test)
-
 # gitpod-templates
 
 This repo contains templates for repositories that support gitpod, i.e. with proper .gitignore, .gitpod.docker and .gitpod.yml files
 
 There are also branches for projects configured with maven and/or gradle for various purposes
-
-## javafx branch
-
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.idi.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2020/gr2038/gr2038/tree/mappestruktur-test)
-
-Contains example of minimal javafx app (with test) built with maven
