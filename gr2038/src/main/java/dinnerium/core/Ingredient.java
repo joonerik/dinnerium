@@ -8,13 +8,16 @@ public class Ingredient {
     private Quantity quantity;
     private String name;
 
+    // Empty constructor is used in the IngredientDeserializer class
     public Ingredient() {}
 
+    // Each ingredient requires a quantity which contains a unit and a name
     public Ingredient(Quantity quantity, String name) {
         this.setName(name);
         this.quantity = quantity;
     }
 
+    // ensures that the ingredient name is rather reasonable
     private String checkIngredientName(String name) throws IllegalArgumentException {
         Pattern p = Pattern.compile("^[ A-Za-z]+$");
         Matcher m = p.matcher(name);

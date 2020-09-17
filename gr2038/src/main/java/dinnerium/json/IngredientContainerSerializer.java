@@ -9,6 +9,7 @@ import dinnerium.core.IngredientContainer;
 
 public class IngredientContainerSerializer extends JsonSerializer<IngredientContainer> {
 
+    // converts the IngredientContainer object into a string in json format
     @Override
     public void serialize(IngredientContainer ic, JsonGenerator jsonGen, SerializerProvider serializerProvider)
             throws IOException {

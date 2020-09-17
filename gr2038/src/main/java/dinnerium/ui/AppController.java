@@ -15,6 +15,7 @@ import java.io.IOException;
 
 public class AppController {
 
+    // contains our current stock of ingredients/groceries
     private IngredientContainer ingredientContainer;
 
     @FXML
@@ -39,10 +40,12 @@ public class AppController {
 
     // need to handle throws from init!!
     private void setup() {
+        // sets up our tableview with correct rows and columns
         unitComboBox.getItems().setAll(Quantity.units);
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         itemColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
+        // loading our stock of ingredients (populating (?) our ingredientContainer)
         try {
             this.ingredientContainer = HandlePersistency.loadDataFromFile();
         } catch (IOException e) {
@@ -51,12 +54,14 @@ public class AppController {
         updateTableView();
     }
 
+
     @FXML
     private void handleAddIngredient() {
         Quantity quantity = new Quantity(Double.valueOf(amountInput.getText()), unitComboBox.getSelectionModel().getSelectedItem());
         Ingredient ingredient = new Ingredient(quantity, nameInput.getText());
         this.ingredientContainer.addIngredient(ingredient);
         updateTableView();
+        // writes our new ingredient to the file
         try {
             HandlePersistency.writeJsonToFile(ingredientContainer);
         } catch (Exception e) {
@@ -65,6 +70,7 @@ public class AppController {
 
     }
 
+    // updates our tableView with an observable list
     private void updateTableView() {
         ObservableList<Ingredient> observableList =
                 FXCollections.observableArrayList((this.ingredientContainer.getIngredients()));

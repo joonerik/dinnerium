@@ -15,6 +15,9 @@ public class IngredientContainerDeserializer extends JsonDeserializer<Ingredient
 
     private IngredientDeserializer ingredientDeserializer = new IngredientDeserializer();
 
+    // converts the IngredientContainer from string in json file to an object
+    // We check if the nodes are of the correct type
+    // finally we have ingredient objects which are added into the IngredientContainer list
     @Override
     public IngredientContainer deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         TreeNode treeNode = p.getCodec().readTree(p);

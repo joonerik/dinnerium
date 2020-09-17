@@ -18,7 +18,10 @@ public class IngredientDeserializer extends JsonDeserializer<Ingredient> {
         return deserialize((JsonNode) treeNode);
     }
 
-    Ingredient deserialize(JsonNode jsonNode) {
+    // converts the Ingredient from string in json file to an object
+    // checks if the nodes are of correct type
+    // finally we have converted the strings from json into actual objects
+    public Ingredient deserialize(JsonNode jsonNode) {
         if (jsonNode instanceof ObjectNode) {
             ObjectNode objectNode = (ObjectNode) jsonNode;
             Ingredient ingredient = new Ingredient();
