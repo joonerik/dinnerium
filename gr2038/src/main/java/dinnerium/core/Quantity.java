@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Quantity {
 
+    // the static final list is supposed to contain all (!) units imaginable. Will be expanded for next assignment
     public static final List<String> units = Collections.unmodifiableList(Arrays.asList("stk", "dl", "gram"));
     private double amount;
     private String unit;
@@ -35,6 +36,7 @@ public class Quantity {
 
     public void setUnit(String unit) {this.unit = checkUnit(unit);}
 
+    // the toString is used when setting the itemColumn in the controller
     @Override
     public String toString() {
         return amount + " " + unit;

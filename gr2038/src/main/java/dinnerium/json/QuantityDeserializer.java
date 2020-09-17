@@ -19,6 +19,7 @@ public class QuantityDeserializer extends JsonDeserializer<Quantity> {
         return deserialize((JsonNode) treeNode);
     }
 
+    // converts the Ingredient from string in json file to an object
     Quantity deserialize(JsonNode jsonNode) {
         if (jsonNode instanceof ObjectNode) {
             ObjectNode objectNode = (ObjectNode) jsonNode;

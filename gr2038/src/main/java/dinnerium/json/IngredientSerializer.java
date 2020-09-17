@@ -9,10 +9,7 @@ import dinnerium.core.Ingredient;
 
 public class IngredientSerializer extends JsonSerializer<Ingredient> {
 
-    /*
-     * format: { "text": "...", "checked": false }
-     */
-
+    // converts the Ingredient object to a string in json format
     @Override
     public void serialize(Ingredient ingredient, JsonGenerator jsonGen, SerializerProvider serializerProvider)
             throws IOException {

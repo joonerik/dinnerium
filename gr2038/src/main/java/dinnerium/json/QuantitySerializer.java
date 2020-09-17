@@ -8,10 +8,8 @@ import dinnerium.core.Quantity;
 
 public class QuantitySerializer extends JsonSerializer<Quantity> {
 
-    /*
-     * format: { "text": "...", "checked": false }
-     */
 
+    // converts the Quantity object to a string in json format
     @Override
     public void serialize(Quantity q, JsonGenerator jsonGen, SerializerProvider serializerProvider)
             throws IOException {
