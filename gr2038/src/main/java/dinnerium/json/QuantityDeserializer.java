@@ -28,11 +28,15 @@ public class QuantityDeserializer extends JsonDeserializer<Quantity> {
             JsonNode amountNode = objectNode.get("amount");
             if (amountNode instanceof DoubleNode) {
                 amount = ((amountNode).asDouble());
+            } else {
+                return null;
             }
 
             JsonNode unitNode = objectNode.get("unit");
             if (unitNode instanceof TextNode) {
                 unit = ((unitNode).asText());
+            } else {
+                return null;
             }
             return new Quantity(amount, unit);
         }
