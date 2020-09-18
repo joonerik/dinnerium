@@ -1,5 +1,3 @@
-# Issue name
-
 ## Issue description
 
 Describe the issue in detail
