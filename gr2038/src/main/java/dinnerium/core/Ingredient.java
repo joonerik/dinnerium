@@ -17,14 +17,21 @@ public class Ingredient {
         this.quantity = quantity;
     }
 
-    // ensures that the ingredient name is rather reasonable
-    private String checkIngredientName(String name) throws IllegalArgumentException {
+    /**
+     * ensures that the ingredient name is rather reasonable
+     *
+     * @param  name
+     *         the name of the ingredient
+     * @return true
+     *         if name is on correct format
+     */
+    private boolean validateIngredientName(String name) {
         Pattern p = Pattern.compile("^[ A-Za-z]+$");
         Matcher m = p.matcher(name);
         if(name.isEmpty() || !m.matches()) {
-            throw new IllegalArgumentException("ERROR - Invalid ingredient name!");
+            return false;
         }
-        return name;
+        return true;
     }
 
     public Quantity getQuantity() { return quantity;}
@@ -35,7 +42,11 @@ public class Ingredient {
 
     //Name is set to lowercase for practical reasons
     public void setName(String name) {
-        this.name = checkIngredientName(name).toLowerCase();
+        if (validateIngredientName(name)) {
+            this.name = name.toLowerCase();
+        } else {
+            throw new IllegalArgumentException(name + " is not valid");
+        }
     }
 
     public void setQuantity(Quantity quantity) {
