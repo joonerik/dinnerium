@@ -1,4 +1,3 @@
-
 ## What does this MR cover?
 
 Describe the MR in detail
@@ -12,6 +11,6 @@ Descreive the problem you fixed
 If you have an image of the component or what you have made, put it here
 ![GitHub Logo](/images/logo.png)
 
-## Which userstory does this MR relate to?
+## Which issue/us does this MR relate to?
 
-Tag the userstory here #IssueNumber
+Tag the issue or/and user story here
