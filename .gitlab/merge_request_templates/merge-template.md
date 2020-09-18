@@ -1,4 +1,3 @@
-# Name of your MR
 
 ## What does this MR cover?
 
