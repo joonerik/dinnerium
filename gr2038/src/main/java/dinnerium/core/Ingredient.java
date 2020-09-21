@@ -30,7 +30,7 @@ public class Ingredient {
     private boolean validateIngredientName(String name) {
         Pattern p = Pattern.compile("^[ A-Za-z]+$");
         Matcher m = p.matcher(name);
-        if(name.isEmpty() || !m.matches()) {
+        if (name.isEmpty() || !m.matches()) {
             return false;
         }
         return true;
@@ -38,7 +38,9 @@ public class Ingredient {
 
 
     /** @return Quantity object which belongs in this Ingredient (?)*/
-    public Quantity getQuantity() { return quantity;}
+    public Quantity getQuantity() {
+        return quantity;
+    }
 
     /** @return name of ingredient */
     public String getName() {
