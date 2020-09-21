@@ -3,14 +3,17 @@ package dinnerium.core;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/** Contains ingredients */
 public class IngredientContainer {
 
     private Collection<Ingredient> ingredients;
 
+    /** Initializes the collections ingredients as a ArrayList */
     public IngredientContainer(){
         this.ingredients = new ArrayList<>();
     }
 
+    /** sets ingredients  */
     public IngredientContainer(Collection<Ingredient> ingredients) {
         this.setIngredients(ingredients);
     }

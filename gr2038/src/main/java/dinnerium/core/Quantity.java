@@ -17,11 +17,11 @@ public class Quantity {
         this.setUnit(unit);
     }
 
-    private String checkUnit(String unit) throws IllegalArgumentException {
+    private boolean validateUnit(String unit) throws IllegalArgumentException {
         if(!units.contains(unit)) {
-            throw new IllegalArgumentException("ERROR - Invalid unit!");
+            return false;
         }
-        return unit;
+        return true;
     }
 
     public double getAmount() {
@@ -34,7 +34,13 @@ public class Quantity {
 
     public void setAmount(double amount) { this.amount = Math.round(amount * 100.0) / 100.0;}
 
-    public void setUnit(String unit) {this.unit = checkUnit(unit);}
+    public void setUnit(String unit) {
+        if (validateUnit(unit)) {
+            this.unit = unit;
+        } else {
+            throw new IllegalArgumentException(unit + " is not valid");
+        }
+    }
 
     // the toString is used when setting the itemColumn in the controller
     @Override

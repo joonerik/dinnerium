@@ -10,8 +10,12 @@ import dinnerium.core.Ingredient;
 import dinnerium.core.Quantity;
 import dinnerium.json.HandlePersistency;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
+
 
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 public class AppController {
 
@@ -22,6 +26,9 @@ public class AppController {
     TextField nameInput;
     @FXML
     TextField amountInput;
+
+    @FXML
+    Text errorOutput;
     @FXML
     ComboBox<String> unitComboBox;
     @FXML
@@ -57,9 +64,21 @@ public class AppController {
 
     @FXML
     private void handleAddIngredient() {
-        Quantity quantity = new Quantity(Double.valueOf(amountInput.getText()), unitComboBox.getSelectionModel().getSelectedItem());
-        Ingredient ingredient = new Ingredient(quantity, nameInput.getText());
-        this.ingredientContainer.addIngredient(ingredient);
+
+        try {
+            Quantity quantity = new Quantity(Double.valueOf(amountInput.getText()), unitComboBox.getSelectionModel().getSelectedItem());
+            Ingredient ingredient = new Ingredient(quantity, nameInput.getText());
+            this.ingredientContainer.addIngredient(ingredient);
+        } catch (IllegalArgumentException e) {
+            // write error output in app
+            errorOutput.setVisible(true);
+            errorOutput.setText(e.getMessage());
+            CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS).execute(() -> {
+                errorOutput.setVisible(false);
+            });
+            System.err.println(e.getMessage());
+            System.out.println(e.getMessage());
+        }
         updateTableView();
         // writes our new ingredient to the file
         try {
