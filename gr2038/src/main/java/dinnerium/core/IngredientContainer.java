@@ -5,14 +5,17 @@ import java.util.Collection;
 import java.lang.Iterable;
 import java.util.Iterator;
 
-public class IngredientContainer implements  Iterable<Ingredient> {
+/** Contains ingredients */
+public class IngredientContainer implements Iterable<Ingredient> {
 
     private Collection<Ingredient> ingredients;
 
+    /** Initializes the collections ingredients as a ArrayList */
     public IngredientContainer(){
         this.ingredients = new ArrayList<>();
     }
 
+    /** sets ingredients  */
     public IngredientContainer(Collection<Ingredient> ingredients) {
         this.setIngredients(ingredients);
     }
