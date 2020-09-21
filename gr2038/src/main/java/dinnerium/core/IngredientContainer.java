@@ -2,9 +2,11 @@ package dinnerium.core;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.lang.Iterable;
+import java.util.Iterator;
 
 /** Contains ingredients */
-public class IngredientContainer {
+public class IngredientContainer implements Iterable<Ingredient> {
 
     private Collection<Ingredient> ingredients;
 
@@ -36,5 +38,10 @@ public class IngredientContainer {
 
     public int getIngredientAmount() {
         return ingredients.size();
+    }
+
+    @Override
+    public Iterator<Ingredient> iterator() {
+        return this.ingredients.iterator();
     }
 }
