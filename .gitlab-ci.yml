@@ -2,6 +2,7 @@ image: maven:3-jdk-14
 
 stages:
   - verify
+  - test
 
 coverage_check:
   image: alpine:latest
@@ -10,3 +11,14 @@ coverage_check:
     - apk add bash
     - apk add jq
     - apk add curl
+    
+    
+testF:
+  stage: test
+  script:
+    - mvn verify
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - target/surefire-reports/TEST-*.xml
