@@ -12,6 +12,7 @@ coverage_check:
     - apk add bash
     - apk add jq
     - apk add curl
+    - echo `target/site/jacoco/index.html`
     
     
 testF:
