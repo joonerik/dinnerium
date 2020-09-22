@@ -1,27 +1,29 @@
 image: maven:3-jdk-14
 
 stages:
-  - verify
+  - build
   - test
 
-coverage_check:
-  image: alpine:latest
-  stage: verify
-  script:
-    - cd gr2038/
-    - apk add bash
-    - apk add jq
-    - apk add curl
+maven-build:
+  stage: build
+  script: 
+    - mvn package
     - cat target/site/jacoco/index.html
-
-    
-testF:
-  stage: test
-  script:
-    - cd gr2038/
-    - mvn verify
   artifacts:
-    when: always
+    expose_as: 'code coverage'
+    paths:
+      - target/surefire-reports/
+      - target/site/jacoco/index.html
     reports:
       junit:
         - target/surefire-reports/TEST-*.xml
+
+coverage_check:
+  image: alpine:latest
+  stage: test
+  script:
+    - apk add bash
+    - apk add jq
+    - apk add curl
+    - bash code-coverage.sh
+
