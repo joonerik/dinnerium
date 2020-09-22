@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
@@ -42,6 +43,10 @@ public class AppController {
     Text fridgeText;
     @FXML
     Text yourRecipesText;
+    @FXML
+    ScrollPane recipesScrollPane;
+    @FXML
+    Pane fridgePane;
 
     @FXML
     void initialize() throws Exception {
@@ -95,22 +100,29 @@ public class AppController {
     @FXML
     private void handleChangeToFridge() {
         setTextColors("fridge");
+        fridgePane.setVisible(true);
+        recipesScrollPane.setVisible(false);
     }
 
     @FXML
     private void handleChangeToYourRecipes() {
         setTextColors("recipes");
+        fridgePane.setVisible(false);
+        recipesScrollPane.setVisible(true);
     }
 
     @FXML
     private void handleChangeToSettings() {
         setTextColors("settings");
+        fridgePane.setVisible(false);
+        recipesScrollPane.setVisible(false);
+
     }
 
-    private void setTextColors(String targetScene) {
-        settingsText.setFill(Color.valueOf(targetScene.equals("settings") ? "#f4c20d" : "#ebe8bf"));
-        fridgeText.setFill(Color.valueOf(targetScene.equals("fridge") ? "#f4c20d" : "#ebe8bf"));
-        yourRecipesText.setFill(Color.valueOf(targetScene.equals("recipes") ? "#f4c20d" : "#ebe8bf"));
+    private void setTextColors(String newScene) {
+        settingsText.setFill(Color.valueOf(newScene.equals("settings") ? "#f4c20d" : "#ebe8bf"));
+        fridgeText.setFill(Color.valueOf(newScene.equals("fridge") ? "#f4c20d" : "#ebe8bf"));
+        yourRecipesText.setFill(Color.valueOf(newScene.equals("recipes") ? "#f4c20d" : "#ebe8bf"));
     }
 
     // updates our tableView with an observable list

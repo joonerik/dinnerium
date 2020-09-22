@@ -17,22 +17,22 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640" prefWidth="900" style="-fx-background-color: #42404B;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dinnerium.ui.AppController">
     <children>
-        <Pane layoutY="182.0" prefHeight="320.0" prefWidth="343.75" style="-fx-background-color: D31D4D; -fx-border-color: grey; -fx-border-width: 1;">
+        <Pane fx:id="fridgePane" layoutX="200.0" layoutY="56.0" prefHeight="392.0" prefWidth="500.0" style="-fx-background-color: #42404B; -fx-border-color: #F4C20D; -fx-border-width: 3; -fx-border-radius: 10;" visible="false">
          <children>
-            <TextField fx:id="nameInput" alignment="CENTER" layoutX="5.0" layoutY="14.0" onAction="#handleAddIngredient" prefHeight="25.0" prefWidth="107.0" promptText="Name" />
-            <TextField fx:id="amountInput" alignment="CENTER" layoutX="124.0" layoutY="14.0" prefHeight="25.0" prefWidth="66.0" promptText="Quantity" />
-            <ComboBox fx:id="unitComboBox" layoutX="193.0" layoutY="14.0" prefHeight="25.0" prefWidth="80.0" promptText="Unit" />
-            <Button fx:id="addButton" layoutX="286.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleAddIngredient" prefHeight="25.0" prefWidth="51.0" text="Add" />
-            <TableView fx:id="ingredientTableView" layoutX="5.0" layoutY="49.0" prefHeight="267.0" prefWidth="334.0">
+            <TextField fx:id="nameInput" alignment="CENTER" layoutX="50.0" layoutY="16.0" onAction="#handleAddIngredient" prefHeight="30.0" prefWidth="124.0" promptText="Name" style="-fx-border-radius: 7; -fx-background-radius: 7; -fx-background-color: #F4C20D; -fx-text-fill: #3B4255; -fx-prompt-text-fill: #3B4255;" />
+            <TextField fx:id="amountInput" alignment="CENTER" layoutX="190.0" layoutY="16.0" prefHeight="30.0" prefWidth="66.0" promptText="Quantity" style="-fx-background-radius: 7; -fx-border-radius: 7; -fx-text-fill: #3B4255; -fx-prompt-text-fill: #3B4255; -fx-background-color: #F4C20D;" />
+            <ComboBox fx:id="unitComboBox" layoutX="260.0" layoutY="16.0" prefHeight="30.0" prefWidth="80.0" promptText="Unit" style="-fx-background-radius: 7; -fx-border-radius: 7; -fx-background-color: #F4C20D;" />
+            <Button fx:id="addButton" layoutX="353.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleAddIngredient" prefHeight="30.0" prefWidth="74.0" style="-fx-background-radius: 7; -fx-border-radius: 7; -fx-background-color: #F4C20D; -fx-text-fill: #3B4255;" text="Add" />
+            <TableView fx:id="ingredientTableView" layoutX="60.0" layoutY="96.0" prefHeight="267.0" prefWidth="380.0" style="-fx-background-color: #42404B;">
               <columns>
-                <TableColumn fx:id="quantityColumn" prefWidth="173.9999542236328" text="Quantity" />
-                <TableColumn fx:id="itemColumn" prefWidth="167.0" text="Item" />
+                <TableColumn fx:id="quantityColumn" prefWidth="98.0" resizable="false" />
+                <TableColumn fx:id="itemColumn" prefWidth="261.9999694824219" resizable="false" />
               </columns>
             </TableView>
          </children></Pane>
-        <ScrollPane layoutX="343.75" layoutY="114.0" prefHeight="543.0" prefWidth="557.0">
+        <ScrollPane fx:id="recipesScrollPane" layoutX="125.0" layoutY="60.0" prefHeight="543.0" prefWidth="650.0" visible="false">
             <content>
-                <AnchorPane layoutX="225.0" minHeight="0.0" minWidth="0.0" prefHeight="776.0" prefWidth="557.0" style="-fx-background-color: #42404B;">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="776.0" prefWidth="634.0" style="-fx-background-color: #42404B;">
                     <children>
                         <Pane layoutX="10.0" layoutY="13.0" prefHeight="191.25" prefWidth="521.875">
                             <children>
