@@ -7,17 +7,16 @@ stages:
 maven-build:
   stage: build
   script: 
-    - cd gr2038/
     - mvn package
-    - cat target/site/jacoco/index.html
+    - cat gr2038/target/site/jacoco/index.html
   artifacts:
     expose_as: 'code coverage'
     paths:
-      - target/surefire-reports/
-      - target/site/jacoco/index.html
+      - gr2038/target/surefire-reports/
+      - gr2038/target/site/jacoco/index.html
     reports:
       junit:
-        - target/surefire-reports/TEST-*.xml
+        - gr2038/target/surefire-reports/TEST-*.xml
 
 coverage_check:
   image: alpine:latest
