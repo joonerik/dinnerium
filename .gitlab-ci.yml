@@ -1,40 +1,27 @@
-image: maven:latest
+image: maven:3-jdk-14
 
-variables:
-  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
-  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true"
+stages:
+  - verify
+  - deploy
 
-cache:
-  paths:
-    - .m2/repository/
-
-build:
-  stage: build
+coverage_check:
+  image: alpine:latest
+  stage: verify
   script:
-    - mvn $MAVEN_CLI_OPTS compile
+    - apk add bash
+    - apk add jq
+    - apk add curl
+    - bash code-coverage.sh
 
-test:
-  stage: test
-  script:
-    - mvn $MAVEN_CLI_OPTS test
-  artifacts:
-    paths:
-      - target/site/jacoco/
 pages:
   stage: deploy
   dependencies:
-    - test
+    - maven-build
   script:
-   - mkdir public
-   - mv target/site/jacoco/index.html public
+    - mv target/site/jacoco/ public/
   artifacts:
     paths:
       - public
-
-deploy:
-  stage: deploy
-  script:
-    - mvn $MAVEN_CLI_OPTS verify
-    - cat target/site/jacoco/index.html
+    expire_in: 30 days
   only:
     - master
