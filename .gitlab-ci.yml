@@ -7,6 +7,7 @@ stages:
 maven-build:
   stage: build
   script: 
+    - cd gr2038/
     - mvn package
     - cat target/site/jacoco/index.html
   artifacts:
