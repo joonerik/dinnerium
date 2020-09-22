@@ -1,21 +1,18 @@
 package dinnerium.ui;
 
+import dinnerium.core.Ingredient;
 import dinnerium.core.IngredientContainer;
+import dinnerium.core.Quantity;
+import dinnerium.json.HandlePersistency;
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
-import dinnerium.core.Ingredient;
-import dinnerium.core.Quantity;
-import dinnerium.json.HandlePersistency;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
-
-
-import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 
 public class AppController {
 
