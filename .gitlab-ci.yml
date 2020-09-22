@@ -2,8 +2,8 @@ image: maven:3-jdk-14
 
 stages:
   - build
-  - verify
-
+  - test
+  - deploy
 
 maven-build:
   stage: build
