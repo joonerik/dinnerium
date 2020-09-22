@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class AppController {
@@ -23,7 +24,6 @@ public class AppController {
     TextField nameInput;
     @FXML
     TextField amountInput;
-
     @FXML
     Text errorOutput;
     @FXML
@@ -36,6 +36,12 @@ public class AppController {
     TableColumn<Ingredient, Quantity> quantityColumn;
     @FXML
     TableColumn<Ingredient, String> itemColumn;
+    @FXML
+    Text settingsText;
+    @FXML
+    Text fridgeText;
+    @FXML
+    Text yourRecipesText;
 
     @FXML
     void initialize() throws Exception {
@@ -84,6 +90,27 @@ public class AppController {
             throw new IllegalArgumentException("Could not write to file");
         }
 
+    }
+
+    @FXML
+    private void handleChangeToFridge() {
+        setTextColors("fridge");
+    }
+
+    @FXML
+    private void handleChangeToYourRecipes() {
+        setTextColors("recipes");
+    }
+
+    @FXML
+    private void handleChangeToSettings() {
+        setTextColors("settings");
+    }
+
+    private void setTextColors(String targetScene) {
+        settingsText.setFill(Color.valueOf(targetScene.equals("settings") ? "#f4c20d" : "#ebe8bf"));
+        fridgeText.setFill(Color.valueOf(targetScene.equals("fridge") ? "#f4c20d" : "#ebe8bf"));
+        yourRecipesText.setFill(Color.valueOf(targetScene.equals("recipes") ? "#f4c20d" : "#ebe8bf"));
     }
 
     // updates our tableView with an observable list

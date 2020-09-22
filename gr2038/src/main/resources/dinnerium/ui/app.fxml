@@ -125,23 +125,23 @@
                   <Image url="http://folk.ntnu.no/anderobs/images/dinnerium.png" />
                </image>
             </ImageView>
-            <Pane layoutX="770.0" prefHeight="55.0" prefWidth="130.0">
-                <Text fill="#ebe8bf" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fridge" textAlignment="CENTER" wrappingWidth="130.80361938476562">
+            <Pane layoutX="770.0" onMouseClicked="#handleChangeToSettings" prefHeight="55.0" prefWidth="130.0">
+                <Text fx:id="settingsText" fill="#ebe8bf" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" textAlignment="CENTER" wrappingWidth="130.80361938476562">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </Text>
             </Pane>
-            <Pane layoutX="640.0" prefHeight="55.0" prefWidth="130.0">
-                <Text fill="#ebe8bf" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your recipes" textAlignment="CENTER" wrappingWidth="130">
+            <Pane layoutX="640.0" onMouseClicked="#handleChangeToYourRecipes" prefHeight="55.0" prefWidth="130.0">
+                <Text fx:id="yourRecipesText" fill="#ebe8bf" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your recipes" textAlignment="CENTER" wrappingWidth="130">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </Text>
             </Pane>
-            <Pane layoutX="510.0" prefHeight="55.0" prefWidth="130.0">
+            <Pane layoutX="510.0" onMouseClicked="#handleChangeToFridge" prefHeight="55.0" prefWidth="130.0">
                <children>
-                  <Text fill="#ebe8bf" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" textAlignment="CENTER" wrappingWidth="130">
+                  <Text fx:id="fridgeText" fill="#ebe8bf" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fridge" textAlignment="CENTER" wrappingWidth="130">
                      <font>
                         <Font size="20.0" />
                      </font>
