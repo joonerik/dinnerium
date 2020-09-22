@@ -9,7 +9,7 @@ coverage_check:
   stage: verify
   script:
     - cd gr2038/
-    - echo `target/site/jacoco/index.html`
+    - cat target/site/jacoco/index.html
     - apk add bash
     - apk add jq
     - apk add curl
