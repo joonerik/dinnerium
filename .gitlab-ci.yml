@@ -2,7 +2,7 @@ image: maven:3-jdk-14
 
 stages:
   - build
-  - test
+  - verify
   - deploy
 
 maven-build:
@@ -15,9 +15,7 @@ maven-build:
     paths:
       - target/surefire-reports/
       - target/site/jacoco/index.html
-    reports:
-      junit:
-        - target/surefire-reports/TEST-*.xml
+
 
 coverage_check:
   image: alpine:latest
