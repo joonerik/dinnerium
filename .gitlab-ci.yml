@@ -8,6 +8,7 @@ coverage_check:
   image: alpine:latest
   stage: verify
   script:
+    - cd gr2038/
     - apk add bash
     - apk add jq
     - apk add curl
@@ -16,6 +17,7 @@ coverage_check:
 testF:
   stage: test
   script:
+    - cd gr2038/
     - mvn verify
   artifacts:
     when: always
