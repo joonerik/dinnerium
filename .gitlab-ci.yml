@@ -19,7 +19,7 @@ maven-build:
 
 coverage_check:
   image: alpine:latest
-  stage: test
+  stage: verify
   script:
     - apk add bash
     - apk add jq
