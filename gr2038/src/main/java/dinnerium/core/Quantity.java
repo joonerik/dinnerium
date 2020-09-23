@@ -9,7 +9,8 @@ public class Quantity {
 
     // the static final list is supposed to contain all (!) units imaginable.
     // Will be expanded for next assignment
-    public static final List<String> units = Collections.unmodifiableList(Arrays.asList("stk", "dl", "gram"));
+    public static final List<String> units =
+            Collections.unmodifiableList(Arrays.asList("stk", "dl", "gram"));
     private double amount;
     private String unit;
 

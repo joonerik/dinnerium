@@ -11,8 +11,9 @@ public class IngredientContainerSerializer extends JsonSerializer<IngredientCont
 
     // converts the IngredientContainer object into a string in json format
     @Override
-    public void serialize(IngredientContainer ic, JsonGenerator jsonGen, SerializerProvider serializerProvider)
-            throws IOException {
+    public void serialize(IngredientContainer ic,
+                          JsonGenerator jsonGen,
+                          SerializerProvider serializerProvider) throws IOException {
         jsonGen.writeStartObject();
         jsonGen.writeArrayFieldStart("ingredients");
         for (Ingredient ingredient : ic.getIngredients()) {

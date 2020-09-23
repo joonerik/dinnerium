@@ -63,7 +63,9 @@ public class AppController {
     private void handleAddIngredient() {
 
         try {
-            Quantity quantity = new Quantity(Double.valueOf(amountInput.getText()), unitComboBox.getSelectionModel().getSelectedItem());
+            Quantity quantity =
+                    new Quantity(Double.valueOf(amountInput.getText()),
+                                 unitComboBox.getSelectionModel().getSelectedItem());
             Ingredient ingredient = new Ingredient(quantity, nameInput.getText());
             this.ingredientContainer.addIngredient(ingredient);
         } catch (IllegalArgumentException e) {

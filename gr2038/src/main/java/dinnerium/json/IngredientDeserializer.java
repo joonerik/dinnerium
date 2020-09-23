@@ -13,7 +13,8 @@ import java.io.IOException;
 public class IngredientDeserializer extends JsonDeserializer<Ingredient> {
 
     @Override
-    public Ingredient deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException {
+    public Ingredient deserialize(JsonParser parser, DeserializationContext ctxt)
+            throws IOException {
         TreeNode treeNode = parser.getCodec().readTree(parser);
         return deserialize((JsonNode) treeNode);
     }

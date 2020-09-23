@@ -9,7 +9,7 @@ public class RecipeInstructions {
     private int number;
     private String instruction;
 
-    public RecipeInstructions (int number, String instruction){
+    public RecipeInstructions(int number, String instruction) {
         this.number = number;
         this.instruction = instruction;
     }

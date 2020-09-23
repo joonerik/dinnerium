@@ -6,7 +6,9 @@ public class Recipe {
     private RecipeInstructions recipeInstructions;
     private Metadata metadata;
 
-    public Recipe(IngredientContainer ingredientContainer, RecipeInstructions recipeInstructions, Metadata metadata) {
+    public Recipe(IngredientContainer ingredientContainer,
+                  RecipeInstructions recipeInstructions,
+                  Metadata metadata) {
         this.ingredientContainer = ingredientContainer;
         this.recipeInstructions = recipeInstructions;
         this.metadata = metadata;
