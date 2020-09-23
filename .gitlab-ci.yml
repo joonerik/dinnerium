@@ -2,13 +2,13 @@ image: maven:3-jdk-14
 
 stages:
   - build
-  - test
 
 maven-build:
   stage: build
   script: 
+    - cd gr2038/
     - mvn package
-    - cat gr2038/target/site/jacoco/index.html
+    - cat target/site/jacoco/index.html
   artifacts:
     expose_as: 'code coverage'
     paths:
@@ -17,13 +17,3 @@ maven-build:
     reports:
       junit:
         - gr2038/target/surefire-reports/TEST-*.xml
-
-coverage_check:
-  image: alpine:latest
-  stage: test
-  script:
-    - apk add bash
-    - apk add jq
-    - apk add curl
-    - bash code-coverage.sh
-
