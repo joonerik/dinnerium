@@ -12,6 +12,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class AppController {
@@ -23,7 +25,6 @@ public class AppController {
     TextField nameInput;
     @FXML
     TextField amountInput;
-
     @FXML
     Text errorOutput;
     @FXML
@@ -36,6 +37,18 @@ public class AppController {
     TableColumn<Ingredient, Quantity> quantityColumn;
     @FXML
     TableColumn<Ingredient, String> itemColumn;
+    @FXML
+    Text settingsText;
+    @FXML
+    Text fridgeText;
+    @FXML
+    Text yourRecipesText;
+    @FXML
+    ScrollPane recipesScrollPane;
+    @FXML
+    Pane fridgePane;
+    @FXML
+    Pane settingsPane;
 
     @FXML
     void initialize() throws Exception {
@@ -58,12 +71,15 @@ public class AppController {
         updateTableView();
     }
 
-
     @FXML
     private void handleAddIngredient() {
 
         try {
-            Quantity quantity = new Quantity(Double.valueOf(amountInput.getText()), unitComboBox.getSelectionModel().getSelectedItem());
+            Quantity quantity = new Quantity
+                    (
+                            Double.valueOf(amountInput.getText()),
+                            unitComboBox.getSelectionModel().getSelectedItem()
+                    );
             Ingredient ingredient = new Ingredient(quantity, nameInput.getText());
             this.ingredientContainer.addIngredient(ingredient);
         } catch (IllegalArgumentException e) {
@@ -84,6 +100,31 @@ public class AppController {
             throw new IllegalArgumentException("Could not write to file");
         }
 
+    }
+
+    @FXML
+    private void handleChangeToFridge() {
+        changeScene("fridge");
+    }
+
+    @FXML
+    private void handleChangeToYourRecipes() {
+        changeScene("recipes");
+    }
+
+    @FXML
+    private void handleChangeToSettings() {
+        changeScene("settings");
+    }
+
+    private void changeScene(String newScene) {
+        settingsText.setFill(Color.valueOf(newScene.equals("settings") ? "#f4c20d" : "#ebe8bf"));
+        fridgeText.setFill(Color.valueOf(newScene.equals("fridge") ? "#f4c20d" : "#ebe8bf"));
+        yourRecipesText.setFill(Color.valueOf(newScene.equals("recipes") ? "#f4c20d" : "#ebe8bf"));
+
+        settingsPane.setVisible(newScene.equals("settings") ? true : false);
+        fridgePane.setVisible(newScene.equals("fridge") ? true : false);
+        recipesScrollPane.setVisible(newScene.equals("recipes") ? true : false);
     }
 
     // updates our tableView with an observable list
