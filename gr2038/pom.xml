@@ -166,21 +166,21 @@
                 <version>0.8.5</version>
                 <executions>
                     <execution>
-                        <id>jacoco-prepare-agent</id>
-                        <phase>process-test-classes</phase>
+                        <id>pre-unit-test</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>jacoco-report</id>
-                        <phase>verify</phase>
+                        <id>post-unit-test</id>
+                        <phase>test</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 </project>
