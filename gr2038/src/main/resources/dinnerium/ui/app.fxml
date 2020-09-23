@@ -32,18 +32,18 @@
          </children></Pane>
         <ScrollPane fx:id="recipesScrollPane" layoutX="125.0" layoutY="60.0" prefHeight="543.0" prefWidth="650.0" visible="false">
             <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="776.0" prefWidth="634.0" style="-fx-background-color: #42404B;">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="776.0" prefWidth="630.0" style="-fx-background-color: #42404B;">
                     <children>
-                        <Pane layoutX="10.0" layoutY="13.0" prefHeight="191.25" prefWidth="521.875">
+                        <Pane layoutX="10.0" layoutY="13.0" prefHeight="167.0" prefWidth="522.0">
                             <children>
-                                <Text fill="#d31d4d" layoutX="1.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tikka masala">
+                                <Text fill="#e32b2b" layoutX="1.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tikka masala">
                                     <font>
                                         <Font size="26.0" />
                                     </font>
                                 </Text>
-                                <Pane layoutY="30.0" prefHeight="160.0" prefWidth="521.875" style="-fx-background-color: #7D7C84; -fx-border-radius: 10; -fx-background-radius: 10;">
+                                <Pane layoutY="30.0" prefHeight="135.0" prefWidth="522.0" style="-fx-background-color: #42404B; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: F4C20D; -fx-border-width: 3;">
                                     <children>
-                                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="17.5" layoutY="17.5" pickOnBounds="true">
+                                        <ImageView fitHeight="105.0" fitWidth="105.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true">
                                             <image>
                                                 <Image url="http://folk.ntnu.no/anderobs/images/tikkaMasala.png" />
                                             </image>
@@ -55,61 +55,16 @@
                                                 </DisplacementMap>
                                             </effect>
                                         </ImageView>
-                              <Text fx:id="errorOutput" layoutX="244.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="160.0">
+                              <Text fill="#f4c20d" layoutX="127.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4 ingredients missing  |  1 hour 56 mins  |  70kr" textAlignment="CENTER">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="18.5" />
                                  </font>
                               </Text>
-                                    </children>
-                                </Pane>
-                            </children>
-                        </Pane>
-                        <Pane layoutX="10.0" layoutY="204.25" prefHeight="191.25" prefWidth="521.875">
-                            <children>
-                                <Text fill="#d31d4d" layoutX="1.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tikka masala">
-                                    <font>
-                                        <Font size="26.0" />
-                                    </font>
-                                </Text>
-                                <Pane layoutY="30.0" prefHeight="160.0" prefWidth="521.875" style="-fx-background-color: #7D7C84; -fx-border-radius: 10; -fx-background-radius: 10;">
-                                    <children>
-                                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="17.5" layoutY="17.5" pickOnBounds="true">
-                                            <image>
-                                                <Image url="http://folk.ntnu.no/anderobs/images/tikkaMasala.png" />
-                                            </image>
-                                            <effect>
-                                                <DisplacementMap>
-                                                    <mapData>
-                                                        <FloatMap />
-                                                    </mapData>
-                                                </DisplacementMap>
-                                            </effect>
-                                        </ImageView>
-                                    </children>
-                                </Pane>
-                            </children>
-                        </Pane>
-                        <Pane layoutX="10.0" layoutY="395.5" prefHeight="191.25" prefWidth="521.875">
-                            <children>
-                                <Text fill="#d31d4d" layoutX="1.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tikka masala">
-                                    <font>
-                                        <Font size="26.0" />
-                                    </font>
-                                </Text>
-                                <Pane layoutY="30.0" prefHeight="160.0" prefWidth="521.875" style="-fx-background-color: #7D7C84; -fx-border-radius: 10; -fx-background-radius: 10;">
-                                    <children>
-                                        <ImageView fitHeight="125.0" fitWidth="125.0" layoutX="17.5" layoutY="17.5" pickOnBounds="true">
-                                            <image>
-                                                <Image url="http://folk.ntnu.no/anderobs/images/tikkaMasala.png" />
-                                            </image>
-                                            <effect>
-                                                <DisplacementMap>
-                                                    <mapData>
-                                                        <FloatMap />
-                                                    </mapData>
-                                                </DisplacementMap>
-                                            </effect>
-                                        </ImageView>
+                              <Text fill="#f4c20d" layoutX="132.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel felis pharetra, ornare nisi at, egestas sapien. Aliquam non faucibus nisi. Curabitur scelerisque orci nulla, dapibus pretium lorem pulvinar ac. Suspendisse sit amet arcu finibus, interdum odio eget, mattis mi. Fusce imperdiet nisl sed dolor bibendum luctus. Nunc" textAlignment="CENTER" wrappingWidth="370.0">
+                                 <font>
+                                    <Font size="12.5" />
+                                 </font>
+                              </Text>
                                     </children>
                                 </Pane>
                             </children>
@@ -148,6 +103,20 @@
                   </Text>
                </children>
             </Pane>
+            <Text fx:id="errorOutput" layoutX="221.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="160.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane fx:id="settingsPane" layoutX="125.0" layoutY="60.0" prefHeight="543.0" prefWidth="650.0" style="-fx-border-width: 3; -fx-border-color: #F4C20D; -fx-border-radius: 10;" visible="false">
+         <children>
+            <Text fill="#f4c20d" layoutX="225.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User settings" textAlignment="CENTER" underline="true" wrappingWidth="200.255859375">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
     </children>

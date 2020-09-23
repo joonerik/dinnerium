@@ -47,6 +47,8 @@ public class AppController {
     ScrollPane recipesScrollPane;
     @FXML
     Pane fridgePane;
+    @FXML
+    Pane settingsPane;
 
     @FXML
     void initialize() throws Exception {
@@ -69,12 +71,15 @@ public class AppController {
         updateTableView();
     }
 
-
     @FXML
     private void handleAddIngredient() {
 
         try {
-            Quantity quantity = new Quantity(Double.valueOf(amountInput.getText()), unitComboBox.getSelectionModel().getSelectedItem());
+            Quantity quantity = new Quantity
+                    (
+                            Double.valueOf(amountInput.getText()),
+                            unitComboBox.getSelectionModel().getSelectedItem()
+                    );
             Ingredient ingredient = new Ingredient(quantity, nameInput.getText());
             this.ingredientContainer.addIngredient(ingredient);
         } catch (IllegalArgumentException e) {
@@ -99,30 +104,27 @@ public class AppController {
 
     @FXML
     private void handleChangeToFridge() {
-        setTextColors("fridge");
-        fridgePane.setVisible(true);
-        recipesScrollPane.setVisible(false);
+        changeScene("fridge");
     }
 
     @FXML
     private void handleChangeToYourRecipes() {
-        setTextColors("recipes");
-        fridgePane.setVisible(false);
-        recipesScrollPane.setVisible(true);
+        changeScene("recipes");
     }
 
     @FXML
     private void handleChangeToSettings() {
-        setTextColors("settings");
-        fridgePane.setVisible(false);
-        recipesScrollPane.setVisible(false);
-
+        changeScene("settings");
     }
 
-    private void setTextColors(String newScene) {
+    private void changeScene(String newScene) {
         settingsText.setFill(Color.valueOf(newScene.equals("settings") ? "#f4c20d" : "#ebe8bf"));
         fridgeText.setFill(Color.valueOf(newScene.equals("fridge") ? "#f4c20d" : "#ebe8bf"));
         yourRecipesText.setFill(Color.valueOf(newScene.equals("recipes") ? "#f4c20d" : "#ebe8bf"));
+
+        settingsPane.setVisible(newScene.equals("settings") ? true : false);
+        fridgePane.setVisible(newScene.equals("fridge") ? true : false);
+        recipesScrollPane.setVisible(newScene.equals("recipes") ? true : false);
     }
 
     // updates our tableView with an observable list
