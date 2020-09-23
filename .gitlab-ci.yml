@@ -26,5 +26,5 @@ coverage_check:
     - apk add bash
     - apk add jq
     - apk add curl
-    - bash code-coverage.sh
+    - bash ./code-coverage.sh
 
