@@ -2,7 +2,6 @@ image: maven:3-jdk-14
 
 stages:
   - build
-  - test
 
 maven-build:
   stage: build
@@ -18,13 +17,3 @@ maven-build:
     reports:
       junit:
         - gr2038/target/surefire-reports/TEST-*.xml
-
-coverage_check:
-  image: alpine:latest
-  stage: test
-  script:
-    - apk add bash
-    - apk add jq
-    - apk add curl
-    - bash ./code-coverage.sh
-
