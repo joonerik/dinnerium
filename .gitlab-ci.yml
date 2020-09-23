@@ -7,10 +7,9 @@ stages:
 maven-build:
   stage: build
   script: 
+    - cd gr2038/
     - mvn package
-    - pwd
-    - ls
-    - echo %CD% 
+    - cat target/site/jacoco/index.html
   artifacts:
     expose_as: 'code coverage'
     paths:
