@@ -3,7 +3,7 @@ image: maven:3-jdk-14
 stages:
   - build
 
-maven-build:
+core-build:
   stage: build
   script: 
     - cd gr2038/
@@ -17,3 +17,18 @@ maven-build:
     reports:
       junit:
         - gr2038/core/target/surefire-reports/TEST-*.xml
+
+fxui-build:
+  stage: build
+  script: 
+    - cd gr2038/
+    - mvn package
+    - cat fxui/target/site/jacoco/index.html
+  artifacts:
+    expose_as: 'code coverage'
+    paths:
+      - gr2038/fxui/target/surefire-reports/
+      - gr2038/fxui/target/site/jacoco/index.html
+    reports:
+      junit:
+        - gr2038/fxui/target/surefire-reports/TEST-*.xml
