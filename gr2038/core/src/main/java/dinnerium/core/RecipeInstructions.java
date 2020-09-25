@@ -14,12 +14,20 @@ public class RecipeInstructions {
         this.instruction = instruction;
     }
 
-    private String getInstruction(int number) {
+    public String getInstruction(int number) {
         return instructions.get(number);
     }
 
-    private void setInstruction(int number, String instruction) {
+    public void setInstruction(int number, String instruction) {
         instructions.add(number, instruction);
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public String getInstruction() {
+        return instruction;
     }
 
 }

@@ -3,3 +3,6 @@ bin/
 .idea
 *.iml
 .theia/
+.classpath
+.project
+.settings/
