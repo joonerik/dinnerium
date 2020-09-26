@@ -6,6 +6,13 @@ public class Recipe {
     private RecipeInstructions recipeInstructions;
     private Metadata metadata;
 
+    /**
+     * Constructor for Recipe
+     *
+     * @param ingredientContainer of Ingredients to be used in Recipe
+     * @param recipeInstructions of instructions to be used in Recipe
+     * @param metadata of Recipe
+     */
     public Recipe(IngredientContainer ingredientContainer,
                   RecipeInstructions recipeInstructions,
                   Metadata metadata) {
