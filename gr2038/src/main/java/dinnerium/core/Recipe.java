@@ -21,14 +21,29 @@ public class Recipe {
         this.metadata = metadata;
     }
 
+    /**
+     * Getter for ingredientContainer
+     *
+     * @return ingredientContainer
+     */
     public IngredientContainer getIngredientContainer() {
         return ingredientContainer;
     }
 
+    /**
+     * Getter for recipeInstructions
+     *
+     * @return recipeInstructions
+     */
     public RecipeInstructions getRecipeInstructions() {
         return recipeInstructions;
     }
 
+    /**
+     * Getter for metadata
+     *
+     * @return metadata
+     */
     public Metadata getMetadata() {
         return metadata;
     }
