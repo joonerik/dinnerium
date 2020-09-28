@@ -20,6 +20,8 @@ public class RecipeInstructions implements Iterable<String> {
 
     /**
      * @param instruction
+     *
+     *
      */
     public void setInstruction(String instruction) {
         if (instruction != null) {

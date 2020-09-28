@@ -10,8 +10,8 @@ public class Metadata {
         this.portion = portion;
     }
 
+    // from User class
     public void setAuthor(String author) {
-
         this.author = author;
     }
 
