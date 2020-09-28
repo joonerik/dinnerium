@@ -1,21 +1,16 @@
 package dinnerium.core;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 public class RecipeInstructions implements Iterable<String> {
 
-    private List<String> instructions = new ArrayList<>();
+    private Collection<String> instructions;
 
-    /**
-     * Getter for instruction
-     *
-     * @param number
-     *        which step in the instructions
-     */
-    public String getInstruction(int number) {
-        return instructions.get(number);
+    public RecipeInstructions(Collection<String> instructions) {
+        this.instructions = instructions;
     }
 
     /**
