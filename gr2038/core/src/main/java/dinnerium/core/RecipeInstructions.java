@@ -7,7 +7,6 @@ import java.util.List;
 public class RecipeInstructions implements Iterable<String> {
 
     private List<String> instructions = new ArrayList<>();
-    private String instruction;
 
     /**
      * Getter for instruction
@@ -28,11 +27,6 @@ public class RecipeInstructions implements Iterable<String> {
         } else {
             throw new IllegalArgumentException("String is null!");
         }
-    }
-
-    // the iterator may provide this, so probably excessive
-    public String getInstruction() {
-        return instruction;
     }
 
     @Override
