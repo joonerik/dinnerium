@@ -3,6 +3,7 @@ package dinnerium.ui;
 import dinnerium.core.Ingredient;
 import dinnerium.core.IngredientContainer;
 import dinnerium.core.Quantity;
+import dinnerium.core.Recipe;
 import dinnerium.json.HandlePersistency;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
@@ -20,6 +21,7 @@ public class AppController {
 
     // contains our current stock of ingredients/groceries
     private IngredientContainer ingredientContainer;
+    private ObservableList<Ingredient> newRecipeIngredients = FXCollections.emptyObservableList();
 
     @FXML
     TextField nameInput;
@@ -49,15 +51,21 @@ public class AppController {
     Pane fridgePane;
     @FXML
     Pane settingsPane;
+    @FXML
+    Pane recipesPane;
+    @FXML
+    ListView<Ingredient> recipesListView;
 
     @FXML
     void initialize() throws Exception {
+        recipesListView.setItems(newRecipeIngredients);
         setup();
     }
 
     // need to handle throws from init!!
     private void setup() {
         // sets up our tableview with correct rows and columns
+
         unitComboBox.getItems().setAll(Quantity.units);
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         itemColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -107,7 +115,27 @@ public class AppController {
 
     @FXML
     private void handleChangeToYourRecipes() {
+        newRecipeIngredients.clear();
         changeScene("recipes");
+    }
+    @FXML
+    private void handleNewRecipeAddIngredient() {
+        try {
+        Quantity quantity =
+                new Quantity(Double.valueOf(amountInput.getText()),
+                        unitComboBox.getSelectionModel().getSelectedItem());
+        Ingredient ingredient = new Ingredient(quantity, nameInput.getText());
+        newRecipeIngredients.add(ingredient);
+        } catch (IllegalArgumentException e) {
+            // write error output in app
+            errorOutput.setVisible(true);
+            errorOutput.setText(e.getMessage());
+            CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS).execute(() -> {
+                errorOutput.setVisible(false);
+            });
+            System.err.println(e.getMessage());
+            System.out.println(e.getMessage());
+        }
     }
 
     @FXML
@@ -122,7 +150,7 @@ public class AppController {
 
         settingsPane.setVisible(newScene.equals("settings"));
         fridgePane.setVisible(newScene.equals("fridge"));
-        recipesScrollPane.setVisible(newScene.equals("recipes"));
+        recipesPane.setVisible(newScene.equals("recipes"));
     }
 
     // updates our tableView with an observable list
