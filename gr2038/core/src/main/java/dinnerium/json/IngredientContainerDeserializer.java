@@ -30,7 +30,7 @@ public class IngredientContainerDeserializer extends JsonDeserializer<Ingredient
                 for (JsonNode elementNode : (ingredientsNode)) {
                     Ingredient ingredient = ingredientDeserializer.deserialize(elementNode);
                     if (ingredient != null) {
-                        ingredients.addIngredient(ingredient);
+                        ingredients.addItem(ingredient);
                     }
                 }
             }
