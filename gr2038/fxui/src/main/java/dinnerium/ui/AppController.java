@@ -1,8 +1,6 @@
 package dinnerium.ui;
 
-import dinnerium.core.Ingredient;
-import dinnerium.core.IngredientContainer;
-import dinnerium.core.Quantity;
+import dinnerium.core.*;
 import dinnerium.json.HandlePersistency;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
@@ -20,7 +18,9 @@ public class AppController {
 
     // contains our current stock of ingredients/groceries
     private IngredientContainer ingredientContainer;
+    private RecipeContainer recipeContainer = new RecipeContainer();
     private ObservableList<Ingredient> newRecipeIngredients = FXCollections.observableArrayList();
+    private ObservableList<String> newRecipeInstructions = FXCollections.observableArrayList();
 
     @FXML
     TextField nameInput;
@@ -60,11 +60,18 @@ public class AppController {
     TextField newRecipeAmountInput;
     @FXML
     ComboBox<String> newRecipeUnitComboBox;
+    @FXML
+    TextArea instructionTextArea;
+    @FXML
+    ListView<String> instructionsListView;
+    @FXML
+    TextField portionsInput;
 
 
     @FXML
     void initialize() throws Exception {
         recipesListView.setItems(newRecipeIngredients);
+        instructionsListView.setItems(newRecipeInstructions);
         setup();
     }
 
@@ -127,6 +134,22 @@ public class AppController {
             System.err.println(e.getMessage());
             System.out.println(e.getMessage());
         }
+    }
+
+    @FXML
+    private void handleAddInstruction() {
+        System.out.println(instructionTextArea.getText());
+        this.newRecipeInstructions.add(instructionTextArea.getText());
+    }
+
+    @FXML
+    private void handleAddRecipe() {
+        Metadata metadata = new Metadata("username", Double.valueOf(portionsInput.getText()));
+        IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
+        RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
+
+        Recipe recipe = new Recipe(ic, rc, metadata);
+        recipeContainer.addItem(recipe);
     }
 
     @FXML
