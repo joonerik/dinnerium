@@ -75,17 +75,9 @@ public class AppController {
     private void handleAddIngredient() {
 
         try {
-<<<<<<< HEAD:gr2038/src/main/java/dinnerium/ui/AppController.java
             Quantity quantity =
                     new Quantity(Double.valueOf(amountInput.getText()),
                                  unitComboBox.getSelectionModel().getSelectedItem());
-=======
-            Quantity quantity = new Quantity
-                    (
-                            Double.valueOf(amountInput.getText()),
-                            unitComboBox.getSelectionModel().getSelectedItem()
-                    );
->>>>>>> b5704315e9899610f7110f6707affaddc0201ea8:gr2038/fxui/src/main/java/dinnerium/ui/AppController.java
             Ingredient ingredient = new Ingredient(quantity, nameInput.getText());
             this.ingredientContainer.addIngredient(ingredient);
         } catch (IllegalArgumentException e) {
