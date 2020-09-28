@@ -120,9 +120,9 @@ public class AppController {
         fridgeText.setFill(Color.valueOf(newScene.equals("fridge") ? "#f4c20d" : "#ebe8bf"));
         yourRecipesText.setFill(Color.valueOf(newScene.equals("recipes") ? "#f4c20d" : "#ebe8bf"));
 
-        settingsPane.setVisible(newScene.equals("settings") ? true : false);
-        fridgePane.setVisible(newScene.equals("fridge") ? true : false);
-        recipesScrollPane.setVisible(newScene.equals("recipes") ? true : false);
+        settingsPane.setVisible(newScene.equals("settings"));
+        fridgePane.setVisible(newScene.equals("fridge"));
+        recipesScrollPane.setVisible(newScene.equals("recipes"));
     }
 
     // updates our tableView with an observable list
