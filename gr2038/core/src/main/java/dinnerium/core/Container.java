@@ -62,6 +62,7 @@ public abstract class Container<T> implements Iterable<T> {
     public int getContainerSize() {
         return this.container.size();
     }
+
     /**
      * @return a container iterator
      */

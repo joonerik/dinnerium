@@ -11,7 +11,7 @@ public class DinneriumModule extends SimpleModule {
 
     private static final String NAME = "DinneriumModule";
 
-    // initializes our application/module with the necessary serializers and deserializers
+    /** Initializes our application/module with the necessary serializers and deserializers */
     public DinneriumModule() {
         super(NAME, Version.unknownVersion());
         addSerializer(Ingredient.class, new IngredientSerializer());

@@ -11,8 +11,8 @@ public class RecipeInstructions implements Iterable<String> {
     /**
      * Getter for instruction
      *
-     * @param number 
-     * @return
+     * @param number
+     *        which step in the instructions
      */
     public String getInstruction(int number) {
         return instructions.get(number);
@@ -20,8 +20,9 @@ public class RecipeInstructions implements Iterable<String> {
 
     /**
      * @param instruction
-     *
-     *
+     *        description of a step
+     * @throws IllegalArgumentException
+     *         if the instruction is empty
      */
     public void setInstruction(String instruction) {
         if (instruction != null) {

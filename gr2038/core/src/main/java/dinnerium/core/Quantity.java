@@ -28,10 +28,10 @@ public class Quantity {
      * Checks if input-unit is valid
      *
      * @param unit
+     *        which unit
      * @return true if valid
-     * @throws IllegalArgumentException
      */
-    private boolean validateUnit(String unit) throws IllegalArgumentException {
+    private boolean validateUnit(String unit) {
         return units.contains(unit);
     }
 
@@ -54,8 +54,10 @@ public class Quantity {
     }
 
     /**
+     * Sets how much of the unit, ex: 3 stk where 3 is amount and stk is unit
      *
      * @param amount
+     *        of the unit
      */
     public void setAmount(double amount) {
         this.amount = Math.round(amount * 100.0) / 100.0;
@@ -64,7 +66,10 @@ public class Quantity {
     /**
      * Sets the unit variable
      *
-     * @param unit to be set
+     * @param unit
+     *        to be set
+     * @throws IllegalArgumentException
+     *         if the unit is not valid
      */
     public void setUnit(String unit) {
         if (validateUnit(unit)) {

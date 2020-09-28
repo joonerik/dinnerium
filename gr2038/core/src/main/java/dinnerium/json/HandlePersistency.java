@@ -10,6 +10,12 @@ import java.nio.file.Paths;
 public class HandlePersistency {
 
     // writes a container containing a list of ingredients
+    /**
+     * Writes a IngredientContainer to file
+     *
+     * @throws IOException
+     *         if file error
+     */
     public static void writeJsonToFile(IngredientContainer ingredientContainer) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(new File("src/main/data.json"), ingredientContainer);
@@ -17,6 +23,13 @@ public class HandlePersistency {
 
     // returns a container containing a list of ingredients
     // this list/container is our current stock of ingredients "in our fridge"
+    /**
+     * loads a IngredientContainer from file
+     *
+     * @return ingredientContainer
+     * @throws IOException
+     *         if file error
+     */
     public static IngredientContainer loadDataFromFile() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new DinneriumModule());

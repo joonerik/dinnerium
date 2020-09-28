@@ -18,6 +18,7 @@ public class Metadata {
     public String getAuthor() {
         return author;
     }
+
     public Double getPortion() {
         return portion;
     }
