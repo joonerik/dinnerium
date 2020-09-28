@@ -66,6 +66,12 @@ public class AppController {
     ListView<String> instructionsListView;
     @FXML
     TextField portionsInput;
+    @FXML
+    Text recipesSubMenuText;
+    @FXML
+    Text newRecipeSubMenuText;
+    @FXML
+    Pane newRecipePane;
 
 
     @FXML
@@ -138,7 +144,6 @@ public class AppController {
 
     @FXML
     private void handleAddInstruction() {
-        System.out.println(instructionTextArea.getText());
         this.newRecipeInstructions.add(instructionTextArea.getText());
     }
 
@@ -149,7 +154,9 @@ public class AppController {
         RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
 
         Recipe recipe = new Recipe(ic, rc, metadata);
+        System.out.println(recipeContainer.getContainerSize());
         recipeContainer.addItem(recipe);
+        System.out.println(recipeContainer.getContainerSize());
     }
 
     @FXML
@@ -176,6 +183,23 @@ public class AppController {
         settingsPane.setVisible(newScene.equals("settings"));
         fridgePane.setVisible(newScene.equals("fridge"));
         recipesPane.setVisible(newScene.equals("recipes"));
+    }
+
+    @FXML
+    private void handleChangeToRecipes() {
+        changeSubScene("recipes");
+    }
+
+    @FXML
+    private void handleChangeToNewRecipe() {
+        changeSubScene("newRecipe");
+    }
+
+    private void changeSubScene(String newSubScene) {
+        newRecipeSubMenuText.setFill(Color.valueOf(newSubScene.equals("newRecipe") ? "#f4c20d" : "#ebe8bf"));
+        recipesSubMenuText.setFill(Color.valueOf(newSubScene.equals("recipes") ? "#f4c20d" : "#ebe8bf"));
+        newRecipePane.setVisible(newSubScene.equals("newRecipe"));
+        recipesScrollPane.setVisible(newSubScene.equals("recipes"));
     }
 
     // updates our tableView with an observable list

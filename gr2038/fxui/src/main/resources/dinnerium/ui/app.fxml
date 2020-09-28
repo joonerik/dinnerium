@@ -78,9 +78,9 @@
             </Text>
          </children>
       </Pane>
-      <Pane fx:id="recipesPane" layoutX="123.0" layoutY="56.0" prefHeight="583.0" prefWidth="656.0">
+      <Pane fx:id="recipesPane" layoutX="123.0" layoutY="56.0" prefHeight="583.0" prefWidth="656.0" visible="false">
          <children>
-              <ScrollPane fx:id="recipesScrollPane" layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0" visible="false">
+              <ScrollPane fx:id="recipesScrollPane" layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0">
                   <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="776.0" prefWidth="630.0" style="-fx-background-color: #42404B;">
                           <children>
@@ -123,17 +123,17 @@
                       </AnchorPane>
                   </content>
               </ScrollPane>
-            <Pane layoutX="90.0" layoutY="5.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #66C3B1;">
+            <Pane layoutX="90.0" layoutY="5.0" onMouseClicked="#handleChangeToNewRecipe" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #66C3B1;">
                <children>
-                  <Text fill="#ebe8bf" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New recipes" textAlignment="CENTER" wrappingWidth="70.0" />
+                  <Text fx:id="newRecipeSubMenuText" fill="#ebe8bf" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New recipe" textAlignment="CENTER" wrappingWidth="70.0" />
                </children>
             </Pane>
             <Pane layoutX="10.0" layoutY="5.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #66C3B1;">
                <children>
-                  <Text fill="#f4c20d" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipes" textAlignment="CENTER" wrappingWidth="70.0" />
+                  <Text fx:id="recipesSubMenuText" fill="#f4c20d" layoutY="17.0" onMouseClicked="#handleChangeToRecipes" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipes" textAlignment="CENTER" wrappingWidth="70.0" />
                </children>
             </Pane>
-            <Pane layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0" style="-fx-border-color: white;">
+            <Pane fx:id="newRecipePane" layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0" style="-fx-border-color: white;" visible="false">
                <children>
                   <TextField fx:id="portionsInput" layoutX="163.0" layoutY="57.0" />
                   <Text layoutX="107.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Portions" />
