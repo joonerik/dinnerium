@@ -12,7 +12,9 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent parent = FXMLLoader.load(getClass().getResource("app.fxml"));
-        stage.setScene(new Scene(parent));
+        Scene scene = new Scene(parent);
+        scene.getStylesheets().add(getClass().getResource("table-view-style.css").toExternalForm());
+        stage.setScene(scene);
         stage.setTitle("Dinnerium");
         stage.getIcons().add(new Image("https://folk.ntnu.no/anderobs/images/dinnerium.png"));
         stage.show();

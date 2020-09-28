@@ -29,10 +29,8 @@ public class Ingredient {
     private boolean validateIngredientName(String name) {
         Pattern p = Pattern.compile("^[ A-Za-z]+$");
         Matcher m = p.matcher(name);
-        if (name.isEmpty() || !m.matches()) {
-            return false;
-        }
-        return true;
+        return !(name.isEmpty() || !m.matches());
+
     }
 
 
@@ -66,6 +64,8 @@ public class Ingredient {
         } else {
             throw new IllegalArgumentException(name + " is not valid");
         }
+
+
     }
 
     /**
