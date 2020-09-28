@@ -13,7 +13,10 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         Parent parent = FXMLLoader.load(getClass().getResource("app.fxml"));
         Scene scene = new Scene(parent);
-        scene.getStylesheets().add(getClass().getResource("table-view-style.css").toExternalForm());
+        scene.getStylesheets().addAll(
+                getClass().getResource("table-view-style.css").toExternalForm(),
+                getClass().getResource("recipe-pane.css").toExternalForm()
+        );
         stage.setScene(scene);
         stage.setTitle("Dinnerium");
         stage.getIcons().add(new Image("https://folk.ntnu.no/anderobs/images/dinnerium.png"));

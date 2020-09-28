@@ -9,7 +9,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -72,6 +77,8 @@ public class AppController {
     Text newRecipeSubMenuText;
     @FXML
     Pane newRecipePane;
+    @FXML
+    AnchorPane recipesAnchorPane;
 
 
     @FXML
@@ -160,6 +167,60 @@ public class AppController {
         RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
 
         recipeContainer.addItem(new Recipe(ic, rc, metadata));
+        updateRecipeAnchorPane();
+    }
+
+    //Sende inn en recipe som man henter ut all infoen fra, slik at man kan hente ut infoen fra den.
+    //Så blir det lettere å initializere appen fra en fil med recipes.
+    private void updateRecipeAnchorPane() {
+        Pane pane = new Pane();
+        pane.setPrefWidth(522);
+        pane.setPrefHeight(167);
+        //Need to set layout x and y to a value calculated from the amount of recipes.
+
+        Text recipeName = new Text("Inser name here");
+        recipeName.getStyleClass().add("recipe-name");
+        recipeName.setLayoutX(1);
+        recipeName.setLayoutY(25);
+
+        Pane childPane = new Pane();
+        childPane.setPrefHeight(135);
+        childPane.setPrefWidth(522);
+        childPane.setLayoutY(30);
+        childPane.getStyleClass().add("child-pane");
+
+        /* Can't figure out how to make imageView with image from the web
+        URL img = new URL("http://folk.ntnu.no/anderobs/images/tikkaMasala.png");
+        ImageIcon image = new ImageIcon(img);
+        ImageView imageView = new ImageView(image);
+        //how to set the imageView URL ?
+        imageView.setSize(105, 105);
+        */
+        Text recipeInfo = new Text("4 ingredients missing  |  1 hour 56 mins  |  70kr");
+        recipeInfo.setLayoutY(30);
+        recipeInfo.setLayoutX(127);
+        recipeInfo.getStyleClass().add("recipe-info");
+        recipeInfo.setWrappingWidth(390);
+
+        Text recipeDescription = new Text("Lorem ipsum dolor sit amet, consectetur adipiscing"
+                + " elit. Proin vel felis pharetra, ornare nisi at, egestas sapien. Aliquam non "
+                + "faucibus nisi. Curabitur scelerisque orci nulla, dapibus pretium lorem pulvinar "
+                + "ac. Suspendisse sit amet arcu finibus, interdum odio eget, mattis mi. Fusce "
+                + "imperdiet nisl sed dolor bibendum luctus. Nunc");
+        recipeDescription.setWrappingWidth(370);
+        recipeDescription.getStyleClass().add("recipe-description");
+        recipeDescription.setLayoutX(132);
+        recipeDescription.setLayoutY(52);
+
+        childPane.getChildren().addAll(recipeInfo, recipeDescription);
+
+        pane.getChildren().addAll(recipeName, childPane);
+        pane.setLayoutY(13 + 180 * (recipeContainer.getContainerSize() - 1));
+        pane.setLayoutX(10);
+        recipesAnchorPane.getChildren().add(pane);
+        if (recipesAnchorPane.getChildren().size() > 3) {
+            recipesAnchorPane.setPrefHeight(13 + 180 * (recipeContainer.getContainerSize()));
+        }
     }
 
     @FXML
