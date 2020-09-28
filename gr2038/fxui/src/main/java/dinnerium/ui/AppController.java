@@ -3,7 +3,6 @@ package dinnerium.ui;
 import dinnerium.core.Ingredient;
 import dinnerium.core.IngredientContainer;
 import dinnerium.core.Quantity;
-import dinnerium.core.Recipe;
 import dinnerium.json.HandlePersistency;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
@@ -56,11 +55,11 @@ public class AppController {
     @FXML
     ListView<Ingredient> recipesListView;
     @FXML
-    TextField newRecipe_nameInput;
+    TextField newRecipeNameInput;
     @FXML
-    TextField newRecipe_amountInput;
+    TextField newRecipeAmountInput;
     @FXML
-    ComboBox<String> newRecipe_unitComboBox;
+    ComboBox<String> newRecipeUnitComboBox;
 
 
     @FXML
@@ -74,7 +73,7 @@ public class AppController {
         // sets up our tableview with correct rows and columns
 
         unitComboBox.getItems().setAll(Quantity.units);
-        newRecipe_unitComboBox.getItems().setAll(Quantity.units);
+        newRecipeUnitComboBox.getItems().setAll(Quantity.units);
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         itemColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
@@ -89,13 +88,35 @@ public class AppController {
 
     @FXML
     private void handleAddIngredient() {
-
+        addIngredient(false);
+        updateTableView();
+        // writes our new ingredient to the file
         try {
-            Quantity quantity =
-                    new Quantity(Double.valueOf(amountInput.getText()),
-                            unitComboBox.getSelectionModel().getSelectedItem());
-            Ingredient ingredient = new Ingredient(quantity, nameInput.getText());
-            this.ingredientContainer.addItem(ingredient);
+            HandlePersistency.writeJsonToFile(ingredientContainer);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Could not write to file");
+        }
+    }
+
+    @FXML
+    private void handleNewRecipeAddIngredient() {
+        addIngredient(true);
+    }
+
+    private void addIngredient(boolean newRecipe) {
+        try {
+            String amountText = (newRecipe ? newRecipeAmountInput : amountInput).getText();
+            String unit = (newRecipe ? newRecipeUnitComboBox : unitComboBox)
+                    .getSelectionModel()
+                    .getSelectedItem();
+            String name = (newRecipe ? newRecipeNameInput : nameInput).getText();
+            Ingredient i = new Ingredient(new Quantity(Double.valueOf(amountText), unit), name);
+
+            if (newRecipe) {
+                newRecipeIngredients.add(i);
+            } else {
+                this.ingredientContainer.addItem(i);
+            }
         } catch (IllegalArgumentException e) {
             // write error output in app
             errorOutput.setVisible(true);
@@ -106,14 +127,6 @@ public class AppController {
             System.err.println(e.getMessage());
             System.out.println(e.getMessage());
         }
-        updateTableView();
-        // writes our new ingredient to the file
-        try {
-            HandlePersistency.writeJsonToFile(ingredientContainer);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("Could not write to file");
-        }
-
     }
 
     @FXML
@@ -125,25 +138,6 @@ public class AppController {
     private void handleChangeToYourRecipes() {
         newRecipeIngredients.clear();
         changeScene("recipes");
-    }
-    @FXML
-    private void handleNewRecipeAddIngredient() {
-        try {
-            Quantity quantity =
-                    new Quantity(Double.valueOf(newRecipe_amountInput.getText()),
-                            newRecipe_unitComboBox.getSelectionModel().getSelectedItem());
-            Ingredient ingredient = new Ingredient(quantity, newRecipe_nameInput.getText());
-            this.newRecipeIngredients.add(ingredient);
-        } catch (IllegalArgumentException e) {
-            // write error output in app
-            errorOutput.setVisible(true);
-            errorOutput.setText(e.getMessage());
-            CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS).execute(() -> {
-                errorOutput.setVisible(false);
-            });
-            System.err.println(e.getMessage());
-            System.out.println(e.getMessage());
-        }
     }
 
     @FXML

@@ -137,10 +137,10 @@
                   <TextField layoutX="163.0" layoutY="57.0" />
                   <Text layoutX="107.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Portions" />
                   <ListView fx:id="recipesListView" layoutX="125.0" layoutY="169.0" prefHeight="200.0" prefWidth="200.0" />
-                  <TextField fx:id="newRecipe_nameInput" layoutX="116.0" layoutY="128.0" prefHeight="25.0" prefWidth="93.0" promptText="Name" />
-                  <TextField fx:id="newRecipe_amountInput" layoutX="233.0" layoutY="127.0" prefHeight="25.0" prefWidth="70.0" promptText="quantity" />
-                  <ComboBox fx:id="newRecipe_unitComboBox" layoutX="321.0" layoutY="127.0" prefHeight="25.0" prefWidth="70.0" promptText="Unit" />
-                  <Button fx:id="newRecipe_addButton" layoutX="403.0" layoutY="127.0" mnemonicParsing="false" onAction="#handleNewRecipeAddIngredient" text="Add" />
+                  <TextField fx:id="newRecipeNameInput" layoutX="116.0" layoutY="128.0" prefHeight="25.0" prefWidth="93.0" promptText="Name" />
+                  <TextField fx:id="newRecipeAmountInput" layoutX="233.0" layoutY="127.0" prefHeight="25.0" prefWidth="70.0" promptText="quantity" />
+                  <ComboBox fx:id="newRecipeUnitComboBox" layoutX="321.0" layoutY="127.0" prefHeight="25.0" prefWidth="70.0" promptText="Unit" />
+                  <Button fx:id="newRecipeAddButton" layoutX="403.0" layoutY="127.0" mnemonicParsing="false" onAction="#handleNewRecipeAddIngredient" text="Add" />
                </children>
             </Pane>
          </children>
