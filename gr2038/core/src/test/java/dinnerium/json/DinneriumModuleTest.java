@@ -35,9 +35,9 @@ class DinneriumModuleTest {
     @Test
     public void testSerializers() throws JsonProcessingException {
         IngredientContainer container = new IngredientContainer();
-        container.addIngredient(new Ingredient(new Quantity(10, "stk"), "egg"));
-        container.addIngredient(new Ingredient(new Quantity(500, "gram"), "mel"));
-        container.addIngredient(new Ingredient(new Quantity(5, "dl"), "melk"));
+        container.addItem(new Ingredient(new Quantity(10, "stk"), "egg"));
+        container.addItem(new Ingredient(new Quantity(500, "gram"), "mel"));
+        container.addItem(new Ingredient(new Quantity(5, "dl"), "melk"));
 
         try {
             String serializedObject = mapper.writeValueAsString(container);

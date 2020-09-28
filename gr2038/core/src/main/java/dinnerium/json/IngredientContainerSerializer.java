@@ -16,7 +16,7 @@ public class IngredientContainerSerializer extends JsonSerializer<IngredientCont
                           SerializerProvider serializerProvider) throws IOException {
         jsonGen.writeStartObject();
         jsonGen.writeArrayFieldStart("ingredients");
-        for (Ingredient ingredient : ic.getIngredients()) {
+        for (Ingredient ingredient : ic.getContainer()) {
             jsonGen.writeObject(ingredient);
         }
         jsonGen.writeEndArray();
