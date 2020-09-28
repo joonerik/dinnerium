@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-/** Contains ingredients */
+/** Contains ingredients. */
 public class IngredientContainer implements Iterable<Ingredient> {
 
     private Collection<Ingredient> ingredients;
 
-    /** Initializes the collections ingredients as a ArrayList */
+    /** Initializes the collections ingredients as a ArrayList. */
     public IngredientContainer() {
         this.ingredients = new ArrayList<>();
     }
 
-    /** sets ingredients  */
+    /** sets ingredients.  */
     public IngredientContainer(Collection<Ingredient> ingredients) {
         this.setIngredients(ingredients);
     }
@@ -30,7 +30,7 @@ public class IngredientContainer implements Iterable<Ingredient> {
 
     public void addIngredient(Ingredient ingredient) {
         if (ingredient == null) {
-            throw new IllegalArgumentException("Ingredient null! Cannot add to IngredientContainer");
+            throw new IllegalArgumentException("Cannot add to IngredientContainer");
         }
         this.ingredients.add(ingredient);
     }

@@ -20,7 +20,9 @@ public class HandlePersistency {
     public static IngredientContainer loadDataFromFile() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new DinneriumModule());
-        IngredientContainer ingredientContainer = mapper.readValue(Paths.get(("src/main/data.json")).toFile(), IngredientContainer.class);
+        IngredientContainer ingredientContainer =
+                mapper.readValue(Paths.get(("src/main/data.json")).toFile(),
+                                 IngredientContainer.class);
         return ingredientContainer;
     }
 

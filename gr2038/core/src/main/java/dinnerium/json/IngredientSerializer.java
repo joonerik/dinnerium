@@ -10,7 +10,9 @@ public class IngredientSerializer extends JsonSerializer<Ingredient> {
 
     // converts the Ingredient object to a string in json format
     @Override
-    public void serialize(Ingredient ingredient, JsonGenerator jsonGen, SerializerProvider serializerProvider)
+    public void serialize(Ingredient ingredient,
+                          JsonGenerator jsonGen,
+                          SerializerProvider serializerProvider)
             throws IOException {
         jsonGen.writeStartObject();
         /*jsonGen.writeStringField("text", item.getText());
