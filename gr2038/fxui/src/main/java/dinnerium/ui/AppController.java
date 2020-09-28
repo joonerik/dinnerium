@@ -79,7 +79,7 @@ public class AppController {
                     new Quantity(Double.valueOf(amountInput.getText()),
                                  unitComboBox.getSelectionModel().getSelectedItem());
             Ingredient ingredient = new Ingredient(quantity, nameInput.getText());
-            this.ingredientContainer.addIngredient(ingredient);
+            this.ingredientContainer.addItem(ingredient);
         } catch (IllegalArgumentException e) {
             // write error output in app
             errorOutput.setVisible(true);
@@ -128,7 +128,7 @@ public class AppController {
     // updates our tableView with an observable list
     private void updateTableView() {
         ObservableList<Ingredient> observableList =
-                FXCollections.observableArrayList((this.ingredientContainer.getIngredients()));
+                FXCollections.observableArrayList((this.ingredientContainer.getContainer()));
         ingredientTableView.setItems(observableList);
     }
 

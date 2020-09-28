@@ -10,9 +10,15 @@ public class Metadata {
         this.portion = portion;
     }
 
+    // from User class
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public String getAuthor() {
         return author;
     }
+
     public Double getPortion() {
         return portion;
     }

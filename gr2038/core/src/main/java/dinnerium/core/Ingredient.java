@@ -64,8 +64,6 @@ public class Ingredient {
         } else {
             throw new IllegalArgumentException(name + " is not valid");
         }
-
-
     }
 
     /**
@@ -76,5 +74,10 @@ public class Ingredient {
      */
     public void setQuantity(Quantity quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return name + " " + quantity.toString();
     }
 }
