@@ -99,6 +99,8 @@ public class AppController {
         updateTableView();
     }
 
+    //Adds the ingreident to the ingreidentContainer first and then updates the tableview.
+    //The saves the new ingredientContainer to the file, if an error occurs it throws an IAE
     @FXML
     private void handleAddIngredient() {
         addIngredient(false);
@@ -116,6 +118,11 @@ public class AppController {
         addIngredient(true);
     }
 
+    //Adds the new ingreident to either the newRecipeIngredients list (if newRecipe is true)
+    //Or adds the new ingredient to the ingredientContainer elsewise.
+    //where it gets the values from is decided by if newRecipe is true or not.
+    //If an IAE is thrown due to an error in the input values it writes the error message caught
+    //to the errorOutput textField.
     private void addIngredient(boolean newRecipe) {
         try {
             String amountText = (newRecipe ? newRecipeAmountInput : amountInput).getText();
@@ -137,8 +144,6 @@ public class AppController {
             CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS).execute(() -> {
                 errorOutput.setVisible(false);
             });
-            System.err.println(e.getMessage());
-            System.out.println(e.getMessage());
         }
     }
 
@@ -149,14 +154,12 @@ public class AppController {
 
     @FXML
     private void handleAddRecipe() {
+        //Change username with name of the user logged in to the app when User class is ready
         Metadata metadata = new Metadata("username", Double.valueOf(portionsInput.getText()));
         IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
         RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
 
-        Recipe recipe = new Recipe(ic, rc, metadata);
-        System.out.println(recipeContainer.getContainerSize());
-        recipeContainer.addItem(recipe);
-        System.out.println(recipeContainer.getContainerSize());
+        recipeContainer.addItem(new Recipe(ic, rc, metadata));
     }
 
     @FXML
@@ -167,6 +170,7 @@ public class AppController {
     @FXML
     private void handleChangeToYourRecipes() {
         newRecipeIngredients.clear();
+        newRecipeInstructions.clear();
         changeScene("recipes");
     }
 
@@ -175,6 +179,7 @@ public class AppController {
         changeScene("settings");
     }
 
+    //Changes between the scenes of the application, and sets the color of the headertext
     private void changeScene(String newScene) {
         settingsText.setFill(Color.valueOf(newScene.equals("settings") ? "#f4c20d" : "#ebe8bf"));
         fridgeText.setFill(Color.valueOf(newScene.equals("fridge") ? "#f4c20d" : "#ebe8bf"));
@@ -195,9 +200,13 @@ public class AppController {
         changeSubScene("newRecipe");
     }
 
+    //Changes between subscenes in the recipe scene
     private void changeSubScene(String newSubScene) {
-        newRecipeSubMenuText.setFill(Color.valueOf(newSubScene.equals("newRecipe") ? "#f4c20d" : "#ebe8bf"));
-        recipesSubMenuText.setFill(Color.valueOf(newSubScene.equals("recipes") ? "#f4c20d" : "#ebe8bf"));
+        newRecipeSubMenuText.setFill(
+                Color.valueOf(newSubScene.equals("newRecipe") ? "#f4c20d" : "#ebe8bf"));
+        recipesSubMenuText.setFill(
+                Color.valueOf(newSubScene.equals("recipes") ? "#f4c20d" : "#ebe8bf"));
+
         newRecipePane.setVisible(newSubScene.equals("newRecipe"));
         recipesScrollPane.setVisible(newSubScene.equals("recipes"));
     }

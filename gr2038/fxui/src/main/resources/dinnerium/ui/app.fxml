@@ -19,7 +19,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640" prefWidth="900" style="-fx-background-color: #42404B;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dinnerium.ui.AppController">
     <children>
-        <Pane fx:id="fridgePane" layoutX="200.0" layoutY="56.0" prefHeight="392.0" prefWidth="500.0" style="-fx-background-color: #42404B; -fx-border-color: #F4C20D; -fx-border-width: 3; -fx-border-radius: 10;" visible="false">
+        <Pane fx:id="fridgePane" layoutX="200.0" layoutY="56.0" prefHeight="392.0" prefWidth="500.0" style="-fx-background-color: #42404B; -fx-border-color: #F4C20D; -fx-border-width: 3; -fx-border-radius: 10;">
          <children>
             <TextField fx:id="nameInput" alignment="CENTER" layoutX="50.0" layoutY="16.0" onAction="#handleAddIngredient" prefHeight="30.0" prefWidth="124.0" promptText="Name" style="-fx-border-radius: 7; -fx-background-radius: 7; -fx-background-color: #F4C20D; -fx-text-fill: #3B4255; -fx-prompt-text-fill: #3B4255;" />
             <TextField fx:id="amountInput" alignment="CENTER" layoutX="190.0" layoutY="16.0" prefHeight="30.0" prefWidth="66.0" promptText="Quantity" style="-fx-background-radius: 7; -fx-border-radius: 7; -fx-text-fill: #3B4255; -fx-prompt-text-fill: #3B4255; -fx-background-color: #F4C20D;" />
@@ -27,8 +27,8 @@
             <Button fx:id="addButton" layoutX="353.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleAddIngredient" prefHeight="30.0" prefWidth="74.0" style="-fx-background-radius: 7; -fx-border-radius: 7; -fx-background-color: #F4C20D; -fx-text-fill: #3B4255;" text="Add" />
             <TableView fx:id="ingredientTableView" layoutX="60.0" layoutY="96.0" prefHeight="267.0" prefWidth="380.0" style="-fx-background-color: #42404B;">
               <columns>
-                <TableColumn fx:id="quantityColumn" prefWidth="98.0" resizable="false" />
-                <TableColumn fx:id="itemColumn" prefWidth="261.9999694824219" resizable="false" />
+                <TableColumn fx:id="quantityColumn" prefWidth="121.33331298828125" resizable="false" />
+                <TableColumn fx:id="itemColumn" prefWidth="238.66671752929688" resizable="false" />
               </columns>
             </TableView>
          </children></Pane>
