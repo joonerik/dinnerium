@@ -1,24 +1,13 @@
 package dinnerium.core;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class RecipeInstructions {
+public class RecipeInstructions implements Iterable<String> {
 
     private List<String> instructions = new ArrayList<>();
-    private int number;
     private String instruction;
-
-    /**
-     * Construnctor for RecipeInstructions
-     *
-     * @param number of steps
-     * @param instruction for recipe
-     */
-    public RecipeInstructions(int number, String instruction) {
-        this.number = number;
-        this.instruction = instruction;
-    }
 
     /**
      * Getter for instruction
@@ -31,21 +20,23 @@ public class RecipeInstructions {
     }
 
     /**
-     *
-     *
-     * @param number
      * @param instruction
      */
-    public void setInstruction(int number, String instruction) {
-        instructions.add(number, instruction);
+    public void setInstruction(String instruction) {
+        if (instruction != null) {
+            instructions.add(instruction);
+        } else {
+            throw new IllegalArgumentException("String is null!");
+        }
     }
 
-    public int getNumber() {
-        return number;
-    }
-
+    // the iterator may provide this, so probably excessive
     public String getInstruction() {
         return instruction;
     }
 
+    @Override
+    public Iterator<String> iterator() {
+        return this.instructions.iterator();
+    }
 }
