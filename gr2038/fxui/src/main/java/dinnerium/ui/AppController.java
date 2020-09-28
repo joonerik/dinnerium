@@ -21,7 +21,7 @@ public class AppController {
 
     // contains our current stock of ingredients/groceries
     private IngredientContainer ingredientContainer;
-    private ObservableList<Ingredient> newRecipeIngredients = FXCollections.emptyObservableList();
+    private ObservableList<Ingredient> newRecipeIngredients = FXCollections.observableArrayList();
 
     @FXML
     TextField nameInput;
@@ -55,6 +55,13 @@ public class AppController {
     Pane recipesPane;
     @FXML
     ListView<Ingredient> recipesListView;
+    @FXML
+    TextField newRecipe_nameInput;
+    @FXML
+    TextField newRecipe_amountInput;
+    @FXML
+    ComboBox<String> newRecipe_unitComboBox;
+
 
     @FXML
     void initialize() throws Exception {
@@ -67,6 +74,7 @@ public class AppController {
         // sets up our tableview with correct rows and columns
 
         unitComboBox.getItems().setAll(Quantity.units);
+        newRecipe_unitComboBox.getItems().setAll(Quantity.units);
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         itemColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
@@ -85,7 +93,7 @@ public class AppController {
         try {
             Quantity quantity =
                     new Quantity(Double.valueOf(amountInput.getText()),
-                                 unitComboBox.getSelectionModel().getSelectedItem());
+                            unitComboBox.getSelectionModel().getSelectedItem());
             Ingredient ingredient = new Ingredient(quantity, nameInput.getText());
             this.ingredientContainer.addIngredient(ingredient);
         } catch (IllegalArgumentException e) {
@@ -121,11 +129,11 @@ public class AppController {
     @FXML
     private void handleNewRecipeAddIngredient() {
         try {
-        Quantity quantity =
-                new Quantity(Double.valueOf(amountInput.getText()),
-                        unitComboBox.getSelectionModel().getSelectedItem());
-        Ingredient ingredient = new Ingredient(quantity, nameInput.getText());
-        newRecipeIngredients.add(ingredient);
+            Quantity quantity =
+                    new Quantity(Double.valueOf(newRecipe_amountInput.getText()),
+                            newRecipe_unitComboBox.getSelectionModel().getSelectedItem());
+            Ingredient ingredient = new Ingredient(quantity, newRecipe_nameInput.getText());
+            this.newRecipeIngredients.add(ingredient);
         } catch (IllegalArgumentException e) {
             // write error output in app
             errorOutput.setVisible(true);
