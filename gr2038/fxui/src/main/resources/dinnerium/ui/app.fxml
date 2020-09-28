@@ -76,7 +76,7 @@
             </Text>
          </children>
       </Pane>
-      <Pane fx:id="recipesPane" layoutX="123.0" layoutY="56.0" prefHeight="583.0" prefWidth="656.0">
+      <Pane fx:id="recipesPane" layoutX="123.0" layoutY="56.0" prefHeight="583.0" prefWidth="656.0" visible="false">
          <children>
               <ScrollPane fx:id="recipesScrollPane" layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0">
                   <content>
