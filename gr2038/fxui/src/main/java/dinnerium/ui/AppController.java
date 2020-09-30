@@ -2,8 +2,6 @@ package dinnerium.ui;
 
 import dinnerium.core.*;
 import dinnerium.json.HandlePersistency;
-
-import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
