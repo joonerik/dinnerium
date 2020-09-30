@@ -21,7 +21,6 @@ public class HandlePersistency {
      */
     public static void writeJsonToFile(User user) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        System.out.println("her skriver vi til fil");
         mapper.writerWithDefaultPrettyPrinter().writeValue(new File("src/main/data.json"), user);
     }
 

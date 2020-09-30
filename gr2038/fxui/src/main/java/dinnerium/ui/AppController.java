@@ -1,6 +1,8 @@
 package dinnerium.ui;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import dinnerium.core.*;
+import dinnerium.json.DinneriumModule;
 import dinnerium.json.HandlePersistency;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
@@ -99,10 +101,8 @@ public class AppController {
         itemColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         try {
+            //Here we need to make a pop-up for the user to write in username when app fires.
             this.user = HandlePersistency.loadDataFromFile();
-            System.out.println("lastet inn: " + user.getUsername() + " sin data");
-            System.out.println("ingreidents: " + user.getIngredientContainer().getContainer());
-            System.out.println("recipes: " + user.getRecipeContainer().getContainer());
         } catch (IOException e) {
             //Here we need to make a popup for the user to create a new User, e.g write in username.
             this.user = new User(new IngredientContainer(), new RecipeContainer(), "testuser");

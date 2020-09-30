@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import dinnerium.core.IngredientContainer;
@@ -47,10 +48,13 @@ public class RecipeDeserializer extends JsonDeserializer<Recipe> {
                 return null;
             }
 
-            JsonNode recipeInstructionsNode = objectNode.get("recipesInstructions");
+            JsonNode recipeInstructionsNode = objectNode.get("recipeInstructions");
             RecipeInstructionsDeserializer recipeInstructionsDeserializer = new RecipeInstructionsDeserializer();
-            if (recipeInstructionsNode instanceof ObjectNode) {
-                ri = (RecipeInstructions) recipeInstructionsDeserializer.deserialize(recipeInstructionsNode);
+            System.out.println("RI NODE: " + recipeInstructionsNode.getNodeType());
+            if (recipeInstructionsNode instanceof ArrayNode) {
+                ri = recipeInstructionsDeserializer.deserialize(recipeInstructionsNode);
+                System.out.println("lagde en recipeInstruction!!!");
+                System.out.println("ri: " + ri);
             }  else {
                 return null;
             }
@@ -58,7 +62,9 @@ public class RecipeDeserializer extends JsonDeserializer<Recipe> {
             JsonNode metadataContainerNode = objectNode.get("metadata");
             MetadataDeserializer metadataDeserializer = new MetadataDeserializer();
             if (metadataContainerNode instanceof ObjectNode) {
-                md = (Metadata) metadataDeserializer.deserialize(metadataContainerNode);
+                md = metadataDeserializer.deserialize(metadataContainerNode);
+                System.out.println("lagde metadata!!!");
+                System.out.println("MD: " + md);
             } else {
                 return null;
             }

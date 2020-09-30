@@ -1,1 +1,79 @@
-{"ingredientContainer":{"container":[{"quantity":{"amount":2.0,"unit":"dl"},"name":"meritem"}],"containerSize":1},"recipeContainer":{"container":[],"containerSize":0},"username":"data"}
+{
+  "ingredientContainer" : {
+    "container" : [ {
+      "quantity" : {
+        "amount" : 1.0,
+        "unit" : "stk"
+      },
+      "name" : "item"
+    }, {
+      "quantity" : {
+        "amount" : 2.0,
+        "unit" : "dl"
+      },
+      "name" : "itemto"
+    }, {
+      "quantity" : {
+        "amount" : 3.0,
+        "unit" : "gram"
+      },
+      "name" : "itemtre"
+    } ],
+    "containerSize" : 3
+  },
+  "recipeContainer" : {
+    "container" : [ {
+      "ingredientContainer" : {
+        "container" : [ {
+          "quantity" : {
+            "amount" : 2.0,
+            "unit" : "stk"
+          },
+          "name" : "tikka"
+        }, {
+          "quantity" : {
+            "amount" : 3.0,
+            "unit" : "dl"
+          },
+          "name" : "tikkamasala"
+        } ],
+        "containerSize" : 2
+      },
+      "recipeInstructions" : [ "bland", "bland enda mer" ],
+      "metadata" : {
+        "author" : "name",
+        "portion" : 2.0,
+        "image" : "img",
+        "recipeName" : "recipeName",
+        "recipeDescription" : "description"
+      }
+    }, {
+      "ingredientContainer" : {
+        "container" : [ {
+          "quantity" : {
+            "amount" : 2.0,
+            "unit" : "stk"
+          },
+          "name" : "tikka"
+        }, {
+          "quantity" : {
+            "amount" : 3.0,
+            "unit" : "dl"
+          },
+          "name" : "tikkamasala"
+        } ],
+        "containerSize" : 2
+      },
+      "recipeInstructions" : [ "bland", "bland enda mer" ],
+      "metadata" : {
+        "author" : "name",
+        "portion" : 2.0,
+        "image" : "img",
+        "recipeName" : "recipeName",
+        "recipeDescription" : "description"
+      }
+    } ],
+    "containerSize" : 2
+  },
+  "username" : "testuser"
+}

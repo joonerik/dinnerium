@@ -24,18 +24,13 @@ public class RecipeInstructionsDeserializer extends JsonDeserializer<RecipeInstr
     }
 
     public RecipeInstructions deserialize(JsonNode jsonNode) {
-        if (jsonNode instanceof ObjectNode) {
-            ObjectNode objectNode = (ObjectNode) jsonNode;
-
-            JsonNode instructionsNode = objectNode.get("recipeInstructions");
-            if (instructionsNode instanceof ArrayNode) {
-                Collection<String> instructions = new ArrayList<>();
-                for (JsonNode elementNode : (instructionsNode)) {
-                    String instruction = elementNode.asText();
-                    instructions.add(instruction);
-                }
-                return new RecipeInstructions(instructions);
+        if (jsonNode instanceof ArrayNode) {
+            Collection<String> instructions = new ArrayList<>();
+            for (JsonNode elementNode : (jsonNode)) {
+                String instruction = elementNode.asText();
+                instructions.add(instruction);
             }
+            return new RecipeInstructions(instructions);
         }
         return null;
     }

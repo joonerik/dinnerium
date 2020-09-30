@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import dinnerium.core.*;
@@ -13,8 +14,9 @@ import java.io.IOException;
 
 public class UserDeserializer extends JsonDeserializer<User> {
 
-    private IngredientDeserializer ingredientDeserializer = new IngredientDeserializer();
-    private RecipeDeserializer recipeDeserializer = new RecipeDeserializer();
+    //private IngredientDeserializer ingredientDeserializer = new IngredientDeserializer();
+    //private RecipeDeserializer recipeDeserializer = new RecipeDeserializer();
+    private ContainerDeserializer containerDeserializer = new ContainerDeserializer();
 
 
     @Override
@@ -29,31 +31,22 @@ public class UserDeserializer extends JsonDeserializer<User> {
     public User deserialize(JsonNode jsonNode) throws IOException {
         if (jsonNode instanceof ObjectNode) {
             ObjectNode objectNode = (ObjectNode) jsonNode;
-            RecipeContainer recipeContainer = new RecipeContainer();
-            IngredientContainer ingredientContainer = new IngredientContainer();
+            RecipeContainer recipeContainer;
+            IngredientContainer ingredientContainer;
             String username;
 
 
             JsonNode recipeContainerNode = objectNode.get("recipeContainer");
             if (recipeContainerNode instanceof ObjectNode) {
-                for (JsonNode elementNode : (recipeContainerNode)) {
-                    Recipe recipe = recipeDeserializer.deserialize(elementNode);
-                    if (recipe != null) {
-                        recipeContainer.addItem(recipe);
-                    }
-                }
+                recipeContainer = (RecipeContainer) containerDeserializer.deserialize(recipeContainerNode);
             } else {
                 return null;
             }
 
+
             JsonNode ingredientContainerNode = objectNode.get("ingredientContainer");
             if (ingredientContainerNode instanceof ObjectNode) {
-                for (JsonNode elementNode : (ingredientContainerNode)) {
-                    Ingredient ingredient = ingredientDeserializer.deserialize(elementNode);
-                    if (ingredient != null) {
-                        ingredientContainer.addItem(ingredient);
-                    }
-                }
+                ingredientContainer = (IngredientContainer) containerDeserializer.deserialize(ingredientContainerNode);
             } else {
                 return null;
             }

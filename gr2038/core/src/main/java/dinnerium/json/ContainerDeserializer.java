@@ -31,10 +31,15 @@ public class ContainerDeserializer extends JsonDeserializer<Container> {
 
         if (jsonNode instanceof  ObjectNode) {
             ObjectNode objectNode = (ObjectNode) jsonNode;
-
-            if (objectNode.get("ingredients") != null) {
+            boolean notFound = true;
+            for (JsonNode element : objectNode.get("container")) {
+                if (element.get("ingredientContainer") != null) {
+                    notFound = false;
+                }
+            }
+            if (notFound) {
                 IngredientContainer ingredients = new IngredientContainer();
-                JsonNode ingredientsNode = objectNode.get("ingredients");
+                JsonNode ingredientsNode = objectNode.get("container");
                 if (ingredientsNode instanceof ArrayNode) {
                     for (JsonNode elementNode : (ingredientsNode)) {
                         Ingredient ingredient = ingredientDeserializer.deserialize(elementNode);
@@ -42,16 +47,22 @@ public class ContainerDeserializer extends JsonDeserializer<Container> {
                             ingredients.addItem(ingredient);
                         }
                     }
-                return ingredients;
+                    return ingredients;
+                } else {
+                    return null;
                 }
             } else {
                 RecipeContainer recipes = new RecipeContainer();
-                JsonNode recipesNode = objectNode.get("recipes");
+                System.out.println("nu går vi inn i recipesCotnainer serializeringen");
+                JsonNode recipesNode = objectNode.get("container");
                 if (recipesNode instanceof ArrayNode) {
-                    for (JsonNode elementNode : (recipesNode)) {
-                        Recipe recipe = recipeDeserializer.deserialize(elementNode);
-                        if (recipe != null) {
-                            recipes.addItem(recipe);
+                    System.out.println("deserializerer container");
+                    for (JsonNode elementNode : recipesNode) {
+                        Recipe r = recipeDeserializer.deserialize(elementNode);
+                        System.out.println("lager recipe: " + r);
+                        if (r != null) {
+                            System.out.println("adder recipe inn i container");
+                            recipes.addItem(r);
                         }
                     }
                 }
