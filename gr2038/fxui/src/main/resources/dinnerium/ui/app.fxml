@@ -8,8 +8,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DisplacementMap?>
-<?import javafx.scene.effect.FloatMap?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -27,8 +25,8 @@
             <Button fx:id="addButton" layoutX="353.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleAddIngredient" prefHeight="30.0" prefWidth="74.0" style="-fx-background-radius: 7; -fx-border-radius: 7; -fx-background-color: #F4C20D; -fx-text-fill: #3B4255;" text="Add" />
             <TableView fx:id="ingredientTableView" layoutX="60.0" layoutY="96.0" prefHeight="267.0" prefWidth="380.0" style="-fx-background-color: #42404B;">
               <columns>
-                <TableColumn fx:id="quantityColumn" prefWidth="98.0" resizable="false" />
-                <TableColumn fx:id="itemColumn" prefWidth="261.9999694824219" resizable="false" />
+                <TableColumn fx:id="quantityColumn" prefWidth="121.33331298828125" resizable="false" />
+                <TableColumn fx:id="itemColumn" prefWidth="238.66671752929688" resizable="false" />
               </columns>
             </TableView>
          </children></Pane>
@@ -82,45 +80,7 @@
          <children>
               <ScrollPane fx:id="recipesScrollPane" layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0">
                   <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="776.0" prefWidth="630.0" style="-fx-background-color: #42404B;">
-                          <children>
-                              <Pane layoutX="10.0" layoutY="13.0" prefHeight="167.0" prefWidth="522.0">
-                                  <children>
-                                      <Text fill="#e32b2b" layoutX="1.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tikka masala">
-                                          <font>
-                                              <Font size="26.0" />
-                                          </font>
-                                      </Text>
-                                      <Pane layoutY="30.0" prefHeight="135.0" prefWidth="522.0" style="-fx-background-color: #42404B; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: F4C20D; -fx-border-width: 3;">
-                                          <children>
-                                              <ImageView fitHeight="105.0" fitWidth="105.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true">
-                                                  <image>
-                                                      <Image url="http://folk.ntnu.no/anderobs/images/tikkaMasala.png" />
-                                                  </image>
-                                                  <effect>
-                                                      <DisplacementMap>
-                                                          <mapData>
-                                                              <FloatMap />
-                                                          </mapData>
-                                                      </DisplacementMap>
-                                                  </effect>
-                                              </ImageView>
-                                    <Text fill="#f4c20d" layoutX="127.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4 ingredients missing  |  1 hour 56 mins  |  70kr" textAlignment="CENTER">
-                                       <font>
-                                          <Font size="18.5" />
-                                       </font>
-                                    </Text>
-                                    <Text fill="#f4c20d" layoutX="132.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel felis pharetra, ornare nisi at, egestas sapien. Aliquam non faucibus nisi. Curabitur scelerisque orci nulla, dapibus pretium lorem pulvinar ac. Suspendisse sit amet arcu finibus, interdum odio eget, mattis mi. Fusce imperdiet nisl sed dolor bibendum luctus. Nunc" textAlignment="CENTER" wrappingWidth="370.0">
-                                       <font>
-                                          <Font size="12.5" />
-                                       </font>
-                                    </Text>
-                                          </children>
-                                      </Pane>
-                                  </children>
-                              </Pane>
-                          </children>
-                      </AnchorPane>
+                      <AnchorPane fx:id="recipesAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="541.0" prefWidth="630.0" style="-fx-background-color: #42404B;" />
                   </content>
               </ScrollPane>
             <Pane layoutX="90.0" layoutY="5.0" onMouseClicked="#handleChangeToNewRecipe" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #66C3B1;">
