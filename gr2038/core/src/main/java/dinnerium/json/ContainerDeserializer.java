@@ -16,16 +16,21 @@ public class ContainerDeserializer extends JsonDeserializer<Container> {
     private IngredientDeserializer ingredientDeserializer = new IngredientDeserializer();
     private RecipeDeserializer recipeDeserializer = new RecipeDeserializer();
 
+    @Override
+    public Container deserialize(JsonParser parser, DeserializationContext ctxt)
+            throws IOException {
+        TreeNode treeNode = parser.getCodec().readTree(parser);
+        return deserialize((JsonNode) treeNode);
+    }
 
     // converts the IngredientContainer from string in json file to an object
     // We check if the nodes are of the correct type
     // finally we have ingredient objects which are added into the IngredientContainer list
-    @Override
-    public Container deserialize(JsonParser p, DeserializationContext ctxt)
+    public Container deserialize(JsonNode jsonNode)
             throws IOException {
-        TreeNode treeNode = p.getCodec().readTree(p);
-        if (treeNode instanceof  ObjectNode) {
-            ObjectNode objectNode = (ObjectNode) treeNode;
+
+        if (jsonNode instanceof  ObjectNode) {
+            ObjectNode objectNode = (ObjectNode) jsonNode;
 
             if (objectNode.get("ingredients") != null) {
                 IngredientContainer ingredients = new IngredientContainer();
