@@ -17,4 +17,5 @@
 .recipe-description {
     -fx-fill: #f4c20d;
     -fx-font-size: 12;
+    -fx-text-alignment: center;
 }
