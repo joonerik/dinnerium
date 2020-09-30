@@ -17,9 +17,9 @@ public class UserSerializer extends JsonSerializer<User> {
                           SerializerProvider serializerProvider) throws IOException {
 
         jsonGen.writeStartObject();
-        jsonGen.writeStringField("user", user.getUsername());
         jsonGen.writeObjectField("ingredientContainer", user.getIngredientContainer());
         jsonGen.writeObjectField("recipeContainer", user.getRecipeContainer());
+        jsonGen.writeStringField("username", user.getUsername());
         jsonGen.writeEndObject();
     }
 }

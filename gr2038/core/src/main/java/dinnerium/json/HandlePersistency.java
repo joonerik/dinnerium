@@ -1,5 +1,6 @@
 package dinnerium.json;
 
+import com.fasterxml.jackson.core.PrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dinnerium.core.IngredientContainer;
 import dinnerium.core.User;
@@ -20,7 +21,8 @@ public class HandlePersistency {
      */
     public static void writeJsonToFile(User user) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(new File("src/main/data.json"), user);
+        System.out.println("her skriver vi til fil");
+        mapper.writerWithDefaultPrettyPrinter().writeValue(new File("src/main/data.json"), user);
     }
 
     // returns a container containing a list of ingredients
