@@ -5,12 +5,10 @@ import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.DoubleNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
-import dinnerium.core.User;
-import dinnerium.core.Ingredient;
-import dinnerium.core.IngredientContainer;
+import dinnerium.core.*;
+
 import java.io.IOException;
 
 public class UserDeserializer extends JsonDeserializer<User> {
@@ -20,7 +18,7 @@ public class UserDeserializer extends JsonDeserializer<User> {
 
 
     @Override
-    public UserDeserializer deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException {
+    public User deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException {
         TreeNode treeNode = parser.getCodec().readTree(parser);
         return deserialize((JsonNode) treeNode);
     }
@@ -28,11 +26,13 @@ public class UserDeserializer extends JsonDeserializer<User> {
     // converts the Ingredient from string in json file to an object
     // checks if the nodes are of correct type
     // finally we have converted the strings from json into actual objects
-    UserDeserializer deserialize(JsonNode jsonNode) {
+    public User deserialize(JsonNode jsonNode) throws IOException {
         if (jsonNode instanceof ObjectNode) {
             ObjectNode objectNode = (ObjectNode) jsonNode;
-            RecipeContainer recipeContainer = null;
-            IngredientContainer ingredientContainer = null;
+            RecipeContainer recipeContainer = new RecipeContainer();
+            IngredientContainer ingredientContainer = new IngredientContainer();
+            String username;
+
 
             JsonNode recipeContainerNode = objectNode.get("recipeContainer");
             if (recipeContainerNode instanceof ObjectNode) {
@@ -42,6 +42,8 @@ public class UserDeserializer extends JsonDeserializer<User> {
                         recipeContainer.addItem(recipe);
                     }
                 }
+            } else {
+                return null;
             }
 
             JsonNode ingredientContainerNode = objectNode.get("ingredientContainer");
@@ -52,8 +54,17 @@ public class UserDeserializer extends JsonDeserializer<User> {
                         ingredientContainer.addItem(ingredient);
                     }
                 }
+            } else {
+                return null;
             }
-            return recipeContainer, ingredientContainer;
+
+            JsonNode usernameNode = objectNode.get("username");
+            if (usernameNode instanceof TextNode) {
+                username = usernameNode.asText();
+            } else {
+                return null;
+            }
+            return new User(ingredientContainer, recipeContainer, username);
         }
         return null;
     }
