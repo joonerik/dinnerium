@@ -174,7 +174,7 @@ public class AppController {
 
     //Sende inn en recipe som man henter ut all infoen fra, slik at man kan hente ut infoen fra den.
     //Så blir det lettere å initializere appen fra en fil med recipes.
-    private void updateRecipeAnchorPane(Recipe recipe) {
+    private void updateRecipeAnchorPane() {
         Pane pane = new Pane();
         pane.setPrefWidth(522);
         pane.setPrefHeight(167);
