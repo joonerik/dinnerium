@@ -16,9 +16,15 @@ public class DinneriumModule extends SimpleModule {
         addSerializer(Quantity.class, new QuantitySerializer());
         addSerializer(Container.class, new ContainerSerializer());
         addSerializer(Metadata.class, new MetadataSerializer());
+        addSerializer(RecipeInstructions.class, new RecipeInstructionsSerializer());
+        addSerializer(User.class, new UserSerializer());
+        addSerializer(Recipe.class, new RecipeSerializer());
         addDeserializer(Ingredient.class, new IngredientDeserializer());
         addDeserializer(Quantity.class, new QuantityDeserializer());
         addDeserializer(Container.class, new ContainerDeserializer());
         addDeserializer(Metadata.class, new MetadataDeserializer());
+        addDeserializer(RecipeInstructions.class, new RecipeInstructionsDeserializer());
+        addDeserializer(User.class, new UserDeserializer());
+        addDeserializer(Recipe.class, new RecipeDeserializer());
     }
 }

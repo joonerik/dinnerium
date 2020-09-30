@@ -2,6 +2,8 @@ package dinnerium.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dinnerium.core.IngredientContainer;
+import dinnerium.core.User;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -16,9 +18,9 @@ public class HandlePersistency {
      * @throws IOException
      *         if file error
      */
-    public static void writeJsonToFile(IngredientContainer ingredientContainer) throws Exception {
+    public static void writeJsonToFile(User user) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(new File("src/main/data.json"), ingredientContainer);
+        mapper.writeValue(new File("src/main/data.json"), user);
     }
 
     // returns a container containing a list of ingredients
@@ -30,13 +32,13 @@ public class HandlePersistency {
      * @throws IOException
      *         if file error
      */
-    public static IngredientContainer loadDataFromFile() throws IOException {
+    public static User loadDataFromFile() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new DinneriumModule());
-        IngredientContainer ingredientContainer =
+        User user =
                 mapper.readValue(Paths.get(("src/main/data.json")).toFile(),
-                                 IngredientContainer.class);
-        return ingredientContainer;
+                                 User.class);
+        return user;
     }
 
 }
