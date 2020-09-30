@@ -2,10 +2,7 @@ package dinnerium.json;
 
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import dinnerium.core.Ingredient;
-import dinnerium.core.IngredientContainer;
-import dinnerium.core.Metadata;
-import dinnerium.core.Quantity;
+import dinnerium.core.*;
 
 @SuppressWarnings("serial")
 public class DinneriumModule extends SimpleModule {
@@ -17,12 +14,11 @@ public class DinneriumModule extends SimpleModule {
         super(NAME, Version.unknownVersion());
         addSerializer(Ingredient.class, new IngredientSerializer());
         addSerializer(Quantity.class, new QuantitySerializer());
-        addSerializer(IngredientContainer.class, new IngredientContainerSerializer());
+        addSerializer(Container.class, new ContainerSerializer());
         addSerializer(Metadata.class, new MetadataSerializer());
         addDeserializer(Ingredient.class, new IngredientDeserializer());
         addDeserializer(Quantity.class, new QuantityDeserializer());
-        addDeserializer(IngredientContainer.class, new IngredientContainerDeserializer());
+        addDeserializer(Container.class, new ContainerDeserializer());
         addDeserializer(Metadata.class, new MetadataDeserializer());
-
     }
 }
