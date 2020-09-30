@@ -1,0 +1,13 @@
+@startuml
+class User {
+        - IngredientContainer ingredientContainer
+        - RecipeContainer recipeContainer
+        - String username
+        + IngredientContainer getIngredientContainer()
+        + RecipeContainer getRecipeContainer()
+        + String getUsername()
+        + void setUsername(String username)
+        - boolean validateUsername (String username)
+}
+
+@enduml
