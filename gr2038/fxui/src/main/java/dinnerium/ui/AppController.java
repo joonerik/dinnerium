@@ -2,6 +2,8 @@ package dinnerium.ui;
 
 import dinnerium.core.*;
 import dinnerium.json.HandlePersistency;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
@@ -14,6 +16,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -189,13 +193,13 @@ public class AppController {
         childPane.setLayoutY(30);
         childPane.getStyleClass().add("child-pane");
 
-        /* Can't figure out how to make imageView with image from the web
-        URL img = new URL("http://folk.ntnu.no/anderobs/images/tikkaMasala.png");
-        ImageIcon image = new ImageIcon(img);
+        Image image = new Image("http://folk.ntnu.no/anderobs/images/tikkaMasala.png");
         ImageView imageView = new ImageView(image);
-        //how to set the imageView URL ?
-        imageView.setSize(105, 105);
-        */
+        imageView.setFitHeight(105);
+        imageView.setFitWidth(105);
+        imageView.setLayoutX(10);
+        imageView.setLayoutY(10);
+
         Text recipeInfo = new Text("4 ingredients missing  |  1 hour 56 mins  |  70kr");
         recipeInfo.setLayoutY(30);
         recipeInfo.setLayoutX(127);
@@ -212,7 +216,7 @@ public class AppController {
         recipeDescription.setLayoutX(132);
         recipeDescription.setLayoutY(52);
 
-        childPane.getChildren().addAll(recipeInfo, recipeDescription);
+        childPane.getChildren().addAll(imageView, recipeInfo, recipeDescription);
 
         pane.getChildren().addAll(recipeName, childPane);
         pane.setLayoutY(13 + 180 * (recipeContainer.getContainerSize() - 1));
