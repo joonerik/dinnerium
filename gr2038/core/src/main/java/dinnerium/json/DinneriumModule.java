@@ -22,7 +22,7 @@ public class DinneriumModule extends SimpleModule {
         addDeserializer(Ingredient.class, new IngredientDeserializer());
         addDeserializer(Quantity.class, new QuantityDeserializer());
         addDeserializer(IngredientContainer.class, new IngredientContainerDeserializer());
-        addDeserializer(Metadata.class, new MetadataDeserializer())
+        addDeserializer(Metadata.class, new MetadataDeserializer());
 
     }
 }
