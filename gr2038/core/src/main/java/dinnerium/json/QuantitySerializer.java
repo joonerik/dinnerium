@@ -14,8 +14,6 @@ public class QuantitySerializer extends JsonSerializer<Quantity> {
     public void serialize(Quantity q, JsonGenerator jsonGen, SerializerProvider serializerProvider)
             throws IOException {
         jsonGen.writeStartObject();
-        /*jsonGen.writeStringField("text", item.getText());
-        jsonGen.writeBooleanField("checked", item.isChecked());*/
         jsonGen.writeStringField("unit", q.getUnit());
         jsonGen.writeNumberField("amount", q.getAmount());
         jsonGen.writeEndObject();
