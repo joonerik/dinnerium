@@ -168,8 +168,9 @@ public class AppController {
         IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
         RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
 
-        recipeContainer.addItem(new Recipe(ic, rc, metadata));
-        updateRecipeAnchorPane();
+        Recipe recipe = new Recipe(ic, rc, metadata);
+        recipeContainer.addItem(recipe);
+        updateRecipeAnchorPane(recipe);
     }
 
     //Sende inn en recipe som man henter ut all infoen fra, slik at man kan hente ut infoen fra den.
