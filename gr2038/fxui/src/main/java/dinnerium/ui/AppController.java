@@ -28,6 +28,7 @@ public class AppController {
     private RecipeContainer recipeContainer = new RecipeContainer();
     private ObservableList<Ingredient> newRecipeIngredients = FXCollections.observableArrayList();
     private ObservableList<String> newRecipeInstructions = FXCollections.observableArrayList();
+    private User user = null;
 
     @FXML
     TextField nameInput;
@@ -101,9 +102,14 @@ public class AppController {
 
         // loading our stock of ingredients (populating (?) our ingredientContainer)
         try {
-            this.ingredientContainer = HandlePersistency.loadDataFromFile();
+//            this.ingredientContainer = HandlePersistency.loadDataFromFile();
+            this.user = HandlePersistency.loadDataFromFile();
+            System.out.println(user.getUsername());
         } catch (IOException e) {
-            this.ingredientContainer = new IngredientContainer();
+//            this.ingredientContainer = new IngredientContainer();
+//            this.user = new User();
+            System.out.println("ny bruker");
+            this.user = new User(new IngredientContainer(), new RecipeContainer(), "data");
         }
         updateTableView();
     }
@@ -116,7 +122,8 @@ public class AppController {
         updateTableView();
         // writes our new ingredient to the file
         try {
-            HandlePersistency.writeJsonToFile(ingredientContainer);
+//            HandlePersistency.writeJsonToFile(ingredientContainer);
+            HandlePersistency.writeJsonToFile(user);
         } catch (Exception e) {
             throw new IllegalArgumentException("Could not write to file");
         }
@@ -164,11 +171,13 @@ public class AppController {
     @FXML
     private void handleAddRecipe() {
         //Change username with name of the user logged in to the app when User class is ready
-        Metadata metadata = new Metadata("username", Double.valueOf(portionsInput.getText()));
+//        Metadata metadata = new Metadata("username", Double.valueOf(portionsInput.getText()));
+        Metadata md = new Metadata("name", 2.0, "img",
+                "recipeName", "description");
         IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
         RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
 
-        Recipe recipe = new Recipe(ic, rc, metadata);
+        Recipe recipe = new Recipe(ic, rc, md);
         recipeContainer.addItem(recipe);
         updateRecipeAnchorPane(recipe);
     }
