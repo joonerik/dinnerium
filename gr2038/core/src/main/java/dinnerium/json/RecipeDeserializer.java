@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.databind.node.TextNode;
 import dinnerium.core.IngredientContainer;
 import dinnerium.core.Metadata;
 import dinnerium.core.Recipe;
@@ -50,11 +49,8 @@ public class RecipeDeserializer extends JsonDeserializer<Recipe> {
 
             JsonNode recipeInstructionsNode = objectNode.get("recipeInstructions");
             RecipeInstructionsDeserializer recipeInstructionsDeserializer = new RecipeInstructionsDeserializer();
-            System.out.println("RI NODE: " + recipeInstructionsNode.getNodeType());
             if (recipeInstructionsNode instanceof ArrayNode) {
                 ri = recipeInstructionsDeserializer.deserialize(recipeInstructionsNode);
-                System.out.println("lagde en recipeInstruction!!!");
-                System.out.println("ri: " + ri);
             }  else {
                 return null;
             }
@@ -63,8 +59,6 @@ public class RecipeDeserializer extends JsonDeserializer<Recipe> {
             MetadataDeserializer metadataDeserializer = new MetadataDeserializer();
             if (metadataContainerNode instanceof ObjectNode) {
                 md = metadataDeserializer.deserialize(metadataContainerNode);
-                System.out.println("lagde metadata!!!");
-                System.out.println("MD: " + md);
             } else {
                 return null;
             }
