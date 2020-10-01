@@ -21,12 +21,6 @@ public class RecipeInstructionsSerializer extends JsonSerializer<RecipeInstructi
             jsonGen.writeStringField("recipeInstructions", instruction);
         }
 
-        /*jsonGen.writeArrayFieldStart("recipeInstructions");
-        for (String instruction : recipeInstructions) {
-            jsonGen.writeString(instruction);
-        }
-        jsonGen.writeEndArray();*/
-
         jsonGen.writeEndObject();
     }
 }

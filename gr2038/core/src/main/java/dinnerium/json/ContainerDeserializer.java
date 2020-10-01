@@ -53,15 +53,11 @@ public class ContainerDeserializer extends JsonDeserializer<Container> {
                 }
             } else {
                 RecipeContainer recipes = new RecipeContainer();
-                System.out.println("nu går vi inn i recipesCotnainer serializeringen");
                 JsonNode recipesNode = objectNode.get("container");
                 if (recipesNode instanceof ArrayNode) {
-                    System.out.println("deserializerer container");
                     for (JsonNode elementNode : recipesNode) {
                         Recipe r = recipeDeserializer.deserialize(elementNode);
-                        System.out.println("lager recipe: " + r);
                         if (r != null) {
-                            System.out.println("adder recipe inn i container");
                             recipes.addItem(r);
                         }
                     }

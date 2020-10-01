@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import dinnerium.core.*;
@@ -14,8 +13,6 @@ import java.io.IOException;
 
 public class UserDeserializer extends JsonDeserializer<User> {
 
-    //private IngredientDeserializer ingredientDeserializer = new IngredientDeserializer();
-    //private RecipeDeserializer recipeDeserializer = new RecipeDeserializer();
     private ContainerDeserializer containerDeserializer = new ContainerDeserializer();
 
 
@@ -34,7 +31,6 @@ public class UserDeserializer extends JsonDeserializer<User> {
             RecipeContainer recipeContainer;
             IngredientContainer ingredientContainer;
             String username;
-
 
             JsonNode recipeContainerNode = objectNode.get("recipeContainer");
             if (recipeContainerNode instanceof ObjectNode) {

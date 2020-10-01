@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import dinnerium.core.Container;
 import dinnerium.core.IngredientContainer;
 import dinnerium.core.RecipeContainer;
-
 import java.io.IOException;
 
 public class ContainerSerializer extends JsonSerializer<Container> {
@@ -22,7 +21,6 @@ public class ContainerSerializer extends JsonSerializer<Container> {
         if (c.getClass().equals(IngredientContainer.class)) {
             jsonGen.writeArrayFieldStart("ingredients");
             for (Object ingredient : c.getContainer()) {
-                // cast to Ingredient?
                 jsonGen.writeObject(ingredient);
             }
         }
@@ -30,7 +28,6 @@ public class ContainerSerializer extends JsonSerializer<Container> {
         if (c.getClass().equals(RecipeContainer.class)) {
             jsonGen.writeArrayFieldStart("recipes");
             for (Object recipe : c.getContainer()) {
-                // cast to Ingredient?
                 jsonGen.writeObject(recipe);
             }
         }
