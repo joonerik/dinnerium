@@ -11,7 +11,6 @@ import dinnerium.core.IngredientContainer;
 import dinnerium.core.Metadata;
 import dinnerium.core.Recipe;
 import dinnerium.core.RecipeInstructions;
-
 import java.io.IOException;
 
 public class RecipeDeserializer extends JsonDeserializer<Recipe> {
@@ -39,18 +38,18 @@ public class RecipeDeserializer extends JsonDeserializer<Recipe> {
             RecipeInstructions ri;
             Metadata md;
 
-            JsonNode ingredientContainerNode = objectNode.get("ingredientContainer");
+            JsonNode containerNode = objectNode.get("ingredientContainer");
             ContainerDeserializer containerDeserializer = new ContainerDeserializer();
-            if (ingredientContainerNode instanceof ObjectNode) {
-                ic = (IngredientContainer) containerDeserializer.deserialize(ingredientContainerNode);
+            if (containerNode instanceof ObjectNode) {
+                ic = (IngredientContainer) containerDeserializer.deserialize(containerNode);
             } else {
                 return null;
             }
 
             JsonNode recipeInstructionsNode = objectNode.get("recipeInstructions");
-            RecipeInstructionsDeserializer recipeInstructionsDeserializer = new RecipeInstructionsDeserializer();
+            RecipeInstructionsDeserializer rid = new RecipeInstructionsDeserializer();
             if (recipeInstructionsNode instanceof ArrayNode) {
-                ri = recipeInstructionsDeserializer.deserialize(recipeInstructionsNode);
+                ri = rid.deserialize(recipeInstructionsNode);
             }  else {
                 return null;
             }

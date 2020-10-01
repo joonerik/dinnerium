@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import dinnerium.core.Recipe;
-
 import java.io.IOException;
 
 public class RecipeSerializer extends JsonSerializer<Recipe> {

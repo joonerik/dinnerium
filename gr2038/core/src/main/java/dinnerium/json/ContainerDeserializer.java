@@ -7,8 +7,11 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import dinnerium.core.*;
-
+import dinnerium.core.Container;
+import dinnerium.core.Ingredient;
+import dinnerium.core.IngredientContainer;
+import dinnerium.core.Recipe;
+import dinnerium.core.RecipeContainer;
 import java.io.IOException;
 
 public class ContainerDeserializer extends JsonDeserializer<Container> {

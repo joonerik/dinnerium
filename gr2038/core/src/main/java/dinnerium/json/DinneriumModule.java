@@ -2,7 +2,13 @@ package dinnerium.json;
 
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import dinnerium.core.*;
+import dinnerium.core.Container;
+import dinnerium.core.Ingredient;
+import dinnerium.core.Metadata;
+import dinnerium.core.Quantity;
+import dinnerium.core.Recipe;
+import dinnerium.core.RecipeInstructions;
+import dinnerium.core.User;
 
 @SuppressWarnings("serial")
 public class DinneriumModule extends SimpleModule {

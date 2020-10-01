@@ -1,10 +1,7 @@
 package dinnerium.json;
 
-import com.fasterxml.jackson.core.PrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dinnerium.core.IngredientContainer;
 import dinnerium.core.User;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;

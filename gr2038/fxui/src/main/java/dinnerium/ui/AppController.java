@@ -1,8 +1,13 @@
 package dinnerium.ui;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import dinnerium.core.*;
-import dinnerium.json.DinneriumModule;
+import dinnerium.core.Ingredient;
+import dinnerium.core.IngredientContainer;
+import dinnerium.core.Metadata;
+import dinnerium.core.Quantity;
+import dinnerium.core.Recipe;
+import dinnerium.core.RecipeContainer;
+import dinnerium.core.RecipeInstructions;
+import dinnerium.core.User;
 import dinnerium.json.HandlePersistency;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
@@ -290,8 +295,7 @@ public class AppController {
     // updates our tableView with an observable list
     private void updateTableView() {
         ObservableList<Ingredient> observableList =
-                //FXCollections.observableArrayList((this.ingredientContainer.getContainer()));
-                FXCollections.observableArrayList(this.user.getIngredientContainer().getContainer());
+                FXCollections.observableArrayList(user.getIngredientContainer().getContainer());
         ingredientTableView.setItems(observableList);
     }
 }
