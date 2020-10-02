@@ -180,7 +180,7 @@ public class AppController {
         //Metadata metadata = new Metadata("username", Double.valueOf(portionsInput.getText()));
         Metadata md = new Metadata("name", 2.0,
                 "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
-                "recipeName", "description");
+                "recipeName", "description", 2);
         IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
         RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
 
