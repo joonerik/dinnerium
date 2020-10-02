@@ -1,6 +1,13 @@
 package dinnerium.ui;
 
-import dinnerium.core.*;
+import dinnerium.core.Ingredient;
+import dinnerium.core.IngredientContainer;
+import dinnerium.core.Metadata;
+import dinnerium.core.Quantity;
+import dinnerium.core.Recipe;
+import dinnerium.core.RecipeContainer;
+import dinnerium.core.RecipeInstructions;
+import dinnerium.core.User;
 import dinnerium.json.HandlePersistency;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
@@ -8,9 +15,12 @@ import java.util.concurrent.TimeUnit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,10 +34,9 @@ import javafx.scene.text.Text;
 public class AppController {
 
     // contains our current stock of ingredients/groceries
-    private IngredientContainer ingredientContainer;
-    private RecipeContainer recipeContainer = new RecipeContainer();
     private ObservableList<Ingredient> newRecipeIngredients = FXCollections.observableArrayList();
     private ObservableList<String> newRecipeInstructions = FXCollections.observableArrayList();
+    private User user = null;
 
     @FXML
     TextField nameInput;
@@ -99,13 +108,15 @@ public class AppController {
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         itemColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        // loading our stock of ingredients (populating (?) our ingredientContainer)
         try {
-            this.ingredientContainer = HandlePersistency.loadDataFromFile();
+            //Here we need to make a pop-up for the user to write in username when app fires.
+            this.user = HandlePersistency.loadDataFromFile();
         } catch (IOException e) {
-            this.ingredientContainer = new IngredientContainer();
+            //Here we need to make a popup for the user to create a new User, e.g write in username.
+            this.user = new User(new IngredientContainer(), new RecipeContainer(), "feil");
         }
         updateTableView();
+        showUserRecipes();
     }
 
     //Adds the ingreident to the ingreidentContainer first and then updates the tableview.
@@ -116,9 +127,9 @@ public class AppController {
         updateTableView();
         // writes our new ingredient to the file
         try {
-            HandlePersistency.writeJsonToFile(ingredientContainer);
+            HandlePersistency.writeJsonToFile(user);
         } catch (Exception e) {
-            throw new IllegalArgumentException("Could not write to file");
+            throw new IllegalArgumentException("Could not write userdata to file");
         }
     }
 
@@ -144,7 +155,8 @@ public class AppController {
             if (newRecipe) {
                 newRecipeIngredients.add(i);
             } else {
-                this.ingredientContainer.addItem(i);
+                //this.ingredientContainer.addItem(i);
+                this.user.getIngredientContainer().addItem(i);
             }
         } catch (IllegalArgumentException e) {
             // write error output in app
@@ -154,6 +166,7 @@ public class AppController {
                 errorOutput.setVisible(false);
             });
         }
+
     }
 
     @FXML
@@ -164,12 +177,27 @@ public class AppController {
     @FXML
     private void handleAddRecipe() {
         //Change username with name of the user logged in to the app when User class is ready
-        Metadata metadata = new Metadata("username", Double.valueOf(portionsInput.getText()));
+        //Metadata metadata = new Metadata("username", Double.valueOf(portionsInput.getText()));
+        Metadata md = new Metadata("name", 2.0,
+                "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
+                "recipeName", "description", 2);
         IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
         RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
 
-        recipeContainer.addItem(new Recipe(ic, rc, metadata));
-        updateRecipeAnchorPane();
+        Recipe recipe = new Recipe(ic, rc, md);
+        this.user.getRecipeContainer().addItem(recipe);
+        updateRecipeAnchorPane(recipe);
+        try {
+            HandlePersistency.writeJsonToFile(this.user);
+        } catch (Exception e) {
+            System.err.println("Could not write data to file");
+        }
+    }
+
+    private void showUserRecipes() {
+        for (Recipe recipe : user.getRecipeContainer()) {
+            updateRecipeAnchorPane(recipe);
+        }
     }
 
     //Sende inn en recipe som man henter ut all infoen fra, slik at man kan hente ut infoen fra den.
@@ -180,7 +208,7 @@ public class AppController {
         pane.setPrefHeight(167);
         //Need to set layout x and y to a value calculated from the amount of recipes.
 
-        Text recipeName = new Text("Inser name here");
+        Text recipeName = new Text(recipe.getMetadata().getRecipeName());
         recipeName.getStyleClass().add("recipe-name");
         recipeName.setLayoutX(1);
         recipeName.setLayoutY(25);
@@ -191,24 +219,23 @@ public class AppController {
         childPane.setLayoutY(30);
         childPane.getStyleClass().add("child-pane");
 
-        Image image = new Image("http://folk.ntnu.no/anderobs/images/tikkaMasala.png");
+        Image image = new Image(recipe.getMetadata().getImage());
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(105);
         imageView.setFitWidth(105);
         imageView.setLayoutX(10);
         imageView.setLayoutY(10);
 
-        Text recipeInfo = new Text("4 ingredients missing  |  1 hour 56 mins  |  70kr");
+        //Endres etterhvert til å regne ut hvor mange ingredienser man faktisk mangler
+        //utifra hva man har i fridge
+        Text recipeInfo = new Text( recipe.getIngredientContainer().getContainerSize()
+                + " ingredients missing  |  1 hour 56 mins  |  70kr");
         recipeInfo.setLayoutY(30);
         recipeInfo.setLayoutX(127);
         recipeInfo.getStyleClass().add("recipe-info");
         recipeInfo.setWrappingWidth(390);
 
-        Text recipeDescription = new Text("Lorem ipsum dolor sit amet, consectetur adipiscing"
-                + " elit. Proin vel felis pharetra, ornare nisi at, egestas sapien. Aliquam non "
-                + "faucibus nisi. Curabitur scelerisque orci nulla, dapibus pretium lorem pulvinar "
-                + "ac. Suspendisse sit amet arcu finibus, interdum odio eget, mattis mi. Fusce "
-                + "imperdiet nisl sed dolor bibendum luctus. Nunc");
+        Text recipeDescription = new Text(recipe.getMetadata().getRecipeDescription());
         recipeDescription.setWrappingWidth(370);
         recipeDescription.getStyleClass().add("recipe-description");
         recipeDescription.setLayoutX(132);
@@ -217,11 +244,12 @@ public class AppController {
         childPane.getChildren().addAll(imageView, recipeInfo, recipeDescription);
 
         pane.getChildren().addAll(recipeName, childPane);
-        pane.setLayoutY(13 + 180 * (recipeContainer.getContainerSize() - 1));
         pane.setLayoutX(10);
         recipesAnchorPane.getChildren().add(pane);
+        pane.setLayoutY(13 + 180 * (recipesAnchorPane.getChildren().size() - 1));
         if (recipesAnchorPane.getChildren().size() > 3) {
-            recipesAnchorPane.setPrefHeight(13 + 180 * (recipeContainer.getContainerSize()));
+            recipesAnchorPane
+                    .setPrefHeight(13 + 180 * (recipesAnchorPane.getChildren().size()));
         }
     }
 
@@ -277,8 +305,7 @@ public class AppController {
     // updates our tableView with an observable list
     private void updateTableView() {
         ObservableList<Ingredient> observableList =
-                FXCollections.observableArrayList((this.ingredientContainer.getContainer()));
+                FXCollections.observableArrayList(user.getIngredientContainer().getContainer());
         ingredientTableView.setItems(observableList);
     }
-
 }

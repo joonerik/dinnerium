@@ -15,8 +15,6 @@ public class IngredientSerializer extends JsonSerializer<Ingredient> {
                           SerializerProvider serializerProvider)
             throws IOException {
         jsonGen.writeStartObject();
-        /*jsonGen.writeStringField("text", item.getText());
-        jsonGen.writeBooleanField("checked", item.isChecked());*/
         jsonGen.writeObjectField("quantity", ingredient.getQuantity());
         jsonGen.writeStringField("name", ingredient.getName());
         jsonGen.writeEndObject();

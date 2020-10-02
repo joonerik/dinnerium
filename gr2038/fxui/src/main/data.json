@@ -1,1 +1,121 @@
-{"ingredients":[{"quantity":{"amount":5.0,"unit":"stk"},"name":"egg"},{"quantity":{"amount":300.0,"unit":"gram"},"name":"mel"},{"quantity":{"amount":5.0,"unit":"dl"},"name":"johan"}],"ingredientAmount":3}
+{
+  "ingredientContainer" : {
+    "container" : [ {
+      "quantity" : {
+        "amount" : 1.0,
+        "unit" : "stk"
+      },
+      "name" : "item"
+    }, {
+      "quantity" : {
+        "amount" : 2.0,
+        "unit" : "dl"
+      },
+      "name" : "itemto"
+    }, {
+      "quantity" : {
+        "amount" : 3.0,
+        "unit" : "gram"
+      },
+      "name" : "itemtre"
+    } ],
+    "containerSize" : 3
+  },
+  "recipeContainer" : {
+    "container" : [ {
+      "ingredientContainer" : {
+        "container" : [ {
+          "quantity" : {
+            "amount" : 2.0,
+            "unit" : "stk"
+          },
+          "name" : "tikka"
+        }, {
+          "quantity" : {
+            "amount" : 3.0,
+            "unit" : "dl"
+          },
+          "name" : "tikkamasala"
+        } ],
+        "containerSize" : 2
+      },
+      "recipeInstructions" : [ "bland", "bland enda mer" ],
+      "metadata" : {
+        "author" : "name",
+        "portion" : 2.0,
+        "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
+        "recipeName" : "recipeName",
+        "recipeDescription" : "description",
+        "minutes" : 8
+      }
+    }, {
+      "ingredientContainer" : {
+        "container" : [ {
+          "quantity" : {
+            "amount" : 2.0,
+            "unit" : "stk"
+          },
+          "name" : "tikka"
+        }, {
+          "quantity" : {
+            "amount" : 3.0,
+            "unit" : "dl"
+          },
+          "name" : "tikkamasala"
+        } ],
+        "containerSize" : 2
+      },
+      "recipeInstructions" : [ "bland", "bland enda mer" ],
+      "metadata" : {
+        "author" : "name",
+        "portion" : 2.0,
+        "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
+        "recipeName" : "recipe2Name",
+        "recipeDescription" : "description",
+        "minutes" : 6
+      }
+    }, {
+      "ingredientContainer" : {
+        "container" : [ {
+          "quantity" : {
+            "amount" : 1.0,
+            "unit" : "stk"
+          },
+          "name" : "joon"
+        } ],
+        "containerSize" : 1
+      },
+      "recipeInstructions" : [ "mixing\t", "mixing\tand triksing" ],
+      "metadata" : {
+        "author" : "name",
+        "portion" : 2.0,
+        "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
+        "recipeName" : "recipeName",
+        "recipeDescription" : "description",
+        "minutes" : 2
+      }
+    }, {
+      "ingredientContainer" : {
+        "container" : [ {
+          "quantity" : {
+            "amount" : 1.0,
+            "unit" : "stk"
+          },
+          "name" : "joon"
+        } ],
+        "containerSize" : 1
+      },
+      "recipeInstructions" : [ "mixing\t", "mixing\tand triksing" ],
+      "metadata" : {
+        "author" : "name",
+        "portion" : 2.0,
+        "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
+        "recipeName" : "recipeName",
+        "recipeDescription" : "description",
+        "minutes" : 4
+      }
+    } ],
+    "containerSize" : 4
+  },
+  "username" : "testuser"
+}
