@@ -10,22 +10,18 @@
     -fx-border-width: 0 0 1 0;
     -fx-text-fill: #F4C20D;
     -fx-font-size: 20px;
-    -fx-alignment: CENTER_LEFT;
-
+}
+.table-row-cell:selected {
+    -fx-background-color: #F4C20D !important;
+    -fx-border-width: 1 1 1 1 !important;
 }
 
-/*.table-row-cell:selected {
-    -fx-background-color: white;
-    -fx-text-background-color:  #6622CC;
-}*/
-
-/* scroll bar starts here */
+/* scroll bar style starts here */
 
 /* The increment and decrement button CSS class of scrollbar */
 .table-view .increment-button ,.table-view .decrement-button {
     -fx-background-color:transparent;
     -fx-background-radius: 2em;
-
 }
 
 /* The main scrollbar **track** CSS class  */
@@ -33,7 +29,6 @@
 .table-view .scroll-bar:vertical .track{
     -fx-background-color: transparent;
     -fx-border-color: lightgrey;
-
     -fx-background-radius: 2em;
     -fx-border-radius:2em;
 }
@@ -44,21 +39,4 @@
     -fx-background-color: #42404B;
     -fx-background-insets: 2, 0, 0;
     -fx-background-radius: 2em;
-
-}
-
-/* chart properties */
-
-.chart {
-    -fx-padding: 10px;
-    -fx-background-color: transparent;
-    -fx-legend-visible: false;
-}
-.chart-plot-background {
-    -fx-background-color:transparent;
-}
-
-.chart-pie {
-    -fx-border-color: derive(-fx-pie-color, 1%);
-    -fx-border-width: 0px;
 }
