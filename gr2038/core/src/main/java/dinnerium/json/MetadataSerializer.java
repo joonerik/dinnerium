@@ -19,6 +19,7 @@ public class MetadataSerializer extends JsonSerializer<Metadata> {
         jsonGen.writeStringField("image", metadata.getImage());
         jsonGen.writeStringField("recipeName", metadata.getRecipeName());
         jsonGen.writeStringField("recipeDescription", metadata.getRecipeDescription());
+        jsonGen.writeNumberField("minutes", metadata.getMinutes());
         jsonGen.writeEndObject();
     }
 }

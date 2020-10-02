@@ -45,7 +45,8 @@
         "portion" : 2.0,
         "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
         "recipeName" : "recipeName",
-        "recipeDescription" : "description"
+        "recipeDescription" : "description",
+        "minutes" : 8
       }
     }, {
       "ingredientContainer" : {
@@ -70,7 +71,8 @@
         "portion" : 2.0,
         "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
         "recipeName" : "recipe2Name",
-        "recipeDescription" : "description"
+        "recipeDescription" : "description",
+        "minutes" : 6
       }
     }, {
       "ingredientContainer" : {
@@ -89,7 +91,8 @@
         "portion" : 2.0,
         "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
         "recipeName" : "recipeName",
-        "recipeDescription" : "description"
+        "recipeDescription" : "description",
+        "minutes" : 2
       }
     }, {
       "ingredientContainer" : {
@@ -108,7 +111,8 @@
         "portion" : 2.0,
         "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
         "recipeName" : "recipeName",
-        "recipeDescription" : "description"
+        "recipeDescription" : "description",
+        "minutes" : 4
       }
     } ],
     "containerSize" : 4

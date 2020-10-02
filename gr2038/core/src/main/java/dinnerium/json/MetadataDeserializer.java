@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.DoubleNode;
+import com.fasterxml.jackson.databind.node.IntNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import dinnerium.core.Metadata;
@@ -29,6 +30,7 @@ public class MetadataDeserializer extends JsonDeserializer<Metadata> {
             String image;
             String recipeName;
             String recipeDescription;
+            int minutes;
 
             JsonNode authorNode = objectNode.get("author");
             if (authorNode instanceof TextNode) {
@@ -60,7 +62,14 @@ public class MetadataDeserializer extends JsonDeserializer<Metadata> {
             } else {
                 return null;
             }
-            return new Metadata(author, portion, image, recipeName, recipeDescription);
+
+            JsonNode minutesNode = objectNode.get("minutes");
+            if (minutesNode instanceof IntNode) {
+                minutes = minutesNode.asInt();
+            } else {
+                return null;
+            }
+            return new Metadata(author, portion, image, recipeName, recipeDescription, minutes);
         }
         return null;
     }
