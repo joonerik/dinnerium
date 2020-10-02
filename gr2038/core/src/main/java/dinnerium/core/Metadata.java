@@ -49,5 +49,9 @@ public class Metadata {
         return recipeDescription;
     }
 
+    public int getMinutes() {
+        return minutes;
+    }
+
 
 }
