@@ -43,7 +43,7 @@
       "metadata" : {
         "author" : "name",
         "portion" : 2.0,
-        "image" : "img",
+        "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
         "recipeName" : "recipeName",
         "recipeDescription" : "description"
       }
@@ -68,12 +68,50 @@
       "metadata" : {
         "author" : "name",
         "portion" : 2.0,
-        "image" : "img",
+        "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
+        "recipeName" : "recipe2Name",
+        "recipeDescription" : "description"
+      }
+    }, {
+      "ingredientContainer" : {
+        "container" : [ {
+          "quantity" : {
+            "amount" : 1.0,
+            "unit" : "stk"
+          },
+          "name" : "joon"
+        } ],
+        "containerSize" : 1
+      },
+      "recipeInstructions" : [ "mixing\t", "mixing\tand triksing" ],
+      "metadata" : {
+        "author" : "name",
+        "portion" : 2.0,
+        "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
+        "recipeName" : "recipeName",
+        "recipeDescription" : "description"
+      }
+    }, {
+      "ingredientContainer" : {
+        "container" : [ {
+          "quantity" : {
+            "amount" : 1.0,
+            "unit" : "stk"
+          },
+          "name" : "joon"
+        } ],
+        "containerSize" : 1
+      },
+      "recipeInstructions" : [ "mixing\t", "mixing\tand triksing" ],
+      "metadata" : {
+        "author" : "name",
+        "portion" : 2.0,
+        "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
         "recipeName" : "recipeName",
         "recipeDescription" : "description"
       }
     } ],
-    "containerSize" : 2
+    "containerSize" : 4
   },
   "username" : "testuser"
 }

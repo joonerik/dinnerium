@@ -113,9 +113,10 @@ public class AppController {
             this.user = HandlePersistency.loadDataFromFile();
         } catch (IOException e) {
             //Here we need to make a popup for the user to create a new User, e.g write in username.
-            this.user = new User(new IngredientContainer(), new RecipeContainer(), "testuser");
+            this.user = new User(new IngredientContainer(), new RecipeContainer(), "feil");
         }
         updateTableView();
+        showUserRecipes();
     }
 
     //Adds the ingreident to the ingreidentContainer first and then updates the tableview.
@@ -177,7 +178,8 @@ public class AppController {
     private void handleAddRecipe() {
         //Change username with name of the user logged in to the app when User class is ready
         //Metadata metadata = new Metadata("username", Double.valueOf(portionsInput.getText()));
-        Metadata md = new Metadata("name", 2.0, "img",
+        Metadata md = new Metadata("name", 2.0,
+                "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
                 "recipeName", "description");
         IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
         RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
@@ -192,6 +194,12 @@ public class AppController {
         }
     }
 
+    private void showUserRecipes() {
+        for (Recipe recipe : user.getRecipeContainer()) {
+            updateRecipeAnchorPane(recipe);
+        }
+    }
+
     //Sende inn en recipe som man henter ut all infoen fra, slik at man kan hente ut infoen fra den.
     //Så blir det lettere å initializere appen fra en fil med recipes.
     private void updateRecipeAnchorPane(Recipe recipe) {
@@ -200,7 +208,7 @@ public class AppController {
         pane.setPrefHeight(167);
         //Need to set layout x and y to a value calculated from the amount of recipes.
 
-        Text recipeName = new Text("Inser name here");
+        Text recipeName = new Text(recipe.getMetadata().getRecipeName());
         recipeName.getStyleClass().add("recipe-name");
         recipeName.setLayoutX(1);
         recipeName.setLayoutY(25);
@@ -211,24 +219,23 @@ public class AppController {
         childPane.setLayoutY(30);
         childPane.getStyleClass().add("child-pane");
 
-        Image image = new Image("http://folk.ntnu.no/anderobs/images/tikkaMasala.png");
+        Image image = new Image(recipe.getMetadata().getImage());
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(105);
         imageView.setFitWidth(105);
         imageView.setLayoutX(10);
         imageView.setLayoutY(10);
 
-        Text recipeInfo = new Text("4 ingredients missing  |  1 hour 56 mins  |  70kr");
+        //Endres etterhvert til å regne ut hvor mange ingredienser man faktisk mangler
+        //utifra hva man har i fridge
+        Text recipeInfo = new Text( recipe.getIngredientContainer().getContainerSize()
+                + " ingredients missing  |  1 hour 56 mins  |  70kr");
         recipeInfo.setLayoutY(30);
         recipeInfo.setLayoutX(127);
         recipeInfo.getStyleClass().add("recipe-info");
         recipeInfo.setWrappingWidth(390);
 
-        Text recipeDescription = new Text("Lorem ipsum dolor sit amet, consectetur adipiscing"
-                + " elit. Proin vel felis pharetra, ornare nisi at, egestas sapien. Aliquam non "
-                + "faucibus nisi. Curabitur scelerisque orci nulla, dapibus pretium lorem pulvinar "
-                + "ac. Suspendisse sit amet arcu finibus, interdum odio eget, mattis mi. Fusce "
-                + "imperdiet nisl sed dolor bibendum luctus. Nunc");
+        Text recipeDescription = new Text(recipe.getMetadata().getRecipeDescription());
         recipeDescription.setWrappingWidth(370);
         recipeDescription.getStyleClass().add("recipe-description");
         recipeDescription.setLayoutX(132);
@@ -237,12 +244,12 @@ public class AppController {
         childPane.getChildren().addAll(imageView, recipeInfo, recipeDescription);
 
         pane.getChildren().addAll(recipeName, childPane);
-        pane.setLayoutY(13 + 180 * (user.getRecipeContainer().getContainerSize() - 1));
         pane.setLayoutX(10);
         recipesAnchorPane.getChildren().add(pane);
+        pane.setLayoutY(13 + 180 * (recipesAnchorPane.getChildren().size() - 1));
         if (recipesAnchorPane.getChildren().size() > 3) {
             recipesAnchorPane
-                    .setPrefHeight(13 + 180 * (user.getRecipeContainer().getContainerSize()));
+                    .setPrefHeight(13 + 180 * (recipesAnchorPane.getChildren().size()));
         }
     }
 
