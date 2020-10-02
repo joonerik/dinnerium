@@ -7,6 +7,7 @@ public class Metadata {
     private final String image;
     private final String recipeName;
     private final String recipeDescription;
+    private final int minutes;
 
     /**
      * Constructor for a Metadata object.
@@ -16,14 +17,16 @@ public class Metadata {
      * @param image the image of the recipe.
      * @param recipeName the name of the dish the recipe is for.
      * @param recipeDescription a description of the dish the recipe makes.
+     * @param minutes the time it takes to make the recipe.
      */
     public Metadata(String author, double portion,
-                    String image, String recipeName, String recipeDescription) {
+                    String image, String recipeName, String recipeDescription, int minutes) {
         this.author = author;
         this.portion = portion;
         this.image = image;
         this.recipeName = recipeName;
         this.recipeDescription = recipeDescription;
+        this.minutes = minutes;
     }
 
     public String getAuthor() {
