@@ -69,6 +69,8 @@ public class AppController {
     @FXML
     Pane recipesPane;
     @FXML
+    Pane msgPane;
+    @FXML
     ListView<Ingredient> recipesListView;
     @FXML
     TextField newRecipeNameInput;
@@ -160,11 +162,14 @@ public class AppController {
             }
         } catch (IllegalArgumentException e) {
             // write error output in app
+            FeedbackHandler.showMessage(msgPane,e.getMessage(),'E');
+            /*
             errorOutput.setVisible(true);
             errorOutput.setText(e.getMessage());
             CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS).execute(() -> {
                 errorOutput.setVisible(false);
-            });
+            });*/
+
         }
 
     }
@@ -202,7 +207,7 @@ public class AppController {
 
     //Sende inn en recipe som man henter ut all infoen fra, slik at man kan hente ut infoen fra den.
     //Så blir det lettere å initializere appen fra en fil med recipes.
-    private void updateRecipeAnchorPane() {
+    private void updateRecipeAnchorPane(Recipe recipe) {
         Pane pane = new Pane();
         pane.setPrefWidth(522);
         pane.setPrefHeight(167);
