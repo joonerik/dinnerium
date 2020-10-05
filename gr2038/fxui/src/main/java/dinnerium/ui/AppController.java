@@ -149,8 +149,8 @@ public class AppController {
         try {
             String amountText = (newRecipe ? newRecipeAmountInput : amountInput).getText();
             String unit = (newRecipe ? newRecipeUnitComboBox : unitComboBox)
-                    .getSelectionModel()
-                    .getSelectedItem();
+                .getSelectionModel()
+                .getSelectedItem();
             String name = (newRecipe ? newRecipeNameInput : nameInput).getText();
             Ingredient i = new Ingredient(new Quantity(Double.valueOf(amountText), unit), name);
 
@@ -162,7 +162,7 @@ public class AppController {
             }
         } catch (IllegalArgumentException e) {
             // write error output in app
-            FeedbackHandler.showMessage(msgPane,e.getMessage(),'E');
+            FeedbackHandler.showMessage(msgPane, e.getMessage(), 'E');
             /*
             errorOutput.setVisible(true);
             errorOutput.setText(e.getMessage());
@@ -184,8 +184,8 @@ public class AppController {
         //Change username with name of the user logged in to the app when User class is ready
         //Metadata metadata = new Metadata("username", Double.valueOf(portionsInput.getText()));
         Metadata md = new Metadata("name", 2.0,
-                "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
-                "recipeName", "description", 2);
+            "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
+            "recipeName", "description", 2);
         IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
         RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
 
@@ -233,8 +233,8 @@ public class AppController {
 
         //Endres etterhvert til å regne ut hvor mange ingredienser man faktisk mangler
         //utifra hva man har i fridge
-        Text recipeInfo = new Text( recipe.getIngredientContainer().getContainerSize()
-                + " ingredients missing  |  1 hour 56 mins  |  70kr");
+        Text recipeInfo = new Text(recipe.getIngredientContainer().getContainerSize()
+            + " ingredients missing  |  1 hour 56 mins  |  70kr");
         recipeInfo.setLayoutY(30);
         recipeInfo.setLayoutX(127);
         recipeInfo.getStyleClass().add("recipe-info");
@@ -254,7 +254,7 @@ public class AppController {
         pane.setLayoutY(13 + 180 * (recipesAnchorPane.getChildren().size() - 1));
         if (recipesAnchorPane.getChildren().size() > 3) {
             recipesAnchorPane
-                    .setPrefHeight(13 + 180 * (recipesAnchorPane.getChildren().size()));
+                .setPrefHeight(13 + 180 * (recipesAnchorPane.getChildren().size()));
         }
     }
 
@@ -299,9 +299,9 @@ public class AppController {
     //Changes between subscenes in the recipe scene
     private void changeSubScene(String newSubScene) {
         newRecipeSubMenuText.setFill(
-                Color.valueOf(newSubScene.equals("newRecipe") ? "#f4c20d" : "#ebe8bf"));
+            Color.valueOf(newSubScene.equals("newRecipe") ? "#f4c20d" : "#ebe8bf"));
         recipesSubMenuText.setFill(
-                Color.valueOf(newSubScene.equals("recipes") ? "#f4c20d" : "#ebe8bf"));
+            Color.valueOf(newSubScene.equals("recipes") ? "#f4c20d" : "#ebe8bf"));
 
         newRecipePane.setVisible(newSubScene.equals("newRecipe"));
         recipesScrollPane.setVisible(newSubScene.equals("recipes"));
@@ -310,7 +310,7 @@ public class AppController {
     // updates our tableView with an observable list
     private void updateTableView() {
         ObservableList<Ingredient> observableList =
-                FXCollections.observableArrayList(user.getIngredientContainer().getContainer());
+            FXCollections.observableArrayList(user.getIngredientContainer().getContainer());
         ingredientTableView.setItems(observableList);
     }
 }
