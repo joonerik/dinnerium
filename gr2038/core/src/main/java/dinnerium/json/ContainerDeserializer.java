@@ -14,7 +14,7 @@ import dinnerium.core.Recipe;
 import dinnerium.core.RecipeContainer;
 import java.io.IOException;
 
-public class ContainerDeserializer extends JsonDeserializer<Container> {
+class ContainerDeserializer extends JsonDeserializer<Container> {
 
     private IngredientDeserializer ingredientDeserializer = new IngredientDeserializer();
     private RecipeDeserializer recipeDeserializer = new RecipeDeserializer();

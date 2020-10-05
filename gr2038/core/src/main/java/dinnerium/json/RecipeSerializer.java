@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import dinnerium.core.Recipe;
 import java.io.IOException;
 
-public class RecipeSerializer extends JsonSerializer<Recipe> {
+class RecipeSerializer extends JsonSerializer<Recipe> {
 
     @Override
     public void serialize(Recipe recipe,

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import dinnerium.core.User;
 import java.io.IOException;
 
-public class UserSerializer extends JsonSerializer<User> {
+class UserSerializer extends JsonSerializer<User> {
 
     // converts the IngredientContainer object into a string in json format
     @Override

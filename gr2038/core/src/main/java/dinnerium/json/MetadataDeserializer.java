@@ -1,7 +1,6 @@
 package dinnerium.json;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
@@ -13,11 +12,10 @@ import com.fasterxml.jackson.databind.node.TextNode;
 import dinnerium.core.Metadata;
 import java.io.IOException;
 
-public class MetadataDeserializer extends JsonDeserializer<Metadata> {
+class MetadataDeserializer extends JsonDeserializer<Metadata> {
 
     @Override
-    public Metadata deserialize(JsonParser parser, DeserializationContext ctxt)
-            throws IOException, JsonProcessingException {
+    public Metadata deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException {
         TreeNode treeNode = parser.getCodec().readTree(parser);
         return deserialize((JsonNode) treeNode);
     }
