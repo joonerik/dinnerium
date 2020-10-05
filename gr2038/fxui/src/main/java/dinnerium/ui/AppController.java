@@ -69,6 +69,8 @@ public class AppController {
     @FXML
     Pane recipesPane;
     @FXML
+    Pane msgPane;
+    @FXML
     ListView<Ingredient> recipesListView;
     @FXML
     TextField newRecipeNameInput;
@@ -160,11 +162,14 @@ public class AppController {
             }
         } catch (IllegalArgumentException e) {
             // write error output in app
+            FeedbackHandler.showMessage(msgPane,e.getMessage(),'E');
+            /*
             errorOutput.setVisible(true);
             errorOutput.setText(e.getMessage());
             CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS).execute(() -> {
                 errorOutput.setVisible(false);
-            });
+            });*/
+
         }
 
     }
