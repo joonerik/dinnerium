@@ -20,7 +20,6 @@ class RecipeInstructionsSerializer extends JsonSerializer<RecipeInstructions> {
         for (String instruction : recipeInstructions) {
             jsonGen.writeStringField("recipeInstructions", instruction);
         }
-
         jsonGen.writeEndObject();
     }
 }

@@ -17,7 +17,7 @@ class RecipeDeserializer extends JsonDeserializer<Recipe> {
 
     @Override
     public Recipe deserialize(JsonParser parser, DeserializationContext ctxt)
-            throws IOException {
+        throws IOException {
         TreeNode treeNode = parser.getCodec().readTree(parser);
         return deserialize((JsonNode) treeNode);
     }
@@ -25,11 +25,11 @@ class RecipeDeserializer extends JsonDeserializer<Recipe> {
     // converts the Ingredient from string in json file to an object
     // checks if the nodes are of correct type
     // finally we have converted the strings from json into actual objects
+
     /**
      * Deserializer for a Recipe.
      *
      * @param jsonNode the jsonNode to be deserialized as a Recipe.
-     *
      */
     public Recipe deserialize(JsonNode jsonNode) throws IOException {
         if (jsonNode instanceof ObjectNode) {
@@ -46,11 +46,12 @@ class RecipeDeserializer extends JsonDeserializer<Recipe> {
                 return null;
             }
 
-            JsonNode recipeInstructionsNode = objectNode.get("recipeInstructions");
+            JsonNode recipeInstructionsNode =
+                objectNode.get("recipeInstructions").get("instructions");
             RecipeInstructionsDeserializer rid = new RecipeInstructionsDeserializer();
             if (recipeInstructionsNode instanceof ArrayNode) {
                 ri = rid.deserialize(recipeInstructionsNode);
-            }  else {
+            } else {
                 return null;
             }
 
