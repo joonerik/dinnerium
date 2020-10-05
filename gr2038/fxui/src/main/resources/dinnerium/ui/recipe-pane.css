@@ -38,3 +38,13 @@
     -fx-text-alignment: center;
     -fx-font-size: 12px;
 }
+.textview-header {
+    -fx-fill: #f4c20d;
+    -fx-font-size: 16px;
+    -fx-underline: 1px;
+}
+.list-style {
+    -fx-fill: #f4c20d;
+    -fx-text-alignment: left;
+    -fx-font-size: 13px;
+}

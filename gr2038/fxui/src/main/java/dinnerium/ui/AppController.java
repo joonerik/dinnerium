@@ -10,6 +10,7 @@ import dinnerium.core.RecipeInstructions;
 import dinnerium.core.User;
 import dinnerium.json.HandlePersistency;
 import java.io.IOException;
+import java.util.Iterator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -334,16 +335,38 @@ public class AppController {
         metadata.setLayoutY(15);
         metadata.setLayoutX(10);
 
-        ListView<Ingredient> ingredients = new ListView<>();
-        ingredients.setItems(
-            FXCollections.observableArrayList(recipe.getIngredientContainer().getContainer()));
-        ingredients.setLayoutY(80);
-        ingredients.setLayoutX(10);
+        Text ingredientsHeader = new Text("Ingredients");
+        ingredientsHeader.getStyleClass().add("textview-header");
+        ingredientsHeader.setLayoutY(98);
+        ingredientsHeader.setLayoutX(40);
 
-        ListView<String> instructions = new ListView<>();
-        instructions.setItems(
-            FXCollections.observableArrayList(recipe.getRecipeInstructions().getInstructions()));
-        instructions.setLayoutY(80);
+        Iterator<Ingredient> ingredientsIt = recipe.getIngredientContainer().iterator();
+        Text ingredients = new Text(ingredientsIt.hasNext() ? "1. " + ingredientsIt.next() : "");
+        int i = 2;
+        while (ingredientsIt.hasNext()) {
+            ingredients.setText(ingredients.getText() + "\n" + i + ". " + ingredientsIt.next());
+            i++;
+        }
+        ingredients.setWrappingWidth(200);
+        ingredients.setLayoutY(115);
+        ingredients.setLayoutX(20);
+        ingredients.getStyleClass().add("list-style");
+
+        Text instructionsHeader = new Text("Instructions");
+        instructionsHeader.getStyleClass().add("textview-header");
+        instructionsHeader.setLayoutY(98);
+        instructionsHeader.setLayoutX(270);
+
+        Iterator<String> instructionIt = recipe.getRecipeInstructions().iterator();
+        Text instructions = new Text(instructionIt.hasNext() ? "1. " + instructionIt.next() : "");
+        int j = 2;
+        while (instructionIt.hasNext()) {
+            instructions.setText(instructions.getText() + "\n" + j + ". " + instructionIt.next());
+            j++;
+        }
+        instructions.getStyleClass().add("list-style");
+        instructions.setWrappingWidth(200);
+        instructions.setLayoutY(115);
         instructions.setLayoutX(250);
 
         Button hideRecipeInformation = new Button();
@@ -356,7 +379,7 @@ public class AppController {
 
         recipeInfoPane.getChildren()
             .addAll(recipeName, recipeDescription, hideRecipeInformation, ingredients, instructions,
-                metadata);
+                metadata, ingredientsHeader, instructionsHeader);
         recipesAnchorPane.getChildren().add(recipeInfoPane);
     }
 
