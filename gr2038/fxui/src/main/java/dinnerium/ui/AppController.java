@@ -233,7 +233,7 @@ public class AppController {
                 System.err.println("Could not write data to file");
             }
         } catch (IllegalArgumentException e) {
-            System.out.println("fuck");
+            FeedbackHandler.showMessage(msgPane, e.getMessage(), FeedbackHandler.ERROR);
         }
     }
 
