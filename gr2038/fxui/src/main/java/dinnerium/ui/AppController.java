@@ -444,4 +444,13 @@ public class AppController {
             FXCollections.observableArrayList(user.getIngredientContainer().getContainer());
         ingredientTableView.setItems(observableList);
     }
+
+    User getUser() {
+        return this.user;
+    }
+
+    void setUser(User user) {
+        this.user = user;
+        showUserRecipes();
+    }
 }
