@@ -157,15 +157,9 @@ public class AppController {
         try {
             String amountText = (newRecipe ? newRecipeAmountInput : amountInput).getText();
             String unit = (newRecipe ? newRecipeUnitComboBox : unitComboBox)
-<<<<<<< HEAD
-                    .getSelectionModel()
-                    .getSelectedItem();
-            String name = (newRecipe ? newRecipeNameIngredientInput : nameInput).getText();
-=======
                 .getSelectionModel()
                 .getSelectedItem();
             String name = (newRecipe ? newRecipeNameInput : nameInput).getText();
->>>>>>> 4173bcb2e97180a6c83bc2ca5e243a2eaa95bd2e
             Ingredient i = new Ingredient(new Quantity(Double.valueOf(amountText), unit), name);
 
             if (newRecipe) {
@@ -289,14 +283,9 @@ public class AppController {
 
         //Endres etterhvert til å regne ut hvor mange ingredienser man faktisk mangler
         //utifra hva man har i fridge
-<<<<<<< HEAD
 
         Text recipeInfo = new Text( recipe.getIngredientContainer().getContainerSize()
                 + " ingredients required  | " + recipe.getMetadata().getMinutes() + " minutes");
-=======
-        Text recipeInfo = new Text(recipe.getIngredientContainer().getContainerSize()
-            + " ingredients missing  |  1 hour 56 mins  |  70kr");
->>>>>>> 4173bcb2e97180a6c83bc2ca5e243a2eaa95bd2e
         recipeInfo.setLayoutY(30);
         recipeInfo.setLayoutX(127);
         recipeInfo.getStyleClass().add("recipe-info");
