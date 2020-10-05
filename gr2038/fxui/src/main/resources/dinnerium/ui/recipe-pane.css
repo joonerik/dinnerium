@@ -24,8 +24,17 @@
     -fx-pref-width: 522;
 }
 .recipe-info-name {
-    -fx-wrap-text: 522px;
     -fx-fill: #f4c20d;
     -fx-text-alignment: center;
     -fx-font-size: 26px;
+}
+.recipe-info-description {
+    -fx-fill: #f4c20d;
+    -fx-text-alignment: center;
+    -fx-font-size: 16px;
+}
+.recipe-info-metadata {
+    -fx-fill: #f4c20d;
+    -fx-text-alignment: center;
+    -fx-font-size: 12px;
 }

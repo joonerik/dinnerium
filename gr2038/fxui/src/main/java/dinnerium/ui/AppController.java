@@ -10,10 +10,6 @@ import dinnerium.core.RecipeInstructions;
 import dinnerium.core.User;
 import dinnerium.json.HandlePersistency;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -204,11 +200,11 @@ public class AppController {
         /*Metadata md = new Metadata("name", 2.0,
                 "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
                 "recipeName", "description", 2);*/
-        Double portions = 0.0;
+        double portions = 0.0;
         int minutes = 0;
         try {
-            portions = Double.valueOf(newRecipePortions.getText());
-            minutes = Integer.valueOf(newRecipeMinutes.getText());
+            portions = Double.parseDouble(newRecipePortions.getText());
+            minutes = Integer.parseInt(newRecipeMinutes.getText());
         } catch (NumberFormatException e) {
             FeedbackHandler.showMessage(msgPane, "Invalid number", FeedbackHandler.ERROR);
             System.out.println("Invalid number in portions or minutes");
@@ -216,11 +212,11 @@ public class AppController {
 
         try {
             Metadata md = new Metadata("username",
-                                        portions,
-                                        "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
-                                        newRecipeRecipeName.getText(),
-                                        newRecipeRecipeDescription.getText(),
-                                        minutes);
+                portions,
+                "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
+                newRecipeRecipeName.getText(),
+                newRecipeRecipeDescription.getText(),
+                minutes);
             IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
             RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
 
@@ -286,8 +282,8 @@ public class AppController {
         //Endres etterhvert til å regne ut hvor mange ingredienser man faktisk mangler
         //utifra hva man har i fridge
 
-        Text recipeInfo = new Text( recipe.getIngredientContainer().getContainerSize()
-                + " ingredients required  | " + recipe.getMetadata().getMinutes() + " minutes");
+        Text recipeInfo = new Text(recipe.getIngredientContainer().getContainerSize()
+            + " ingredients required  | " + recipe.getMetadata().getMinutes() + " minutes");
         recipeInfo.setLayoutY(30);
         recipeInfo.setLayoutX(127);
         recipeInfo.getStyleClass().add("recipe-info");
@@ -322,16 +318,51 @@ public class AppController {
 
         Text recipeName = new Text(recipe.getMetadata().getRecipeName());
         recipeName.getStyleClass().add("recipe-info-name");
+        recipeName.setLayoutY(26);
+        recipeName.setWrappingWidth(522);
+
+        Text recipeDescription = new Text(recipe.getMetadata().getRecipeDescription());
+        recipeDescription.getStyleClass().add("recipe-info-description");
+        recipeDescription.setLayoutY(50);
+        recipeDescription.setLayoutX(20);
+        recipeDescription.setWrappingWidth(482);
+
+        Text metadata = new Text("Author: " + recipe.getMetadata().getAuthor() + "\n"
+            + "Portions: " + recipe.getMetadata().getPortion() + "\n"
+            + "Time: " + recipe.getMetadata().getMinutes() + " minutes");
+        metadata.getStyleClass().add("recipe-info-metadata");
+        metadata.setLayoutY(15);
+        metadata.setLayoutX(10);
 
         ListView<Ingredient> ingredients = new ListView<>();
         ingredients.setItems(
             FXCollections.observableArrayList(recipe.getIngredientContainer().getContainer()));
+        ingredients.setLayoutY(80);
+        ingredients.setLayoutX(10);
 
         ListView<String> instructions = new ListView<>();
-        instructions.setItems(FXCollections.observableArrayList();
+        instructions.setItems(
+            FXCollections.observableArrayList(recipe.getRecipeInstructions().getInstructions()));
+        instructions.setLayoutY(80);
+        instructions.setLayoutX(250);
 
-        recipeInfoPane.getChildren().addAll(recipeName);
+        Button hideRecipeInformation = new Button();
+        hideRecipeInformation.setText("Hide recipe");
+        hideRecipeInformation.setLayoutY(20);
+        hideRecipeInformation.setLayoutX(402);
+        hideRecipeInformation.setPrefWidth(100);
+        hideRecipeInformation.setCursor(Cursor.HAND);
+        hideRecipeInformation.setOnAction(click -> hideRecipeInformation());
+
+        recipeInfoPane.getChildren()
+            .addAll(recipeName, recipeDescription, hideRecipeInformation, ingredients, instructions,
+                metadata);
         recipesAnchorPane.getChildren().add(recipeInfoPane);
+    }
+
+    private void hideRecipeInformation() {
+        recipesAnchorPane.getChildren().clear();
+        showUserRecipes();
     }
 
     @FXML
@@ -364,6 +395,7 @@ public class AppController {
 
     @FXML
     private void handleChangeToRecipes() {
+        hideRecipeInformation();
         changeSubScene("recipes");
     }
 
