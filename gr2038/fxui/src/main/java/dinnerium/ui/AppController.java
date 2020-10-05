@@ -10,6 +10,8 @@ import dinnerium.core.RecipeInstructions;
 import dinnerium.core.User;
 import dinnerium.json.HandlePersistency;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import javafx.collections.FXCollections;
@@ -212,7 +214,6 @@ public class AppController {
         Pane pane = new Pane();
         pane.setPrefWidth(522);
         pane.setPrefHeight(167);
-        //Need to set layout x and y to a value calculated from the amount of recipes.
 
         Text recipeName = new Text(recipe.getMetadata().getRecipeName());
         recipeName.getStyleClass().add("recipe-name");
@@ -252,12 +253,34 @@ public class AppController {
         pane.getChildren().addAll(recipeName, childPane);
         pane.setLayoutX(10);
         pane.setCursor(Cursor.HAND);
+        pane.setOnMouseClicked(click -> showRecipeInformation(recipe));
         recipesAnchorPane.getChildren().add(pane);
         pane.setLayoutY(13 + 180 * (recipesAnchorPane.getChildren().size() - 1));
         if (recipesAnchorPane.getChildren().size() > 3) {
             recipesAnchorPane
                 .setPrefHeight(13 + 180 * (recipesAnchorPane.getChildren().size()));
         }
+    }
+
+    private void showRecipeInformation(Recipe recipe) {
+        recipesAnchorPane.getChildren().clear();
+        Pane recipeInfoPane = new Pane();
+        recipeInfoPane.getStyleClass().add("recipes-info-pane");
+        recipeInfoPane.setLayoutY(10);
+        recipeInfoPane.setLayoutX(64);
+
+        Text recipeName = new Text(recipe.getMetadata().getRecipeName());
+        recipeName.getStyleClass().add("recipe-info-name");
+
+        ListView<Ingredient> ingredients = new ListView<>();
+        ingredients.setItems(
+            FXCollections.observableArrayList(recipe.getIngredientContainer().getContainer()));
+
+        ListView<String> instructions = new ListView<>();
+        instructions.setItems(FXCollections.observableArrayList();
+
+        recipeInfoPane.getChildren().addAll(recipeName);
+        recipesAnchorPane.getChildren().add(recipeInfoPane);
     }
 
     @FXML
