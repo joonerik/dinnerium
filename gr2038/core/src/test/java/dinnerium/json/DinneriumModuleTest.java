@@ -207,18 +207,18 @@ class DinneriumModuleTest {
         assertFalse(it2.hasNext());
     }
 
+    private void compareIngredient(Ingredient expectedIngredient, Ingredient i2) {
+        assertEquals(expectedIngredient.getName(), i2.getName());
+        assertEquals(expectedIngredient.getQuantity().getAmount(), i2.getQuantity().getAmount());
+        assertEquals(expectedIngredient.getQuantity().getUnit(), i2.getQuantity().getUnit());
+    }
+
     private void compareMetadata(Metadata expectedMetadata, Metadata m2) {
         assertEquals(expectedMetadata.getAuthor(), m2.getAuthor());
         assertEquals(expectedMetadata.getImage(), m2.getImage());
         assertEquals(expectedMetadata.getMinutes(), m2.getMinutes());
         assertEquals(expectedMetadata.getRecipeDescription(), m2.getRecipeDescription());
         assertEquals(expectedMetadata.getRecipeName(), m2.getRecipeName());
-    }
-
-    private void compareIngredient(Ingredient expectedIngredient, Ingredient i2) {
-        assertEquals(expectedIngredient.getName(), i2.getName());
-        assertEquals(expectedIngredient.getQuantity().getAmount(), i2.getQuantity().getAmount());
-        assertEquals(expectedIngredient.getQuantity().getUnit(), i2.getQuantity().getUnit());
     }
 
     private User createExceptedUser() {
@@ -255,37 +255,4 @@ class DinneriumModuleTest {
         }
         return rc;
     }
-/*
-    @Test
-    public void testSerializers() throws JsonProcessingException {
-        IngredientContainer container = new IngredientContainer();
-        container.addItem(new Ingredient(new Quantity(10, "stk"), "egg"));
-        container.addItem(new Ingredient(new Quantity(500, "gram"), "mel"));
-        container.addItem(new Ingredient(new Quantity(5, "dl"), "melk"));
-
-        try {
-            String serializedObject = mapper.writeValueAsString(container);
-            assertEquals(exampleIngredientContainer.replaceAll("\\s+", ""), serializedObject);
-        } catch (JsonParseException e) {
-            fail();
-        }
-    }
-
-    @Test
-    public void testDeserializers() {
-        try {
-            IngredientContainer container = mapper.readValue(exampleIngredientContainer, IngredientContainer.class);
-            IngredientContainer exampleContainer = new IngredientContainer(createSampleIngredient());
-            Iterator<Ingredient> it =  container.iterator();
-            for (Ingredient i : exampleContainer) {
-                Ingredient readIngredient = it.next();
-                assertEquals(i.getName(), readIngredient.getName());
-                assertEquals(i.getQuantity().getAmount(), readIngredient.getQuantity().getAmount());
-                assertEquals(i.getQuantity().getUnit(), readIngredient.getQuantity().getUnit());
-            }
-        } catch (JsonProcessingException e) {
-            fail();
-        }
-    }*/
-
 }
