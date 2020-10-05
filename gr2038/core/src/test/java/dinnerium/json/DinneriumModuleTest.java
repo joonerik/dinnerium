@@ -143,6 +143,19 @@ class DinneriumModuleTest {
         }
     }
 
+    @Test
+    public void testSerializeDeserialize() {
+        try {
+            User user = createExceptedUser();
+            String userJson = mapper.writeValueAsString(user);
+            User readUser = mapper.readValue(userJson, User.class);
+            compareUsers(user, readUser);
+
+        } catch (IOException e) {
+            fail(e.getMessage());
+        }
+    }
+
     private void compareUsers(User expectedUser, User u2) {
         assertEquals(expectedUser.getUsername(), u2.getUsername());
         compareIngredientContainers(expectedUser.getIngredientContainer(),
