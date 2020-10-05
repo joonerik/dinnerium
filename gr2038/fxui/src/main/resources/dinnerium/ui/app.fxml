@@ -76,7 +76,7 @@
             </Text>
          </children>
       </Pane>
-      <Pane fx:id="recipesPane" layoutX="123.0" layoutY="56.0" prefHeight="583.0" prefWidth="656.0" visible="false">
+      <Pane fx:id="recipesPane" layoutX="123.0" layoutY="56.0" prefHeight="583.0" prefWidth="656.0">
          <children>
               <ScrollPane fx:id="recipesScrollPane" layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0">
                   <content>
@@ -93,7 +93,7 @@
                   <Text fx:id="recipesSubMenuText" fill="#f4c20d" layoutY="17.0" onMouseClicked="#handleChangeToRecipes" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipes" textAlignment="CENTER" wrappingWidth="70.0" />
                </children>
             </Pane>
-            <Pane fx:id="newRecipePane" layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0" style="-fx-border-color: white;">
+            <Pane fx:id="newRecipePane" layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0" style="-fx-border-color: white;" visible="false">
                <children>
                   <TextField fx:id="newRecipePortions" layoutX="269.0" layoutY="27.0" promptText="# portions" />
                   <Text layoutX="207.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Portions" />
@@ -108,7 +108,7 @@
                   <Button layoutX="260.0" layoutY="486.0" mnemonicParsing="false" onAction="#handleAddRecipe" prefHeight="33.0" prefWidth="143.0" text="Add recipe" />
                   <TextField fx:id="newRecipeRecipeName" layoutX="32.0" layoutY="27.0" promptText="Recipe name" />
                   <TextField fx:id="newRecipeRecipeDescription" layoutX="32.0" layoutY="68.0" prefHeight="81.0" prefWidth="160.0" promptText="Description" />
-                  <TextField fx:id="newRecipeMinutes" layoutX="269.0" layoutY="68.0" />
+                  <TextField fx:id="newRecipeMinutes" layoutX="269.0" layoutY="68.0" promptText="Minutes"/>
                </children>
             </Pane>
          </children>
