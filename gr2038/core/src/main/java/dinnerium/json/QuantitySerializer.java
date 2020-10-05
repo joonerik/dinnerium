@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import dinnerium.core.Quantity;
 import java.io.IOException;
 
-public class QuantitySerializer extends JsonSerializer<Quantity> {
+class QuantitySerializer extends JsonSerializer<Quantity> {
 
 
     // converts the Quantity object to a string in json format

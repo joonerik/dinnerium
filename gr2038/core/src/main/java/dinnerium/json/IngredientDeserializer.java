@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.node.TextNode;
 import dinnerium.core.Ingredient;
 import java.io.IOException;
 
-public class IngredientDeserializer extends JsonDeserializer<Ingredient> {
+class IngredientDeserializer extends JsonDeserializer<Ingredient> {
 
     @Override
     public Ingredient deserialize(JsonParser parser, DeserializationContext ctxt)

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import dinnerium.core.Metadata;
 import java.io.IOException;
 
-public class MetadataSerializer extends JsonSerializer<Metadata> {
+class MetadataSerializer extends JsonSerializer<Metadata> {
 
 
     @Override

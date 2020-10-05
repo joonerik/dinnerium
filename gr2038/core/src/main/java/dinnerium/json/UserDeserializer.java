@@ -12,7 +12,7 @@ import dinnerium.core.RecipeContainer;
 import dinnerium.core.User;
 import java.io.IOException;
 
-public class UserDeserializer extends JsonDeserializer<User> {
+class UserDeserializer extends JsonDeserializer<User> {
 
     private ContainerDeserializer cd = new ContainerDeserializer();
 
