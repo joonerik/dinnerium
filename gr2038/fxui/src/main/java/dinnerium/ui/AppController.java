@@ -73,9 +73,15 @@ public class AppController {
     @FXML
     ListView<Ingredient> recipesListView;
     @FXML
-    TextField newRecipeNameInput;
+    TextField newRecipeNameIngredientInput;
     @FXML
     TextField newRecipeAmountInput;
+    @FXML
+    TextField newRecipeRecipeName;
+    @FXML
+    TextField newRecipeRecipeDescription;
+    @FXML
+    TextField newRecipeMinutes;
     @FXML
     ComboBox<String> newRecipeUnitComboBox;
     @FXML
@@ -83,7 +89,7 @@ public class AppController {
     @FXML
     ListView<String> instructionsListView;
     @FXML
-    TextField portionsInput;
+    TextField newRecipePortions;
     @FXML
     Text recipesSubMenuText;
     @FXML
@@ -138,6 +144,8 @@ public class AppController {
     @FXML
     private void handleNewRecipeAddIngredient() {
         addIngredient(true);
+        newRecipeNameIngredientInput.clear();
+        newRecipeAmountInput.clear();
     }
 
     //Adds the new ingreident to either the newRecipeIngredients list (if newRecipe is true)
@@ -151,7 +159,7 @@ public class AppController {
             String unit = (newRecipe ? newRecipeUnitComboBox : unitComboBox)
                 .getSelectionModel()
                 .getSelectedItem();
-            String name = (newRecipe ? newRecipeNameInput : nameInput).getText();
+            String name = (newRecipe ? newRecipeNameIngredientInput : nameInput).getText();
             Ingredient i = new Ingredient(new Quantity(Double.valueOf(amountText), unit), name);
 
             if (newRecipe) {
@@ -176,27 +184,69 @@ public class AppController {
 
     @FXML
     private void handleAddInstruction() {
-        this.newRecipeInstructions.add(instructionTextArea.getText());
+        if (!instructionTextArea.getText().isEmpty()) {
+            this.newRecipeInstructions.add(instructionTextArea.getText());
+            instructionTextArea.clear();
+        } else {
+            // errorHandling!!
+            System.out.println("lel");
+            FeedbackHandler.showMessage(msgPane, "Instruction empty", 'E');
+        }
     }
 
     @FXML
     private void handleAddRecipe() {
         //Change username with name of the user logged in to the app when User class is ready
         //Metadata metadata = new Metadata("username", Double.valueOf(portionsInput.getText()));
-        Metadata md = new Metadata("name", 2.0,
-            "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
-            "recipeName", "description", 2);
-        IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
-        RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
-
-        Recipe recipe = new Recipe(ic, rc, md);
-        this.user.getRecipeContainer().addItem(recipe);
-        updateRecipeAnchorPane(recipe);
+        /*Metadata md = new Metadata("name", 2.0,
+                "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
+                "recipeName", "description", 2);*/
+        Double portions = 0.0;
+        int minutes = 0;
         try {
-            HandlePersistency.writeJsonToFile(this.user);
-        } catch (Exception e) {
-            System.err.println("Could not write data to file");
+            portions = Double.valueOf(newRecipePortions.getText());
+            minutes = Integer.valueOf(newRecipeMinutes.getText());
+        } catch (NumberFormatException e) {
+            FeedbackHandler.showMessage(msgPane, "Invalid number", FeedbackHandler.ERROR);
+            System.out.println("Invalid number in portions or minutes");
         }
+
+        try {
+            Metadata md = new Metadata("username",
+                                        portions,
+                                        "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
+                                        newRecipeRecipeName.getText(),
+                                        newRecipeRecipeDescription.getText(),
+                                        minutes);
+            IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
+            RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
+
+            Recipe recipe = new Recipe(ic, rc, md);
+            this.user.getRecipeContainer().addItem(recipe);
+            updateRecipeAnchorPane(recipe);
+            clearRecipeFields();
+
+            try {
+                HandlePersistency.writeJsonToFile(this.user);
+
+            } catch (Exception e) {
+                System.err.println("Could not write data to file");
+            }
+        } catch (IllegalArgumentException e) {
+            FeedbackHandler.showMessage(msgPane, e.getMessage(), FeedbackHandler.ERROR);
+        }
+    }
+
+    private void clearRecipeFields() {
+        newRecipeRecipeName.clear();
+        newRecipeNameIngredientInput.clear();
+        newRecipeAmountInput.clear();
+        newRecipeMinutes.clear();
+        newRecipePortions.clear();
+        newRecipeRecipeDescription.clear();
+        instructionTextArea.clear();
+        newRecipeIngredients.clear();
+        newRecipeInstructions.clear();
     }
 
     private void showUserRecipes() {
@@ -233,8 +283,9 @@ public class AppController {
 
         //Endres etterhvert til å regne ut hvor mange ingredienser man faktisk mangler
         //utifra hva man har i fridge
-        Text recipeInfo = new Text(recipe.getIngredientContainer().getContainerSize()
-            + " ingredients missing  |  1 hour 56 mins  |  70kr");
+
+        Text recipeInfo = new Text( recipe.getIngredientContainer().getContainerSize()
+                + " ingredients required  | " + recipe.getMetadata().getMinutes() + " minutes");
         recipeInfo.setLayoutY(30);
         recipeInfo.setLayoutX(127);
         recipeInfo.getStyleClass().add("recipe-info");
