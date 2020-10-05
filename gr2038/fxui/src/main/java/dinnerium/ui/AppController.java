@@ -144,6 +144,8 @@ public class AppController {
     @FXML
     private void handleNewRecipeAddIngredient() {
         addIngredient(true);
+        newRecipeNameIngredientInput.clear();
+        newRecipeAmountInput.clear();
     }
 
     //Adds the new ingreident to either the newRecipeIngredients list (if newRecipe is true)
@@ -184,6 +186,7 @@ public class AppController {
     private void handleAddInstruction() {
         if (!instructionTextArea.getText().isEmpty()) {
             this.newRecipeInstructions.add(instructionTextArea.getText());
+            instructionTextArea.clear();
         } else {
             // errorHandling!!
             System.out.println("lel");
@@ -221,14 +224,29 @@ public class AppController {
             Recipe recipe = new Recipe(ic, rc, md);
             this.user.getRecipeContainer().addItem(recipe);
             updateRecipeAnchorPane(recipe);
+            clearRecipeFields();
+
             try {
                 HandlePersistency.writeJsonToFile(this.user);
+
             } catch (Exception e) {
                 System.err.println("Could not write data to file");
             }
         } catch (IllegalArgumentException e) {
             System.out.println("fuck");
         }
+    }
+
+    private void clearRecipeFields() {
+        newRecipeRecipeName.clear();
+        newRecipeNameIngredientInput.clear();
+        newRecipeAmountInput.clear();
+        newRecipeMinutes.clear();
+        newRecipePortions.clear();
+        newRecipeRecipeDescription.clear();
+        instructionTextArea.clear();
+        newRecipeIngredients.clear();
+        newRecipeInstructions.clear();
     }
 
     private void showUserRecipes() {
