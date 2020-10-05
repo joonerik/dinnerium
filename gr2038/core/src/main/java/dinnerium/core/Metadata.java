@@ -21,13 +21,39 @@ public class Metadata {
      */
     public Metadata(String author, double portion,
                     String image, String recipeName, String recipeDescription, int minutes) {
-        this.author = author;
-        this.portion = portion;
-        this.image = image;
-        this.recipeName = recipeName;
-        this.recipeDescription = recipeDescription;
-        this.minutes = minutes;
+        if (validateString(author, image, recipeDescription, recipeName)) {
+            this.author = author;
+            this.image = image;
+            this.recipeName = recipeName;
+            this.recipeDescription = recipeDescription;
+
+        } else {
+            throw new IllegalArgumentException("Invalid string input");
+        }
+
+        if (validateNumber(portion, minutes)) {
+            this.portion = portion;
+            this.minutes = minutes;
+        } else {
+            throw new IllegalArgumentException("Can't be zero");
+        }
+
     }
+
+    private boolean validateNumber(double portion, int minutes) {
+        if (portion == 0.0 || minutes == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateString(String author, String image, String recipeDescription, String recipeName) {
+        if (author.isEmpty() || image.isEmpty() || recipeDescription.isEmpty() || recipeName.isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+
 
     public String getAuthor() {
         return author;

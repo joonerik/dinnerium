@@ -22,7 +22,6 @@ public class RecipeInstructions implements Iterable<String> {
     public void setInstruction(String instruction) {
         if (instruction != null || instruction.isEmpty()) {
             instructions.add(instruction);
-            System.out.println("he");
         } else {
             throw new IllegalArgumentException("String is null!");
         }

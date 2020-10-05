@@ -198,22 +198,36 @@ public class AppController {
         /*Metadata md = new Metadata("name", 2.0,
                 "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
                 "recipeName", "description", 2);*/
-        Metadata md = new Metadata("username",
-                                    Double.valueOf(newRecipePortions.getText()),
-                                    "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
-                                    newRecipeRecipeName.getText(),
-                                    newRecipeRecipeDescription.getText(),
-                                    Integer.valueOf(newRecipeMinutes.getText()));
-        IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
-        RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
-
-        Recipe recipe = new Recipe(ic, rc, md);
-        this.user.getRecipeContainer().addItem(recipe);
-        updateRecipeAnchorPane(recipe);
+        Double portions = 0.0;
+        int minutes = 0;
         try {
-            HandlePersistency.writeJsonToFile(this.user);
-        } catch (Exception e) {
-            System.err.println("Could not write data to file");
+            portions = Double.valueOf(newRecipePortions.getText());
+            minutes = Integer.valueOf(newRecipeMinutes.getText());
+        } catch (NumberFormatException e) {
+            FeedbackHandler.showMessage(msgPane, "Invalid number", FeedbackHandler.ERROR);
+            System.out.println("Invalid number in portions or minutes");
+        }
+
+        try {
+            Metadata md = new Metadata("username",
+                                        portions,
+                                        "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
+                                        newRecipeRecipeName.getText(),
+                                        newRecipeRecipeDescription.getText(),
+                                        minutes);
+            IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
+            RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
+
+            Recipe recipe = new Recipe(ic, rc, md);
+            this.user.getRecipeContainer().addItem(recipe);
+            updateRecipeAnchorPane(recipe);
+            try {
+                HandlePersistency.writeJsonToFile(this.user);
+            } catch (Exception e) {
+                System.err.println("Could not write data to file");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("fuck");
         }
     }
 
