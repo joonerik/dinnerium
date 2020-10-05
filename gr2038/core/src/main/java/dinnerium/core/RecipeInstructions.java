@@ -27,6 +27,10 @@ public class RecipeInstructions implements Iterable<String> {
         }
     }
 
+    public Collection<String> getInstructions() {
+        return instructions;
+    }
+
     @Override
     public Iterator<String> iterator() {
         return this.instructions.iterator();
