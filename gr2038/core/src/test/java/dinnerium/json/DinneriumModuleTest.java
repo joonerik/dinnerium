@@ -16,10 +16,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DinneriumModuleTest {
+class
+DinneriumModuleTest {
 
     private ObjectMapper mapper;
-    private String exampleIngredientContainer = "" +
+    private final String exampleIngredientContainer = "" +
             "{\"ingredients\":[" +
             "{\"quantity\":{\"unit\":\"stk\",\"amount\":10.0},\"name\":\"egg\"}," +
             "{\"quantity\":{\"unit\":\"gram\",\"amount\":500.0},\"name\":\"mel\"}," +
@@ -31,11 +32,13 @@ class DinneriumModuleTest {
         mapper = new ObjectMapper();
         mapper.registerModule(new DinneriumModule());
     }
+
+    /*
     @Test
     public void testSerializers() {
         assertTrue(true);
     }
-/*
+
     @Test
     public void testSerializers() throws JsonProcessingException {
         IngredientContainer container = new IngredientContainer();
@@ -75,5 +78,6 @@ class DinneriumModuleTest {
         sampleIngredients.add(new Ingredient(new Quantity(5, "dl"), "melk"));
 
         return sampleIngredients;
-    }*/
+    }
+    */
 }
