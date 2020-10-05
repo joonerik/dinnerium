@@ -16,7 +16,7 @@ public class HandlePersistency {
      * @throws IOException
      *         if file error
      */
-    public static void writeJsonToFile(User user) throws Exception {
+    public static void writeJsonToFile(User user) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.writerWithDefaultPrettyPrinter().writeValue(new File("src/main/data.json"), user);
     }

@@ -26,9 +26,9 @@ public class RecipeDeserializer extends JsonDeserializer<Recipe> {
     // checks if the nodes are of correct type
     // finally we have converted the strings from json into actual objects
     /**
-     * Deserializer for Ingredient
+     * Deserializer for a Recipe.
      *
-     * @param jsonNode
+     * @param jsonNode the jsonNode to be deserialized as a Recipe.
      *
      */
     public Recipe deserialize(JsonNode jsonNode) throws IOException {
