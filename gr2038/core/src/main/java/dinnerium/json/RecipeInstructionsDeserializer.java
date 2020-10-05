@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class RecipeInstructionsDeserializer extends JsonDeserializer<RecipeInstructions> {
+class RecipeInstructionsDeserializer extends JsonDeserializer<RecipeInstructions> {
 
     @Override
     public RecipeInstructions deserialize(JsonParser parser, DeserializationContext ctxt)

@@ -8,7 +8,7 @@ import dinnerium.core.IngredientContainer;
 import dinnerium.core.RecipeContainer;
 import java.io.IOException;
 
-public class ContainerSerializer extends JsonSerializer<Container> {
+class ContainerSerializer extends JsonSerializer<Container> {
 
     // converts the IngredientContainer object into a string in json format
     @Override

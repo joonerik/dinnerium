@@ -13,7 +13,7 @@ import dinnerium.core.Recipe;
 import dinnerium.core.RecipeInstructions;
 import java.io.IOException;
 
-public class RecipeDeserializer extends JsonDeserializer<Recipe> {
+class RecipeDeserializer extends JsonDeserializer<Recipe> {
 
     @Override
     public Recipe deserialize(JsonParser parser, DeserializationContext ctxt)
