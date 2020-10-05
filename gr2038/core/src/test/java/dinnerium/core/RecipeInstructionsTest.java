@@ -23,7 +23,7 @@ class RecipeInstructionsTest {
     }
 
     @Test
-    void getInstrictions() {
+    void getInstructions() {
         assertEquals(ri.getInstructions(), c);
     }
 
