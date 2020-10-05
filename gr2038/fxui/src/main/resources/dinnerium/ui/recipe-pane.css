@@ -6,7 +6,7 @@
     -fx-fill: #f4c20d;
     -fx-font-size: 18.5px;
 }
-.child-pane {
+.child-pane, .recipes-info-pane {
     -fx-background-color: #42404b;
     -fx-border-radius: 10;
     -fx-background-radius: 10;
@@ -18,4 +18,33 @@
     -fx-fill: #f4c20d;
     -fx-font-size: 12;
     -fx-text-alignment: center;
+}
+.recipes-info-pane {
+    -fx-pref-height: 522;
+    -fx-pref-width: 522;
+}
+.recipe-info-name {
+    -fx-fill: #f4c20d;
+    -fx-text-alignment: center;
+    -fx-font-size: 26px;
+}
+.recipe-info-description {
+    -fx-fill: #f4c20d;
+    -fx-text-alignment: center;
+    -fx-font-size: 16px;
+}
+.recipe-info-metadata {
+    -fx-fill: #f4c20d;
+    -fx-text-alignment: center;
+    -fx-font-size: 12px;
+}
+.textview-header {
+    -fx-fill: #f4c20d;
+    -fx-font-size: 16px;
+    -fx-underline: 1px;
+}
+.list-style {
+    -fx-fill: #f4c20d;
+    -fx-text-alignment: left;
+    -fx-font-size: 13px;
 }

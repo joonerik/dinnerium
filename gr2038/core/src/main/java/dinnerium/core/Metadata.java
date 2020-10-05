@@ -12,12 +12,12 @@ public class Metadata {
     /**
      * Constructor for a Metadata object.
      *
-     * @param author the author of the Recipe.
-     * @param portion the amount of portions the Recipe is meant for.
-     * @param image the image of the recipe.
-     * @param recipeName the name of the dish the recipe is for.
+     * @param author            the author of the Recipe.
+     * @param portion           the amount of portions the Recipe is meant for.
+     * @param image             the image of the recipe.
+     * @param recipeName        the name of the dish the recipe is for.
      * @param recipeDescription a description of the dish the recipe makes.
-     * @param minutes the time it takes to make the recipe.
+     * @param minutes           the time it takes to make the recipe.
      */
     public Metadata(String author, double portion,
                     String image, String recipeName, String recipeDescription, int minutes) {
@@ -47,8 +47,10 @@ public class Metadata {
         return true;
     }
 
-    private boolean validateString(String author, String image, String recipeDescription, String recipeName) {
-        if (author.isEmpty() || image.isEmpty() || recipeDescription.isEmpty() || recipeName.isEmpty()) {
+    private boolean validateString(String author, String image, String recipeDescription,
+                                   String recipeName) {
+        if (author.isEmpty() || image.isEmpty() || recipeDescription.isEmpty() ||
+            recipeName.isEmpty()) {
             return false;
         }
         return true;

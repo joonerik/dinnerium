@@ -10,11 +10,11 @@ import dinnerium.core.RecipeInstructions;
 import dinnerium.core.User;
 import dinnerium.json.HandlePersistency;
 import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
+import java.util.Iterator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
@@ -201,11 +201,11 @@ public class AppController {
         /*Metadata md = new Metadata("name", 2.0,
                 "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
                 "recipeName", "description", 2);*/
-        Double portions = 0.0;
+        double portions = 0.0;
         int minutes = 0;
         try {
-            portions = Double.valueOf(newRecipePortions.getText());
-            minutes = Integer.valueOf(newRecipeMinutes.getText());
+            portions = Double.parseDouble(newRecipePortions.getText());
+            minutes = Integer.parseInt(newRecipeMinutes.getText());
         } catch (NumberFormatException e) {
             FeedbackHandler.showMessage(msgPane, "Invalid number", FeedbackHandler.ERROR);
             System.out.println("Invalid number in portions or minutes");
@@ -213,11 +213,11 @@ public class AppController {
 
         try {
             Metadata md = new Metadata("username",
-                                        portions,
-                                        "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
-                                        newRecipeRecipeName.getText(),
-                                        newRecipeRecipeDescription.getText(),
-                                        minutes);
+                portions,
+                "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
+                newRecipeRecipeName.getText(),
+                newRecipeRecipeDescription.getText(),
+                minutes);
             IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
             RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
 
@@ -261,7 +261,6 @@ public class AppController {
         Pane pane = new Pane();
         pane.setPrefWidth(522);
         pane.setPrefHeight(167);
-        //Need to set layout x and y to a value calculated from the amount of recipes.
 
         Text recipeName = new Text(recipe.getMetadata().getRecipeName());
         recipeName.getStyleClass().add("recipe-name");
@@ -284,8 +283,8 @@ public class AppController {
         //Endres etterhvert til å regne ut hvor mange ingredienser man faktisk mangler
         //utifra hva man har i fridge
 
-        Text recipeInfo = new Text( recipe.getIngredientContainer().getContainerSize()
-                + " ingredients required  | " + recipe.getMetadata().getMinutes() + " minutes");
+        Text recipeInfo = new Text(recipe.getIngredientContainer().getContainerSize()
+            + " ingredients required  | " + recipe.getMetadata().getMinutes() + " minutes");
         recipeInfo.setLayoutY(30);
         recipeInfo.setLayoutX(127);
         recipeInfo.getStyleClass().add("recipe-info");
@@ -301,12 +300,92 @@ public class AppController {
 
         pane.getChildren().addAll(recipeName, childPane);
         pane.setLayoutX(10);
+        pane.setCursor(Cursor.HAND);
+        pane.setOnMouseClicked(click -> showRecipeInformation(recipe));
         recipesAnchorPane.getChildren().add(pane);
         pane.setLayoutY(13 + 180 * (recipesAnchorPane.getChildren().size() - 1));
         if (recipesAnchorPane.getChildren().size() > 3) {
             recipesAnchorPane
                 .setPrefHeight(13 + 180 * (recipesAnchorPane.getChildren().size()));
         }
+    }
+
+    private void showRecipeInformation(Recipe recipe) {
+        recipesAnchorPane.getChildren().clear();
+        Pane recipeInfoPane = new Pane();
+        recipeInfoPane.getStyleClass().add("recipes-info-pane");
+        recipeInfoPane.setLayoutY(10);
+        recipeInfoPane.setLayoutX(64);
+
+        Text recipeName = new Text(recipe.getMetadata().getRecipeName());
+        recipeName.getStyleClass().add("recipe-info-name");
+        recipeName.setLayoutY(26);
+        recipeName.setWrappingWidth(522);
+
+        Text recipeDescription = new Text(recipe.getMetadata().getRecipeDescription());
+        recipeDescription.getStyleClass().add("recipe-info-description");
+        recipeDescription.setLayoutY(50);
+        recipeDescription.setLayoutX(20);
+        recipeDescription.setWrappingWidth(482);
+
+        Text metadata = new Text("Author: " + recipe.getMetadata().getAuthor() + "\n"
+            + "Portions: " + recipe.getMetadata().getPortion() + "\n"
+            + "Time: " + recipe.getMetadata().getMinutes() + " minutes");
+        metadata.getStyleClass().add("recipe-info-metadata");
+        metadata.setLayoutY(15);
+        metadata.setLayoutX(10);
+
+        Text ingredientsHeader = new Text("Ingredients");
+        ingredientsHeader.getStyleClass().add("textview-header");
+        ingredientsHeader.setLayoutY(98);
+        ingredientsHeader.setLayoutX(40);
+
+        Iterator<Ingredient> ingredientsIt = recipe.getIngredientContainer().iterator();
+        Text ingredients = new Text(ingredientsIt.hasNext() ? "1. " + ingredientsIt.next() : "");
+        int i = 2;
+        while (ingredientsIt.hasNext()) {
+            ingredients.setText(ingredients.getText() + "\n" + i + ". " + ingredientsIt.next());
+            i++;
+        }
+        ingredients.setWrappingWidth(200);
+        ingredients.setLayoutY(115);
+        ingredients.setLayoutX(20);
+        ingredients.getStyleClass().add("list-style");
+
+        Text instructionsHeader = new Text("Instructions");
+        instructionsHeader.getStyleClass().add("textview-header");
+        instructionsHeader.setLayoutY(98);
+        instructionsHeader.setLayoutX(270);
+
+        Iterator<String> instructionIt = recipe.getRecipeInstructions().iterator();
+        Text instructions = new Text(instructionIt.hasNext() ? "1. " + instructionIt.next() : "");
+        int j = 2;
+        while (instructionIt.hasNext()) {
+            instructions.setText(instructions.getText() + "\n" + j + ". " + instructionIt.next());
+            j++;
+        }
+        instructions.getStyleClass().add("list-style");
+        instructions.setWrappingWidth(200);
+        instructions.setLayoutY(115);
+        instructions.setLayoutX(250);
+
+        Button hideRecipeInformation = new Button();
+        hideRecipeInformation.setText("Hide recipe");
+        hideRecipeInformation.setLayoutY(20);
+        hideRecipeInformation.setLayoutX(402);
+        hideRecipeInformation.setPrefWidth(100);
+        hideRecipeInformation.setCursor(Cursor.HAND);
+        hideRecipeInformation.setOnAction(click -> hideRecipeInformation());
+
+        recipeInfoPane.getChildren()
+            .addAll(recipeName, recipeDescription, hideRecipeInformation, ingredients, instructions,
+                metadata, ingredientsHeader, instructionsHeader);
+        recipesAnchorPane.getChildren().add(recipeInfoPane);
+    }
+
+    private void hideRecipeInformation() {
+        recipesAnchorPane.getChildren().clear();
+        showUserRecipes();
     }
 
     @FXML
@@ -339,6 +418,7 @@ public class AppController {
 
     @FXML
     private void handleChangeToRecipes() {
+        hideRecipeInformation();
         changeSubScene("recipes");
     }
 

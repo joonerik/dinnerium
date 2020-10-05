@@ -3,7 +3,6 @@ package dinnerium.core;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 
 public class RecipeInstructions implements Iterable<String> {
 
@@ -27,8 +26,12 @@ public class RecipeInstructions implements Iterable<String> {
         }
     }
 
+    /**
+     *
+     * @return a copy of the recipe instructions.
+     */
     public Collection<String> getInstructions() {
-        return instructions;
+        return new ArrayList<>(this.instructions);
     }
 
     @Override
