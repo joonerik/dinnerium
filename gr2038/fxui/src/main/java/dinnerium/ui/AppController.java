@@ -73,9 +73,15 @@ public class AppController {
     @FXML
     ListView<Ingredient> recipesListView;
     @FXML
-    TextField newRecipeNameInput;
+    TextField newRecipeNameIngredientInput;
     @FXML
     TextField newRecipeAmountInput;
+    @FXML
+    TextField newRecipeRecipeName;
+    @FXML
+    TextField newRecipeRecipeDescription;
+    @FXML
+    TextField newRecipeMinutes;
     @FXML
     ComboBox<String> newRecipeUnitComboBox;
     @FXML
@@ -83,7 +89,7 @@ public class AppController {
     @FXML
     ListView<String> instructionsListView;
     @FXML
-    TextField portionsInput;
+    TextField newRecipePortions;
     @FXML
     Text recipesSubMenuText;
     @FXML
@@ -151,7 +157,7 @@ public class AppController {
             String unit = (newRecipe ? newRecipeUnitComboBox : unitComboBox)
                     .getSelectionModel()
                     .getSelectedItem();
-            String name = (newRecipe ? newRecipeNameInput : nameInput).getText();
+            String name = (newRecipe ? newRecipeNameIngredientInput : nameInput).getText();
             Ingredient i = new Ingredient(new Quantity(Double.valueOf(amountText), unit), name);
 
             if (newRecipe) {
@@ -183,9 +189,15 @@ public class AppController {
     private void handleAddRecipe() {
         //Change username with name of the user logged in to the app when User class is ready
         //Metadata metadata = new Metadata("username", Double.valueOf(portionsInput.getText()));
-        Metadata md = new Metadata("name", 2.0,
+        /*Metadata md = new Metadata("name", 2.0,
                 "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
-                "recipeName", "description", 2);
+                "recipeName", "description", 2);*/
+        Metadata md = new Metadata("username",
+                                    Double.valueOf(newRecipePortions.getText()),
+                                    "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
+                                    newRecipeRecipeName.getText(),
+                                    newRecipeRecipeDescription.getText(),
+                                    Integer.valueOf(newRecipeMinutes.getText()));
         IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
         RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
 
@@ -233,8 +245,9 @@ public class AppController {
 
         //Endres etterhvert til å regne ut hvor mange ingredienser man faktisk mangler
         //utifra hva man har i fridge
+
         Text recipeInfo = new Text( recipe.getIngredientContainer().getContainerSize()
-                + " ingredients missing  |  1 hour 56 mins  |  70kr");
+                + " ingredients required  | " + recipe.getMetadata().getMinutes() + " minutes");
         recipeInfo.setLayoutY(30);
         recipeInfo.setLayoutX(127);
         recipeInfo.getStyleClass().add("recipe-info");

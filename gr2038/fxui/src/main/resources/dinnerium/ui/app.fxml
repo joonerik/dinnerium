@@ -93,19 +93,22 @@
                   <Text fx:id="recipesSubMenuText" fill="#f4c20d" layoutY="17.0" onMouseClicked="#handleChangeToRecipes" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipes" textAlignment="CENTER" wrappingWidth="70.0" />
                </children>
             </Pane>
-            <Pane fx:id="newRecipePane" layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0" style="-fx-border-color: white;" visible="false">
+            <Pane fx:id="newRecipePane" layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0" style="-fx-border-color: white;">
                <children>
-                  <TextField fx:id="portionsInput" layoutX="163.0" layoutY="57.0" />
-                  <Text layoutX="107.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Portions" />
-                  <ListView fx:id="recipesListView" layoutX="64.0" layoutY="171.0" prefHeight="200.0" prefWidth="200.0" />
-                  <TextField fx:id="newRecipeNameInput" layoutX="32.0" layoutY="127.0" prefHeight="25.0" prefWidth="93.0" promptText="Name" />
-                  <TextField fx:id="newRecipeAmountInput" layoutX="138.0" layoutY="126.0" prefHeight="25.0" prefWidth="70.0" promptText="quantity" />
-                  <ComboBox fx:id="newRecipeUnitComboBox" layoutX="229.0" layoutY="126.0" prefHeight="25.0" prefWidth="70.0" promptText="Unit" />
-                  <Button fx:id="newRecipeAddButton" layoutX="309.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleNewRecipeAddIngredient" text="Add" />
-                  <ListView fx:id="instructionsListView" layoutX="358.0" layoutY="230.0" prefHeight="200.0" prefWidth="200.0" />
-                  <TextArea fx:id="instructionTextArea" layoutX="303.0" layoutY="166.0" prefHeight="60.0" prefWidth="176.0" promptText="Instructions" />
-                  <Button layoutX="515.0" layoutY="184.0" mnemonicParsing="false" onAction="#handleAddInstruction" text="Add" />
-                  <Button layoutX="260.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleAddRecipe" prefHeight="33.0" prefWidth="143.0" text="Add recipe" />
+                  <TextField fx:id="newRecipePortions" layoutX="269.0" layoutY="27.0" promptText="# portions" />
+                  <Text layoutX="207.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Portions" />
+                  <ListView fx:id="recipesListView" layoutX="32.0" layoutY="246.0" prefHeight="200.0" prefWidth="200.0" />
+                  <TextField fx:id="newRecipeNameIngredientInput" layoutX="32.0" layoutY="185.0" prefHeight="25.0" prefWidth="93.0" promptText="Ingredient" />
+                  <TextField fx:id="newRecipeAmountInput" layoutX="132.0" layoutY="185.0" prefHeight="27.0" prefWidth="45.0" promptText="quantity" />
+                  <ComboBox fx:id="newRecipeUnitComboBox" layoutX="182.0" layoutY="183.0" prefHeight="25.0" prefWidth="70.0" promptText="Unit" />
+                  <Button fx:id="newRecipeAddButton" layoutX="32.0" layoutY="213.0" mnemonicParsing="false" onAction="#handleNewRecipeAddIngredient" text="Add" />
+                  <ListView fx:id="instructionsListView" layoutX="279.0" layoutY="246.0" prefHeight="200.0" prefWidth="200.0" />
+                  <TextArea fx:id="instructionTextArea" layoutX="279.0" layoutY="180.0" prefHeight="48.0" prefWidth="176.0" promptText="Instructions" />
+                  <Button layoutX="467.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleAddInstruction" text="Add" />
+                  <Button layoutX="260.0" layoutY="486.0" mnemonicParsing="false" onAction="#handleAddRecipe" prefHeight="33.0" prefWidth="143.0" text="Add recipe" />
+                  <TextField fx:id="newRecipeRecipeName" layoutX="32.0" layoutY="27.0" promptText="Recipe name" />
+                  <TextField fx:id="newRecipeRecipeDescription" layoutX="32.0" layoutY="68.0" prefHeight="81.0" prefWidth="160.0" promptText="Description" />
+                  <TextField fx:id="newRecipeMinutes" layoutX="269.0" layoutY="68.0" />
                </children>
             </Pane>
          </children>

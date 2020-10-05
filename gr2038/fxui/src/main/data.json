@@ -114,8 +114,40 @@
         "recipeDescription" : "description",
         "minutes" : 4
       }
+    }, {
+      "ingredientContainer" : {
+        "container" : [ {
+          "quantity" : {
+            "amount" : 400.0,
+            "unit" : "gram"
+          },
+          "name" : "kjottdeig"
+        }, {
+          "quantity" : {
+            "amount" : 200.0,
+            "unit" : "gram"
+          },
+          "name" : "ost"
+        }, {
+          "quantity" : {
+            "amount" : 9.0,
+            "unit" : "stk"
+          },
+          "name" : "lasagneplater"
+        } ],
+        "containerSize" : 3
+      },
+      "recipeInstructions" : [ "stek", "bak", "spis" ],
+      "metadata" : {
+        "author" : "username",
+        "portion" : 4.0,
+        "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
+        "recipeName" : "Lasagne",
+        "recipeDescription" : "God og smakfull lasagne",
+        "minutes" : 60
+      }
     } ],
-    "containerSize" : 4
+    "containerSize" : 5
   },
   "username" : "testuser"
 }
