@@ -28,54 +28,50 @@ class DinneriumModuleTest {
     private String expectedUserString = "" +
         "{\n" +
         "  \"ingredientContainer\" : {\n" +
-        "    \"container\" : [ {\n" +
+        "    \"ingredients\" : [ {\n" +
         "      \"quantity\" : {\n" +
-        "        \"amount\" : 1.0,\n" +
-        "        \"unit\" : \"stk\"\n" +
+        "        \"unit\" : \"stk\",\n" +
+        "        \"amount\" : 1.0\n" +
         "      },\n" +
         "      \"name\" : \"eggs\"\n" +
         "    }, {\n" +
         "      \"quantity\" : {\n" +
-        "        \"amount\" : 2.0,\n" +
-        "        \"unit\" : \"dl\"\n" +
+        "        \"unit\" : \"dl\",\n" +
+        "        \"amount\" : 2.0\n" +
         "      },\n" +
         "      \"name\" : \"milk\"\n" +
         "    }, {\n" +
         "      \"quantity\" : {\n" +
-        "        \"amount\" : 3.0,\n" +
-        "        \"unit\" : \"gram\"\n" +
+        "        \"unit\" : \"gram\",\n" +
+        "        \"amount\" : 3.0\n" +
         "      },\n" +
         "      \"name\" : \"sugar\"\n" +
-        "    } ],\n" +
-        "    \"containerSize\" : 3\n" +
+        "    } ]\n" +
         "  },\n" +
         "  \"recipeContainer\" : {\n" +
-        "    \"container\" : [ {\n" +
+        "    \"recipes\" : [ {\n" +
         "      \"ingredientContainer\" : {\n" +
-        "        \"container\" : [ {\n" +
+        "        \"ingredients\" : [ {\n" +
         "          \"quantity\" : {\n" +
-        "            \"amount\" : 400.0,\n" +
-        "            \"unit\" : \"gram\"\n" +
+        "            \"unit\" : \"gram\",\n" +
+        "            \"amount\" : 400.0\n" +
         "          },\n" +
         "          \"name\" : \"minced meat\"\n" +
         "        }, {\n" +
         "          \"quantity\" : {\n" +
-        "            \"amount\" : 200.0,\n" +
-        "            \"unit\" : \"gram\"\n" +
+        "            \"unit\" : \"gram\",\n" +
+        "            \"amount\" : 200.0\n" +
         "          },\n" +
         "          \"name\" : \"cheese\"\n" +
         "        }, {\n" +
         "          \"quantity\" : {\n" +
-        "            \"amount\" : 9.0,\n" +
-        "            \"unit\" : \"stk\"\n" +
+        "            \"unit\" : \"stk\",\n" +
+        "            \"amount\" : 9.0\n" +
         "          },\n" +
         "          \"name\" : \"lasagne plates\"\n" +
-        "        } ],\n" +
-        "        \"containerSize\" : 3\n" +
+        "        } ]\n" +
         "      },\n" +
-        "      \"recipeInstructions\" : {\n" +
-        "        \"instructions\" : [ \"cook\", \"bake\", \"eat\" ]\n" +
-        "      },\n" +
+        "      \"recipeInstructions\" : [ \"cook\", \"bake\", \"eat\" ],\n" +
         "      \"metadata\" : {\n" +
         "        \"author\" : \"bestUsername\",\n" +
         "        \"portion\" : 4.0,\n" +
@@ -86,24 +82,21 @@ class DinneriumModuleTest {
         "      }\n" +
         "    }, {\n" +
         "      \"ingredientContainer\" : {\n" +
-        "        \"container\" : [ {\n" +
+        "        \"ingredients\" : [ {\n" +
         "          \"quantity\" : {\n" +
-        "            \"amount\" : 2.0,\n" +
-        "            \"unit\" : \"stk\"\n" +
+        "            \"unit\" : \"stk\",\n" +
+        "            \"amount\" : 2.0\n" +
         "          },\n" +
         "          \"name\" : \"eggs\"\n" +
         "        }, {\n" +
         "          \"quantity\" : {\n" +
-        "            \"amount\" : 3.0,\n" +
-        "            \"unit\" : \"dl\"\n" +
+        "            \"unit\" : \"dl\",\n" +
+        "            \"amount\" : 3.0\n" +
         "          },\n" +
         "          \"name\" : \"tikka\"\n" +
-        "        } ],\n" +
-        "        \"containerSize\" : 2\n" +
+        "        } ]\n" +
         "      },\n" +
-        "      \"recipeInstructions\" : {\n" +
-        "        \"instructions\" : [ \"mix\", \"doStuff\", \"serve\" ]\n" +
-        "      },\n" +
+        "      \"recipeInstructions\" : [ \"mix\", \"doStuff\", \"serve\" ],\n" +
         "      \"metadata\" : {\n" +
         "        \"author\" : \"bestUsername\",\n" +
         "        \"portion\" : 2.0,\n" +
@@ -112,8 +105,7 @@ class DinneriumModuleTest {
         "        \"recipeDescription\" : \"Describing description of tikka masala\",\n" +
         "        \"minutes\" : 60\n" +
         "      }\n" +
-        "    } ],\n" +
-        "    \"containerSize\" : 2\n" +
+        "    } ]\n" +
         "  },\n" +
         "  \"username\" : \"bestUsername\"\n" +
         "}";
@@ -121,7 +113,7 @@ class DinneriumModuleTest {
     @BeforeEach
     void setUp() {
         mapper = new ObjectMapper();
-        //mapper.registerModule(new DinneriumModule());
+        mapper.registerModule(new DinneriumModule());
     }
 
     @Test
@@ -141,12 +133,11 @@ class DinneriumModuleTest {
 
     @Test
     public void testDeserializers() {
-        mapper.registerModule(new DinneriumModule());
         try {
             User jsonUser = mapper.readValue(expectedUserString, User.class);
             User expectedUser = createExceptedUser();
             compareUsers(expectedUser, jsonUser);
-
+            assertTrue(true);
         } catch (IOException e) {
             fail("Could not deserialize object from file correctly");
         }

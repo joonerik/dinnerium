@@ -1,53 +1,55 @@
 {
   "ingredientContainer" : {
-    "container" : [ {
+    "ingredients" : [ {
       "quantity" : {
-        "amount" : 1.0,
-        "unit" : "stk"
+        "unit" : "stk",
+        "amount" : 1.0
       },
       "name" : "eggs"
     }, {
       "quantity" : {
-        "amount" : 2.0,
-        "unit" : "dl"
+        "unit" : "dl",
+        "amount" : 2.0
       },
       "name" : "milk"
     }, {
       "quantity" : {
-        "amount" : 3.0,
-        "unit" : "gram"
+        "unit" : "gram",
+        "amount" : 3.0
       },
       "name" : "sugar"
-    } ],
-    "containerSize" : 3
+    }, {
+      "quantity" : {
+        "unit" : "dl",
+        "amount" : 2.0
+      },
+      "name" : "sdsd"
+    } ]
   },
   "recipeContainer" : {
-    "container" : [ {
+    "recipes" : [ {
       "ingredientContainer" : {
-        "container" : [ {
+        "ingredients" : [ {
           "quantity" : {
-            "amount" : 400.0,
-            "unit" : "gram"
+            "unit" : "gram",
+            "amount" : 400.0
           },
           "name" : "minced meat"
         }, {
           "quantity" : {
-            "amount" : 200.0,
-            "unit" : "gram"
+            "unit" : "gram",
+            "amount" : 200.0
           },
           "name" : "cheese"
         }, {
           "quantity" : {
-            "amount" : 9.0,
-            "unit" : "stk"
+            "unit" : "stk",
+            "amount" : 9.0
           },
           "name" : "lasagne plates"
-        } ],
-        "containerSize" : 3
+        } ]
       },
-      "recipeInstructions" : {
-        "instructions" : [ "cook", "bake", "eat" ]
-      },
+      "recipeInstructions" : [ "cook", "bake", "eat" ],
       "metadata" : {
         "author" : "bestUsername",
         "portion" : 4.0,
@@ -58,24 +60,21 @@
       }
     }, {
       "ingredientContainer" : {
-        "container" : [ {
+        "ingredients" : [ {
           "quantity" : {
-            "amount" : 2.0,
-            "unit" : "stk"
+            "unit" : "stk",
+            "amount" : 2.0
           },
           "name" : "eggs"
         }, {
           "quantity" : {
-            "amount" : 3.0,
-            "unit" : "dl"
+            "unit" : "dl",
+            "amount" : 3.0
           },
           "name" : "tikka"
-        } ],
-        "containerSize" : 2
+        } ]
       },
-      "recipeInstructions" : {
-        "instructions" : [ "mix", "doStuff", "serve" ]
-      },
+      "recipeInstructions" : [ "mix", "doStuff", "serve" ],
       "metadata" : {
         "author" : "bestUsername",
         "portion" : 2.0,
@@ -84,8 +83,7 @@
         "recipeDescription" : "Describing description of tikka masala",
         "minutes" : 60
       }
-    } ],
-    "containerSize" : 2
+    } ]
   },
   "username" : "bestUsername"
 }

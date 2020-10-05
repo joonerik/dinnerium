@@ -18,6 +18,7 @@ public class HandlePersistency {
      */
     public static void writeJsonToFile(User user) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new DinneriumModule());
         mapper
             .writerWithDefaultPrettyPrinter()
             .writeValue(new File("src/main/data.json"), user);

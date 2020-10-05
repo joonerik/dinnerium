@@ -46,8 +46,7 @@ class RecipeDeserializer extends JsonDeserializer<Recipe> {
                 return null;
             }
 
-            JsonNode recipeInstructionsNode =
-                objectNode.get("recipeInstructions").get("instructions");
+            JsonNode recipeInstructionsNode = objectNode.get("recipeInstructions");
             RecipeInstructionsDeserializer rid = new RecipeInstructionsDeserializer();
             if (recipeInstructionsNode instanceof ArrayNode) {
                 ri = rid.deserialize(recipeInstructionsNode);
