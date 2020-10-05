@@ -14,5 +14,7 @@
     -fx-background-radius: 10;
 }
 .feedback-text{
-
+    -fx-font-size: 20px;
+    -fx-font-family: monospace;
+    -fx-font-weight: bold;
 }
