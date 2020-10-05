@@ -121,7 +121,7 @@ class DinneriumModuleTest {
     @BeforeEach
     void setUp() {
         mapper = new ObjectMapper();
-        mapper.registerModule(new DinneriumModule());
+        //mapper.registerModule(new DinneriumModule());
     }
 
     @Test
@@ -132,7 +132,7 @@ class DinneriumModuleTest {
 
         try {
             String serializedObject =
-                mapper.writerWithDefaultPrettyPrinter().writeValueAsString(expectedUser);
+                mapper.writeValueAsString(expectedUser).replaceAll("\\s+", "");
             assertEquals(expectedUserString.replaceAll("\\s+", ""), serializedObject);
         } catch (IOException e) {
             fail("User is not written to file as it is supposed to");
@@ -141,6 +141,7 @@ class DinneriumModuleTest {
 
     @Test
     public void testDeserializers() {
+        mapper.registerModule(new DinneriumModule());
         try {
             User jsonUser = mapper.readValue(expectedUserString, User.class);
             User expectedUser = createExceptedUser();
@@ -154,22 +155,20 @@ class DinneriumModuleTest {
     private void compareUsers(User expectedUser, User u2) {
         assertEquals(expectedUser.getUsername(), u2.getUsername());
         compareIngredientContainers(expectedUser.getIngredientContainer(),
-            u2.getIngredientContainer());
+            u2.getIngredientContainer(), expectedUser.getIngredientContainer().getContainerSize());
         compareRecipeContainers(expectedUser.getRecipeContainer(), u2.getRecipeContainer());
     }
 
     private void compareIngredientContainers(IngredientContainer expectedIngredientContainer,
-                                             IngredientContainer ic2) {
+                                             IngredientContainer ic2, int containerSize) {
         Iterator<Ingredient> expectedIterator =
             expectedIngredientContainer.getContainer().iterator();
         Iterator<Ingredient> it2 = ic2.getContainer().iterator();
 
-        assertTrue(it2.hasNext());
-        compareIngredient(expectedIterator.next(), it2.next());
-        assertTrue(it2.hasNext());
-        compareIngredient(expectedIterator.next(), it2.next());
-        assertTrue(it2.hasNext());
-        compareIngredient(expectedIterator.next(), it2.next());
+        for (int i = 0; i < containerSize; i++) {
+            assertTrue(it2.hasNext());
+            compareIngredient(expectedIterator.next(), it2.next());
+        }
         assertFalse(it2.hasNext());
     }
 
@@ -184,12 +183,18 @@ class DinneriumModuleTest {
         compareRecipe(expectedIterator.next(), it2.next());
         assertFalse(it2.hasNext());
     }
+
     private void compareRecipe(Recipe expectedRecipe, Recipe r2) {
-        compareIngredientContainers(expectedRecipe.getIngredientContainer(), r2.getIngredientContainer());
-        compareRecipeInstructions(expectedRecipe.getRecipeInstructions(), r2.getRecipeInstructions());
+        compareIngredientContainers(expectedRecipe.getIngredientContainer(),
+            r2.getIngredientContainer(),
+            expectedRecipe.getIngredientContainer().getContainerSize());
+        compareRecipeInstructions(expectedRecipe.getRecipeInstructions(),
+            r2.getRecipeInstructions());
         compareMetadata(expectedRecipe.getMetadata(), r2.getMetadata());
     }
-    private void compareRecipeInstructions(RecipeInstructions expectedInstructions, RecipeInstructions ri2) {
+
+    private void compareRecipeInstructions(RecipeInstructions expectedInstructions,
+                                           RecipeInstructions ri2) {
         Iterator<String> expectedIterator = expectedInstructions.iterator();
         Iterator<String> it2 = ri2.iterator();
 
@@ -201,6 +206,7 @@ class DinneriumModuleTest {
         assertEquals(expectedIterator.next(), it2.next());
         assertFalse(it2.hasNext());
     }
+
     private void compareMetadata(Metadata expectedMetadata, Metadata m2) {
         assertEquals(expectedMetadata.getAuthor(), m2.getAuthor());
         assertEquals(expectedMetadata.getImage(), m2.getImage());
