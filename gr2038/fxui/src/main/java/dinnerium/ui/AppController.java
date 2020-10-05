@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
@@ -250,6 +251,7 @@ public class AppController {
 
         pane.getChildren().addAll(recipeName, childPane);
         pane.setLayoutX(10);
+        pane.setCursor(Cursor.HAND);
         recipesAnchorPane.getChildren().add(pane);
         pane.setLayoutY(13 + 180 * (recipesAnchorPane.getChildren().size() - 1));
         if (recipesAnchorPane.getChildren().size() > 3) {
