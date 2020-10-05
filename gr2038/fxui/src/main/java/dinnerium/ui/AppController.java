@@ -159,7 +159,7 @@ public class AppController {
             String unit = (newRecipe ? newRecipeUnitComboBox : unitComboBox)
                 .getSelectionModel()
                 .getSelectedItem();
-            String name = (newRecipe ? newRecipeNameInput : nameInput).getText();
+            String name = (newRecipe ? newRecipeNameIngredientInput : nameInput).getText();
             Ingredient i = new Ingredient(new Quantity(Double.valueOf(amountText), unit), name);
 
             if (newRecipe) {
