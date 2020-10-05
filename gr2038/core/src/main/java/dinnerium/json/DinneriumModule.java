@@ -11,7 +11,7 @@ import dinnerium.core.RecipeInstructions;
 import dinnerium.core.User;
 
 @SuppressWarnings("serial")
-public class DinneriumModule extends SimpleModule {
+class DinneriumModule extends SimpleModule {
 
     private static final String NAME = "DinneriumModule";
 

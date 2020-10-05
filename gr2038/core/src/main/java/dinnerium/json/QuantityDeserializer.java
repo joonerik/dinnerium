@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.node.TextNode;
 import dinnerium.core.Quantity;
 import java.io.IOException;
 
-public class QuantityDeserializer extends JsonDeserializer<Quantity> {
+class QuantityDeserializer extends JsonDeserializer<Quantity> {
 
     @Override
     public Quantity deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException {
@@ -25,8 +25,8 @@ public class QuantityDeserializer extends JsonDeserializer<Quantity> {
     Quantity deserialize(JsonNode jsonNode) {
         if (jsonNode instanceof ObjectNode) {
             ObjectNode objectNode = (ObjectNode) jsonNode;
-            Double amount = null;
-            String unit = null;
+            Double amount;
+            String unit;
             
             JsonNode amountNode = objectNode.get("amount");
             if (amountNode instanceof DoubleNode) {

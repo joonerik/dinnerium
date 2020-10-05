@@ -1,7 +1,6 @@
 package dinnerium.json;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
@@ -12,12 +11,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class RecipeInstructionsDeserializer extends JsonDeserializer<RecipeInstructions> {
+class RecipeInstructionsDeserializer extends JsonDeserializer<RecipeInstructions> {
 
     @Override
-    public RecipeInstructions deserialize(JsonParser parser,
-                                          DeserializationContext ctxt)
-            throws IOException, JsonProcessingException {
+    public RecipeInstructions deserialize(JsonParser parser, DeserializationContext ctxt)
+                throws IOException {
         TreeNode treeNode = parser.getCodec().readTree(parser);
         return deserialize((JsonNode) treeNode);
     }
