@@ -20,8 +20,9 @@ public class RecipeInstructions implements Iterable<String> {
      *         if the instruction is empty
      */
     public void setInstruction(String instruction) {
-        if (instruction != null) {
+        if (instruction != null || instruction.isEmpty()) {
             instructions.add(instruction);
+            System.out.println("he");
         } else {
             throw new IllegalArgumentException("String is null!");
         }

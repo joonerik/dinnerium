@@ -182,7 +182,13 @@ public class AppController {
 
     @FXML
     private void handleAddInstruction() {
-        this.newRecipeInstructions.add(instructionTextArea.getText());
+        if (!instructionTextArea.getText().isEmpty()) {
+            this.newRecipeInstructions.add(instructionTextArea.getText());
+        } else {
+            // errorHandling!!
+            System.out.println("lel");
+            FeedbackHandler.showMessage(msgPane, "Instruction empty", 'E');
+        }
     }
 
     @FXML
