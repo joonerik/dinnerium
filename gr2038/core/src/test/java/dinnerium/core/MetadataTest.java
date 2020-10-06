@@ -23,32 +23,97 @@ class MetadataTest {
     }
 
     @Test
-    void getAuthor() {
+    void testGetAuthor() {
         assertEquals(md.getAuthor(), "Bakemester Harepus");
     }
 
     @Test
-    void getPortion() {
+    void testGetPortion() {
         assertEquals(md.getPortion(), 5.0);
     }
 
     @Test
-    void getImage() {
+    void testGetImage() {
         assertEquals(md.getImage(), "pepper.png");
     }
 
     @Test
-    void getRecipeName() {
+    void testGetRecipeName() {
         assertEquals(md.getRecipeName(), "Pepperkaker");
     }
 
     @Test
-    void getRecipeDescription() {
+    void testGetRecipeDescription() {
         assertEquals(md.getRecipeDescription(), "...");
     }
 
     @Test
-    void getMinutes() {
+    void testGetMinutes() {
         assertEquals(md.getMinutes(), 20);
+    }
+
+    @Test
+    void testValidatePortion() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Metadata metadata = new Metadata(
+                "Bakemester Harepus",
+                0.0,
+                "pepper.png",
+                "Pepperkaker",
+                "...",
+                20
+            );
+        });
+    }
+
+    @Test
+    void testValidateMinutes() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Metadata metadata = new Metadata(
+                "Bakemester Harepus",
+                5.0,
+                "pepper.png",
+                "Pepperkaker",
+                "...",
+                0
+            );
+        });
+    }
+
+    @Test
+    void testValidateString() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Metadata metadata = new Metadata(
+                "",
+                5.0,
+                "pepper.png",
+                "Pepperkaker",
+                "...",
+                20
+            );
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Metadata metadata = new Metadata(
+                "Bakemester Harepus",
+                5.0,
+                "",
+                "Pepperkaker",
+                "...",
+                20
+            );
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Metadata metadata = new Metadata(
+                "Bakemester Harepus",
+                5.0,
+                "pepper.png",
+                "",
+                "...",
+                20
+            );
+        });
+
     }
 }
