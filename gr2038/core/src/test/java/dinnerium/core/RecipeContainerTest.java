@@ -33,6 +33,16 @@ class RecipeContainerTest {
     Recipe recipe1 = new Recipe(ic1, recipeInstructions1, metadata1);
     Recipe recipe2 = new Recipe(ic2, recipeInstructions2, metadata2);
 
+    @Test
+    void testCollection() {
+        Collection<Recipe> collection = new ArrayList<Recipe>() {{
+            add(recipe1);
+        }};
+
+        RecipeContainer rc = new RecipeContainer(collection);
+
+        assertEquals(rc.getContainer(), collection);
+    }
 
     @Test
     public void testSetCollection() {
