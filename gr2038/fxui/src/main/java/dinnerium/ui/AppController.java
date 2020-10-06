@@ -218,14 +218,13 @@ public class AppController {
                 newRecipeRecipeName.getText(),
                 newRecipeRecipeDescription.getText(),
                 minutes);
+
             IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
             RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
-
             Recipe recipe = new Recipe(ic, rc, md);
             this.user.getRecipeContainer().addItem(recipe);
             updateRecipeAnchorPane(recipe);
             clearRecipeFields();
-
             try {
                 HandlePersistency.writeJsonToFile(this.user);
 
@@ -273,12 +272,12 @@ public class AppController {
         childPane.setLayoutY(30);
         childPane.getStyleClass().add("child-pane");
 
-        Image image = new Image(recipe.getMetadata().getImage());
+        /*Image image = new Image(recipe.getMetadata().getImage());
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(105);
         imageView.setFitWidth(105);
         imageView.setLayoutX(10);
-        imageView.setLayoutY(10);
+        imageView.setLayoutY(10);*/
 
         //Endres etterhvert til å regne ut hvor mange ingredienser man faktisk mangler
         //utifra hva man har i fridge
@@ -296,8 +295,9 @@ public class AppController {
         recipeDescription.setLayoutX(132);
         recipeDescription.setLayoutY(52);
 
-        childPane.getChildren().addAll(imageView, recipeInfo, recipeDescription);
-
+        childPane.getChildren().addAll(/*imageView, */recipeInfo, recipeDescription);
+        System.out.println("ic: " + recipe.getIngredientContainer().getContainerSize());
+        System.out.println("inst: " + recipe.getRecipeInstructions().getInstructions().size());
         pane.getChildren().addAll(recipeName, childPane);
         pane.setLayoutX(10);
         pane.setCursor(Cursor.HAND);
@@ -341,6 +341,7 @@ public class AppController {
         ingredientsHeader.setLayoutX(40);
 
         Iterator<Ingredient> ingredientsIt = recipe.getIngredientContainer().iterator();
+        System.out.println(ingredientsIt.hasNext());
         Text ingredients = new Text(ingredientsIt.hasNext() ? "1. " + ingredientsIt.next() : "");
         int i = 2;
         while (ingredientsIt.hasNext()) {

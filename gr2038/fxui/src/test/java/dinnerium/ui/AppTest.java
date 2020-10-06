@@ -68,6 +68,10 @@ public class AppTest extends ApplicationTest {
         assertTrue(lookup("#fridgePane").query().isVisible());
         clickOn("#yourRecipesText");
         assertTrue(lookup("#recipesPane").query().isVisible());
+        assertTrue(lookup("#recipesScrollPane").query().isVisible());
+        clickOn("#newRecipeSubMenuText");
+        assertTrue(lookup("#newRecipePane").query().isVisible());
+        assertFalse(lookup("#recipesScrollPane").query().isVisible());
         clickOn("#settingsText");
         assertTrue(lookup("#settingsPane").query().isVisible());
     }
