@@ -6,7 +6,7 @@ stages:
 core-build:
   stage: build
   script: 
-    - cd gr2038/
+    - cd gr2038/core/
     - mvn package
     - cat core/target/site/jacoco/index.html
   artifacts:
