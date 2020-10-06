@@ -1,4 +1,4 @@
-image: mrosewdy/java14_testfx_monocle_wdy:latest
+image: maven:mrosewdy/java14_testfx_monocle_wdy:latest
 
 variables:
   MAVEN_OPTS: "-Djava.awt.headless=true -Dmaven.repo.local=.m2/repository"
