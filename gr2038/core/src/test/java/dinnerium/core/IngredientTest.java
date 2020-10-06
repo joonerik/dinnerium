@@ -60,4 +60,10 @@ public class IngredientTest {
         });
     }
 
+    @Test
+    void testToString() {
+        String correct = "milk " + i.getQuantity().toString();
+        assertEquals(i.toString(), correct);
+    }
+
 }
