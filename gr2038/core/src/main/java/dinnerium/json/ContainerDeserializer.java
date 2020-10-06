@@ -34,15 +34,9 @@ class ContainerDeserializer extends JsonDeserializer<Container> {
 
         if (jsonNode instanceof  ObjectNode) {
             ObjectNode objectNode = (ObjectNode) jsonNode;
-            boolean notFound = true;
-            for (JsonNode element : objectNode.get("container")) {
-                if (element.get("ingredientContainer") != null) {
-                    notFound = false;
-                }
-            }
-            if (notFound) {
+            if (objectNode.get("ingredients") != null) {
                 IngredientContainer ingredients = new IngredientContainer();
-                JsonNode ingredientsNode = objectNode.get("container");
+                JsonNode ingredientsNode = objectNode.get("ingredients");
                 if (ingredientsNode instanceof ArrayNode) {
                     for (JsonNode elementNode : (ingredientsNode)) {
                         Ingredient ingredient = ingredientDeserializer.deserialize(elementNode);
@@ -56,7 +50,7 @@ class ContainerDeserializer extends JsonDeserializer<Container> {
                 }
             } else {
                 RecipeContainer recipes = new RecipeContainer();
-                JsonNode recipesNode = objectNode.get("container");
+                JsonNode recipesNode = objectNode.get("recipes");
                 if (recipesNode instanceof ArrayNode) {
                     for (JsonNode elementNode : recipesNode) {
                         Recipe r = recipeDeserializer.deserialize(elementNode);

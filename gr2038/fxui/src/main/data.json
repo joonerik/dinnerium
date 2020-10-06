@@ -1,193 +1,89 @@
 {
   "ingredientContainer" : {
-    "container" : [ {
+    "ingredients" : [ {
       "quantity" : {
-        "amount" : 1.0,
-        "unit" : "stk"
+        "unit" : "stk",
+        "amount" : 1.0
       },
-      "name" : "item"
+      "name" : "eggs"
     }, {
       "quantity" : {
-        "amount" : 2.0,
-        "unit" : "dl"
+        "unit" : "dl",
+        "amount" : 2.0
       },
-      "name" : "itemto"
+      "name" : "milk"
     }, {
       "quantity" : {
-        "amount" : 3.0,
-        "unit" : "gram"
+        "unit" : "gram",
+        "amount" : 3.0
       },
-      "name" : "itemtre"
-    } ],
-    "containerSize" : 3
+      "name" : "sugar"
+    }, {
+      "quantity" : {
+        "unit" : "dl",
+        "amount" : 2.0
+      },
+      "name" : "sdsd"
+    } ]
   },
   "recipeContainer" : {
-    "container" : [ {
+    "recipes" : [ {
       "ingredientContainer" : {
-        "container" : [ {
+        "ingredients" : [ {
           "quantity" : {
-            "amount" : 2.0,
-            "unit" : "stk"
+            "unit" : "gram",
+            "amount" : 400.0
           },
-          "name" : "tikka"
+          "name" : "minced meat"
         }, {
           "quantity" : {
-            "amount" : 3.0,
-            "unit" : "dl"
+            "unit" : "gram",
+            "amount" : 200.0
           },
-          "name" : "tikkamasala"
-        } ],
-        "containerSize" : 2
-      },
-      "recipeInstructions" : [ "bland", "bland enda mer" ],
-      "metadata" : {
-        "author" : "name",
-        "portion" : 2.0,
-        "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
-        "recipeName" : "recipeName",
-        "recipeDescription" : "description",
-        "minutes" : 8
-      }
-    }, {
-      "ingredientContainer" : {
-        "container" : [ {
-          "quantity" : {
-            "amount" : 2.0,
-            "unit" : "stk"
-          },
-          "name" : "tikka"
+          "name" : "cheese"
         }, {
           "quantity" : {
-            "amount" : 3.0,
-            "unit" : "dl"
+            "unit" : "stk",
+            "amount" : 9.0
           },
-          "name" : "tikkamasala"
-        } ],
-        "containerSize" : 2
+          "name" : "lasagne plates"
+        } ]
       },
-      "recipeInstructions" : [ "bland", "bland enda mer" ],
+      "recipeInstructions" : [ "cook", "bake", "eat" ],
       "metadata" : {
-        "author" : "name",
-        "portion" : 2.0,
-        "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
-        "recipeName" : "recipe2Name",
-        "recipeDescription" : "description",
-        "minutes" : 6
-      }
-    }, {
-      "ingredientContainer" : {
-        "container" : [ {
-          "quantity" : {
-            "amount" : 1.0,
-            "unit" : "stk"
-          },
-          "name" : "joon"
-        } ],
-        "containerSize" : 1
-      },
-      "recipeInstructions" : [ "mixing\t", "mixing\tand triksing" ],
-      "metadata" : {
-        "author" : "name",
-        "portion" : 2.0,
-        "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
-        "recipeName" : "recipeName",
-        "recipeDescription" : "description",
-        "minutes" : 2
-      }
-    }, {
-      "ingredientContainer" : {
-        "container" : [ {
-          "quantity" : {
-            "amount" : 1.0,
-            "unit" : "stk"
-          },
-          "name" : "joon"
-        } ],
-        "containerSize" : 1
-      },
-      "recipeInstructions" : [ "mixing\t", "mixing\tand triksing" ],
-      "metadata" : {
-        "author" : "name",
-        "portion" : 2.0,
-        "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
-        "recipeName" : "recipeName",
-        "recipeDescription" : "description",
-        "minutes" : 4
-      }
-    }, {
-      "ingredientContainer" : {
-        "container" : [ {
-          "quantity" : {
-            "amount" : 400.0,
-            "unit" : "gram"
-          },
-          "name" : "kjottdeig"
-        }, {
-          "quantity" : {
-            "amount" : 200.0,
-            "unit" : "gram"
-          },
-          "name" : "ost"
-        }, {
-          "quantity" : {
-            "amount" : 9.0,
-            "unit" : "stk"
-          },
-          "name" : "lasagneplater"
-        } ],
-        "containerSize" : 3
-      },
-      "recipeInstructions" : [ "stek", "bak", "spis" ],
-      "metadata" : {
-        "author" : "username",
+        "author" : "bestUsername",
         "portion" : 4.0,
         "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
         "recipeName" : "Lasagne",
         "recipeDescription" : "God og smakfull lasagne",
-        "minutes" : 60
+        "minutes" : 90
       }
     }, {
       "ingredientContainer" : {
-        "container" : [ {
+        "ingredients" : [ {
           "quantity" : {
-            "amount" : 400.0,
-            "unit" : "gram"
+            "unit" : "stk",
+            "amount" : 2.0
           },
-          "name" : "kjottdeig"
+          "name" : "eggs"
         }, {
           "quantity" : {
-            "amount" : 2.0,
-            "unit" : "dl"
+            "unit" : "dl",
+            "amount" : 3.0
           },
-          "name" : "ost"
-        } ],
-        "containerSize" : 2
+          "name" : "tikka"
+        } ]
       },
-      "recipeInstructions" : [ "stek", "spis" ],
+      "recipeInstructions" : [ "mix", "doStuff", "serve" ],
       "metadata" : {
-        "author" : "username",
+        "author" : "bestUsername",
         "portion" : 2.0,
         "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
-        "recipeName" : "taco",
-        "recipeDescription" : "nam",
-        "minutes" : 20
+        "recipeName" : "Tikka masala",
+        "recipeDescription" : "Describing description of tikka masala",
+        "minutes" : 60
       }
-    }, {
-      "ingredientContainer" : {
-        "container" : [ ],
-        "containerSize" : 0
-      },
-      "recipeInstructions" : [ ],
-      "metadata" : {
-        "author" : "username",
-        "portion" : 2.0,
-        "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
-        "recipeName" : "baggis",
-        "recipeDescription" : "oui",
-        "minutes" : 30
-      }
-    } ],
-    "containerSize" : 7
+    } ]
   },
-  "username" : "testuser"
+  "username" : "bestUsername"
 }

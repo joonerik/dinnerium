@@ -16,11 +16,10 @@ class RecipeInstructionsSerializer extends JsonSerializer<RecipeInstructions> {
             JsonGenerator jsonGen,
             SerializerProvider serializerProvider) throws IOException {
 
-        jsonGen.writeStartObject();
+        jsonGen.writeStartArray();
         for (String instruction : recipeInstructions) {
-            jsonGen.writeStringField("recipeInstructions", instruction);
+            jsonGen.writeString(instruction);
         }
-
-        jsonGen.writeEndObject();
+        jsonGen.writeEndArray();
     }
 }
