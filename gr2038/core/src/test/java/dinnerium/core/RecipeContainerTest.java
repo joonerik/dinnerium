@@ -36,23 +36,17 @@ class RecipeContainerTest {
 
     @Test
     public void testSetCollection() {
-        assertThrows(IllegalArgumentException.class, new Executable() {
-            @Override
-            public void execute() throws Throwable {
+        assertThrows(IllegalArgumentException.class, () -> {
                 RecipeContainer rc = new RecipeContainer();
                 rc.setCollection(new ArrayList<>());
-            }
         });
     }
 
     @Test
     public void testAddItem() {
-        assertThrows(IllegalArgumentException.class, new Executable() {
-            @Override
-            public void execute() throws Throwable {
+        assertThrows(IllegalArgumentException.class, () -> {
                 RecipeContainer rc = new RecipeContainer();
                 rc.addItem(null);
-            }
         });
     }
 
