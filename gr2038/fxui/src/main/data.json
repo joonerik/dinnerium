@@ -20,10 +20,10 @@
       "name" : "sugar"
     }, {
       "quantity" : {
-        "unit" : "dl",
-        "amount" : 2.0
+        "unit" : "stk",
+        "amount" : 3.0
       },
-      "name" : "sdsd"
+      "name" : "new item"
     } ]
   },
   "recipeContainer" : {

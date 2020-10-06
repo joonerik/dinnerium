@@ -18,12 +18,6 @@
         "amount" : 3.0
       },
       "name" : "sugar"
-    }, {
-      "quantity" : {
-        "unit" : "dl",
-        "amount" : 2.0
-      },
-      "name" : "sdsd"
     } ]
   },
   "recipeContainer" : {

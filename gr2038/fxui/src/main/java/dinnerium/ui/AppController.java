@@ -451,6 +451,5 @@ public class AppController {
 
     void setUser(User user) {
         this.user = user;
-        showUserRecipes();
     }
 }
