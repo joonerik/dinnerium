@@ -222,6 +222,7 @@ public class AppController {
             IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
             RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
             Recipe recipe = new Recipe(ic, rc, md);
+            //Den får ikke med Ic og Rc inn i user sin recipe container
             this.user.getRecipeContainer().addItem(recipe);
             updateRecipeAnchorPane(recipe);
             clearRecipeFields();
@@ -296,8 +297,6 @@ public class AppController {
         recipeDescription.setLayoutY(52);
 
         childPane.getChildren().addAll(/*imageView, */recipeInfo, recipeDescription);
-        System.out.println("ic: " + recipe.getIngredientContainer().getContainerSize());
-        System.out.println("inst: " + recipe.getRecipeInstructions().getInstructions().size());
         pane.getChildren().addAll(recipeName, childPane);
         pane.setLayoutX(10);
         pane.setCursor(Cursor.HAND);
@@ -341,7 +340,6 @@ public class AppController {
         ingredientsHeader.setLayoutX(40);
 
         Iterator<Ingredient> ingredientsIt = recipe.getIngredientContainer().iterator();
-        System.out.println(ingredientsIt.hasNext());
         Text ingredients = new Text(ingredientsIt.hasNext() ? "1. " + ingredientsIt.next() : "");
         int i = 2;
         while (ingredientsIt.hasNext()) {

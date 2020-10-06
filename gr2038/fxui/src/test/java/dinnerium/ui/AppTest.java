@@ -6,12 +6,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Iterator;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
@@ -24,6 +24,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class AppTest extends ApplicationTest {
+
+    @BeforeClass
+    public static void headless() {
+        if (Boolean.parseBoolean(System.getProperty("gitlab-ci", "false"))) {
+            GitlabCiSupport.headless();
+        }
+    }
 
     private AppController controller;
 
@@ -111,6 +118,13 @@ public class AppTest extends ApplicationTest {
         assertEquals("new item", newIngredient.getName());
         assertEquals("stk", newIngredient.getQuantity().getUnit());
         assertEquals(3.0, newIngredient.getQuantity().getAmount());
+    }
+
+    @Test
+    public void testShowRecipeInformation() {
+        clickOn("#yourRecipesText");
+        clickOn(lookup("#recipesAnchorPane").queryParent().getChildrenUnmodifiable().get(0));
+        assertEquals(1 , lookup("#recipesAnchorPane").queryParent().getChildrenUnmodifiable().size());
     }
 
     private boolean compareIngredients(Ingredient expected, Ingredient actual) {
