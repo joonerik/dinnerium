@@ -9,9 +9,12 @@ import dinnerium.core.RecipeContainer;
 import dinnerium.core.RecipeInstructions;
 import dinnerium.core.User;
 import dinnerium.json.HandlePersistency;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -155,7 +158,11 @@ public class AppController {
         updateTableView();
         // writes our new ingredient to the file
         try {
-            HandlePersistency.writeJsonToFile(user);
+//            HandlePersistency.writeJsonToFile(user);
+            Path path = Paths.get(
+                "../core/src/main/resources/dinnerium/storage/" + user.getUsername() + ".json");
+            HandlePersistency.writeUser(user,
+                new FileWriter(path.toFile(), StandardCharsets.UTF_8));
         } catch (Exception e) {
             throw new IllegalArgumentException("Could not write userdata to file");
         }
@@ -242,9 +249,12 @@ public class AppController {
             updateRecipeAnchorPane(recipe);
             clearRecipeFields();
             try {
-                HandlePersistency.writeJsonToFile(this.user);
+                Path path = Paths.get(
+                    "../core/src/main/resources/dinnerium/storage/" + user.getUsername() + ".json");
+                HandlePersistency.writeUser(user,
+                    new FileWriter(path.toFile(), StandardCharsets.UTF_8));
 
-            } catch (Exception e) {
+            } catch (IOException e) {
                 FeedbackHandler.showMessage(msgPane, e.getMessage(), FeedbackHandler.ERROR);
             }
         } catch (IllegalArgumentException e) {
