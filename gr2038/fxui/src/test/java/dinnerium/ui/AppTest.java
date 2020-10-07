@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
+
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -114,7 +116,51 @@ public class AppTest extends ApplicationTest {
     public void testShowRecipeInformation() {
         clickOn("#yourRecipesText");
         clickOn(lookup("#recipesAnchorPane").queryParent().getChildrenUnmodifiable().get(0));
-        assertEquals(1 , lookup("#recipesAnchorPane").queryParent().getChildrenUnmodifiable().size());
+        assertEquals(1,
+            lookup("#recipesAnchorPane").queryParent().getChildrenUnmodifiable().size());
+        clickOn("#hideRecipeInformationButton");
+        assertEquals(2,
+            lookup("#recipesAnchorPane").queryParent().getChildrenUnmodifiable().size());
+    }
+
+    @Test
+    public void testAddRecipe() {
+        clickOn("#yourRecipesText");
+        clickOn("#newRecipeSubMenuText");
+        clickOn("#newRecipeRecipeName").write("Taco");
+        clickOn("#newRecipeRecipeDescription").write("Describing description");
+        clickOn("#newRecipePortions").write("2.5");
+        clickOn("#newRecipeMinutes").write("20");
+        clickOn("#newRecipeNameIngredientInput").write("minced meat");
+        clickOn("#newRecipeAmountInput").write("400");
+        clickOn("#newRecipeUnitComboBox");
+        type(KeyCode.DOWN);
+        type(KeyCode.DOWN);
+        type(KeyCode.DOWN);
+        type(KeyCode.ENTER);
+        clickOn("#newRecipeAddButton");
+        assertEquals(1, controller.getNewRecipeIngredients().size());
+        clickOn("#instructionTextArea").write("cook the meat");
+        clickOn("#newRecipeAddInstruction");
+        clickOn("#instructionTextArea").write("serve");
+        clickOn("#newRecipeAddInstruction");
+        assertEquals(2, controller.getNewRecipeInstructions().size());
+        clickOn("#addRecipeButton");
+    }
+
+    @Test
+    public void testFeedbackHandling() {
+        assertFalse(lookup("#msgPane").query().isVisible());
+        assertEquals(0, lookup("#msgPane").query().getStyleClass().size());
+        clickOn("#fridgeText");
+        clickOn("#nameInput").write("illegal amount");
+        clickOn("#amountInput").write("tre og en halv");
+        clickOn("#unitComboBox");
+        type(KeyCode.DOWN);
+        type(KeyCode.ENTER);
+        clickOn("#addButton");
+        assertTrue(lookup("#msgPane").query().isVisible());
+        assertTrue(lookup("#msgPane").query().getStyleClass().contains("error"));
     }
 
     private boolean compareIngredients(Ingredient expected, Ingredient actual) {

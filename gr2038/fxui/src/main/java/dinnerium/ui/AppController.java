@@ -12,6 +12,7 @@ import dinnerium.json.HandlePersistency;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -190,7 +191,6 @@ public class AppController {
             instructionTextArea.clear();
         } else {
             // errorHandling!!
-            System.out.println("lel");
             FeedbackHandler.showMessage(msgPane, "Instruction empty", 'E');
         }
     }
@@ -220,8 +220,10 @@ public class AppController {
                 newRecipeRecipeDescription.getText(),
                 minutes);
 
-            IngredientContainer ic = new IngredientContainer(new ArrayList<>(this.newRecipeIngredients));
-            RecipeInstructions rc = new RecipeInstructions(new ArrayList<>(this.newRecipeInstructions));
+            IngredientContainer ic =
+                new IngredientContainer(new ArrayList<>(this.newRecipeIngredients));
+            RecipeInstructions rc =
+                new RecipeInstructions(new ArrayList<>(this.newRecipeInstructions));
             Recipe recipe = new Recipe(ic, rc, md);
 
             this.user.getRecipeContainer().addItem(recipe);
@@ -253,9 +255,6 @@ public class AppController {
     private void showUserRecipes() {
         for (Recipe recipe : user.getRecipeContainer()) {
             updateRecipeAnchorPane(recipe);
-            System.out.println("instruk " + recipe.getRecipeInstructions().getInstructions());
-            System.out.println("ingr: " + recipe.getIngredientContainer().getContainer());
-            System.out.println("name: " + recipe.getMetadata().getRecipeName());
         }
     }
 
@@ -373,6 +372,7 @@ public class AppController {
         instructions.setLayoutX(250);
 
         Button hideRecipeInformation = new Button();
+        hideRecipeInformation.setId("hideRecipeInformationButton");
         hideRecipeInformation.setText("Hide recipe");
         hideRecipeInformation.setLayoutY(20);
         hideRecipeInformation.setLayoutX(402);
@@ -448,11 +448,21 @@ public class AppController {
         ingredientTableView.setItems(observableList);
     }
 
+
+    //Methods for testing the app controller.
     User getUser() {
         return this.user;
     }
 
     void setUser(User user) {
         this.user = user;
+    }
+
+    List<Ingredient> getNewRecipeIngredients() {
+        return new ArrayList<>(newRecipeIngredients);
+    }
+
+    List<String> getNewRecipeInstructions() {
+        return new ArrayList<>(newRecipeInstructions);
     }
 }
