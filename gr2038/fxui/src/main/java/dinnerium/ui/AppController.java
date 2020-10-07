@@ -108,7 +108,6 @@ public class AppController {
     void initialize() throws Exception {
         recipesListView.setItems(newRecipeIngredients);
         instructionsListView.setItems(newRecipeInstructions);
-        setup();
     }
 
     // need to handle throws from init!!
@@ -122,7 +121,7 @@ public class AppController {
 
         try {
             //Here we need to make a pop-up for the user to write in username when app fires.
-            this.user = HandlePersistency.loadDataFromFile();
+            this.user = HandlePersistency.loadDataFromFile(user.getUsername());
         } catch (IOException e) {
             //Here we need to make a popup for the user to create a new User, e.g write in username.
             this.user = new User(new IngredientContainer(), new RecipeContainer(), "feil");
@@ -133,7 +132,8 @@ public class AppController {
 
     @FXML
     private void handleLogin() {
-
+        user.setUsername(usernameInput.getText());
+        setup();
     }
 
     //Adds the ingreident to the ingreidentContainer first and then updates the tableview.
