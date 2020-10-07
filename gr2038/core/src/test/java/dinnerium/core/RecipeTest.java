@@ -17,7 +17,7 @@ class RecipeTest {
 
     @BeforeEach
     public void setUp() {
-        Quantity q = new Quantity(1000.0, "gram");
+        Quantity q = new Quantity(1000.0, "g");
         Ingredient i = new Ingredient(q, "Pepper");
         Collection<String> c1 = new ArrayList<>();
         Collection<Ingredient> c2 = new ArrayList<>();
