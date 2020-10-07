@@ -10,7 +10,7 @@ public class Quantity {
 
     private static final Map<String, Collection<String>> units = Map.of(
         "volume", new ArrayList<>(Arrays.asList(
-            "l","dl", "ts", "ss")),
+            "l", "dl", "ts", "ss")),
         "weight", new ArrayList<>(Arrays.asList(
             "g", "kg")),
         "count", new ArrayList<>(Arrays.asList(
