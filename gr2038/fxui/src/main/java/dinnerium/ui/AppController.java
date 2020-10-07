@@ -10,7 +10,9 @@ import dinnerium.core.RecipeInstructions;
 import dinnerium.core.User;
 import dinnerium.json.HandlePersistency;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -189,7 +191,6 @@ public class AppController {
             instructionTextArea.clear();
         } else {
             // errorHandling!!
-            System.out.println("lel");
             FeedbackHandler.showMessage(msgPane, "Instruction empty", 'E');
         }
     }
@@ -218,14 +219,16 @@ public class AppController {
                 newRecipeRecipeName.getText(),
                 newRecipeRecipeDescription.getText(),
                 minutes);
-            IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
-            RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
 
+            IngredientContainer ic =
+                new IngredientContainer(new ArrayList<>(this.newRecipeIngredients));
+            RecipeInstructions rc =
+                new RecipeInstructions(new ArrayList<>(this.newRecipeInstructions));
             Recipe recipe = new Recipe(ic, rc, md);
+
             this.user.getRecipeContainer().addItem(recipe);
             updateRecipeAnchorPane(recipe);
             clearRecipeFields();
-
             try {
                 HandlePersistency.writeJsonToFile(this.user);
 
@@ -273,12 +276,12 @@ public class AppController {
         childPane.setLayoutY(30);
         childPane.getStyleClass().add("child-pane");
 
-        Image image = new Image(recipe.getMetadata().getImage());
+        /*Image image = new Image(recipe.getMetadata().getImage());
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(105);
         imageView.setFitWidth(105);
         imageView.setLayoutX(10);
-        imageView.setLayoutY(10);
+        imageView.setLayoutY(10);*/
 
         //Endres etterhvert til å regne ut hvor mange ingredienser man faktisk mangler
         //utifra hva man har i fridge
@@ -296,8 +299,7 @@ public class AppController {
         recipeDescription.setLayoutX(132);
         recipeDescription.setLayoutY(52);
 
-        childPane.getChildren().addAll(imageView, recipeInfo, recipeDescription);
-
+        childPane.getChildren().addAll(/*imageView, */recipeInfo, recipeDescription);
         pane.getChildren().addAll(recipeName, childPane);
         pane.setLayoutX(10);
         pane.setCursor(Cursor.HAND);
@@ -370,6 +372,7 @@ public class AppController {
         instructions.setLayoutX(250);
 
         Button hideRecipeInformation = new Button();
+        hideRecipeInformation.setId("hideRecipeInformationButton");
         hideRecipeInformation.setText("Hide recipe");
         hideRecipeInformation.setLayoutY(20);
         hideRecipeInformation.setLayoutX(402);
@@ -443,5 +446,23 @@ public class AppController {
         ObservableList<Ingredient> observableList =
             FXCollections.observableArrayList(user.getIngredientContainer().getContainer());
         ingredientTableView.setItems(observableList);
+    }
+
+
+    //Methods for testing the app controller.
+    User getUser() {
+        return this.user;
+    }
+
+    void setUser(User user) {
+        this.user = user;
+    }
+
+    List<Ingredient> getNewRecipeIngredients() {
+        return new ArrayList<>(newRecipeIngredients);
+    }
+
+    List<String> getNewRecipeInstructions() {
+        return new ArrayList<>(newRecipeInstructions);
     }
 }

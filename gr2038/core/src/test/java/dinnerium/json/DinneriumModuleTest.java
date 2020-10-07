@@ -16,6 +16,9 @@ import dinnerium.core.RecipeContainer;
 import dinnerium.core.RecipeInstructions;
 import dinnerium.core.User;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringReader;
 import java.util.Arrays;
 import java.util.Iterator;
 import org.junit.jupiter.api.BeforeEach;
@@ -137,9 +140,18 @@ class DinneriumModuleTest {
             User jsonUser = mapper.readValue(expectedUserString, User.class);
             User expectedUser = createExceptedUser();
             compareUsers(expectedUser, jsonUser);
-            assertTrue(true);
         } catch (IOException e) {
             fail("Could not deserialize object from file correctly");
+        }
+    }
+
+    @Test
+    public void testReader() {
+        try {
+            User jsonUser = HandlePersistency.readUserFromReader(new StringReader(expectedUserString));
+            compareUsers(createExceptedUser(), jsonUser);
+        } catch (IOException e) {
+            fail(e.getMessage());
         }
     }
 

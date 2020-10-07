@@ -41,7 +41,7 @@
 .textview-header {
     -fx-fill: #f4c20d;
     -fx-font-size: 16px;
-    -fx-underline: 1px;
+    -fx-underline: true;
 }
 .list-style {
     -fx-fill: #f4c20d;

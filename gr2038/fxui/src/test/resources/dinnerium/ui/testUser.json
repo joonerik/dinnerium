@@ -18,12 +18,6 @@
         "amount" : 3.0
       },
       "name" : "sugar"
-    }, {
-      "quantity" : {
-        "unit" : "stk",
-        "amount" : 3.0
-      },
-      "name" : "new item"
     } ]
   },
   "recipeContainer" : {
@@ -82,19 +76,6 @@
         "recipeName" : "Tikka masala",
         "recipeDescription" : "Describing description of tikka masala",
         "minutes" : 60
-      }
-    }, {
-      "ingredientContainer" : {
-        "ingredients" : [ ]
-      },
-      "recipeInstructions" : [ ],
-      "metadata" : {
-        "author" : "username",
-        "portion" : 32.0,
-        "image" : "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
-        "recipeName" : "name",
-        "recipeDescription" : "dfs",
-        "minutes" : 2
       }
     } ]
   },
