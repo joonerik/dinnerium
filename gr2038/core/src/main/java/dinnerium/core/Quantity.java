@@ -8,9 +8,6 @@ import java.util.Map;
 
 public class Quantity {
 
-    // the static final list is supposed to contain all (!) units imaginable.
-    // Will be expanded for next assignment
-
     private static final Map<String, Collection<String>> units = Map.of(
         "volume", new ArrayList<>(Arrays.asList(
             "l","dl", "ts", "ss")),
