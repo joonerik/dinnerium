@@ -52,5 +52,13 @@ class UserTest {
             user.setUsername("ThisIsAVeryVeryVeryVeryLongName");
         });
 
+        assertThrows(IllegalArgumentException.class, () -> {
+            user.setUsername("");
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            user.setUsername("   ");
+        });
+
     }
 }

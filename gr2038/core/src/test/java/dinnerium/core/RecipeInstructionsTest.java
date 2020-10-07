@@ -39,6 +39,10 @@ class RecipeInstructionsTest {
             ri.setInstruction(null);
         });
 
+        assertThrows(IllegalArgumentException.class, () -> {
+            ri.setInstruction("   ");
+        });
+
     }
 
 }

@@ -29,7 +29,7 @@ public class Ingredient {
     private boolean validateIngredientName(String name) {
         Pattern p = Pattern.compile("^[ A-Za-z]+$");
         Matcher m = p.matcher(name);
-        return !(name.isEmpty() || !m.matches());
+        return !(name.isBlank() || !m.matches());
 
     }
 

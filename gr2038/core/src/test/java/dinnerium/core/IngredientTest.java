@@ -50,6 +50,10 @@ public class IngredientTest {
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
+            i.setName("   ");
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
             i.setName("32456");
         });
     }
