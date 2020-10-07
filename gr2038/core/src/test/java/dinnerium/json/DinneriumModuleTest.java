@@ -45,7 +45,7 @@ class DinneriumModuleTest {
         "      \"name\" : \"milk\"\n" +
         "    }, {\n" +
         "      \"quantity\" : {\n" +
-        "        \"unit\" : \"gram\",\n" +
+        "        \"unit\" : \"g\",\n" +
         "        \"amount\" : 3.0\n" +
         "      },\n" +
         "      \"name\" : \"sugar\"\n" +
@@ -56,13 +56,13 @@ class DinneriumModuleTest {
         "      \"ingredientContainer\" : {\n" +
         "        \"ingredients\" : [ {\n" +
         "          \"quantity\" : {\n" +
-        "            \"unit\" : \"gram\",\n" +
+        "            \"unit\" : \"g\",\n" +
         "            \"amount\" : 400.0\n" +
         "          },\n" +
         "          \"name\" : \"minced meat\"\n" +
         "        }, {\n" +
         "          \"quantity\" : {\n" +
-        "            \"unit\" : \"gram\",\n" +
+        "            \"unit\" : \"g\",\n" +
         "            \"amount\" : 200.0\n" +
         "          },\n" +
         "          \"name\" : \"cheese\"\n" +
@@ -241,7 +241,7 @@ class DinneriumModuleTest {
         IngredientContainer ic = new IngredientContainer();
         ic.addItem(new Ingredient(new Quantity(1, "stk"), "eggs"));
         ic.addItem(new Ingredient(new Quantity(2, "dl"), "milk"));
-        ic.addItem(new Ingredient(new Quantity(3, "gram"), "sugar"));
+        ic.addItem(new Ingredient(new Quantity(3, "g"), "sugar"));
         RecipeContainer rc = createExpectedRecipeContainer();
 
         return new User(ic, rc, "bestUsername");
@@ -250,7 +250,7 @@ class DinneriumModuleTest {
     private RecipeContainer createExpectedRecipeContainer() {
         RecipeContainer rc = new RecipeContainer();
         double[][] amounts = {{400, 200, 9}, {2, 3}};
-        String[][] units = {{"gram", "gram", "stk"}, {"stk", "dl"}};
+        String[][] units = {{"g", "g", "stk"}, {"stk", "dl"}};
         String[][] names = {{"minced meat", "cheese", "lasagne plates"}, {"eggs", "tikka"}};
         String[][] instructions = {{"cook", "bake", "eat"}, {"mix", "doStuff", "serve"}};
         double[] portions = {4, 2};

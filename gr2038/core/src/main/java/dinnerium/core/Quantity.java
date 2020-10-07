@@ -1,14 +1,21 @@
 package dinnerium.core;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
 
 
 public class Quantity {
 
-    // the static final list is supposed to contain all (!) units imaginable.
-    // Will be expanded for next assignment
-    public static final List<String> units =
-            List.of("stk", "dl", "gram");
+    private static final Map<String, Collection<String>> units = Map.of(
+        "volume", new ArrayList<>(Arrays.asList(
+            "l", "dl", "ts", "ss")),
+        "weight", new ArrayList<>(Arrays.asList(
+            "g", "kg")),
+        "count", new ArrayList<>(Arrays.asList(
+            "stk", "dusin"))
+    );
     private double amount;
     private String unit;
 
@@ -32,7 +39,12 @@ public class Quantity {
      * @return true if valid
      */
     private boolean validateUnit(String unit) {
-        return units.contains(unit);
+        for(Collection<String> c : units.values()) {
+            if(c.contains(unit)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
