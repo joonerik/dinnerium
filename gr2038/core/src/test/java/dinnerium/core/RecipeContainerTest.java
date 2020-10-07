@@ -18,7 +18,7 @@ class RecipeContainerTest {
 
     Ingredient ingredient1 = new Ingredient(new Quantity(2.0, "stk"), "egg");
     Ingredient ingredient2 = new Ingredient(new Quantity(5.0, "dl"), "vann");
-    Ingredient ingredient3 = new Ingredient(new Quantity(200.0, "g"), "sukker");
+    Ingredient ingredient3 = new Ingredient(new Quantity(200.0, "gram"), "sukker");
     IngredientContainer ic1 = new IngredientContainer(Arrays.asList(ingredient1, ingredient2, ingredient3));
     IngredientContainer ic2 = new IngredientContainer(Arrays.asList(ingredient1, ingredient3));
 

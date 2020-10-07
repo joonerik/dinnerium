@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class UserTest {
 
     Ingredient egg = new Ingredient(new Quantity(2.0, "stk"), "egg");
-    Ingredient sugar = new Ingredient(new Quantity(200.0, "g"), "sukker");
+    Ingredient sugar = new Ingredient(new Quantity(200.0, "gram"), "sukker");
     IngredientContainer ingredientContainer= new IngredientContainer(Arrays.asList(egg, sugar));
 
     RecipeContainer recipeContainer = new RecipeContainer();
