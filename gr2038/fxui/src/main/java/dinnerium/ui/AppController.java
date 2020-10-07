@@ -9,7 +9,10 @@ import dinnerium.core.RecipeContainer;
 import dinnerium.core.RecipeInstructions;
 import dinnerium.core.User;
 import dinnerium.json.HandlePersistency;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -40,6 +43,10 @@ public class AppController {
     private ObservableList<String> newRecipeInstructions = FXCollections.observableArrayList();
     private User user = null;
 
+    @FXML
+    TextField usernameInput;
+    @FXML
+    Button loginButton;
     @FXML
     TextField nameInput;
     @FXML
@@ -100,33 +107,44 @@ public class AppController {
     Pane newRecipePane;
     @FXML
     AnchorPane recipesAnchorPane;
+    @FXML
+    Pane navigationBarPane;
 
 
     @FXML
     void initialize() throws Exception {
         recipesListView.setItems(newRecipeIngredients);
         instructionsListView.setItems(newRecipeInstructions);
-        setup();
-    }
-
-    // need to handle throws from init!!
-    private void setup() {
-        // sets up our tableview with correct rows and columns
-
         unitComboBox.getItems().setAll(Quantity.units);
         newRecipeUnitComboBox.getItems().setAll(Quantity.units);
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         itemColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+    }
+
+    // need to handle throws from init!!
+    private void setup(String username) {
+        // sets up our tableview with correct rows and columns
 
         try {
             //Here we need to make a pop-up for the user to write in username when app fires.
-            this.user = HandlePersistency.loadDataFromFile();
+            String path = "../core/src/main/resources/dinnerium/storage/" + username + ".json";
+            FileReader reader = new FileReader(Paths.get(path).toFile(), StandardCharsets.UTF_8);
+            this.user = HandlePersistency.readUserFromReader(reader);
         } catch (IOException e) {
             //Here we need to make a popup for the user to create a new User, e.g write in username.
-            this.user = new User(new IngredientContainer(), new RecipeContainer(), "feil");
+            this.user = new User(new IngredientContainer(), new RecipeContainer(), username);
         }
         updateTableView();
         showUserRecipes();
+    }
+
+    @FXML
+    private void handleLogin() {
+        setup(usernameInput.getText());
+        usernameInput.setVisible(false);
+        loginButton.setVisible(false);
+        navigationBarPane.setVisible(true);
+        changeScene("fridge");
     }
 
     //Adds the ingreident to the ingreidentContainer first and then updates the tableview.
@@ -197,11 +215,6 @@ public class AppController {
 
     @FXML
     private void handleAddRecipe() {
-        //Change username with name of the user logged in to the app when User class is ready
-        //Metadata metadata = new Metadata("username", Double.valueOf(portionsInput.getText()));
-        /*Metadata md = new Metadata("name", 2.0,
-                "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
-                "recipeName", "description", 2);*/
         double portions = 0.0;
         int minutes = 0;
         try {
@@ -209,11 +222,10 @@ public class AppController {
             minutes = Integer.parseInt(newRecipeMinutes.getText());
         } catch (NumberFormatException e) {
             FeedbackHandler.showMessage(msgPane, "Invalid number", FeedbackHandler.ERROR);
-            System.out.println("Invalid number in portions or minutes");
         }
 
         try {
-            Metadata md = new Metadata("username",
+            Metadata md = new Metadata(user.getUsername(),
                 portions,
                 "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
                 newRecipeRecipeName.getText(),
@@ -233,7 +245,7 @@ public class AppController {
                 HandlePersistency.writeJsonToFile(this.user);
 
             } catch (Exception e) {
-                System.err.println("Could not write data to file");
+                FeedbackHandler.showMessage(msgPane, e.getMessage(), FeedbackHandler.ERROR);
             }
         } catch (IllegalArgumentException e) {
             FeedbackHandler.showMessage(msgPane, e.getMessage(), FeedbackHandler.ERROR);
