@@ -39,6 +39,10 @@ public class AppController {
     private User user = null;
 
     @FXML
+    TextField usernameInput;
+    @FXML
+    Button loginButton;
+    @FXML
     TextField nameInput;
     @FXML
     TextField amountInput;
@@ -125,6 +129,11 @@ public class AppController {
         }
         updateTableView();
         showUserRecipes();
+    }
+
+    @FXML
+    private void handleLogin() {
+
     }
 
     //Adds the ingreident to the ingreidentContainer first and then updates the tableview.
