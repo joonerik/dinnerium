@@ -10,6 +10,7 @@ import dinnerium.core.RecipeInstructions;
 import dinnerium.core.User;
 import dinnerium.json.HandlePersistency;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -219,10 +220,10 @@ public class AppController {
                 newRecipeRecipeDescription.getText(),
                 minutes);
 
-            IngredientContainer ic = new IngredientContainer(this.newRecipeIngredients);
-            RecipeInstructions rc = new RecipeInstructions(this.newRecipeInstructions);
+            IngredientContainer ic = new IngredientContainer(new ArrayList<>(this.newRecipeIngredients));
+            RecipeInstructions rc = new RecipeInstructions(new ArrayList<>(this.newRecipeInstructions));
             Recipe recipe = new Recipe(ic, rc, md);
-            //Den får ikke med Ic og Rc inn i user sin recipe container
+
             this.user.getRecipeContainer().addItem(recipe);
             updateRecipeAnchorPane(recipe);
             clearRecipeFields();
@@ -252,6 +253,9 @@ public class AppController {
     private void showUserRecipes() {
         for (Recipe recipe : user.getRecipeContainer()) {
             updateRecipeAnchorPane(recipe);
+            System.out.println("instruk " + recipe.getRecipeInstructions().getInstructions());
+            System.out.println("ingr: " + recipe.getIngredientContainer().getContainer());
+            System.out.println("name: " + recipe.getMetadata().getRecipeName());
         }
     }
 
