@@ -49,8 +49,8 @@ public class Metadata {
 
     private boolean validateString(String author, String image, String recipeDescription,
                                    String recipeName) {
-        if (author.isEmpty() || image.isEmpty() || recipeDescription.isEmpty() ||
-            recipeName.isEmpty()) {
+        if (author.isBlank() || image.isBlank() || recipeDescription.isBlank() ||
+            recipeName.isBlank()) {
             return false;
         }
         return true;

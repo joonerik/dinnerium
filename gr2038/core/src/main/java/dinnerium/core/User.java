@@ -64,6 +64,10 @@ public class User {
     public void setUsername(String username) {
         if (validateUsername(username)) {
             this.username = username;
+        } else {
+            throw new IllegalArgumentException(
+                "Username must be at least 3 characters and should not exceed 15"
+            );
         }
 
     }
@@ -79,11 +83,6 @@ public class User {
         String pattern = "^(?=.{3,15}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$";
         Pattern p = Pattern.compile(pattern);
         Matcher m = p.matcher(username);
-        if (!m.matches()) {
-            throw new IllegalArgumentException(
-                    "Username must be at least 3 characters and should not exceed 15"
-            );
-        }
         return m.matches();
     }
 }
