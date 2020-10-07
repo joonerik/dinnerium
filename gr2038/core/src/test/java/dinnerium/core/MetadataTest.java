@@ -115,5 +115,38 @@ class MetadataTest {
             );
         });
 
+        assertThrows(IllegalArgumentException.class, () -> {
+            Metadata metadata = new Metadata(
+                "Bakemester Harepus",
+                5.0,
+                "pepper.png",
+                "Pepperkaker",
+                "",
+                20
+            );
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Metadata metadata = new Metadata(
+                "  ",
+                5.0,
+                "pepper.png",
+                "Pepperkaker",
+                "...",
+                20
+            );
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Metadata metadata = new Metadata(
+                "Bakemester Harepus",
+                5.0,
+                "",
+                "Pepperkaker",
+                "...",
+                20
+            );
+        });
+
     }
 }
