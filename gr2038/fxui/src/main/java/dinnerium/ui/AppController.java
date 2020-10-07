@@ -113,20 +113,19 @@ public class AppController {
     void initialize() throws Exception {
         recipesListView.setItems(newRecipeIngredients);
         instructionsListView.setItems(newRecipeInstructions);
-    }
-
-    // need to handle throws from init!!
-    private void setup() {
-        // sets up our tableview with correct rows and columns
-
         unitComboBox.getItems().setAll(Quantity.units);
         newRecipeUnitComboBox.getItems().setAll(Quantity.units);
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         itemColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+    }
+
+    // need to handle throws from init!!
+    private void setup(String username) {
+        // sets up our tableview with correct rows and columns
 
         try {
             //Here we need to make a pop-up for the user to write in username when app fires.
-            String path = "src/main/resources/" + user.getUsername() + ".json";
+            String path = "src/main/resources/" + username + ".json";
             FileReader reader = new FileReader(Paths.get("src/main/data.json").toFile(), StandardCharsets.UTF_8);
             this.user = HandlePersistency.readUserFromReader(reader);
         } catch (IOException e) {
@@ -140,8 +139,7 @@ public class AppController {
 
     @FXML
     private void handleLogin() {
-        user.setUsername(usernameInput.getText());
-        setup();
+        setup(usernameInput.getText());
     }
 
     //Adds the ingreident to the ingreidentContainer first and then updates the tableview.
