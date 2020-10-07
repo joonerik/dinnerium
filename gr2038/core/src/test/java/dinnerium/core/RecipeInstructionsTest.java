@@ -18,8 +18,6 @@ class RecipeInstructionsTest {
         c = new ArrayList<>();
         c.add("Do something");
         ri = new RecipeInstructions(c);
-
-
     }
 
     @Test
@@ -32,6 +30,15 @@ class RecipeInstructionsTest {
         c.add("Do more");
         ri.setInstruction("Do more");
         assertEquals(ri.getInstructions(), c);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+           ri.setInstruction("");
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            ri.setInstruction(null);
+        });
+
     }
 
 }
