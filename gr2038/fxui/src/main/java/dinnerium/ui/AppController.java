@@ -9,7 +9,10 @@ import dinnerium.core.RecipeContainer;
 import dinnerium.core.RecipeInstructions;
 import dinnerium.core.User;
 import dinnerium.json.HandlePersistency;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -123,11 +126,14 @@ public class AppController {
 
         try {
             //Here we need to make a pop-up for the user to write in username when app fires.
-            this.user = HandlePersistency.loadDataFromFile(user.getUsername());
+            String path = "src/main/resources/" + user.getUsername() + ".json";
+            FileReader reader = new FileReader(Paths.get("src/main/data.json").toFile(), StandardCharsets.UTF_8);
+            this.user = HandlePersistency.readUserFromReader(reader);
         } catch (IOException e) {
             //Here we need to make a popup for the user to create a new User, e.g write in username.
             this.user = new User(new IngredientContainer(), new RecipeContainer(), "feil");
         }
+        System.out.println("user " + user.getUsername());
         updateTableView();
         showUserRecipes();
     }

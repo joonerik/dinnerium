@@ -18,11 +18,12 @@ public class HandlePersistency {
      * @throws IOException if file error
      */
     public static void writeJsonToFile(User user) throws IOException {
+        String path = "src/main/resources/" + user.getUsername() + ".json";
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new DinneriumModule());
         mapper
             .writerWithDefaultPrettyPrinter()
-            .writeValue(new File("src/main/data.json"), user);
+            .writeValue(new File(path), user);
     }
 
     // returns a container containing a list of ingredients
