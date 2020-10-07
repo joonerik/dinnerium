@@ -15,10 +15,15 @@ import dinnerium.core.Recipe;
 import dinnerium.core.RecipeContainer;
 import dinnerium.core.RecipeInstructions;
 import dinnerium.core.User;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringReader;
+import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Iterator;
 import org.junit.jupiter.api.BeforeEach;
@@ -148,8 +153,23 @@ class DinneriumModuleTest {
     @Test
     public void testReader() {
         try {
-            User jsonUser = HandlePersistency.readUserFromReader(new StringReader(expectedUserString));
+            User jsonUser =
+                HandlePersistency.readUserFromReader(new StringReader(expectedUserString));
             compareUsers(createExceptedUser(), jsonUser);
+        } catch (IOException e) {
+            fail(e.getMessage());
+        }
+    }
+
+    @Test
+    public void testWriter() {
+        try {
+            User user = createExceptedUser();
+            StringWriter writer = new StringWriter();
+            HandlePersistency.writeUser(user, writer);
+            String json = writer.toString();
+            assertEquals(expectedUserString.replaceAll("\\s+", ""),
+                json.replaceAll("\\s+", ""));
         } catch (IOException e) {
             fail(e.getMessage());
         }

@@ -11,20 +11,7 @@ public class HandlePersistency {
 
     // writes a container containing a list of ingredients
 
-    /**
-     * Writes a IngredientContainer to file
-     *
-     * @throws IOException if file error
-     */
-    public static void writeJsonToFile(User user) throws IOException {
-        String path = "../core/src/main/resources/dinnerium/storage/" + user.getUsername() + ".json";
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new DinneriumModule());
-        mapper
-            .writerWithDefaultPrettyPrinter()
-            .writeValue(new File(path), user);
-    }
-
+    // JAVADOC!!
     public static void writeUser(User user, Writer writer) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new DinneriumModule());
