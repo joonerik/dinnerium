@@ -30,7 +30,7 @@
               </columns>
             </TableView>
          </children></Pane>
-      <Pane prefHeight="55.0" prefWidth="900.0" style="-fx-background-color: #66C3B1;">
+      <Pane fx:id="navigationBarPane" prefHeight="55.0" prefWidth="900.0" style="-fx-background-color: #66C3B1;" visible="false">
          <children>
             <ImageView fitHeight="55.0" fitWidth="172.0" layoutX="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -114,5 +114,7 @@
          </children>
       </Pane>
       <Pane fx:id="msgPane" layoutX="549.0" layoutY="535.0" prefHeight="105.0" prefWidth="351.0" visible="false" />
+      <TextField fx:id="usernameInput" alignment="CENTER" layoutX="354.0" layoutY="269.5" prefHeight="33.0" prefWidth="192.0" promptText="User name" />
+      <Button fx:id="loginButton" layoutX="354.0" layoutY="310.5" mnemonicParsing="false" onAction="#handleLogin" prefHeight="27.0" prefWidth="192.0" text="Login" />
     </children>
 </AnchorPane>

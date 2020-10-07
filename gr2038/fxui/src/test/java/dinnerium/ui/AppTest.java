@@ -33,7 +33,6 @@ public class AppTest extends ApplicationTest {
         controller = loader.getController();
         stage.setScene(new Scene(parent));
         stage.show();
-
     }
 
     @Test
@@ -41,16 +40,18 @@ public class AppTest extends ApplicationTest {
         assertTrue(true);
     }
 
-    /*@BeforeEach
+    @BeforeEach
     public void setupUser() {
-        try (Reader reader = new InputStreamReader(
+        /*try (Reader reader = new InputStreamReader(
             getClass().getResourceAsStream("testUser.json"))) {
             controller.setUser(HandlePersistency.readUserFromReader(reader));
         } catch (IOException e) {
             fail(e.getMessage());
         }
         lookup("#ingredientTableView").queryTableView().getItems()
-            .setAll(controller.getUser().getIngredientContainer().getContainer());
+            .setAll(controller.getUser().getIngredientContainer().getContainer());*/
+        clickOn("#usernameInput").write("testUser");
+        clickOn("#loginButton");
     }
 
     @Test
@@ -65,12 +66,11 @@ public class AppTest extends ApplicationTest {
 
     @Test
     public void testChangingScene() {
-        assertFalse(lookup("#fridgePane").query().isVisible()
+        assertFalse(!lookup("#fridgePane").query().isVisible()
             || lookup("#recipesPane").query().isVisible()
             || lookup("#settingsPane").query().isVisible());
-
-        clickOn("#fridgeText");
-        assertTrue(lookup("#fridgePane").query().isVisible());
+        assertFalse(lookup("#loginButton").query().isVisible()
+                || lookup("#usernameInput").query().isVisible());
         clickOn("#yourRecipesText");
         assertTrue(lookup("#recipesPane").query().isVisible());
         assertTrue(lookup("#recipesScrollPane").query().isVisible());
@@ -79,6 +79,8 @@ public class AppTest extends ApplicationTest {
         assertFalse(lookup("#recipesScrollPane").query().isVisible());
         clickOn("#settingsText");
         assertTrue(lookup("#settingsPane").query().isVisible());
+        clickOn("#fridgeText");
+        assertTrue(lookup("#fridgePane").query().isVisible());
     }
 
     @Test
@@ -173,5 +175,5 @@ public class AppTest extends ApplicationTest {
         return expected.getQuantity().getAmount() == actual.getQuantity().getAmount()
             && expected.getQuantity().getUnit().equals(actual.getQuantity().getUnit())
             && expected.getName().equals(actual.getName());
-    }*/
+    }
 }

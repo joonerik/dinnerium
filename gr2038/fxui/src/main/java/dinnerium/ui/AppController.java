@@ -119,7 +119,6 @@ public class AppController {
         newRecipeUnitComboBox.getItems().setAll(Quantity.units);
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         itemColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-
     }
 
     // need to handle throws from init!!
