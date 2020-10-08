@@ -16,8 +16,8 @@ import java.io.IOException;
 
 class ContainerDeserializer extends JsonDeserializer<Container> {
 
-    private IngredientDeserializer ingredientDeserializer = new IngredientDeserializer();
-    private RecipeDeserializer recipeDeserializer = new RecipeDeserializer();
+    private final IngredientDeserializer ingredientDeserializer = new IngredientDeserializer();
+    private final RecipeDeserializer recipeDeserializer = new RecipeDeserializer();
 
     @Override
     public Container deserialize(JsonParser parser, DeserializationContext ctxt)

@@ -8,9 +8,12 @@ import java.io.Writer;
 
 public class HandlePersistency {
 
-    // writes a container containing a list of ingredients
-
-    // JAVADOC!!
+    /**
+     *
+     * @param user the user object that is to be written to the writer.
+     * @param writer the writer to be used to write the user object.
+     * @throws IOException if it is not possible to write the user to the writer.
+     */
     public static void writeUser(User user, Writer writer) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new DinneriumModule());

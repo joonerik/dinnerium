@@ -2,9 +2,9 @@ package dinnerium.core;
 
 public class Recipe {
 
-    private IngredientContainer ingredientContainer;
-    private RecipeInstructions recipeInstructions;
-    private Metadata metadata;
+    private final IngredientContainer ingredientContainer;
+    private final RecipeInstructions recipeInstructions;
+    private final Metadata metadata;
 
     /**
      * Constructor for Recipe

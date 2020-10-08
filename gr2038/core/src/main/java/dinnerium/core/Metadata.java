@@ -41,19 +41,13 @@ public class Metadata {
     }
 
     private boolean validateNumber(double portion, int minutes) {
-        if (portion == 0.0 || minutes == 0) {
-            return false;
-        }
-        return true;
+        return portion != 0.0 && minutes != 0;
     }
 
     private boolean validateString(String author, String image, String recipeDescription,
                                    String recipeName) {
-        if (author.isBlank() || image.isBlank() || recipeDescription.isBlank() ||
-            recipeName.isBlank()) {
-            return false;
-        }
-        return true;
+        return !author.isBlank() && !image.isBlank() && !recipeDescription.isBlank()
+            && !recipeName.isBlank();
     }
 
 
