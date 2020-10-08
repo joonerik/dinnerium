@@ -13,10 +13,9 @@ public class Quantity {
     private String unit;
 
     /**
-     * Quantity constructor
+     * Constructs a Quantity object with the amount and unit.
      *
      * @param amount of substance
-     *
      * @param unit which amount is measured in
      */
     public Quantity(double amount, String unit) {
@@ -25,7 +24,7 @@ public class Quantity {
     }
 
     /**
-     * Checks if input-unit is valid
+     * Checks if input-unit is valid.
      *
      * @param unit
      *        which unit
@@ -36,7 +35,7 @@ public class Quantity {
     }
 
     /**
-     * Getter for unit variable
+     * Returns the amount of this quantity.
      *
      * @return amount
      */
@@ -45,7 +44,7 @@ public class Quantity {
     }
 
     /**
-     * Getter for unit variable
+     * Returns the unit of this quantity.
      *
      * @return unit
      */
@@ -54,22 +53,21 @@ public class Quantity {
     }
 
     /**
-     * Sets how much of the unit, ex: 3 stk where 3 is amount and stk is unit
+     * Sets how much of the unit, ex: 3 stk where 3 is amount and stk is unit.
      *
-     * @param amount
-     *        of the unit
+     * @param amount the amount of this quantity
+     *
      */
     public void setAmount(double amount) {
         this.amount = Math.round(amount * 100.0) / 100.0;
     }
 
     /**
-     * Sets the unit variable
+     * Sets the unit of this quantity.
      *
-     * @param unit
-     *        to be set
-     * @throws IllegalArgumentException
-     *         if the unit is not valid
+     * @param unit to be set
+     *
+     * @throws IllegalArgumentException if the unit is not valid
      */
     public void setUnit(String unit) {
         if (validateUnit(unit)) {
@@ -80,7 +78,7 @@ public class Quantity {
     }
 
     /**
-     * toString used when setting the itemColumn in the controller
+     * toString is used to return the amount and unit in a string format.
      *
      * @return string of Quantity
      */
