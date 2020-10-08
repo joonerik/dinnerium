@@ -14,7 +14,7 @@ import java.io.IOException;
 
 class UserDeserializer extends JsonDeserializer<User> {
 
-    private ContainerDeserializer cd = new ContainerDeserializer();
+    private final ContainerDeserializer cd = new ContainerDeserializer();
 
 
     @Override

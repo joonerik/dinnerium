@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 public class RecipeInstructions implements Iterable<String> {
 
-    private Collection<String> instructions;
+    private final Collection<String> instructions;
 
     public RecipeInstructions(Collection<String> instructions) {
         this.instructions = instructions;
