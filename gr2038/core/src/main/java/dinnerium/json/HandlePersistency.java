@@ -9,6 +9,7 @@ import java.io.Writer;
 public class HandlePersistency {
 
     /**
+     * Writes a user to the writer.
      *
      * @param user the user object that is to be written to the writer.
      * @param writer the writer to be used to write the user object.
@@ -22,6 +23,8 @@ public class HandlePersistency {
 
 
     /**
+     * Returns a user from the reader.
+     *
      * @param reader the reader from which the User json file is gathered from.
      * @return the User object read from the reader.
      * @throws IOException if it is not possible to read from the reader.
