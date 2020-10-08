@@ -44,21 +44,14 @@ class UserTest {
         user.setUsername("Kari");
         assertEquals(user.getUsername(), "Kari");
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            user.setUsername("Ji");
-        });
+        assertThrows(IllegalArgumentException.class, () -> user.setUsername("Ji"));
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            user.setUsername("ThisIsAVeryVeryVeryVeryLongName");
-        });
+        assertThrows(IllegalArgumentException.class, () ->
+            user.setUsername("ThisIsAVeryVeryVeryVeryLongName"));
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            user.setUsername("");
-        });
+        assertThrows(IllegalArgumentException.class, () -> user.setUsername(""));
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            user.setUsername("   ");
-        });
+        assertThrows(IllegalArgumentException.class, () -> user.setUsername("   "));
 
     }
 }

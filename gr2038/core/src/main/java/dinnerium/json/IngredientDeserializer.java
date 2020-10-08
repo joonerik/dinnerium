@@ -25,7 +25,7 @@ class IngredientDeserializer extends JsonDeserializer<Ingredient> {
     /**
      * Deserializer for Ingredient
      *
-     * @param jsonNode
+     * @param jsonNode node
      *
      */
     public Ingredient deserialize(JsonNode jsonNode) {
