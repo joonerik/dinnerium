@@ -31,7 +31,7 @@ class RecipeContainerTest {
 
     @Test
     void testCollection() {
-        Collection<Recipe> collection = new ArrayList<Recipe>() {{
+        Collection<Recipe> collection = new ArrayList<>() {{
             add(recipe1);
         }};
 
@@ -77,9 +77,9 @@ class RecipeContainerTest {
 
     @Test
     public void testIterator() {
-        assertEquals(recipeContainer.iterator().hasNext(), false);
+        assertFalse(recipeContainer.iterator().hasNext());
         recipeContainer.addItem(recipe2);
-        assertEquals(recipeContainer.iterator().hasNext(), true);
+        assertTrue(recipeContainer.iterator().hasNext());
         assertEquals(recipeContainer.iterator().next(), recipe2);
     }
 

@@ -31,17 +31,11 @@ class RecipeInstructionsTest {
         ri.setInstruction("Do more");
         assertEquals(ri.getInstructions(), c);
 
-        assertThrows(IllegalArgumentException.class, () -> {
-           ri.setInstruction("");
-        });
+        assertThrows(IllegalArgumentException.class, () -> ri.setInstruction(""));
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            ri.setInstruction(null);
-        });
+        assertThrows(IllegalArgumentException.class, () -> ri.setInstruction(null));
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            ri.setInstruction("   ");
-        });
+        assertThrows(IllegalArgumentException.class, () -> ri.setInstruction("   "));
 
     }
 

@@ -41,17 +41,11 @@ public class IngredientTest {
 
     @Test
     void testSetName2() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            i.setName("");
-        });
+        assertThrows(IllegalArgumentException.class, () -> i.setName(""));
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            i.setName("   ");
-        });
+        assertThrows(IllegalArgumentException.class, () -> i.setName("   "));
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            i.setName("32456");
-        });
+        assertThrows(IllegalArgumentException.class, () -> i.setName("32456"));
     }
 
     @Test

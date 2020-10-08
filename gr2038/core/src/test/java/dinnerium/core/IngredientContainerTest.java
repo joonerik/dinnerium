@@ -14,7 +14,7 @@ public class IngredientContainerTest {
         Quantity q = new Quantity(1.0, "dl");
         Ingredient i = new Ingredient(q, "milk");
 
-        Collection<Ingredient> ict = new ArrayList<Ingredient>() {{
+        Collection<Ingredient> ict = new ArrayList<>() {{
             add(i);
         }};
 
