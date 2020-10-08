@@ -23,9 +23,10 @@ class IngredientDeserializer extends JsonDeserializer<Ingredient> {
     // checks if the nodes are of correct type
     // finally we have converted the strings from json into actual objects
     /**
-     * Deserializer for Ingredient.
+     * Converts the Ingredient from string in json file to a Ingredient object.
      *
      * @param jsonNode node
+     * @return Ingredient Ingredient object
      *
      */
     public Ingredient deserialize(JsonNode jsonNode) {

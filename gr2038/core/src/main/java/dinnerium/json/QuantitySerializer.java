@@ -9,7 +9,14 @@ import java.io.IOException;
 class QuantitySerializer extends JsonSerializer<Quantity> {
 
 
-    // converts the Quantity object to a string in json format
+    /**
+     * Converts the Quantity object to a string in json format.
+     *
+     * @param q
+     * @param jsonGen
+     * @param serializerProvider
+     * @throws IOException
+     */
     @Override
     public void serialize(Quantity q, JsonGenerator jsonGen, SerializerProvider serializerProvider)
             throws IOException {

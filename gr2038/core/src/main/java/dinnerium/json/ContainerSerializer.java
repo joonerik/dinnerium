@@ -10,7 +10,14 @@ import java.io.IOException;
 
 class ContainerSerializer extends JsonSerializer<Container> {
 
-    // converts the IngredientContainer object into a string in json format
+    /**
+     * Converts the IngredientContainer object into a string in json format.
+     *
+     * @param c
+     * @param jsonGen
+     * @param serializerProvider
+     * @throws IOException
+     */
     @Override
     public void serialize(Container c,
                           JsonGenerator jsonGen,

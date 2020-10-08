@@ -8,7 +8,14 @@ import java.io.IOException;
 
 class MetadataSerializer extends JsonSerializer<Metadata> {
 
-
+    /**
+     * Converts the Metadata object to a string in json format.
+     *
+     * @param metadata
+     * @param jsonGen
+     * @param serializerProvider
+     * @throws IOException
+     */
     @Override
     public void serialize(Metadata metadata,
                           JsonGenerator jsonGen,

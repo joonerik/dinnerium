@@ -8,7 +8,15 @@ import java.io.IOException;
 
 class IngredientSerializer extends JsonSerializer<Ingredient> {
 
-    // converts the Ingredient object to a string in json format
+
+    /**
+     * Converts the Ingredient object to a string in json format.
+     *
+     * @param ingredient
+     * @param jsonGen
+     * @param serializerProvider
+     * @throws IOException
+     */
     @Override
     public void serialize(Ingredient ingredient,
                           JsonGenerator jsonGen,
