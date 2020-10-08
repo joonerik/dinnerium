@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+/**
+ * Class for storing instructions for a recipe.
+ */
 public class RecipeInstructions implements Iterable<String> {
 
     private final Collection<String> instructions;
@@ -13,10 +16,8 @@ public class RecipeInstructions implements Iterable<String> {
     }
 
     /**
-     * @param instruction
-     *        description of a step
-     * @throws IllegalArgumentException
-     *         if the instruction is empty
+     * @param instruction description of a step
+     * @throws IllegalArgumentException if the instruction is empty
      */
     public void setInstruction(String instruction) {
         if (instruction != null && !instruction.isBlank()) {
@@ -27,7 +28,6 @@ public class RecipeInstructions implements Iterable<String> {
     }
 
     /**
-     *
      * @return a copy of the recipe instructions.
      */
     public Collection<String> getInstructions() {
