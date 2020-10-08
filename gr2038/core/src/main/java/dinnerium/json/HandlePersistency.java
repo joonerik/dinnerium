@@ -2,7 +2,6 @@ package dinnerium.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dinnerium.core.User;
-import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
@@ -16,7 +15,6 @@ public class HandlePersistency {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new DinneriumModule());
         mapper.writerWithDefaultPrettyPrinter().writeValue(writer, user);
-
     }
 
 
