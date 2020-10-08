@@ -1,26 +1,22 @@
 package dinnerium.ui;
 
 import dinnerium.core.Ingredient;
-import dinnerium.json.HandlePersistency;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.File;
+import java.nio.file.Paths;
 import java.util.Iterator;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
-
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 public class AppTest extends ApplicationTest {
 
@@ -42,16 +38,14 @@ public class AppTest extends ApplicationTest {
 
     @BeforeEach
     public void setupUser() {
-        /*try (Reader reader = new InputStreamReader(
-            getClass().getResourceAsStream("testUser.json"))) {
-            controller.setUser(HandlePersistency.readUserFromReader(reader));
-        } catch (IOException e) {
-            fail(e.getMessage());
-        }
-        lookup("#ingredientTableView").queryTableView().getItems()
-            .setAll(controller.getUser().getIngredientContainer().getContainer());*/
         clickOn("#usernameInput").write("testUser");
         clickOn("#loginButton");
+    }
+
+    @AfterAll
+    static void removeFileCreated() {
+        File file = Paths.get("../core/src/main/resources/dinnerium/storage/bestUsername.json").toFile();
+        assertTrue(file.delete());
     }
 
     @Test

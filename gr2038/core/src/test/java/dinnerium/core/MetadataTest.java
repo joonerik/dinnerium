@@ -97,7 +97,7 @@ class MetadataTest {
             Metadata metadata = new Metadata(
                 "Bakemester Harepus",
                 5.0,
-                "     ",
+                "",
                 "Pepperkaker",
                 "...",
                 20

@@ -35,7 +35,7 @@ public abstract class Container<T> implements Iterable<T> {
     }
 
     /**
-     * adds item to the container
+     * adds item to the container.
      *
      * @param item
      *        of type
@@ -50,6 +50,8 @@ public abstract class Container<T> implements Iterable<T> {
     }
 
     /**
+     * Returns a container.
+     *
      * @return container
      */
     public Collection<T> getContainer() {
@@ -57,6 +59,8 @@ public abstract class Container<T> implements Iterable<T> {
     }
 
     /**
+     * Returns the size of the container.
+     *
      * @return number of elements in container
      */
     public int getContainerSize() {
@@ -64,6 +68,8 @@ public abstract class Container<T> implements Iterable<T> {
     }
 
     /**
+     * Returns an iterator for the container.
+     *
      * @return a container iterator
      */
     @Override

@@ -4,19 +4,23 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+/**
+ * Class for storing instructions for a recipe.
+ */
 public class RecipeInstructions implements Iterable<String> {
 
-    private Collection<String> instructions;
+    private final Collection<String> instructions;
 
     public RecipeInstructions(Collection<String> instructions) {
         this.instructions = instructions;
     }
 
     /**
-     * @param instruction
-     *        description of a step
-     * @throws IllegalArgumentException
-     *         if the instruction is empty
+     * Sets an instruction.
+     *
+     * @param instruction description of a step
+     *
+     * @throws IllegalArgumentException if the instruction is empty
      */
     public void setInstruction(String instruction) {
         if (instruction != null && !instruction.isBlank()) {
@@ -27,8 +31,10 @@ public class RecipeInstructions implements Iterable<String> {
     }
 
     /**
+     * Returns a copy of the collection containing the instructions.
      *
      * @return a copy of the recipe instructions.
+     *
      */
     public Collection<String> getInstructions() {
         return new ArrayList<>(this.instructions);

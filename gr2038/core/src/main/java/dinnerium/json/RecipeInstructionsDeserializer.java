@@ -20,6 +20,14 @@ class RecipeInstructionsDeserializer extends JsonDeserializer<RecipeInstructions
         return deserialize((JsonNode) treeNode);
     }
 
+    /**
+     * Converts the RecipeInstructions from string in json file to a RecipeInstructions object.
+     *
+     * @param jsonNode the json node to be deserialized to a RecipeInstructions object.
+     * @return RecipeInstructions RecipeInstructions object
+     *
+     */
+
     public RecipeInstructions deserialize(JsonNode jsonNode) {
         if (jsonNode instanceof ArrayNode) {
             Collection<String> instructions = new ArrayList<>();

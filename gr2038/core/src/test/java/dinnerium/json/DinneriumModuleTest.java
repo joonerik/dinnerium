@@ -15,15 +15,9 @@ import dinnerium.core.Recipe;
 import dinnerium.core.RecipeContainer;
 import dinnerium.core.RecipeInstructions;
 import dinnerium.core.User;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Iterator;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,7 +27,7 @@ class DinneriumModuleTest {
 
     private ObjectMapper mapper;
     //Fiks formateringen på recipeInstructions!!!
-    private String expectedUserString = "" +
+    private final String expectedUserString = "" +
         "{\n" +
         "  \"ingredientContainer\" : {\n" +
         "    \"ingredients\" : [ {\n" +
@@ -131,8 +125,9 @@ class DinneriumModuleTest {
         assertTrue(true);
 
         try {
-            String serializedObject =
-                mapper.writeValueAsString(expectedUser).replaceAll("\\s+", "");
+            StringWriter writer = new StringWriter();
+            HandlePersistency.writeUser(expectedUser, writer);
+            String serializedObject = writer.toString().replaceAll("\\s+", "");
             assertEquals(expectedUserString.replaceAll("\\s+", ""), serializedObject);
         } catch (IOException e) {
             fail("User is not written to file as it is supposed to");

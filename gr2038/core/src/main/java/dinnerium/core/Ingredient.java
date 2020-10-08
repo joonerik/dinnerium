@@ -19,7 +19,7 @@ public class Ingredient {
     }
 
     /**
-     * ensures that the ingredient name is rather reasonable
+     * Ensures that the ingredient name is rather reasonable.
      *
      * @param  name
      *         the name of the ingredient
@@ -33,9 +33,11 @@ public class Ingredient {
 
     }
 
-
     /**
-     * @return Quantity object which belongs in this Ingredient (?).
+     * Returns the quantity of the ingredient.
+     *
+     * @return Quantity object which belongs in this Ingredient.
+     *
      * */
 
     public Quantity getQuantity() {
@@ -43,6 +45,8 @@ public class Ingredient {
     }
 
     /**
+     * Returns the name of the ingredient.
+     *
      * @return name of ingredient.
      */
     public String getName() {

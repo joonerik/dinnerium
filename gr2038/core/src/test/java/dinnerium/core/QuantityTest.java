@@ -1,13 +1,12 @@
 package dinnerium.core;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class QuantityTest {
 
-    Quantity q = new Quantity(1.0, "dl");
+    private final Quantity q = new Quantity(1.0, "dl");
 
     @Test
     public void checkUnitTest() {

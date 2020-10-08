@@ -20,6 +20,15 @@ class MetadataDeserializer extends JsonDeserializer<Metadata> {
         return deserialize((JsonNode) treeNode);
     }
 
+    /**
+     * Converts the Metadata from string in json file to a Metadata object.
+     *
+     * @param jsonNode the json node to be deserialized to a Metadata object.
+     * @return Metadata
+     *         Metadata that is read from file, null if the jsonNode is not on the correct format.
+     *
+     */
+
     public Metadata deserialize(JsonNode jsonNode) {
         if (jsonNode instanceof ObjectNode) {
             ObjectNode objectNode = (ObjectNode) jsonNode;

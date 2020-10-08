@@ -2,12 +2,12 @@ package dinnerium.core;
 
 public class Recipe {
 
-    private IngredientContainer ingredientContainer;
-    private RecipeInstructions recipeInstructions;
-    private Metadata metadata;
+    private final IngredientContainer ingredientContainer;
+    private final RecipeInstructions recipeInstructions;
+    private final Metadata metadata;
 
     /**
-     * Constructor for Recipe
+     * Constructor for Recipe.
      *
      * @param ingredientContainer of Ingredients to be used in Recipe
      * @param recipeInstructions of instructions to be used in Recipe
@@ -22,7 +22,7 @@ public class Recipe {
     }
 
     /**
-     * Getter for ingredientContainer
+     * Returns the container to the ingredients.
      *
      * @return ingredientContainer
      */
@@ -31,7 +31,7 @@ public class Recipe {
     }
 
     /**
-     * Getter for recipeInstructions
+     * Returns the instructions to the recipe.
      *
      * @return recipeInstructions
      */
@@ -40,7 +40,7 @@ public class Recipe {
     }
 
     /**
-     * Getter for metadata
+     * Returns the Metadata for the recipe.
      *
      * @return metadata
      */

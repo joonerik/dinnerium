@@ -22,12 +22,23 @@ class QuantityDeserializer extends JsonDeserializer<Quantity> {
     // converts the Ingredient from string in json file to an object
     // checks if the nodes are of correct type
     // finally we have converted the strings from json into actual objects
+
+    /**
+     * Converts the Ingredient from string in json file to an object.
+     * checks if the nodes are of correct type
+     * finally we have converted the strings from json into actual objects
+     *
+     * @param jsonNode the json node to be deserialized to a Quantity object.
+     * @return Quantity Quantity object
+     *
+     */
+
     Quantity deserialize(JsonNode jsonNode) {
         if (jsonNode instanceof ObjectNode) {
             ObjectNode objectNode = (ObjectNode) jsonNode;
-            Double amount;
+            double amount;
             String unit;
-            
+
             JsonNode amountNode = objectNode.get("amount");
             if (amountNode instanceof DoubleNode) {
                 amount = ((amountNode).asDouble());

@@ -1,17 +1,13 @@
 package dinnerium.core;
 
-import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
-
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class IngredientTest {
 
-    Quantity q = new Quantity(1.0, "dl");
-    Ingredient i = new Ingredient(q, "milk");
+    private final Quantity q = new Quantity(1.0, "dl");
+    private final Ingredient i = new Ingredient(q, "milk");
 
     @Test
     void getQuantityTest() {
@@ -45,17 +41,11 @@ public class IngredientTest {
 
     @Test
     void testSetName2() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            i.setName("");
-        });
+        assertThrows(IllegalArgumentException.class, () -> i.setName(""));
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            i.setName("   ");
-        });
+        assertThrows(IllegalArgumentException.class, () -> i.setName("   "));
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            i.setName("32456");
-        });
+        assertThrows(IllegalArgumentException.class, () -> i.setName("32456"));
     }
 
     @Test

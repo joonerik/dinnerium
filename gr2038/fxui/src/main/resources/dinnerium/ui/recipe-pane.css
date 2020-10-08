@@ -4,7 +4,7 @@
 }
 .recipe-info {
     -fx-fill: #f4c20d;
-    -fx-font-size: 18.5px;
+    -fx-font-size: 19px;
 }
 .child-pane, .recipes-info-pane {
     -fx-background-color: #42404b;

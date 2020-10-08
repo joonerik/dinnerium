@@ -9,7 +9,6 @@ import dinnerium.core.RecipeContainer;
 import dinnerium.core.RecipeInstructions;
 import dinnerium.core.User;
 import dinnerium.json.HandlePersistency;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -32,8 +31,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -42,8 +39,10 @@ import javafx.scene.text.Text;
 public class AppController {
 
     // contains our current stock of ingredients/groceries
-    private ObservableList<Ingredient> newRecipeIngredients = FXCollections.observableArrayList();
-    private ObservableList<String> newRecipeInstructions = FXCollections.observableArrayList();
+    private final ObservableList<Ingredient> newRecipeIngredients =
+        FXCollections.observableArrayList();
+    private final ObservableList<String> newRecipeInstructions =
+        FXCollections.observableArrayList();
     private User user = null;
 
     @FXML
@@ -115,7 +114,7 @@ public class AppController {
 
 
     @FXML
-    void initialize() throws Exception {
+    void initialize() {
         recipesListView.setItems(newRecipeIngredients);
         instructionsListView.setItems(newRecipeInstructions);
         unitComboBox.getItems().setAll(Quantity.units);
@@ -150,7 +149,7 @@ public class AppController {
         changeScene("fridge");
     }
 
-    //Adds the ingreident to the ingreidentContainer first and then updates the tableview.
+    //Adds the ingredient to the ingredientContainer first and then updates the tableview.
     //The saves the new ingredientContainer to the file, if an error occurs it throws an IAE
     @FXML
     private void handleAddIngredient() {
@@ -158,7 +157,6 @@ public class AppController {
         updateTableView();
         // writes our new ingredient to the file
         try {
-//            HandlePersistency.writeJsonToFile(user);
             Path path = Paths.get(
                 "../core/src/main/resources/dinnerium/storage/" + user.getUsername() + ".json");
             HandlePersistency.writeUser(user,
@@ -175,8 +173,8 @@ public class AppController {
         newRecipeAmountInput.clear();
     }
 
-    //Adds the new ingreident to either the newRecipeIngredients list (if newRecipe is true)
-    //Or adds the new ingredient to the ingredientContainer elsewise.
+    //Adds the new ingredient to either the newRecipeIngredients list (if newRecipe is true)
+    //Or adds the new ingredient to the ingredientContainer otherwise.
     //where it gets the values from is decided by if newRecipe is true or not.
     //If an IAE is thrown due to an error in the input values it writes the error message caught
     //to the errorOutput textField.
@@ -187,7 +185,7 @@ public class AppController {
                 .getSelectionModel()
                 .getSelectedItem();
             String name = (newRecipe ? newRecipeNameIngredientInput : nameInput).getText();
-            Ingredient i = new Ingredient(new Quantity(Double.valueOf(amountText), unit), name);
+            Ingredient i = new Ingredient(new Quantity(Double.parseDouble(amountText), unit), name);
 
             if (newRecipe) {
                 newRecipeIngredients.add(i);
@@ -474,10 +472,6 @@ public class AppController {
     //Methods for testing the app controller.
     User getUser() {
         return this.user;
-    }
-
-    void setUser(User user) {
-        this.user = user;
     }
 
     List<Ingredient> getNewRecipeIngredients() {
