@@ -26,18 +26,15 @@ class ContainerDeserializer extends JsonDeserializer<Container> {
         return deserialize((JsonNode) treeNode);
     }
 
-    // converts the IngredientContainer from string in json file to an object
-    // We check if the nodes are of the correct type
-    // finally we have ingredient objects which are added into the IngredientContainer list
-
     /**
      * Converts the IngredientContainer from string in json file to an object
      * We check if the nodes are of the correct type
      * finally we have ingredient objects which are added into the IngredientContainer list.
      *
-     * @param jsonNode
-     * @return Container Container of either ingredients or recipes
-     * @throws IOException
+     * @param jsonNode the json node to be deserialized to a Container object.
+     * @return The Container
+     *          that is read from file, null if the jsonNode is not on the correct format.
+     * @throws IOException if it is not possible to use the deserializers.
      */
     public Container deserialize(JsonNode jsonNode)
             throws IOException {

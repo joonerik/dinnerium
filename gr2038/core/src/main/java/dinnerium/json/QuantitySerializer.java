@@ -12,10 +12,10 @@ class QuantitySerializer extends JsonSerializer<Quantity> {
     /**
      * Converts the Quantity object to a string in json format.
      *
-     * @param q
-     * @param jsonGen
-     * @param serializerProvider
-     * @throws IOException
+     * @param q the user to be serialized to a json string.
+     * @param jsonGen the jsonGen used to generate the json objects.
+     * @param serializerProvider the serializerProvider.
+     * @throws IOException if it is not possible to format the Quantity to a json string.
      */
     @Override
     public void serialize(Quantity q, JsonGenerator jsonGen, SerializerProvider serializerProvider)

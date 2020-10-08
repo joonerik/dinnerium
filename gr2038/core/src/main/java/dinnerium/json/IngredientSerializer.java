@@ -12,10 +12,10 @@ class IngredientSerializer extends JsonSerializer<Ingredient> {
     /**
      * Converts the Ingredient object to a string in json format.
      *
-     * @param ingredient
-     * @param jsonGen
-     * @param serializerProvider
-     * @throws IOException
+     * @param ingredient the Ingredient to be serialized to a json string.
+     * @param jsonGen the jsonGen used to generate the json objects.
+     * @param serializerProvider the serializerProvider.
+     * @throws IOException if it is not possible to format the Ingredient to a json string.
      */
     @Override
     public void serialize(Ingredient ingredient,

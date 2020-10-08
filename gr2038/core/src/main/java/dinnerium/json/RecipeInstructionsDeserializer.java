@@ -23,7 +23,7 @@ class RecipeInstructionsDeserializer extends JsonDeserializer<RecipeInstructions
     /**
      * Converts the RecipeInstructions from string in json file to a RecipeInstructions object.
      *
-     * @param jsonNode
+     * @param jsonNode the json node to be deserialized to a RecipeInstructions object.
      * @return RecipeInstructions RecipeInstructions object
      *
      */
