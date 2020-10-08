@@ -23,9 +23,13 @@ class UserDeserializer extends JsonDeserializer<User> {
         return deserialize((JsonNode) treeNode);
     }
 
-    // converts the Ingredient from string in json file to an object
-    // checks if the nodes are of correct type
-    // finally we have converted the strings from json into actual objects
+    /**
+     * Converts a jsonNode to a user object.
+     *
+     * @param jsonNode the json node to be deserialized to a user object.
+     * @return The user that is read from file, null if the jsonNode is not on the correct format.
+     * @throws IOException if it is not possible to use the deserializers.
+     */
     public User deserialize(JsonNode jsonNode) throws IOException {
         if (jsonNode instanceof ObjectNode) {
             ObjectNode objectNode = (ObjectNode) jsonNode;
