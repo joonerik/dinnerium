@@ -107,7 +107,7 @@
                   <Button fx:id="newRecipeAddInstruction" layoutX="467.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleAddInstruction" text="Add" />
                   <Button fx:id="addRecipeButton" layoutX="260.0" layoutY="486.0" mnemonicParsing="false" onAction="#handleAddRecipe" prefHeight="33.0" prefWidth="143.0" text="Add recipe" />
                   <TextField fx:id="newRecipeRecipeName" layoutX="32.0" layoutY="27.0" promptText="Recipe name" />
-                  <TextField fx:id="newRecipeRecipeDescription" layoutX="32.0" layoutY="68.0" prefHeight="81.0" prefWidth="160.0" promptText="Description" />
+                  <TextArea fx:id="newRecipeRecipeDescription" layoutX="32.0" layoutY="68.0" prefHeight="81.0" prefWidth="160.0" promptText="Description" />
                   <TextField fx:id="newRecipeMinutes" layoutX="269.0" layoutY="68.0" promptText="Minutes" />
                </children>
             </Pane>

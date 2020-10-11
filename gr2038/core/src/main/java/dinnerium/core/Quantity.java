@@ -5,10 +5,8 @@ import java.util.List;
 
 public class Quantity {
 
-    // the static final list is supposed to contain all (!) units imaginable.
-    // Will be expanded for next assignment
     public static final List<String> units =
-            List.of("stk", "dl", "gram");
+            List.of("stk", "dl", "gram", "liter", "kg", "ss", "ts");
     private double amount;
     private String unit;
 

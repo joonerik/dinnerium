@@ -16,7 +16,8 @@ public class App extends Application {
         scene.getStylesheets().addAll(
                 getClass().getResource("table-view-style.css").toExternalForm(),
                 getClass().getResource("recipe-pane.css").toExternalForm(),
-                getClass().getResource("feedback-handler.css").toExternalForm()
+                getClass().getResource("feedback-handler.css").toExternalForm(),
+                getClass().getResource("field-style.css").toExternalForm()
         );
         stage.setScene(scene);
         stage.setTitle("Dinnerium");

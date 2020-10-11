@@ -90,7 +90,7 @@ public class AppController {
     @FXML
     TextField newRecipeRecipeName;
     @FXML
-    TextField newRecipeRecipeDescription;
+    TextArea newRecipeRecipeDescription;
     @FXML
     TextField newRecipeMinutes;
     @FXML
@@ -115,6 +115,7 @@ public class AppController {
 
     @FXML
     void initialize() {
+        // sets up our tableview with correct rows and columns
         recipesListView.setItems(newRecipeIngredients);
         instructionsListView.setItems(newRecipeInstructions);
         unitComboBox.getItems().setAll(Quantity.units);
@@ -123,18 +124,18 @@ public class AppController {
         itemColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
     }
 
-    // need to handle throws from init!!
     private void setup(String username) {
-        // sets up our tableview with correct rows and columns
 
         try {
-            //Here we need to make a pop-up for the user to write in username when app fires.
             String path = "../core/src/main/resources/dinnerium/storage/" + username + ".json";
             FileReader reader = new FileReader(Paths.get(path).toFile(), StandardCharsets.UTF_8);
             this.user = HandlePersistency.readUserFromReader(reader);
         } catch (IOException e) {
-            //Here we need to make a popup for the user to create a new User, e.g write in username.
-            this.user = new User(new IngredientContainer(), new RecipeContainer(), username);
+            try {
+                this.user = new User(new IngredientContainer(), new RecipeContainer(), username);
+            } catch (IllegalArgumentException iae) {
+                FeedbackHandler.showMessage(msgPane, iae.getMessage(), FeedbackHandler.ERROR);
+            }
         }
         updateTableView();
         showUserRecipes();
@@ -142,20 +143,20 @@ public class AppController {
 
     @FXML
     private void handleLogin() {
-        setup(usernameInput.getText());
+        setup(usernameInput.getText().toLowerCase());
         usernameInput.setVisible(false);
         loginButton.setVisible(false);
         navigationBarPane.setVisible(true);
         changeScene("fridge");
     }
 
-    //Adds the ingredient to the ingredientContainer first and then updates the tableview.
-    //The saves the new ingredientContainer to the file, if an error occurs it throws an IAE
+    //Adds the ingredient to the Users ingredientContainer first and then updates the tableview.
+    //Then saves the new User object to the file, if an error occurs it throws an IAE
     @FXML
     private void handleAddIngredient() {
         addIngredient(false);
         updateTableView();
-        // writes our new ingredient to the file
+        // writes our new ingredient to the users file
         try {
             Path path = Paths.get(
                 "../core/src/main/resources/dinnerium/storage/" + user.getUsername() + ".json");
@@ -190,19 +191,10 @@ public class AppController {
             if (newRecipe) {
                 newRecipeIngredients.add(i);
             } else {
-                //this.ingredientContainer.addItem(i);
                 this.user.getIngredientContainer().addItem(i);
             }
         } catch (IllegalArgumentException e) {
-            // write error output in app
             FeedbackHandler.showMessage(msgPane, e.getMessage(), 'E');
-            /*
-            errorOutput.setVisible(true);
-            errorOutput.setText(e.getMessage());
-            CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS).execute(() -> {
-                errorOutput.setVisible(false);
-            });*/
-
         }
 
     }
@@ -213,11 +205,12 @@ public class AppController {
             this.newRecipeInstructions.add(instructionTextArea.getText());
             instructionTextArea.clear();
         } else {
-            // errorHandling!!
             FeedbackHandler.showMessage(msgPane, "Instruction empty", 'E');
         }
     }
 
+    //Adds a new recipe to the users recipe container, and then updates the recipes Anchor pane
+    // with the new recipe.
     @FXML
     private void handleAddRecipe() {
         double portions = 0.0;
@@ -230,6 +223,8 @@ public class AppController {
         }
 
         try {
+            //Currently the image is not used due to delays in the FX application when
+            //retrieving images from the web.
             Metadata md = new Metadata(user.getUsername(),
                 portions,
                 "http://folk.ntnu.no/anderobs/images/tikkaMasala.png",
@@ -278,8 +273,8 @@ public class AppController {
         }
     }
 
-    //Sende inn en recipe som man henter ut all infoen fra, slik at man kan hente ut infoen fra den.
-    //Så blir det lettere å initializere appen fra en fil med recipes.
+    //Updates the recipeAnchorPane with one the new recipe at the bottom
+    //Extends the scroll-pane if the new recipe is put outside it's current height.
     private void updateRecipeAnchorPane(Recipe recipe) {
         Pane pane = new Pane();
         pane.setPrefWidth(522);
@@ -296,15 +291,13 @@ public class AppController {
         childPane.setLayoutY(30);
         childPane.getStyleClass().add("child-pane");
 
+        //Commented out due to issues with delay in the application.
         /*Image image = new Image(recipe.getMetadata().getImage());
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(105);
         imageView.setFitWidth(105);
         imageView.setLayoutX(10);
         imageView.setLayoutY(10);*/
-
-        //Endres etterhvert til å regne ut hvor mange ingredienser man faktisk mangler
-        //utifra hva man har i fridge
 
         Text recipeInfo = new Text(recipe.getIngredientContainer().getContainerSize()
             + " ingredients required  | " + recipe.getMetadata().getMinutes() + " minutes");
@@ -321,7 +314,7 @@ public class AppController {
 
         childPane.getChildren().addAll(/*imageView, */recipeInfo, recipeDescription);
         pane.getChildren().addAll(recipeName, childPane);
-        pane.setLayoutX(10);
+        pane.setLayoutX(54);
         pane.setCursor(Cursor.HAND);
         pane.setOnMouseClicked(click -> showRecipeInformation(recipe));
         recipesAnchorPane.getChildren().add(pane);
@@ -346,7 +339,7 @@ public class AppController {
 
         Text recipeDescription = new Text(recipe.getMetadata().getRecipeDescription());
         recipeDescription.getStyleClass().add("recipe-info-description");
-        recipeDescription.setLayoutY(50);
+        recipeDescription.setLayoutY(80);
         recipeDescription.setLayoutX(20);
         recipeDescription.setWrappingWidth(482);
 
@@ -359,7 +352,7 @@ public class AppController {
 
         Text ingredientsHeader = new Text("Ingredients");
         ingredientsHeader.getStyleClass().add("textview-header");
-        ingredientsHeader.setLayoutY(98);
+        ingredientsHeader.setLayoutY(105);
         ingredientsHeader.setLayoutX(40);
 
         Iterator<Ingredient> ingredientsIt = recipe.getIngredientContainer().iterator();
@@ -370,13 +363,13 @@ public class AppController {
             i++;
         }
         ingredients.setWrappingWidth(200);
-        ingredients.setLayoutY(115);
+        ingredients.setLayoutY(122);
         ingredients.setLayoutX(20);
         ingredients.getStyleClass().add("list-style");
 
         Text instructionsHeader = new Text("Instructions");
         instructionsHeader.getStyleClass().add("textview-header");
-        instructionsHeader.setLayoutY(98);
+        instructionsHeader.setLayoutY(105);
         instructionsHeader.setLayoutX(270);
 
         Iterator<String> instructionIt = recipe.getRecipeInstructions().iterator();
@@ -388,10 +381,11 @@ public class AppController {
         }
         instructions.getStyleClass().add("list-style");
         instructions.setWrappingWidth(200);
-        instructions.setLayoutY(115);
+        instructions.setLayoutY(122);
         instructions.setLayoutX(250);
 
         Button hideRecipeInformation = new Button();
+        hideRecipeInformation.getStyleClass().add("button-style");
         hideRecipeInformation.setId("hideRecipeInformationButton");
         hideRecipeInformation.setText("Hide recipe");
         hideRecipeInformation.setLayoutY(20);
@@ -428,7 +422,7 @@ public class AppController {
         changeScene("settings");
     }
 
-    //Changes between the scenes of the application, and sets the color of the headertext
+    //Changes between the scenes of the application, and sets the color of the header text
     private void changeScene(String newScene) {
         settingsText.setFill(Color.valueOf(newScene.equals("settings") ? "#f4c20d" : "#ebe8bf"));
         fridgeText.setFill(Color.valueOf(newScene.equals("fridge") ? "#f4c20d" : "#ebe8bf"));
@@ -450,7 +444,7 @@ public class AppController {
         changeSubScene("newRecipe");
     }
 
-    //Changes between subscenes in the recipe scene
+    //Changes between sub-scenes in the recipe scene
     private void changeSubScene(String newSubScene) {
         newRecipeSubMenuText.setFill(
             Color.valueOf(newSubScene.equals("newRecipe") ? "#f4c20d" : "#ebe8bf"));

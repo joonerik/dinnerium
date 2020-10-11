@@ -37,10 +37,12 @@ mvn javafx:run
 
 Mappestrukturen til prosjektet er organisert følgende:
 
-- **core/src/main/java** utgjør kodingsprosjektet. Videre har vi mapper for å skille koden som brukes til hva.
-- **fxui/main/resources** for ressurser som bilder, FXML-filer osv.
-- **core/src/test/java** for testkoden til applikasjonen
-- **core/src/test/resources** for ressurser som brukes av testene.
+- **core/src/main/java** utgjør kodingsprosjektet. Videre har vi mapper for å skille koden som brukes til hva.  
+- **core/src/main/resources/storage** for lagring av brukerdata.  
+- **core/src/test/java** for testkoden til kjernefunksjonaliteten til prosjektet.  
+- **fxui/src/main/java** utgjør kildekoden til JavaFX-applikasjonen.
+- **fxui/src/main/resources** for ressurser som bilder, FXML-filer, stilark osv.  
+- **fxui/src/test/java** for testkoden til JavaFX-applikasjonen.
 
 Det viktigste fra mappetreet finnes her:
 
@@ -141,7 +143,7 @@ I det nye designet har vi tenkt på brukervennlighet og at det skal være letter
 
 ## Dokumentasjon📝
 
-I mappen `documentation` kan man finne en oversikt over klassediagrammer og javadoc-dokumentasjon.  
+I mappen `documentation` kan man finne en oversikt over klassediagrammer og javadoc-dokumentasjon. 
 Her finner man også samtlige [brukerhistorier](documentation/brukerhistorier.md). 
-Denne mappen gjør det lettere å sette seg inn i hvordan vi har tenkt når vi har satt opp  
+Denne mappen gjør det lettere å sette seg inn i hvordan vi har tenkt når vi har satt opp 
 arkitekturen, og gjør det lettere for oss mens vi jobber også.
