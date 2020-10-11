@@ -137,17 +137,19 @@ public class AppController {
                 FeedbackHandler.showMessage(msgPane, iae.getMessage(), FeedbackHandler.ERROR);
             }
         }
-        updateTableView();
-        showUserRecipes();
     }
 
     @FXML
     private void handleLogin() {
         setup(usernameInput.getText().toLowerCase());
-        usernameInput.setVisible(false);
-        loginButton.setVisible(false);
-        navigationBarPane.setVisible(true);
-        changeScene("fridge");
+        if (user != null) {
+            updateTableView();
+            showUserRecipes();
+            usernameInput.setVisible(false);
+            loginButton.setVisible(false);
+            navigationBarPane.setVisible(true);
+            changeScene("fridge");
+        }
     }
 
     //Adds the ingredient to the Users ingredientContainer first and then updates the tableview.

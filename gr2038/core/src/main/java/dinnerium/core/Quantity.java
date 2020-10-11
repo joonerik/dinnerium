@@ -29,7 +29,7 @@ public class Quantity {
      * @return true if valid
      */
     private boolean validateUnit(String unit) {
-        return units.contains(unit);
+        return unit != null && units.contains(unit);
     }
 
     /**

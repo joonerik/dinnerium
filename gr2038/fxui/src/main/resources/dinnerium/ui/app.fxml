@@ -32,7 +32,7 @@
          </children></Pane>
       <Pane fx:id="settingsPane" layoutX="125.0" layoutY="60.0" prefHeight="543.0" prefWidth="650.0" style="-fx-border-width: 3; -fx-border-color: #F4C20D; -fx-border-radius: 10;" visible="false">
          <children>
-            <Text fill="#f4c20d" layoutX="225.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User settings" textAlignment="CENTER" underline="true" wrappingWidth="200.255859375">
+            <Text fill="#f4c20d" layoutX="225.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not implemented yet" textAlignment="CENTER" underline="true" wrappingWidth="200.255859375">
                <font>
                   <Font size="26.0" />
                </font>
