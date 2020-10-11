@@ -8,9 +8,6 @@ import java.io.IOException;
 
 class RecipeInstructionsSerializer extends JsonSerializer<RecipeInstructions> {
 
-
-    // converts the Quantity object to a string in json format
-
     /**
      * Converts the recipeInstructions object to a string in json format.
      *

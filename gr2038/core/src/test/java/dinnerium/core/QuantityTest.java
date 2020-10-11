@@ -18,7 +18,6 @@ public class QuantityTest {
     @Test
     public void getAmountTest() {
         assertEquals(1.0, q.getAmount());
-        //assertTrue(1.0 == q.getAmount());
     }
 
     @Test

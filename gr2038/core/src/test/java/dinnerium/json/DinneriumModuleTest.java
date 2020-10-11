@@ -26,7 +26,6 @@ import org.junit.jupiter.api.Test;
 class DinneriumModuleTest {
 
     private ObjectMapper mapper;
-    //Fiks formateringen på recipeInstructions!!!
     private final String expectedUserString = "" +
         "{\n" +
         "  \"ingredientContainer\" : {\n" +

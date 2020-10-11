@@ -61,7 +61,6 @@ public class Ingredient {
      * @throws IllegalArgumentException
      *        if name is invalid
      */
-    //Name is set to lowercase for practical reasons
     public void setName(String name) {
         if (validateIngredientName(name)) {
             this.name = name.toLowerCase();
