@@ -90,7 +90,7 @@ public class AppController {
     @FXML
     TextField newRecipeRecipeName;
     @FXML
-    TextField newRecipeRecipeDescription;
+    TextArea newRecipeRecipeDescription;
     @FXML
     TextField newRecipeMinutes;
     @FXML
@@ -134,7 +134,11 @@ public class AppController {
             this.user = HandlePersistency.readUserFromReader(reader);
         } catch (IOException e) {
             //Here we need to make a popup for the user to create a new User, e.g write in username.
-            this.user = new User(new IngredientContainer(), new RecipeContainer(), username);
+            try {
+                this.user = new User(new IngredientContainer(), new RecipeContainer(), username);
+            } catch (IllegalArgumentException iae) {
+                FeedbackHandler.showMessage(msgPane, iae.getMessage(), FeedbackHandler.ERROR);
+            }
         }
         updateTableView();
         showUserRecipes();
@@ -142,7 +146,7 @@ public class AppController {
 
     @FXML
     private void handleLogin() {
-        setup(usernameInput.getText());
+        setup(usernameInput.getText().toLowerCase());
         usernameInput.setVisible(false);
         loginButton.setVisible(false);
         navigationBarPane.setVisible(true);
