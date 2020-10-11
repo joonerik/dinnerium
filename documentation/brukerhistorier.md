@@ -31,18 +31,22 @@ oppskrifter og varer for å så kunne se en oversikt over alle oppskriftene han/
 - Legge til nye varer
 
 ## Brukerhistorie 3 (us-3)   
-Som en fast bruker ønsker jeg også å kunne endre oversikten over hvilke varer jeg har til enhver tid. Jeg ønsker også muligheten til 
-å endre en oppskrift, i tillegg til å fjerne oppskrifter jeg ikke lengre bruker. 
+Som en fast bruker ønsker jeg, i tillegg til en samlet oversikt over samtlige oppskrifter, å kunne se på 
+en oppskrift mer detaljert, hvor jeg kan se både ingredienser og stegene.
+Jeg vil også ha mulighet til å endre oversikten over varene og oppskriftene mine, samt å slette varer og oppskrifter som jeg 
+ikke lengre har eller vil bruke. 
 
-Brukeren skal kunne slette og redigere både vareoversikten og oppskriftene sine. 
+Brukeren skal kunne slette og redigere både vareoversikten og oppskriftene sine. Man skal også kunne se på en oppskrift mer detaljert. 
 
 ### Viktig å kunne se
 - Knapp for å slette en vare eller oppskrift
 - Knapp for å endre en vare eller oppskrift
+- En detaljoversikt på en oppskrift
 
 ### Viktig å kunne gjøre
 - Slette en vare eller oppskrift
 - Endre en vare eller oppskrift
+- Trykke på en oppskrift for detaljer
 
 ## Brukerhistorie 4 (us-4)   
 Som privatperson ønsker jeg å ha en viss oversikt over kostnadene til en oppskrift. Jeg har derfor behov for et prisanslag til oppskriften
