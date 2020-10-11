@@ -25,8 +25,8 @@
             <Button fx:id="addButton" layoutX="353.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleAddIngredient" prefHeight="30.0" prefWidth="74.0" styleClass="button-style" text="Add" />
             <TableView fx:id="ingredientTableView" layoutX="60.0" layoutY="96.0" prefHeight="267.0" prefWidth="380.0" style="-fx-background-color: #42404B;">
               <columns>
-                <TableColumn fx:id="quantityColumn" prefWidth="121.33331298828125" resizable="false" />
-                <TableColumn fx:id="itemColumn" prefWidth="238.66671752929688" resizable="false" />
+                <TableColumn fx:id="quantityColumn" prefWidth="151.33334350585938" resizable="false" />
+                <TableColumn fx:id="itemColumn" prefWidth="209.33334350585938" resizable="false" />
               </columns>
             </TableView>
          </children></Pane>
@@ -39,7 +39,7 @@
             </Text>
          </children>
       </Pane>
-      <Pane fx:id="recipesPane" layoutX="123.0" layoutY="56.0" prefHeight="583.0" prefWidth="656.0">
+      <Pane fx:id="recipesPane" layoutX="123.0" layoutY="56.0" prefHeight="583.0" prefWidth="656.0" visible="false">
          <children>
               <ScrollPane fx:id="recipesScrollPane" layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0">
                   <content>
@@ -56,7 +56,7 @@
                   <Text fx:id="recipesSubMenuText" fill="#f4c20d" layoutY="17.0" onMouseClicked="#handleChangeToRecipes" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipes" textAlignment="CENTER" wrappingWidth="90.0" />
                </children>
             </Pane>
-            <Pane fx:id="newRecipePane" layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0" style="-fx-border-color: white;">
+            <Pane fx:id="newRecipePane" layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0" style="-fx-border-color: white;" visible="false">
                <children>
                   <TextField fx:id="newRecipePortions" layoutX="269.0" layoutY="27.0" promptText="# portions" styleClass="input-field-style" />
                   <ListView fx:id="recipesListView" layoutX="89.0" layoutY="270.0" prefHeight="200.0" prefWidth="160.0" styleClass="list-view-style" />
