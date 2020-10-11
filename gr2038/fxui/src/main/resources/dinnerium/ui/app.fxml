@@ -59,20 +59,20 @@
             <Pane fx:id="newRecipePane" layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0" style="-fx-border-color: white;" visible="false">
                <children>
                   <TextField fx:id="newRecipePortions" layoutX="269.0" layoutY="27.0" promptText="# portions" styleClass="input-field-style" />
-                  <ListView fx:id="recipesListView" layoutX="89.0" layoutY="270.0" prefHeight="200.0" prefWidth="160.0" styleClass="list-view-style" />
+                  <ListView fx:id="recipesListView" layoutX="34.0" layoutY="270.0" prefHeight="200.0" prefWidth="295.0" styleClass="list-view-style" />
                   <TextField fx:id="newRecipeNameIngredientInput" layoutX="32.0" layoutY="200.0" prefHeight="27.0" prefWidth="93.0" promptText="Ingredient" styleClass="input-field-style" />
                   <TextField fx:id="newRecipeAmountInput" layoutX="132.0" layoutY="200.0" prefHeight="27.0" prefWidth="60.0" promptText="quantity" styleClass="input-field-style" />
                   <ComboBox fx:id="newRecipeUnitComboBox" layoutX="195.0" layoutY="200.0" prefHeight="27.0" prefWidth="90.0" promptText="Unit" styleClass="combobox-style" />
                   <Button fx:id="newRecipeAddButton" layoutX="290.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleNewRecipeAddIngredient" styleClass="button-style" text="Add" />
-                  <ListView fx:id="instructionsListView" layoutX="380.0" layoutY="270.0" prefHeight="200.0" prefWidth="160.0" styleClass="list-view-style" />
+                  <ListView fx:id="instructionsListView" layoutX="380.0" layoutY="270.0" prefHeight="200.0" prefWidth="213.0" styleClass="list-view-style" />
                   <TextArea fx:id="instructionTextArea" layoutX="380.0" layoutY="180.0" prefHeight="48.0" prefWidth="160.0" promptText="Instructions" styleClass="text-area-style" />
                   <Button layoutX="550.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleAddInstruction" styleClass="button-style" text="Add" />
                   <Button layoutX="224.0" layoutY="490.0" mnemonicParsing="false" onAction="#handleAddRecipe" prefHeight="33.0" prefWidth="143.0" styleClass="button-style" text="Add recipe" />
                   <TextField fx:id="newRecipeRecipeName" layoutX="32.0" layoutY="27.0" promptText="Recipe name" styleClass="input-field-style" />
                   <TextField fx:id="newRecipeMinutes" layoutX="269.0" layoutY="68.0" promptText="Minutes" styleClass="input-field-style" />
                   <TextArea fx:id="newRecipeRecipeDescription" layoutX="32.0" layoutY="68.0" prefHeight="81.0" prefWidth="160.0" promptText="Description" styleClass="text-area-style" />
-                  <Text layoutX="89.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textview-header" text="Ingredients" textAlignment="CENTER" wrappingWidth="160.0" />
-                  <Text layoutX="380.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textview-header" text="Instructions" textAlignment="CENTER" wrappingWidth="160.0" />
+                  <Text layoutX="34.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textview-header" text="Ingredients" textAlignment="CENTER" wrappingWidth="295.0" />
+                  <Text layoutX="380.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textview-header" text="Instructions" textAlignment="CENTER" wrappingWidth="213.0" />
                </children>
             </Pane>
          </children>
