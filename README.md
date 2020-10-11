@@ -7,6 +7,8 @@
 Dette prosjektet er en del av emnet IT1901 gjennomført høsten 2020. Målet er å lage en trelagsapplikasjon med et domenelag, brukergrensesnitt og lagring.
 Man skal ha tester for alle lag, og prosjektet skal være konfigurert med maven. Bygget er rigget med jacoco plugin for å rapportere testdekningsgraden til prosjektet (mvn verify).
 Det er også rigget opp med plugins for å sjekke kodekvalitet, samt for å se etter typiske bugs. Resultatet av sjekkene rapporteres inn til target-mappen.
+I master-branchen kjøres også en pipeline for å sjekke testdekningsgraden på _core_-modulen. Grunnen til at det ikke kjøres på _fxui_-modulen er at testene på
+denne modulen ikke støtter GitLab sin CI for Java 14.
 
 Vi ønsker å lage en applikasjon som skal hjelpe deg som bruker å planlegge middager. Dette skal skje gjennom en oversikt over varer man har tilgjengelig,
 samt oppskrifter man har brukt. Gjennom [brukerhistorie 2](documentation/brukerhistorier.md) vil man derfor kunne se varene sine og oppskrifter man tidligere har brukt og lagret
@@ -18,7 +20,7 @@ for vår applikasjon å lagre data først når data er ferdig konstruert, f.eks 
 
 ## Hvordan kjøre prosjektet 🚀
 
-Prosjektet er satt opp med maven.
+Prosjektet er satt opp med maven, og delt opp i to moduler _core_ og _fxui_. 
 
 ```bat
 cd gr2038
@@ -140,6 +142,6 @@ I det nye designet har vi tenkt på brukervennlighet og at det skal være letter
 ## Dokumentasjon📝
 
 I mappen `documentation` kan man finne en oversikt over klassediagrammer og javadoc-dokumentasjon.  
-Her finner man også samtlige [brukerhistorier](documentation/brukerhistorier.md) 
+Her finner man også samtlige [brukerhistorier](documentation/brukerhistorier.md). 
 Denne mappen gjør det lettere å sette seg inn i hvordan vi har tenkt når vi har satt opp  
 arkitekturen, og gjør det lettere for oss mens vi jobber også.
