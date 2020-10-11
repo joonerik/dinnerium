@@ -350,7 +350,7 @@ public class AppController {
 
         Text recipeDescription = new Text(recipe.getMetadata().getRecipeDescription());
         recipeDescription.getStyleClass().add("recipe-info-description");
-        recipeDescription.setLayoutY(50);
+        recipeDescription.setLayoutY(80);
         recipeDescription.setLayoutX(20);
         recipeDescription.setWrappingWidth(482);
 
@@ -363,7 +363,7 @@ public class AppController {
 
         Text ingredientsHeader = new Text("Ingredients");
         ingredientsHeader.getStyleClass().add("textview-header");
-        ingredientsHeader.setLayoutY(98);
+        ingredientsHeader.setLayoutY(105);
         ingredientsHeader.setLayoutX(40);
 
         Iterator<Ingredient> ingredientsIt = recipe.getIngredientContainer().iterator();
@@ -374,13 +374,13 @@ public class AppController {
             i++;
         }
         ingredients.setWrappingWidth(200);
-        ingredients.setLayoutY(115);
+        ingredients.setLayoutY(122);
         ingredients.setLayoutX(20);
         ingredients.getStyleClass().add("list-style");
 
         Text instructionsHeader = new Text("Instructions");
         instructionsHeader.getStyleClass().add("textview-header");
-        instructionsHeader.setLayoutY(98);
+        instructionsHeader.setLayoutY(105);
         instructionsHeader.setLayoutX(270);
 
         Iterator<String> instructionIt = recipe.getRecipeInstructions().iterator();
@@ -392,10 +392,11 @@ public class AppController {
         }
         instructions.getStyleClass().add("list-style");
         instructions.setWrappingWidth(200);
-        instructions.setLayoutY(115);
+        instructions.setLayoutY(122);
         instructions.setLayoutX(250);
 
         Button hideRecipeInformation = new Button();
+        hideRecipeInformation.getStyleClass().add("button-style");
         hideRecipeInformation.setId("hideRecipeInformationButton");
         hideRecipeInformation.setText("Hide recipe");
         hideRecipeInformation.setLayoutY(20);
