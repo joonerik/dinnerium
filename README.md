@@ -9,7 +9,7 @@ Man skal ha tester for alle lag, og prosjektet skal være konfigurert med maven.
 Det er også rigget opp med plugins for å sjekke kodekvalitet, samt for å se etter typiske bugs. Resultatet av sjekkene rapporteres inn til target-mappen.
 
 Vi ønsker å lage en applikasjon som skal hjelpe deg som bruker å planlegge middager. Dette skal skje gjennom en oversikt over varer man har tilgjengelig,
-samt oppskrifter man har brukt. Gjennom [brukerhistorie 2](brukerhistorier.md) vil man derfor kunne se varene sine og oppskrifter man tidligere har brukt og lagret
+samt oppskrifter man har brukt. Gjennom [brukerhistorie 2](documentation/brukerhistorier.md) vil man derfor kunne se varene sine og oppskrifter man tidligere har brukt og lagret
 i applikasjonen. Applikasjonen skal til syvende og sist hjelpe deg å finne aktuelle oppskrifter basert på varene man allerede har, og bidra i planleggingen av ukesmenyen.
 
 Applikasjonen benytter Jackson-biblioteket for å lagre data i json-format. Vi bruker implisitt lagring hvor en bruker vil kunne lagre sine varer og oppskrifter
@@ -140,5 +140,6 @@ I det nye designet har vi tenkt på brukervennlighet og at det skal være letter
 ## Dokumentasjon📝
 
 I mappen `documentation` kan man finne en oversikt over klassediagrammer og javadoc-dokumentasjon.  
+Her finner man også samtlige [brukerhistorier](documentation/brukerhistorier.md) 
 Denne mappen gjør det lettere å sette seg inn i hvordan vi har tenkt når vi har satt opp  
 arkitekturen, og gjør det lettere for oss mens vi jobber også.
