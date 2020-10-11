@@ -1,20 +1,39 @@
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.idi.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2020/gr2038/gr2038/)
 
-# Dinnerium
+# Dinnerium 💥
 
 ![logo](http://folk.ntnu.no/anderobs/images/dinnerium.png "Our logo")
 
 Dette prosjektet er en del av emnet IT1901 gjennomført høsten 2020. Målet er å lage en trelagsapplikasjon med et domenelag, brukergrensesnitt og lagring.
 Man skal ha tester for alle lag, og prosjektet skal være konfigurert med maven. Bygget er rigget med jacoco plugin for å rapportere testdekningsgraden til prosjektet (mvn verify).
-Det er også rigget opp med plugins for å sjekke kodekvalitet, samt for å se etter typiske bugs. Resultatet av sjekkene rapporteres inn til target mappen.
+Det er også rigget opp med plugins for å sjekke kodekvalitet, samt for å se etter typiske bugs. Resultatet av sjekkene rapporteres inn til target-mappen.
+I master-branchen kjøres også en pipeline for å sjekke testdekningsgraden på _core_-modulen. Grunnen til at det ikke kjøres på _fxui_-modulen er at testene på
+denne modulen ikke støtter GitLab sin CI for Java 14.
 
 Vi ønsker å lage en applikasjon som skal hjelpe deg som bruker å planlegge middager. Dette skal skje gjennom en oversikt over varer man har tilgjengelig,
-samt oppskrifter man har brukt. Gjennom [brukerhistorie 2](brukerhistorier.md) vil man derfor kunne se varene sine og oppskrifter man tidligere har brukt og lagret
+samt oppskrifter man har brukt. Gjennom [brukerhistorie 2](documentation/brukerhistorier.md) vil man derfor kunne se varene sine og oppskrifter man tidligere har brukt og lagret
 i applikasjonen. Applikasjonen skal til syvende og sist hjelpe deg å finne aktuelle oppskrifter basert på varene man allerede har, og bidra i planleggingen av ukesmenyen.
 
-<!-- Illustrerende skjermbilde (utkast av design) -->
+Applikasjonen benytter Jackson-biblioteket for å lagre data i json-format. Vi bruker implisitt lagring hvor en bruker vil kunne lagre sine varer og oppskrifter
+automatisk, uten å måtte eksplisitt tenke over lagring. Grunnen til at vi benytter implisitt lagring over en dokumentmetafor er fordi det er naturlig
+for vår applikasjon å lagre data først når data er ferdig konstruert, f.eks at en hel oppskrift er blitt opprettet.
 
-## Innhold og organisering
+## Hvordan kjøre prosjektet 🚀
+
+Prosjektet er satt opp med maven, og delt opp i to moduler _core_ og _fxui_. 
+
+```bat
+cd gr2038
+mvn install
+cd fxui
+mvn javafx:run
+```
+
+- For å bygge prosjektet bruker man _mvn install_ fra roten, altså _gr2038_-mappen.
+- For å kjøre prosjektet kan man gå inn i _fxui_-modulen, og deretter bruke _mvn javafx:run_.
+  Man må først ha installert modulen som _fxui_ er avhengig av, altså _core_-modulen.
+
+## Innhold og organisering🎨
 
 Mappestrukturen til prosjektet er organisert følgende:
 
@@ -33,7 +52,7 @@ Det viktigste fra mappetreet finnes her:
  ┣ 📂core
  ┃ ┣ 📂src
  ┃ ┃ ┣ 📂main
- ┃ ┃ ┃ ┗ 📂java
+ ┃ ┃ ┃ ┣ 📂java
  ┃ ┃ ┃ ┃ ┗ 📂dinnerium
  ┃ ┃ ┃ ┃ ┃ ┣ 📂core
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Container.java
@@ -62,16 +81,26 @@ Det viktigste fra mappetreet finnes her:
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeSerializer.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserDeserializer.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserSerializer.java
+ ┃ ┃ ┃ ┗ 📂resources
+ ┃ ┃ ┃ ┃ ┗ 📂dinnerium
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂storage
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜anders.json
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜data.json
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜testUser.json
  ┃ ┃ ┗ 📂test
  ┃ ┃ ┃ ┗ 📂java
  ┃ ┃ ┃ ┃ ┗ 📂dinnerium
  ┃ ┃ ┃ ┃ ┃ ┣ 📂core
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜IngredientContainerTest.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜IngredientTest.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜QuantityTest.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MetadataTest.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜QuantityTest.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeContainerTest.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeInstructionsTest.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeTest.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserTest.java
  ┃ ┃ ┃ ┃ ┃ ┗ 📂json
  ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DinneriumModuleTest.java
- ┃ ┣ 📜core.iml
  ┃ ┗ 📜pom.xml
  ┣ 📂fxui
  ┃ ┣ 📂src
@@ -82,29 +111,37 @@ Det viktigste fra mappetreet finnes her:
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜App.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AppController.java
  ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜FeedbackHandler.java
- ┃ ┃ ┃ ┣ 📂resources
+ ┃ ┃ ┃ ┗ 📂resources
  ┃ ┃ ┃ ┃ ┗ 📂dinnerium
  ┃ ┃ ┃ ┃ ┃ ┗ 📂ui
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜app.fxml
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜feedback-handler.css
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜recipe-pane.css
  ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜table-view-style.css
- ┃ ┃ ┃ ┗ 📜data.json
  ┃ ┃ ┗ 📂test
- ┃ ┃ ┃ ┗ 📂java
+ ┃ ┃ ┃ ┣ 📂java
  ┃ ┃ ┃ ┃ ┗ 📂dinnerium
  ┃ ┃ ┃ ┃ ┃ ┗ 📂ui
  ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜AppTest.java
- ┃ ┣ 📜fxui.iml
+ ┃ ┃ ┃ ┗ 📂resources
+ ┃ ┃ ┃ ┃ ┗ 📂dinnerium
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂ui
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜appTest.fxml
  ┃ ┗ 📜pom.xml
- ┣ 📜gr2038.iml
  ┗ 📜pom.xml
 ```
 
-## Interfacet
+## Interfacet💄
 
 ![UI for fridge](http://folk.ntnu.no/anderobs/images/fridge.png "The fridge UI")
 
 Nytt design er implementert, og vi er strålende fornøyd! Det nye designet er mye mer intuitivt, og ser visuelt bra ut.
 
 I det nye designet har vi tenkt på brukervennlighet og at det skal være lettere å utvide programmet.
+
+## Dokumentasjon📝
+
+I mappen `documentation` kan man finne en oversikt over klassediagrammer og javadoc-dokumentasjon.  
+Her finner man også samtlige [brukerhistorier](documentation/brukerhistorier.md). 
+Denne mappen gjør det lettere å sette seg inn i hvordan vi har tenkt når vi har satt opp  
+arkitekturen, og gjør det lettere for oss mens vi jobber også.
