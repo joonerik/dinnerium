@@ -26,78 +26,89 @@ Mappestrukturen til prosjektet er organisert følgende:
 Det viktigste fra mappetreet finnes her:
 
 ```
-📦gr2038
- ┣ 📂config
- ┃ ┗ 📂maven-checkstyle
- ┃ ┃ ┗ 📜google_checks.xml
- ┣ 📂core
- ┃ ┣ 📂src
- ┃ ┃ ┣ 📂main
- ┃ ┃ ┃ ┗ 📂java
- ┃ ┃ ┃ ┃ ┗ 📂dinnerium
- ┃ ┃ ┃ ┃ ┃ ┣ 📂core
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Container.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Ingredient.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜IngredientContainer.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Metadata.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Quantity.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Recipe.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeContainer.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeInstructions.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜User.java
- ┃ ┃ ┃ ┃ ┃ ┗ 📂json
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ContainerDeserializer.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ContainerSerializer.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DinneriumModule.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HandlePersistency.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜IngredientDeserializer.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜IngredientSerializer.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MetadataDeserializer.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MetadataSerializer.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜QuantityDeserializer.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜QuantitySerializer.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeDeserializer.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeInstructionsDeserializer.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeInstructionsSerializer.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeSerializer.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserDeserializer.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserSerializer.java
- ┃ ┃ ┗ 📂test
- ┃ ┃ ┃ ┗ 📂java
- ┃ ┃ ┃ ┃ ┗ 📂dinnerium
- ┃ ┃ ┃ ┃ ┃ ┣ 📂core
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜IngredientContainerTest.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜IngredientTest.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜QuantityTest.java
- ┃ ┃ ┃ ┃ ┃ ┗ 📂json
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DinneriumModuleTest.java
- ┃ ┣ 📜core.iml
- ┃ ┗ 📜pom.xml
- ┣ 📂fxui
- ┃ ┣ 📂src
- ┃ ┃ ┣ 📂main
- ┃ ┃ ┃ ┣ 📂java
- ┃ ┃ ┃ ┃ ┗ 📂dinnerium
- ┃ ┃ ┃ ┃ ┃ ┗ 📂ui
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜App.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AppController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜FeedbackHandler.java
- ┃ ┃ ┃ ┣ 📂resources
- ┃ ┃ ┃ ┃ ┗ 📂dinnerium
- ┃ ┃ ┃ ┃ ┃ ┗ 📂ui
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜app.fxml
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜feedback-handler.css
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜recipe-pane.css
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜table-view-style.css
- ┃ ┃ ┃ ┗ 📜data.json
- ┃ ┃ ┗ 📂test
- ┃ ┃ ┃ ┗ 📂java
- ┃ ┃ ┃ ┃ ┗ 📂dinnerium
- ┃ ┃ ┃ ┃ ┃ ┗ 📂ui
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜AppTest.java
- ┃ ┣ 📜fxui.iml
- ┃ ┗ 📜pom.xml
- ┣ 📜gr2038.iml
+📦gr2038  
+ ┣ 📂config  
+ ┃ ┗ 📂maven-checkstyle  
+ ┃ ┃ ┗ 📜google_checks.xml  
+ ┣ 📂core  
+ ┃ ┣ 📂src  
+ ┃ ┃ ┣ 📂main  
+ ┃ ┃ ┃ ┣ 📂java  
+ ┃ ┃ ┃ ┃ ┗ 📂dinnerium  
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂core  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Container.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Ingredient.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜IngredientContainer.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Metadata.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Quantity.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Recipe.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeContainer.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeInstructions.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜User.java  
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂json  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ContainerDeserializer.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ContainerSerializer.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DinneriumModule.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜HandlePersistency.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜IngredientDeserializer.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜IngredientSerializer.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MetadataDeserializer.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MetadataSerializer.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜QuantityDeserializer.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜QuantitySerializer.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeDeserializer.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeInstructionsDeserializer.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeInstructionsSerializer.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeSerializer.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜UserDeserializer.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserSerializer.java  
+ ┃ ┃ ┃ ┗ 📂resources  
+ ┃ ┃ ┃ ┃ ┗ 📂dinnerium  
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂storage  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜anders.json  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜data.json  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜testUser.json  
+ ┃ ┃ ┗ 📂test  
+ ┃ ┃ ┃ ┗ 📂java  
+ ┃ ┃ ┃ ┃ ┗ 📂dinnerium  
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂core  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜IngredientContainerTest.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜IngredientTest.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MetadataTest.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜QuantityTest.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeContainerTest.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeInstructionsTest.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RecipeTest.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserTest.java  
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂json  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DinneriumModuleTest.java  
+ ┃ ┗ 📜pom.xml  
+ ┣ 📂fxui  
+ ┃ ┣ 📂src  
+ ┃ ┃ ┣ 📂main  
+ ┃ ┃ ┃ ┣ 📂java  
+ ┃ ┃ ┃ ┃ ┗ 📂dinnerium  
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂ui  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜App.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AppController.java  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜FeedbackHandler.java  
+ ┃ ┃ ┃ ┗ 📂resources  
+ ┃ ┃ ┃ ┃ ┗ 📂dinnerium  
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂ui  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜app.fxml  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜feedback-handler.css  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜recipe-pane.css  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜table-view-style.css  
+ ┃ ┃ ┗ 📂test  
+ ┃ ┃ ┃ ┣ 📂java  
+ ┃ ┃ ┃ ┃ ┗ 📂dinnerium  
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂ui  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜AppTest.java  
+ ┃ ┃ ┃ ┗ 📂resources  
+ ┃ ┃ ┃ ┃ ┗ 📂dinnerium  
+ ┃ ┃ ┃ ┃ ┃ ┗ 📂ui  
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜appTest.fxml  
+ ┃ ┗ 📜pom.xml  
  ┗ 📜pom.xml
 ```
 
