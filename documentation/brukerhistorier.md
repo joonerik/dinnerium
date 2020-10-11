@@ -56,3 +56,17 @@ Brukeren skal få prisanslaget automatisk, og behøver derfor ikke å gjøre noe
 
 ### Viktig å kunne se    
 - Et prisanslag til en oppskrift
+
+## Brukerhistorie 5 (us-5) 
+Som en bruker ønsker jeg å ha muligheten til å endre brukernavn og logge ut. 
+
+Brukeren skal kunne endre brukernavn og logge ut av applikasjonen.
+
+### Viktig å kunne se    
+- Felter for å endre brukernavn
+- Felt for å logge ut
+
+### Viktig å kunne gjøre
+- Endre brukernavn
+- Logge ut av applikasjonen
+
