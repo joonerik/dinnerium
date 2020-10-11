@@ -39,7 +39,7 @@
             </Text>
          </children>
       </Pane>
-      <Pane fx:id="recipesPane" layoutX="123.0" layoutY="56.0" prefHeight="583.0" prefWidth="656.0" visible="false">
+      <Pane fx:id="recipesPane" layoutX="123.0" layoutY="56.0" prefHeight="583.0" prefWidth="656.0">
          <children>
               <ScrollPane fx:id="recipesScrollPane" layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0">
                   <content>
@@ -56,9 +56,9 @@
                   <Text fx:id="recipesSubMenuText" fill="#f4c20d" layoutY="17.0" onMouseClicked="#handleChangeToRecipes" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipes" textAlignment="CENTER" wrappingWidth="90.0" />
                </children>
             </Pane>
-            <Pane fx:id="newRecipePane" layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0" style="-fx-border-color: white;" visible="false">
+            <Pane fx:id="newRecipePane" layoutX="2.0" layoutY="35.0" prefHeight="543.0" prefWidth="650.0" style="-fx-border-color: white;">
                <children>
-                  <TextField fx:id="newRecipePortions" layoutX="269.0" layoutY="27.0" promptText="# portions" styleClass="input-field-style" />
+                  <TextField fx:id="newRecipePortions" layoutX="269.0" layoutY="27.0" promptText="Portions" styleClass="input-field-style" />
                   <ListView fx:id="recipesListView" layoutX="34.0" layoutY="270.0" prefHeight="200.0" prefWidth="295.0" styleClass="list-view-style" />
                   <TextField fx:id="newRecipeNameIngredientInput" layoutX="32.0" layoutY="200.0" prefHeight="27.0" prefWidth="93.0" promptText="Ingredient" styleClass="input-field-style" />
                   <TextField fx:id="newRecipeAmountInput" layoutX="132.0" layoutY="200.0" prefHeight="27.0" prefWidth="60.0" promptText="quantity" styleClass="input-field-style" />

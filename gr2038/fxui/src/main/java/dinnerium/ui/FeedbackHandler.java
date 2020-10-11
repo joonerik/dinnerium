@@ -49,9 +49,6 @@ public class FeedbackHandler {
             pane.getStyleClass().clear();
             pane.setVisible(false);
         });
-        System.err.println(msg);
-        System.out.println(msg);
-
     }
 
 }

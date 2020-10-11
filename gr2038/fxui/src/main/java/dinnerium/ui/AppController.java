@@ -325,7 +325,7 @@ public class AppController {
 
         childPane.getChildren().addAll(/*imageView, */recipeInfo, recipeDescription);
         pane.getChildren().addAll(recipeName, childPane);
-        pane.setLayoutX(10);
+        pane.setLayoutX(54);
         pane.setCursor(Cursor.HAND);
         pane.setOnMouseClicked(click -> showRecipeInformation(recipe));
         recipesAnchorPane.getChildren().add(pane);
