@@ -20,7 +20,7 @@ for vår applikasjon å lagre data først når data er ferdig konstruert, f.eks 
 
 ## Hvordan kjøre prosjektet 🚀
 
-Prosjektet er satt opp med maven, og delt opp i to moduler _core_ og _fxui_. 
+Prosjektet er satt opp med maven, og delt opp i to moduler _core_ og _fxui_.
 
 ```bat
 cd gr2038
@@ -37,12 +37,13 @@ mvn javafx:run
 
 Mappestrukturen til prosjektet er organisert følgende:
 
-- **core/src/main/java** utgjør kodingsprosjektet. Videre har vi mapper for å skille koden som brukes til hva.  
-- **core/src/main/resources/storage** for lagring av brukerdata.  
-- **core/src/test/java** for testkoden til kjernefunksjonaliteten til prosjektet.  
+- **core/src/main/java** utgjør kodingsprosjektet. Videre har vi mapper for å skille koden som brukes til hva.
+- **core/src/main/resources/storage** for lagring av brukerdata.
+- **core/src/test/java** for testkoden til kjernefunksjonaliteten til prosjektet.
 - **fxui/src/main/java** utgjør kildekoden til JavaFX-applikasjonen.
-- **fxui/src/main/resources** for ressurser som bilder, FXML-filer, stilark osv.  
+- **fxui/src/main/resources** for ressurser som bilder, FXML-filer, stilark osv.
 - **fxui/src/test/java** for testkoden til JavaFX-applikasjonen.
+- **fxui/src/test/resources** ressurser til fxui-testene
 
 Det viktigste fra mappetreet finnes her:
 
@@ -143,7 +144,9 @@ I det nye designet har vi tenkt på brukervennlighet og at det skal være letter
 
 ## Dokumentasjon📝
 
-I mappen `documentation` kan man finne en oversikt over klassediagrammer og javadoc-dokumentasjon. 
-Her finner man også samtlige [brukerhistorier](documentation/brukerhistorier.md). 
-Denne mappen gjør det lettere å sette seg inn i hvordan vi har tenkt når vi har satt opp 
+I mappen `documentation` kan man finne en oversikt over klassediagrammer og javadoc-dokumentasjon.
+Her finner man også samtlige [brukerhistorier](documentation/brukerhistorier.md).
+Denne mappen gjør det lettere å sette seg inn i hvordan vi har tenkt når vi har satt opp
 arkitekturen, og gjør det lettere for oss mens vi jobber også.
+
+For å holde bedre oversikt over programmet vårt har vi laget et `UML-diagramm` slik at vi holder orden over alle klassene og hvordan de henger sammmen. Diagrammet følger ikke alle UML-konvensjonene, men vi fant en struktur som ga mening for oss og slik at vi forstår det selv.
