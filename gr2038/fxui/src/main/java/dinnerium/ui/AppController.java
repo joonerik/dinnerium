@@ -226,6 +226,7 @@ public class AppController {
 
         try {
             //Currently the image is not used due to delays in the FX application when
+            //Currently the image is not used due to delays in the FX application when
             //retrieving images from the web.
             Metadata md = new Metadata(user.getUsername(),
                 portions,
