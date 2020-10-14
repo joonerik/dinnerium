@@ -65,7 +65,7 @@ public class Ingredient {
         if (validateIngredientName(name)) {
             this.name = name.toLowerCase();
         } else {
-            throw new IllegalArgumentException(name + " is not valid");
+            throw new IllegalArgumentException("Ingredient name is not valid! Only spaces, lower case and upper case letters are allowed");
         }
     }
 

@@ -71,7 +71,7 @@ public class Quantity {
         if (validateUnit(unit)) {
             this.unit = unit;
         } else {
-            throw new IllegalArgumentException(unit + " is not valid");
+            throw new IllegalArgumentException("Please select a valid unit");
         }
     }
 
