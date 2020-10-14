@@ -1,10 +1,8 @@
 package dinnerium.restapi;
 
 import static spark.Spark.*;
-
-import dinnerium.json.HandlePersistency;
-import java.io.FileReader;
-import java.nio.charset.StandardCharsets;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class HelloWorld {
@@ -13,10 +11,11 @@ public class HelloWorld {
 
         get("/hello/:name", (req, res) -> "Hello, " + req.params(":name"));
 
-        get("/users/:name", (req, res) ->
-            //HandlePersistency.readUserFromReader(
-                new FileReader(Paths.get("core/src/main/resources/dinnerium/storage/"
-                    + req.params(":name") + ".json").toFile(),
-                    StandardCharsets.UTF_8).toString());//);
+        get("/users/:name", (req, res) -> getUser(req.params(":name")));
+    }
+
+    private static String getUser(String param) throws IOException {
+        String file = "core/src/main/resources/dinnerium/storage/" + param + ".json";
+        return new String(Files.readAllBytes(Paths.get(file)));
     }
 }
