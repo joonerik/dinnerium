@@ -1,0 +1,15 @@
+@import '../../assets/styles/variables';
+.nav {
+  display: flex;
+  flex-direction: row;
+  background-color: $color-blue;
+  &__ul {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: space-around;
+    li {
+      list-style-type: none;
+    }
+  }
+}

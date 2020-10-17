@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import '../../assets/styles/defaults.scss';
 
-const LoginModal = () => {
+const LoginPage = () => {
+  //const [isLoginStatus, setLoginStatus] = useState(false);
   const [isUser, setUser] = useState<string>('');
 
   const getUser = async (user: string) => {
@@ -29,4 +31,4 @@ const LoginModal = () => {
     </div>
   );
 };
-export default LoginModal;
+export default LoginPage;
