@@ -44,6 +44,24 @@ function FridgePage() {
 
   return (
     <div className="fridgePage">
+      <div className="addIngredientMenu">
+        <input
+          className="addIngredientElement"
+          placeholder="Name"
+          type="text"
+        />
+        <input
+          className="addIngredientElement"
+          placeholder="Quantity"
+          type="number"
+        />
+        <select
+          className="addIngredientElement"
+          placeholder="Unit"
+          name="Unit"
+        ></select>
+        <button className="addIngredientElement">Add</button>
+      </div>
       <div className="itemList">
         {items.map((item) => (
           <Item item={item} />
