@@ -1,0 +1,62 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/defaults.scss';
+
+.new-recipe-container {
+  color: $color-light;
+  width: 50%;
+  height: auto;
+  margin: auto;
+  //border: 2px solid $color-yellow;
+  form {
+    width: 100%;
+
+    input,
+    textArea,
+    select,
+    button {
+      color: $color-dark;
+      width: 100%;
+      margin-bottom: 10px;
+      background-color: $color-yellow;
+      border-radius: 5px;
+    }
+    input,
+    select,
+    button {
+      height: 25px;
+      text-align: center;
+    }
+    textArea {
+      height: 60px;
+    }
+    input[name='portions'] {
+      margin-left: 5px;
+      width: 15%;
+    }
+    input[name='estimatedTime'] {
+      float: right;
+      margin-right: -5px;
+      width: 40%;
+    }
+    input[name='ingredient'],
+    input[name='quantity'],
+    select[name='unit'],
+    #addIngredientButton {
+      width: 20%;
+    }
+    input[name='ingredient'],
+    input[name='quantity'],
+    select[name='unit'] {
+      margin-right: 5%;
+    }
+    #addInstructionButton {
+      width: 100%;
+    }
+    #addIngredientButton {
+      background-color: $color-light;
+    }
+    button {
+      background-color: $color-yellow;
+    }
+  }
+}

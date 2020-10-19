@@ -3,6 +3,7 @@ import NavBar from './components/NavBar/NavBar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import FridgePage from './pages/FridgePage/FridgePage';
 import RecipePage from './pages/RecipePage/RecipePage';
+import NewRecipe from './components/NewRecipe/NewRecipe';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           <RecipePage />
         </Route>
         <Route path="/settings">
-          <FridgePage />
+          <NewRecipe />
         </Route>
       </Switch>
     </Router>
