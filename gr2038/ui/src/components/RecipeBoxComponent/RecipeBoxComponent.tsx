@@ -1,19 +1,101 @@
 import React, { useState } from 'react';
+//import data from '../../../../core/src/main/resources/dinnerium/storage/data.json';
+//import data from '../data.json';
 import axios from 'axios';
-import data from '../../../../core/src/main/resources/dinnerium/storage/data.json';
+import './recipeBox.scss';
 
 const RecipeBoxComponent = () => {
-  const [isUser, setUser] = useState({});
-  axios
-    .get('../../../../core/src/main/resources/dinnerium/storage/data.json')
-    .then((res) => {
-      const person = res.data;
-      setUser(person);
-    });
-  console.log(isUser);
+  //const [isUser, setUser] = useState({});
+  const data = [
+    {
+      ingredientContainer: {
+        ingredients: [
+          {
+            quantity: {
+              unit: 'gram',
+              amount: 400.0,
+            },
+            name: 'minced meat',
+          },
+          {
+            quantity: {
+              unit: 'gram',
+              amount: 200.0,
+            },
+            name: 'cheese',
+          },
+          {
+            quantity: {
+              unit: 'stk',
+              amount: 9.0,
+            },
+            name: 'lasagne plates',
+          },
+        ],
+      },
+      recipeInstructions: ['cook', 'bake', 'eat'],
+      metadata: {
+        author: 'bestUsername',
+        portion: 4.0,
+        image: 'http://folk.ntnu.no/anderobs/images/tikkaMasala.png',
+        recipeName: 'Lasagne',
+        recipeDescription: 'God og smakfull lasagne',
+        minutes: 90,
+      },
+    },
+    {
+      ingredientContainer: {
+        ingredients: [
+          {
+            quantity: {
+              unit: 'stk',
+              amount: 2.0,
+            },
+            name: 'eggs',
+          },
+          {
+            quantity: {
+              unit: 'dl',
+              amount: 3.0,
+            },
+            name: 'tikka',
+          },
+        ],
+      },
+      recipeInstructions: ['mix', 'doStuff', 'serve'],
+      metadata: {
+        author: 'bestUsername',
+        portion: 2.0,
+        image: 'http://folk.ntnu.no/anderobs/images/tikkaMasala.png',
+        recipeName: 'Tikka masala',
+        recipeDescription: 'Describing description of tikka masala',
+        minutes: 60,
+      },
+    },
+    {
+      ingredientContainer: {
+        ingredients: [],
+      },
+      recipeInstructions: [],
+      metadata: {
+        author: 'username',
+        portion: 32.0,
+        image: 'http://folk.ntnu.no/anderobs/images/tikkaMasala.png',
+        recipeName: 'name',
+        recipeDescription: 'dfs',
+        minutes: 2,
+      },
+    },
+  ];
+
   return (
     <div>
-      <h2>hei</h2>
+      {data.map((item, index) => (
+        <div className="recipeBox">
+          <h1>{item.metadata.recipeName}</h1>
+          <div className="recipeBoxDescription"></div>
+        </div>
+      ))}
     </div>
   );
 };
