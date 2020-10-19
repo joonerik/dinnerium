@@ -43,7 +43,9 @@ const NewRecipe = () => {
           <option value="dl">dl</option>
           <option value="stk">stk</option>
         </select>
-        <button id="addIngredientButton">Add</button>
+        <button type="button" id="addIngredientButton">
+          Add
+        </button>
         <br />
         <textarea
           name="instruction"
@@ -51,7 +53,9 @@ const NewRecipe = () => {
           required
         ></textarea>
         <br />
-        <button id="addInstructionButton">Add instruction</button>
+        <button type="button" id="addInstructionButton">
+          Add instruction
+        </button>
         <br />
         <div className="instructions">
           <p>Instructions</p>
