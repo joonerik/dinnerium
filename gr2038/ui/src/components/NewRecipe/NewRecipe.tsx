@@ -34,7 +34,7 @@ const NewRecipe = () => {
           placeholder="ingredient"
           required
         />
-        <input type="text" name="quantity" placeholder="qty" required />
+        <input type="text" name="quantity" placeholder="quantity" required />
         <select name="unit" required>
           <option value="none" selected disabled hidden>
             Unit
@@ -53,9 +53,15 @@ const NewRecipe = () => {
         <br />
         <button id="addInstructionButton">Add instruction</button>
         <br />
-        <div className="instructions"></div>
+        <div className="instructions">
+          <p>Instructions</p>
+          <ol id="instructionList"></ol>
+        </div>
         <br />
-        <div className="ingredients"></div>
+        <div className="ingredients">
+          <p>Ingredients</p>
+          <ol id="ingredientList"></ol>
+        </div>
         <br />
         <input type="submit" value="Add recipe" />
       </form>
