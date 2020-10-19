@@ -28,6 +28,8 @@ public class HelloWorld {
             (req, res) -> getJsonObjectFromUser(req.params(":username"), "recipeContainer"));
         
         get("/users", (req, res) -> getUsernameList());
+
+        post("/test", (req, res) -> "Hello world " + req.body());
     }
 
     private static String getJsonObjectFromUser(String username, String jsonObject)
