@@ -49,6 +49,14 @@ public class HelloWorld {
                 return "null";
             }
         });
+        post("/users/:username/ingredients/add", (req, res) -> {
+            System.out.println("add new ingredient");
+            return "";
+        });
+        post("/users/:username/recipes/add", (req, res) -> {
+            System.out.println("add new recipe");
+            return "";
+        });
     }
 
     private static void saveNewUser(String username) {
