@@ -3,11 +3,16 @@ import React, { FC } from 'react';
 import './FridgePage.scss';
 
 interface IItem {
-  item: { name: string };
+  item: { quantity: { unit: string; amount: number }; name: string };
 }
 
 const Item: FC<IItem> = ({ item }) => {
-  return <div className="item">{item.name}</div>;
+  return (
+    <div className="item">
+      {item.quantity.amount}
+      {item.quantity.unit} {item.name}
+    </div>
+  );
 };
 
 function FridgePage() {
