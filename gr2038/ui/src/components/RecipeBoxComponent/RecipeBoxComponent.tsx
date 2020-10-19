@@ -93,7 +93,25 @@ const RecipeBoxComponent = () => {
       {data.map((item, index) => (
         <div className="recipeBox">
           <h1>{item.metadata.recipeName}</h1>
-          <div className="recipeBoxDescription"></div>
+          <div className="recipeBoxDescription">
+            <p>
+              <span>Something missing bro</span> |
+              <span> {item.metadata.minutes} minutes required</span>
+            </p>
+            <div id="recipeContainer">
+              {item.recipeInstructions.map((instruction, index) => (
+                <li>{instruction}</li>
+              ))}
+            </div>
+            <div id="ingredientContainer">
+              {item.ingredientContainer.ingredients.map((ingredient, index) => (
+                <li>
+                  {ingredient.name} {ingredient.quantity.amount}{' '}
+                  {ingredient.quantity.unit}
+                </li>
+              ))}
+            </div>
+          </div>
         </div>
       ))}
     </div>
