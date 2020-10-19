@@ -98,6 +98,10 @@ const RecipeBoxComponent = () => {
               <span>Something missing bro</span> |
               <span> {item.metadata.minutes} minutes required</span>
             </p>
+            <p>
+              <span>Author: {item.metadata.author} | </span>
+              <span>Portions: {item.metadata.portion}</span>
+            </p>
             <div id="recipeContainer">
               {item.recipeInstructions.map((instruction, index) => (
                 <li>{instruction}</li>
