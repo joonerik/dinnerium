@@ -51,7 +51,7 @@ const NewRecipe = () => {
           required
         ></textarea>
         <br />
-        <button id="addInstructionButton">Add</button>
+        <button id="addInstructionButton">Add instruction</button>
         <br />
         <div className="instructions"></div>
         <br />
