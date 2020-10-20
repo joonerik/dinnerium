@@ -6,6 +6,7 @@ const instructionsList = createRef<HTMLOListElement>();
 const ingredientsList = createRef<HTMLOListElement>();
 
 const NewRecipe = () => {
+  //Should maybe change these functions out with useState and having components for the ingredient list and instruction list.
   const addInstruction = () => {
     if (instructionTextArea.current?.value) {
       const listItem = document.createElement('li');
@@ -21,9 +22,12 @@ const NewRecipe = () => {
     ingredientsList.current?.appendChild(listItem);
   };
 
+  const submitNewRecipeForm = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
   return (
     <div className="new-recipe-container">
-      <form>
+      <form onSubmit={(e) => submitNewRecipeForm(e)}>
         <input
           type="text"
           name="name"
@@ -62,7 +66,7 @@ const NewRecipe = () => {
           <option value="dl">dl</option>
           <option value="stk">stk</option>
         </select>
-        <button type="button" onClick={addIngredient}>
+        <button type="button" id="addIngredientButton" onClick={addIngredient}>
           Add
         </button>
         <br />
