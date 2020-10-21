@@ -4,7 +4,6 @@ import RecipeBoxComponent from '../../components/RecipeBoxComponent/RecipeBoxCom
 const RecipePage = () => {
   return (
     <div>
-      <h1>RECIPE PAGE!</h1>
       <div>
         <RecipeBoxComponent />
       </div>
