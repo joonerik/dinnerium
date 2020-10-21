@@ -7,13 +7,12 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import UserContext from './components/UserContext/UserContext';
 
 function App() {
-  const emptyUser = { username: 'null' } as IUser;
-  const [user, setUser] = useState<IUser>(emptyUser);
+  const [user, setUser] = useState(null);
 
   const value = useMemo(() => ({ user, setUser }), [user, setUser]);
   return (
     <Router>
-      <UserContext.Provider value={value.user}>
+      <UserContext.Provider value={value}>
         {user === null ? (
           <LoginPage />
         ) : (

@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import '../../assets/styles/defaults.scss';
 import axios from 'axios';
-interface IItem {
-  item: { item: { text: string } };
-}
+import UserContext from '../../components/UserContext/UserContext';
+import './loginPage.scss';
+
+import dinneriumLogo from '../../assets/static/dinnerium-min.png';
+
 const LoginPage = () => {
-  //const [isLoginStatus, setLoginStatus] = useState(false);
-  const [isUser, setUser] = useState<string>('');
   const [name, setName] = useState<string>('');
   const [isAction, setAction] = useState<string>('');
+  const { setUser } = useContext(UserContext);
 
   const submitForm = (
     event: React.FormEvent<HTMLFormElement>,
@@ -16,12 +17,13 @@ const LoginPage = () => {
   ) => {
     event.preventDefault();
     axios.post('/users/' + action, { username: name }).then((res) => {
-      console.log(res);
+      setUser(res.data);
     });
   };
 
   return (
     <div className="login__modal">
+      <img src={dinneriumLogo} alt="Logo" className="login__logo" />
       <form method="post" onSubmit={(e) => submitForm(e, isAction)}>
         <input
           onChange={(event) => setName(event.target.value)}
@@ -29,14 +31,25 @@ const LoginPage = () => {
           type="text"
           name="username"
           required
+          className="login__modal__input"
         />
-        <br />
-        <input type="submit" value="Login" onClick={() => setAction('login')} />
-        <input
-          type="submit"
-          value="Register"
-          onClick={() => setAction('register')}
-        />
+
+        <div className="login__modal__btnContainer">
+          <button
+            type="submit"
+            value="Login"
+            onClick={() => setAction('login')}
+          >
+            Logg inn
+          </button>
+          <button
+            type="submit"
+            value="Register"
+            onClick={() => setAction('register')}
+          >
+            Registrer
+          </button>
+        </div>
       </form>
     </div>
   );
