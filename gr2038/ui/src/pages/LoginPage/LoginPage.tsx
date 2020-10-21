@@ -15,19 +15,9 @@ const LoginPage = () => {
     action: String
   ) => {
     event.preventDefault();
-    axios.post('/users/' + action, { username: name }).then(function (res) {
+    axios.post('/users/' + action, { username: name }).then((res) => {
       console.log(res);
     });
-  };
-  const getUser = async (user: string) => {
-    console.log(user);
-
-    const response = await fetch(`/users/${user}`, {
-      mode: 'no-cors',
-    });
-
-    const data = await response.json();
-    console.log(data);
   };
 
   return (
