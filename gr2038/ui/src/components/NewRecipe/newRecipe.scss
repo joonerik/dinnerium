@@ -1,0 +1,127 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/defaults.scss';
+
+.new-recipe-container {
+  color: $color-light;
+  width: 40%;
+  height: auto;
+  margin: auto;
+  //border: 2px solid $color-yellow;
+  form {
+    width: 100%;
+    margin-top: 20px;
+
+    input,
+    textArea,
+    select,
+    button {
+      color: $color-dark;
+      width: 100%;
+      margin-bottom: 20px;
+      background-color: $color-yellow;
+      border-radius: 5px;
+    }
+    input,
+    select,
+    button {
+      height: 25px;
+      text-align: center;
+    }
+    textArea {
+      height: 60px;
+    }
+    input[name='portions'] {
+      margin-left: 5px;
+      width: 15%;
+    }
+    input[name='estimatedTime'] {
+      float: right;
+      margin-right: -5px;
+      width: 40%;
+    }
+    input[name='ingredient'],
+    input[name='quantity'],
+    select[name='unit'],
+    #addIngredientButton {
+      width: 20%;
+    }
+    input[name='ingredient'],
+    input[name='quantity'],
+    select[name='unit'] {
+      margin-right: 5%;
+    }
+    #addInstructionButton {
+      width: 100%;
+      margin-left: 0.5%;
+    }
+    #addIngredientButton {
+      margin-left: -2%;
+      background-color: $color-light;
+    }
+    button {
+      background-color: $color-yellow;
+    }
+    .instructions,
+    .ingredients {
+      width: 100%;
+      height: auto;
+      min-height: 50px;
+      border: 2px solid $color-yellow;
+    }
+
+    textArea[name='instruction'] {
+      margin-bottom: 5px;
+    }
+
+    .ingredients > p,
+    .instructions > p {
+      text-align: center;
+      margin-top: 0px;
+    }
+    button:hover,
+    input[type='submit']:hover {
+      cursor: pointer;
+    }
+    ol > li {
+      border-bottom: 2px solid $color-light;
+      margin-bottom: 4px;
+    }
+  }
+  .delete-div {
+    width: 13px;
+    height: 13px;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-right: 6%;
+    cursor: pointer;
+    float: right;
+    color: $color-light;
+  }
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+
+  /*https://www.w3schools.com/css/css_tooltip.asp*/
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 150px;
+    background-color: $color-dark;
+    color: $color-light;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    border: 2px solid $color-light;
+    margin: -7px 0 0 5px;
+
+    position: absolute;
+    z-index: 1;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+}
