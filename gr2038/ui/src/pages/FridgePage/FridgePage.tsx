@@ -1,10 +1,21 @@
-import React, { FC }, { useState } from 'react';
+import React, { FC } from 'react';
 
 import './FridgePage.scss';
+import { useState } from 'react';
 
 interface IItem {
   item: { quantity: { unit: string; amount: number }; name: string };
 }
+
+const items = [
+  {
+    quantity: {
+      unit: 'stk',
+      amount: 2.0,
+    },
+    name: 'bolle',
+  },
+];
 
 const Item: FC<IItem> = ({ item }) => {
   return (
@@ -16,27 +27,45 @@ const Item: FC<IItem> = ({ item }) => {
 };
 
 function Menu() {
+  const [name, setName] = useState('');
+  const [amount, setAmount] = useState('');
+  const [unit, setUnit] = useState('');
+
+  function addItem() {
+    let newItem = {
+      quantity: {
+        unit: unit,
+        amount: Number(amount),
+      },
+      name: name,
+    };
+    items.push(newItem);
+  }
+
   return (
-    <form className="addIngredientMenu" onSubmit={handleSubmit}>
+    <form className="addIngredientMenu">
       <input
         className="addIngredientElement"
         placeholder="Name"
         type="text"
-        value="name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       />
       <input
         className="addIngredientElement"
         placeholder="Quantity"
         type="number"
-        value="amount"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
       />
       <select
         className="addIngredientElement"
         placeholder="Unit"
         name="Unit"
-        value="unit"
+        value={unit}
+        onChange={(e) => setUnit(e.target.value)}
       ></select>
-      <input type="submit" className="addIngredientElement">
+      <input type="button" onClick={addItem} className="addIngredientElement">
         Add
       </input>
     </form>
@@ -44,48 +73,6 @@ function Menu() {
 }
 
 function FridgePage() {
-  const items = [
-    {
-      quantity: {
-        unit: 'stk',
-        amount: 2.0,
-      },
-      name: 'bolle',
-    },
-    {
-      quantity: {
-        unit: 'stk',
-        amount: 20.0,
-      },
-      name: 'kanelboller',
-    },
-    {
-      quantity: {
-        unit: 'gram',
-        amount: 200.0,
-      },
-      name: 'kaffe',
-    },
-    {
-      quantity: {
-        unit: 'dl',
-        amount: 40.0,
-      },
-      name: 'melk',
-    },
-  ];
-
-  function handleSubmit() {
-    let newItem = {
-      quantity: {
-        unit: { document.getElementByValue("unit").value },
-        amount: { document.getElementByValue("amount").value },
-      },
-      name: { document.getElementByValue("name").value },
-    };
-    items.push(newItem);
-  }
-
   return (
     <div className="fridgePage">
       <Menu />
