@@ -1,29 +1,42 @@
-import React, { createRef } from 'react';
+import React, { useState } from 'react';
 import './newRecipe.scss';
 
-const instructionTextArea = createRef<HTMLTextAreaElement>();
-const instructionsList = createRef<HTMLOListElement>();
-const ingredientsList = createRef<HTMLOListElement>();
-
 const NewRecipe = () => {
+  const [instructions, setInstructions] = useState<string[]>([]);
+  const [instructionField, setInstructionField] = useState('');
+  const [ingredients, setIngredients] = useState<string[]>([]);
+  const [ingredientNameField, setIngredientNameField] = useState('');
+  const [ingredientQuantity, setIngredientQuantity] = useState('');
+  const [unitField, setUnitField] = useState('none');
+
   //Should maybe change these functions out with useState and having components for the ingredient list and instruction list.
   const addInstruction = () => {
-    if (instructionTextArea.current?.value) {
-      const listItem = document.createElement('li');
-      listItem.innerHTML = instructionTextArea.current.value;
-      instructionsList.current?.appendChild(listItem);
+    if (instructionField) {
+      setInstructions((prevState) => [...prevState, instructionField]);
     }
   };
   const addIngredient = () => {
-    //Check if input fields are all filled out and create element and append text if so.
-    const listItem = document.createElement('li');
-    // Retrive correct data from the fields and add it to the listitem.
-    listItem.innerHTML = 'test :)';
-    ingredientsList.current?.appendChild(listItem);
+    if (ingredientNameField && ingredientQuantity && unitField !== 'none') {
+      setIngredients((prevState) => [
+        ...prevState,
+        ingredientQuantity + ' ' + unitField + ', ' + ingredientNameField,
+      ]);
+    }
+  };
+  const removeIngredient = (index: number) => {
+    let ingredientsCopy = [...ingredients];
+    ingredientsCopy.splice(index, 1);
+    setIngredients(ingredientsCopy);
+  };
+  const removeInstruction = (index: number) => {
+    let instructionsCopy = [...instructions];
+    instructionsCopy.splice(index, 1);
+    setInstructions(instructionsCopy);
   };
 
   const submitNewRecipeForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    //Axiom post to the correct path
   };
   return (
     <div className="new-recipe-container">
@@ -52,13 +65,25 @@ const NewRecipe = () => {
         ></textarea>
         <br />
         <input
+          onChange={(event) => setIngredientNameField(event.target.value)}
           type="text"
           name="ingredient"
           placeholder="ingredient"
           required
         />
-        <input type="text" name="quantity" placeholder="quantity" required />
-        <select name="unit" required>
+        <input
+          onChange={(event) => setIngredientQuantity(event.target.value)}
+          type="number"
+          name="quantity"
+          placeholder="quantity"
+          required
+        />
+        <select
+          onChange={(event) => setUnitField(event.target.value)}
+          name="unit"
+          required
+          placeholder="unit"
+        >
           <option value="none" selected disabled hidden>
             Unit
           </option>
@@ -73,7 +98,7 @@ const NewRecipe = () => {
         <textarea
           name="instruction"
           placeholder="Instruction"
-          ref={instructionTextArea}
+          onChange={(event) => setInstructionField(event.target.value)}
           required
         ></textarea>
         <br />
@@ -87,12 +112,36 @@ const NewRecipe = () => {
         <br />
         <div className="instructions">
           <p>Instructions</p>
-          <ol ref={instructionsList}></ol>
+          <ol>
+            {instructions.map((instruction, index) => (
+              <li key={index}>
+                {instruction}
+                <div
+                  onClick={(e) => removeInstruction(index)}
+                  className="tooltip delete-div"
+                >
+                  X<span className="tooltiptext">Remove instruction</span>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
         <br />
         <div className="ingredients">
           <p>Ingredients</p>
-          <ol ref={ingredientsList}></ol>
+          <ol>
+            {ingredients.map((ingredient, index) => (
+              <li>
+                {ingredient}
+                <div
+                  onClick={(e) => removeIngredient(index)}
+                  className="tooltip delete-div"
+                >
+                  X<span className="tooltiptext">Remove ingredient</span>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
         <br />
         <input type="submit" value="Add recipe" />
