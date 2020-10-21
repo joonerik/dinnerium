@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC }, { useState } from 'react';
 
 import './FridgePage.scss';
 
@@ -14,6 +14,34 @@ const Item: FC<IItem> = ({ item }) => {
     </div>
   );
 };
+
+function Menu() {
+  return (
+    <form className="addIngredientMenu" onSubmit={handleSubmit}>
+      <input
+        className="addIngredientElement"
+        placeholder="Name"
+        type="text"
+        value="name"
+      />
+      <input
+        className="addIngredientElement"
+        placeholder="Quantity"
+        type="number"
+        value="amount"
+      />
+      <select
+        className="addIngredientElement"
+        placeholder="Unit"
+        name="Unit"
+        value="unit"
+      ></select>
+      <input type="submit" className="addIngredientElement">
+        Add
+      </input>
+    </form>
+  );
+}
 
 function FridgePage() {
   const items = [
@@ -47,26 +75,20 @@ function FridgePage() {
     },
   ];
 
+  function handleSubmit() {
+    let newItem = {
+      quantity: {
+        unit: { document.getElementByValue("unit").value },
+        amount: { document.getElementByValue("amount").value },
+      },
+      name: { document.getElementByValue("name").value },
+    };
+    items.push(newItem);
+  }
+
   return (
     <div className="fridgePage">
-      <div className="addIngredientMenu">
-        <input
-          className="addIngredientElement"
-          placeholder="Name"
-          type="text"
-        />
-        <input
-          className="addIngredientElement"
-          placeholder="Quantity"
-          type="number"
-        />
-        <select
-          className="addIngredientElement"
-          placeholder="Unit"
-          name="Unit"
-        ></select>
-        <button className="addIngredientElement">Add</button>
-      </div>
+      <Menu />
       <div className="itemList">
         {items.map((item) => (
           <Item item={item} />
