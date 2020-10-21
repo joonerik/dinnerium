@@ -3,7 +3,16 @@
 
 .wrapper {
   display: inline-grid;
-  grid-template-columns: 100px 100px 100px;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+
+  .sideBar {
+    background-color: darkgray;
+    grid-row-start: 1;
+    grid-row-end: 15;
+  }
+
+  .recipeBox {
+  }
 }
 
 .recipeBox {
@@ -12,7 +21,7 @@
     color: red;
     margin-bottom: 0;
   }
-  width: 30%;
+  width: 300px;
   margin: auto;
 }
 

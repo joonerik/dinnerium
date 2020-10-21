@@ -414,8 +414,9 @@ const RecipeBoxComponent = () => {
 
   return (
     <div>
-      {data.map((item, index) => (
-        <div className="wrapper">
+      <div className="wrapper">
+        <div className="sideBar"></div>
+        {data.map((item, index) => (
           <div className="recipeBox">
             <h1>{item.metadata.recipeName}</h1>
             <div className="recipeBoxDescription">
@@ -429,8 +430,8 @@ const RecipeBoxComponent = () => {
               </p>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
