@@ -1,6 +1,11 @@
 @import '../../assets/styles/variables';
 @import '../../assets/styles/defaults.scss';
 
+.wrapper {
+  display: inline-grid;
+  grid-template-columns: 100px 100px 100px;
+}
+
 .recipeBox {
   margin-bottom: 0;
   h1 {
@@ -16,7 +21,7 @@
   border-radius: 10px;
   background: $color-dark;
   padding: 20px;
-  width: 400px;
+  width: 200px;
   height: 150px;
   margin-bottom: 5%;
   color: $color-yellow;
