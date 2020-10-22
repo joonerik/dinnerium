@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom';
 
 const RecipeBoxComponent = () => {
   const [displayRecipeName, setDisplayRecipeName] = useState('');
-  // const [displayRecipeDescription, setDisplayRecipeDescription] = useState('');
-  // const [displayRecipeAuthor, setDisplayRecipeAuthor] = useState('');
-  // const [displayRecipePortion, setDisplayRecipePortion] = useState('');
-  // const [displayRecipeMinutes, setDplayRecipeMinutes] = useState('');
+  const [displayRecipeDescription, setDisplayRecipeDescription] = useState('');
+  const [displayRecipeAuthor, setDisplayRecipeAuthor] = useState('');
+  const [displayRecipePortion, setDisplayRecipePortion] = useState('');
+  const [displayRecipeMinutes, setDiplayRecipeMinutes] = useState('');
   const [displayRecipeInstructions, setDisplayRecipeInstructions] = useState<
     RecipeInstructions
   >();
@@ -21,8 +21,19 @@ const RecipeBoxComponent = () => {
 
   const { user } = useContext(UserContext);
   const displayRecipeMetadata = (index: number) => {
+    console.log(index);
     setDisplayRecipeName(
       user.recipeContainer.recipes[index].metadata.recipeName
+    );
+    setDisplayRecipeDescription(
+      user.recipeContainer.recipes[index].metadata.recipeDescription
+    );
+    setDisplayRecipeAuthor(user.recipeContainer.recipes[index].metadata.author);
+    setDisplayRecipePortion(
+      user.recipeContainer.recipes[index].metadata.portion
+    );
+    setDiplayRecipeMinutes(
+      user.recipeContainer.recipes[index].metadata.minutes
     );
     setDisplayRecipeInstructions(
       user.recipeContainer.recipes[index].recipeInstructions
@@ -41,6 +52,8 @@ const RecipeBoxComponent = () => {
           </h1>
           <hr></hr>
           <h2>{displayRecipeName}</h2>
+          <p>{displayRecipeDescription}</p>
+
           {displayRecipeInstructions?.map(
             (instruction: string, index: number) => (
               <li key={index}>{instruction}</li>
@@ -55,12 +68,14 @@ const RecipeBoxComponent = () => {
               </li>
             )
           )}
+          <p>{displayRecipeAuthor}</p>
+          <p>{displayRecipeMinutes}</p>
+          <p>{displayRecipePortion}</p>
         </div>
         {user.recipeContainer.recipes.map((item: Recipe, index: number) => (
           <div key={index + 4} className="recipeBox">
             <div
               className="recipeBoxDescription"
-              // onClick={(event) => displayRecipeMetadata(index)}
               onClick={() => displayRecipeMetadata(index)}
             >
               <h1 key={index}>{item.metadata.recipeName}</h1>
