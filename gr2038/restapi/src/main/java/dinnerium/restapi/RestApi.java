@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class HelloWorld {
-    private static final Logger LOG = LoggerFactory.getLogger(HelloWorld.class);
+public class RestApi {
+    private static final Logger LOG = LoggerFactory.getLogger(RestApi.class);
 
     public static void main(String[] args) {
         //Se på det om man skal legge til response type ved res.type("application/json");
