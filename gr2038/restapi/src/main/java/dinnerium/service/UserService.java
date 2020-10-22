@@ -1,4 +1,4 @@
-package dinnerium.restapi;
+package dinnerium.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonParser;
@@ -19,10 +19,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class UserApi {
+public class UserService {
     private final ObjectMapper mapper;
 
-    public UserApi() {
+    public UserService() {
         mapper = new ObjectMapper();
         mapper.registerModule(new DinneriumModule());
     }
