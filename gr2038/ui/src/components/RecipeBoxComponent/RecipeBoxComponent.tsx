@@ -76,17 +76,25 @@ const RecipeBoxComponent = () => {
           <div className="recipeBox">
             <div className="recipeBoxDescription">
               <h1>{item.metadata.recipeName}</h1>
-              <img src={item.metadata.image} alt="lul"></img>
-              <p>Something missing bro</p>
-              <p>{item.metadata.minutes} minutes</p>
-              <p>
-                <img
-                  id="portionsIcon"
-                  src="https://cdn4.iconfinder.com/data/icons/election-and-campaign/128/2-512.png"
-                  alt="l"
-                ></img>{' '}
-                {item.metadata.portion}
-              </p>
+              <h3>{item.metadata.recipeDescription}</h3>
+              <span id="metadata">
+                <p>
+                  <img
+                    id="minutesIcon"
+                    src="https://cdn4.iconfinder.com/data/icons/cooking/100/1-512.png"
+                    alt="Minutes: "
+                  ></img>
+                  {item.metadata.minutes}
+                </p>
+                <p>
+                  <img
+                    id="portionsIcon"
+                    src="https://cdn4.iconfinder.com/data/icons/election-and-campaign/128/2-512.png"
+                    alt="Portions: "
+                  ></img>
+                  {item.metadata.portion}
+                </p>
+              </span>
             </div>
           </div>
         ))}
