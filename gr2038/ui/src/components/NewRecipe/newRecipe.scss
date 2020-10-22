@@ -40,10 +40,14 @@
       width: 40%;
     }
     input[name='ingredient'],
-    input[name='quantity'],
-    select[name='unit'],
-    #addIngredientButton {
+    input[name='quantity'] {
       width: 20%;
+    }
+    select[name='unit'] {
+      width: 25%;
+    }
+    #addIngredientButton {
+      width: 15%;
     }
     input[name='ingredient'],
     input[name='quantity'],
@@ -123,5 +127,8 @@
 
   .tooltip:hover .tooltiptext {
     visibility: visible;
+  }
+  #feedback_text:empty {
+    display: none;
   }
 }
