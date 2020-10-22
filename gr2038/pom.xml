@@ -141,12 +141,13 @@
                         </execution>
                     </executions>
                 </plugin>
+
             </plugins>
         </pluginManagement>
     </build>
 
     <modules>
         <module>core</module>
-        <module>fxui</module>
+        <module>restapi</module>
     </modules>
 </project>
