@@ -55,6 +55,7 @@ public class HelloWorld {
         });
         post("/users/:username/recipes/add", (req, res) -> {
             System.out.println("add new recipe");
+            System.out.println("Body: " + req.body());
             return "";
         });
     }

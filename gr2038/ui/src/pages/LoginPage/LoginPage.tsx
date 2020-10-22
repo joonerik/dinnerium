@@ -1,33 +1,56 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import '../../assets/styles/defaults.scss';
+import axios from 'axios';
+import UserContext from '../../components/UserContext/UserContext';
+import './loginPage.scss';
+
+import dinneriumLogo from '../../assets/static/dinnerium-min.png';
 
 const LoginPage = () => {
-  //const [isLoginStatus, setLoginStatus] = useState(false);
-  const [isUser, setUser] = useState<string>('');
+  const [name, setName] = useState<string>('');
+  const [isAction, setAction] = useState<string>('');
+  const { setUser } = useContext(UserContext);
 
-  const getUser = async (user: string) => {
-    console.log(user);
-    const response = await fetch(`/users/${user}`, {
-      mode: 'no-cors',
+  const submitForm = (
+    event: React.FormEvent<HTMLFormElement>,
+    action: String
+  ) => {
+    event.preventDefault();
+    axios.post('/users/' + action, { username: name }).then((res) => {
+      setUser(res.data);
     });
-    const data = await response.json();
-    console.log(data);
   };
+
   return (
     <div className="login__modal">
-      <h2> Your Username</h2>
-      <input
-        type="text"
-        name="username"
-        id="usernameInput"
-        required
-        placeholder="Your username"
-        onChange={(event) => setUser(event.target.value)}
-      />
+      <img src={dinneriumLogo} alt="Logo" className="login__logo" />
+      <form method="post" onSubmit={(e) => submitForm(e, isAction)}>
+        <input
+          onChange={(event) => setName(event.target.value)}
+          placeholder="username"
+          type="text"
+          name="username"
+          required
+          className="login__modal__input"
+        />
 
-      <button type="submit" onClick={() => getUser(isUser)}>
-        Login
-      </button>
+        <div className="login__modal__btnContainer">
+          <button
+            type="submit"
+            value="Login"
+            onClick={() => setAction('login')}
+          >
+            Logg inn
+          </button>
+          <button
+            type="submit"
+            value="Register"
+            onClick={() => setAction('register')}
+          >
+            Registrer
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

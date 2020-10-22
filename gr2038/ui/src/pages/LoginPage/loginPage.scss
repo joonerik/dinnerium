@@ -1,0 +1,41 @@
+@import '../../assets/styles/variables';
+.login {
+  &__modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    margin: 10% auto;
+    &__input {
+      outline: none;
+    }
+    &__btnContainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    form {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      height: 120px;
+      justify-content: space-evenly;
+      button {
+        border-radius: 3px;
+        text-decoration: none;
+        color: $color-dark;
+        border: none;
+        padding: 7.5px 16px;
+        background-color: $color-yellow;
+        &:last-child {
+          background-color: $color-light;
+        }
+      }
+    }
+  }
+  &__logo {
+    width: 271.83px;
+    height: 118.33px;
+  }
+}
