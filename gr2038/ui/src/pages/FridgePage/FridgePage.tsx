@@ -42,6 +42,12 @@ function Menu() {
     items.push(newItem);
   }
 
+  const xAddItem = () => {
+    return items.map((ing, index) => {
+      <Item key={index} item={ing} />;
+    });
+  };
+
   return (
     <form className="addIngredientMenu">
       <input
