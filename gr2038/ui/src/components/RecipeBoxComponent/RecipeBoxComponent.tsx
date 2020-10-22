@@ -46,31 +46,39 @@ const RecipeBoxComponent = () => {
     <div>
       <div className="wrapper">
         <div className="sideBar">
-          <h1>Recipes</h1>
-          <h1>
-            <Link to="/newRecipe">New recipe</Link>
-          </h1>
+          <div>
+            <h1 id="titleRecipes">Recipes</h1>
+            <h1 id="titleNewRecipeLink">
+              <Link to="/newRecipe">New recipe</Link>
+            </h1>
+          </div>
           <hr></hr>
-          <h2>{displayRecipeName}</h2>
-          <p>{displayRecipeDescription}</p>
+          <div id="recipeInfo">
+            <h2>{displayRecipeName}</h2>
+            <p>{displayRecipeDescription}</p>
 
-          {displayRecipeInstructions?.map(
-            (instruction: string, index: number) => (
-              <li key={index}>{instruction}</li>
-            )
-          )}
-          {displayRecipeIngredients?.map(
-            (ingredient: Ingredient, index: number) => (
-              <li key={index + 0.1}>
-                {ingredient.name}
-                {ingredient.quantity.amount}
-                {ingredient.quantity.unit}
-              </li>
-            )
-          )}
-          <p>{displayRecipeAuthor}</p>
-          <p>{displayRecipeMinutes}</p>
-          <p>{displayRecipePortion}</p>
+            <ul id="f">
+              {displayRecipeInstructions?.map(
+                (instruction: string, index: number) => (
+                  <li key={index}>{instruction}</li>
+                )
+              )}
+            </ul>
+            <ul>
+              {displayRecipeIngredients?.map(
+                (ingredient: Ingredient, index: number) => (
+                  <li key={index + 0.1}>
+                    {ingredient.name}
+                    {ingredient.quantity.amount}
+                    {ingredient.quantity.unit}
+                  </li>
+                )
+              )}
+            </ul>
+            <p>{displayRecipeAuthor}</p>
+            <p>{displayRecipeMinutes}</p>
+            <p>{displayRecipePortion}</p>
+          </div>
         </div>
         {user.recipeContainer.recipes.map((item: Recipe, index: number) => (
           <div key={index + 4} className="recipeBox">
