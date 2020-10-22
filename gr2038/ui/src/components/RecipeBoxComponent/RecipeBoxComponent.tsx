@@ -4,6 +4,7 @@ import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import './recipeBox.scss';
 import UserContext from '../UserContext/UserContext';
+import { Link } from 'react-router-dom';
 
 const RecipeBoxComponent = () => {
   //const [isUser, setUser] = useState({});
@@ -13,7 +14,9 @@ const RecipeBoxComponent = () => {
       <div className="wrapper">
         <div className="sideBar">
           <h1>Recipes</h1>
-          <h1>New recipe</h1>
+          <h1>
+            <Link to="/newRecipe">New recipe</Link>
+          </h1>
           <hr></hr>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a

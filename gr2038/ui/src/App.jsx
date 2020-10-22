@@ -28,6 +28,9 @@ function App() {
               <Route path="/settings">
                 <LoginPage />
               </Route>
+              <Route path="/newRecipe">
+                <RecipePage />
+              </Route>
             </Switch>
           </>
         )}
