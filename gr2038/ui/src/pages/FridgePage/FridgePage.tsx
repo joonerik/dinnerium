@@ -1,9 +1,10 @@
-import React, { FC, useContext } from 'react';
+import React, { FC, useContext, useEffect } from 'react';
 import axios from 'axios';
 
 import './FridgePage.scss';
 import { useState } from 'react';
 import UserContext from '../../components/UserContext/UserContext';
+import { isAsExpression } from 'typescript';
 
 interface IItem {
   item: { quantity: { unit: string; amount: number }; name: string };
@@ -23,12 +24,20 @@ function Menu() {
   const [name, setName] = useState('');
   const [amount, setAmount] = useState('');
   const [unit, setUnit] = useState('');
-  const units = ['dl', 'gram', 'stk'];
+  const [units, setUnits] = useState<string[]>([]);
 
-  const postIngdredient = () => {
+  useEffect(() => {
+    axios.get('/units').then((response) => {
+      const list: string = response.data;
+      setUnits(list.replace('[', '').replace(']', '').split(', '));
+    });
+  }, []);
+
+  const postIngdredient = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     axios
-      .post(`/users/${user.username}/ingdredients/add`, {
-        quantity: { unit: unit, anount: amount },
+      .post(`/users/${user.username}/ingredients/add`, {
+        quantity: { unit: unit, amount: amount },
         name: name,
       })
       .then(function (res) {
@@ -37,7 +46,7 @@ function Menu() {
       });
   };
   const addItem = () => {
-    return user.intgredientContainer.ingredients.map(
+    return user.ingredientContainer.ingredients.map(
       (ing: Ingredient, index: number) => {
         return <Item key={index} item={ing} />;
       }
@@ -45,7 +54,10 @@ function Menu() {
   };
 
   return (
-    <form className="addIngredientMenu">
+    <form
+      className="addIngredientMenu"
+      onSubmit={(event) => postIngdredient(event)}
+    >
       <input
         className="addIngredientElement"
         placeholder="Name"
@@ -67,15 +79,15 @@ function Menu() {
         value={unit}
         onChange={(e) => setUnit(e.target.value)}
       >
-        {units.map((unit: String, index: number) => {
-          return <option key={index}>{unit}</option>;
+        {units.map((item: string, index: number) => {
+          return (
+            <option key={index} value={item}>
+              {item}
+            </option>
+          );
         })}
       </select>
-      <input
-        type="sumbit"
-        onClick={postIngdredient}
-        className="addIngredientElement"
-      />
+      <button className="addIngredientElement">Add</button>
     </form>
   );
 }
