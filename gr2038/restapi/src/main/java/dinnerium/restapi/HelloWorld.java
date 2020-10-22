@@ -18,10 +18,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class HelloWorld {
+    private static final Logger LOG = LoggerFactory.getLogger(HelloWorld.class);
 
     public static void main(String[] args) {
+        //Se på det om man skal legge til response type ved res.type("application/json");
+        //https://www.the-lazy-dev.com/en/spark-for-beginners-create-restful-api-with-java-and-mongodb/
 
         get("/users/:name", (req, res) -> getUser(req.params(":name")));
 
@@ -50,12 +55,12 @@ public class HelloWorld {
             }
         });
         post("/users/:username/ingredients/add", (req, res) -> {
-            System.out.println("add new ingredient");
+            LOG.info("add new ingredient");
             return "";
         });
         post("/users/:username/recipes/add", (req, res) -> {
-            System.out.println("add new recipe");
-            System.out.println("Body: " + req.body());
+            LOG.info("add new recipe");
+            LOG.info("Body: " + req.body());
             return "";
         });
     }
@@ -64,9 +69,10 @@ public class HelloWorld {
         User newUser = new User(new IngredientContainer(), new RecipeContainer(), username);
         try {
             Path path = Paths.get(
-                "core/src/main/resources/dinnerium/storage/" + username + ".json");
+                "src/main/resources/storage/" + username + ".json");
             HandlePersistency.writeUser(newUser, new FileWriter(path.toFile(), StandardCharsets.UTF_8));
         } catch (Exception e) {
+            LOG.error("Could not write userdata to file");
             throw new IllegalArgumentException("Could not write userdata to file");
         }
     }
@@ -89,12 +95,12 @@ public class HelloWorld {
     }
 
     private static String getUser(String username) throws IOException {
-        String file = "core/src/main/resources/dinnerium/storage/" + username + ".json";
+        String file = "src/main/resources/storage/" + username + ".json";
         return new String(Files.readAllBytes(Paths.get(file)));
     }
 
     private static String getUsernameList() {
-        File[] files = new File("core/src/main/resources/dinnerium/storage/").listFiles();
+        File[] files = new File("src/main/resources/storage/").listFiles();
         List<String> filenames = new ArrayList<>();
         if (files != null) {
             filenames = Arrays.stream(files)
