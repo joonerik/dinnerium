@@ -70,7 +70,7 @@ const NewRecipe = () => {
         instructions: instructions,
         ingredients: ingredients,
       });
-      window.location.reload();
+      // window.location.reload();
     } else {
       const instructionsMessage =
         instructions.length > 0 ? '' : 'You need to add instrucgtions \n';
@@ -119,20 +119,17 @@ const NewRecipe = () => {
           type="text"
           name="ingredient"
           placeholder="ingredient"
-          required
         />
         <input
           onChange={(event) => setIngredientQuantity(event.target.value)}
           type="number"
           name="quantity"
           placeholder="quantity"
-          required
         />
         <select
           onChange={(event) => setUnitField(event.target.value)}
           defaultValue={'None'}
           name="unit"
-          required
           placeholder="unit"
         >
           <option value="None" disabled>
