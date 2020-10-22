@@ -1,21 +1,13 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
+import axios from 'axios';
 
 import './FridgePage.scss';
 import { useState } from 'react';
+import UserContext from '../../components/UserContext/UserContext';
 
 interface IItem {
   item: { quantity: { unit: string; amount: number }; name: string };
 }
-
-const items = [
-  {
-    quantity: {
-      unit: 'stk',
-      amount: 2.0,
-    },
-    name: 'bolle',
-  },
-];
 
 const Item: FC<IItem> = ({ item }) => {
   return (
@@ -27,25 +19,29 @@ const Item: FC<IItem> = ({ item }) => {
 };
 
 function Menu() {
+  const { user } = useContext(UserContext);
   const [name, setName] = useState('');
   const [amount, setAmount] = useState('');
   const [unit, setUnit] = useState('');
+  const units = ['dl', 'gram', 'stk'];
 
-  function addItem() {
-    let newItem = {
-      quantity: {
-        unit: unit,
-        amount: Number(amount),
-      },
-      name: name,
-    };
-    items.push(newItem);
-  }
-
-  const xAddItem = () => {
-    return items.map((ing, index) => {
-      <Item key={index} item={ing} />;
-    });
+  const postIngdredient = () => {
+    axios
+      .post(`/users/${user.username}/ingdredients/add`, {
+        quantity: { unit: unit, anount: amount },
+        name: name,
+      })
+      .then(function (res) {
+        console.log(res);
+        addItem();
+      });
+  };
+  const addItem = () => {
+    return user.intgredientContainer.ingredients.map(
+      (ing: Ingredient, index: number) => {
+        return <Item key={index} item={ing} />;
+      }
+    );
   };
 
   return (
@@ -70,22 +66,32 @@ function Menu() {
         name="Unit"
         value={unit}
         onChange={(e) => setUnit(e.target.value)}
-      ></select>
-      <input type="button" onClick={addItem} className="addIngredientElement">
-        Add
-      </input>
+      >
+        {units.map((unit: String, index: number) => {
+          return <option key={index}>{unit}</option>;
+        })}
+      </select>
+      <input
+        type="sumbit"
+        onClick={postIngdredient}
+        className="addIngredientElement"
+      />
     </form>
   );
 }
 
 function FridgePage() {
+  const { user } = useContext(UserContext);
+
   return (
     <div className="fridgePage">
       <Menu />
       <div className="itemList">
-        {items.map((item) => (
-          <Item item={item} />
-        ))}
+        {user.ingredientContainer.ingredients.map(
+          (ing: Ingredient, index: number) => {
+            return <Item key={index} item={ing} />;
+          }
+        )}
       </div>
     </div>
   );
