@@ -3,8 +3,8 @@ image:
 
 tasks:
   - init: sdk use java 14.0.2.j9-adpt
-  - init: npm install
-    command: cd gr2038/ui
+  - init: cd gr2038/ui
+    command: npm install
 
 ports:
   - port: 4567
