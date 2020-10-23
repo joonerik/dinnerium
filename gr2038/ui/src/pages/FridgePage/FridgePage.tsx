@@ -33,7 +33,7 @@ function Menu() {
 
   const postIngdredient = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (unit !== "None" && amount && name) {
+    if (unit && amount && name) {
         axios
           .post(`/users/${user.username}/ingredients/add`, {
             quantity: { unit: unit, amount: amount },
