@@ -27,8 +27,7 @@ function Menu() {
 
   useEffect(() => {
     axios.get('/units').then((response) => {
-      const list: string = response.data;
-      setUnits(list.replace('[', '').replace(']', '').split(', '));
+      setUnits(response.data.replace('[', '').replace(']', '').split(', '));
     });
   }, []);
 
@@ -65,11 +64,14 @@ function Menu() {
       />
       <select
         className="addIngredientElement"
-        placeholder="Unit"
+        placeholder="unit"
+        defaultValue={'None'}
         name="Unit"
-        value={unit}
         onChange={(e) => setUnit(e.target.value)}
       >
+        <option value="None" disabled>
+            Units
+        </option>
         {units.map((item: string, index: number) => {
           return (
             <option key={index} value={item}>
