@@ -3,6 +3,7 @@ image:
 
 tasks:
   - init: sdk use java 14.0.2.j9-adpt
+    command: cd gr2038
   - init: cd gr2038/ui
     command: npm install
 
