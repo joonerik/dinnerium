@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './newRecipe.scss';
 import UserContext from '../UserContext/UserContext';
@@ -15,12 +16,12 @@ const NewRecipe = () => {
   const [timeField, setTimeField] = useState('');
   const [descriptionField, setDescriptionField] = useState('');
   const [units, setUnits] = useState<string[]>([]);
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+  const history = useHistory();
 
   useEffect(() => {
     axios.get('/units').then((response) => {
-      const list: string = response.data;
-      setUnits(list.replace('[', '').replace(']', '').split(', '));
+      setUnits(response.data.replace('[', '').replace(']', '').split(', '));
     });
   }, []);
 
@@ -33,11 +34,11 @@ const NewRecipe = () => {
   const addIngredient = () => {
     if (ingredientNameField && ingredientQuantity && unitField !== 'none') {
       const i = {} as Ingredient;
-      i.name = ingredientNameField;
       const q = {} as Quantity;
       q.amount = parseFloat(ingredientQuantity);
       q.unit = unitField;
       i.quantity = q;
+      i.name = ingredientNameField;
       setIngredients((prevState) => [...prevState, i]);
     } else {
       //Add updating a state here that causes a feedback to render
@@ -74,20 +75,24 @@ const NewRecipe = () => {
   const submitNewRecipeForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (instructions.length && ingredients.length) {
-      const username: string = user.username;
-      axios.post('/users/' + { username } + '/recipes/add', {
-        ingredientContainer: { ingredients: ingredients },
-        recipeInstructions: instructions,
-        metadata: {
-          author: username,
-          portion: portionsField,
-          image: 'www.noimage.com',
-          recipeName: nameField,
-          recipeDescription: descriptionField,
-          minutes: timeField,
-        },
-      });
-      // window.location.reload();
+      axios
+        .post(`/users/${user.username}/recipes/add`, {
+          ingredientContainer: { ingredients: ingredients },
+          recipeInstructions: instructions,
+          metadata: {
+            author: user.username,
+            portion: parseFloat(portionsField),
+            image: 'http://folk.ntnu.no/anderobs/images/tikkaMasala.png',
+            recipeName: nameField,
+            recipeDescription: descriptionField,
+            minutes: parseFloat(timeField),
+          },
+        })
+        .then((response) => {
+          setUser(response.data);
+          //Should ass some feedback here of somekind.
+          history.push('/recipes');
+        });
     } else {
       const instructionsMessage =
         instructions.length > 0 ? '' : 'You need to add instrucgtions \n';

@@ -4,7 +4,6 @@ import axios from 'axios';
 import './FridgePage.scss';
 import { useState } from 'react';
 import UserContext from '../../components/UserContext/UserContext';
-import { isAsExpression } from 'typescript';
 
 interface IItem {
   item: { quantity: { unit: string; amount: number }; name: string };
@@ -20,9 +19,9 @@ const Item: FC<IItem> = ({ item }) => {
 };
 
 function Menu() {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [name, setName] = useState('');
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState(0);
   const [unit, setUnit] = useState('');
   const [units, setUnits] = useState<string[]>([]);
 
@@ -40,17 +39,9 @@ function Menu() {
         quantity: { unit: unit, amount: amount },
         name: name,
       })
-      .then(function (res) {
-        console.log(res);
-        addItem();
+      .then((response) => {
+        setUser(response.data);
       });
-  };
-  const addItem = () => {
-    return user.ingredientContainer.ingredients.map(
-      (ing: Ingredient, index: number) => {
-        return <Item key={index} item={ing} />;
-      }
-    );
   };
 
   return (
@@ -70,7 +61,7 @@ function Menu() {
         placeholder="Quantity"
         type="number"
         value={amount}
-        onChange={(e) => setAmount(e.target.value)}
+        onChange={(e) => setAmount(parseFloat(e.target.value))}
       />
       <select
         className="addIngredientElement"
