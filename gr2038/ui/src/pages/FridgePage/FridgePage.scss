@@ -1,0 +1,33 @@
+@import '../../assets/styles/variables';
+
+.fridgePage {
+  border: 3px solid $color-yellow;
+  border-radius: 25px;
+  margin: auto;
+  height: 75%;
+  width: 50%;
+
+  .addIngredientMenu {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 80%;
+    margin: 10%;
+
+    .addIngredientElement {
+      border: none;
+      outline: none;
+      margin: 2%;
+      background-color: $color-yellow;
+      border-radius: 5px;
+    }
+  }
+
+  .item {
+    text-align: center;
+    border-bottom: 3px solid $color-yellow;
+    width: 80%;
+    margin: 10%;
+    color: $color-yellow;
+    font-family: $font;
+  }
+}
