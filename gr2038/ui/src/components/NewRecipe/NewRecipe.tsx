@@ -11,10 +11,6 @@ const NewRecipe = () => {
   const [ingredientNameField, setIngredientNameField] = useState('');
   const [ingredientQuantity, setIngredientQuantity] = useState('');
   const [unitField, setUnitField] = useState('none');
-  const [nameField, setNameField] = useState('');
-  const [portionsField, setPortionsField] = useState('');
-  const [timeField, setTimeField] = useState('');
-  const [descriptionField, setDescriptionField] = useState('');
   const [units, setUnits] = useState<string[]>([]);
   const { user, setUser } = useContext(UserContext);
   const history = useHistory();
@@ -33,12 +29,13 @@ const NewRecipe = () => {
   };
   const addIngredient = () => {
     if (ingredientNameField && ingredientQuantity && unitField !== 'none') {
-      const i = {} as Ingredient;
-      const q = {} as Quantity;
-      q.amount = parseFloat(ingredientQuantity);
-      q.unit = unitField;
-      i.quantity = q;
-      i.name = ingredientNameField;
+      const i = {
+        quantity: {
+          amount: parseFloat(ingredientQuantity),
+          unit: unitField,
+        } as Quantity,
+        name: ingredientNameField,
+      } as Ingredient;
       setIngredients((prevState) => [...prevState, i]);
     } else {
       //Add updating a state here that causes a feedback to render
@@ -75,22 +72,23 @@ const NewRecipe = () => {
   const submitNewRecipeForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (instructions.length && ingredients.length) {
+      const formData = new FormData(e.target as HTMLFormElement);
       axios
         .post(`/users/${user.username}/recipes/add`, {
           ingredientContainer: { ingredients: ingredients },
           recipeInstructions: instructions,
           metadata: {
             author: user.username,
-            portion: parseFloat(portionsField),
+            portion: parseFloat(formData.get('portions') as string),
             image: 'http://folk.ntnu.no/anderobs/images/tikkaMasala.png',
-            recipeName: nameField,
-            recipeDescription: descriptionField,
-            minutes: parseFloat(timeField),
+            recipeName: formData.get('name'),
+            recipeDescription: formData.get('description'),
+            minutes: parseFloat(formData.get('estimatedTime') as string),
           },
         })
         .then((response) => {
           setUser(response.data);
-          //Should ass some feedback here of somekind.
+          //Should add some feedback here of somekind.
           history.push('/recipes');
         });
     } else {
@@ -101,11 +99,11 @@ const NewRecipe = () => {
       alert(instructionsMessage + ingredientsMessage);
     }
   };
+
   return (
     <div className="new-recipe-container">
-      <form onSubmit={(e) => submitNewRecipeForm(e)}>
+      <form onSubmit={submitNewRecipeForm}>
         <input
-          onChange={(e) => setNameField(e.target.value)}
           type="text"
           name="name"
           id="newRecipeForm"
@@ -114,15 +112,8 @@ const NewRecipe = () => {
         />
         <br />
         <label htmlFor="portions">Portions:</label>
+        <input type="number" name="portions" placeholder="num" required />
         <input
-          onChange={(e) => setPortionsField(e.target.value)}
-          type="number"
-          name="portions"
-          placeholder="num"
-          required
-        />
-        <input
-          onChange={(e) => setTimeField(e.target.value)}
           type="number"
           name="estimatedTime"
           placeholder="Estimated time"
@@ -130,7 +121,6 @@ const NewRecipe = () => {
         />
         <br />
         <textarea
-          onChange={(e) => setDescriptionField(e.target.value)}
           name="description"
           placeholder="description"
           required
