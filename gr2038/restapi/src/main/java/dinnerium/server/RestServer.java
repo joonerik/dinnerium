@@ -39,16 +39,10 @@ public class RestServer {
 
         post("/users/register", (req, res) -> userService.saveNewUser(req.body()));
 
-        post("/users/:username/ingredients/add", (req, res) -> {
-            String response = ingredientsService.addIngredient(req.body(), req.params(":username"));
-            LOGGER.info(response);
-            return response;
-        });
+        post("/users/:username/ingredients/add",
+            (req, res) -> ingredientsService.addIngredient(req.body(), req.params(":username")));
 
-        post("/users/:username/recipes/add", (req, res) -> {
-            String response = recipeService.addRecipe(req.body(), req.params(":username"));
-            LOGGER.info(response);
-            return response;
-        });
+        post("/users/:username/recipes/add",
+            (req, res) -> recipeService.addRecipe(req.body(), req.params(":username")));
     }
 }
