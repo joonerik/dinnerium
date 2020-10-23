@@ -33,14 +33,19 @@ function Menu() {
 
   const postIngdredient = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    axios
-      .post(`/users/${user.username}/ingredients/add`, {
-        quantity: { unit: unit, amount: amount },
-        name: name,
-      })
-      .then((response) => {
-        setUser(response.data);
-      });
+    if (unit !== "None" && amount && name) {
+        axios
+          .post(`/users/${user.username}/ingredients/add`, {
+            quantity: { unit: unit, amount: amount },
+            name: name,
+          })
+          .then((response) => {
+            setUser(response.data);
+          });
+    } else {
+        //Add some actual errorhandling.
+        alert("You need to fill out all the fields");
+    }
   };
 
   return (
