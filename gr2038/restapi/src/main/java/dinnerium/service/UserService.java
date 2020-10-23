@@ -1,13 +1,19 @@
 package dinnerium.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import dinnerium.core.Ingredient;
 import dinnerium.core.IngredientContainer;
+import dinnerium.core.Recipe;
 import dinnerium.core.RecipeContainer;
 import dinnerium.core.User;
 import dinnerium.json.DinneriumModule;
 import dinnerium.json.HandlePersistency;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -32,7 +38,7 @@ public class UserService {
         return new String(Files.readAllBytes(Paths.get(file)));
     }
 
-    public String getUserRequest(String username) throws IOException{
+    public String getUserRequest(String username) throws IOException {
         String formattedUsername = formatUsername(username);
         if (getUsernameList().contains(formattedUsername)) {
             return getUser(formattedUsername);
@@ -40,14 +46,32 @@ public class UserService {
         return "null";
     }
 
+    public String addIngredient(Ingredient ingredient, String username) throws IOException {
+        User user = mapper.readValue(getUser(username), User.class);
+        user.getIngredientContainer().addItem(ingredient);
+        Path path = Paths.get("src/main/resources/storage/" + username + ".json");
+        HandlePersistency.writeUser(user, new FileWriter(path.toFile(), StandardCharsets.UTF_8));
+        return getUser(username);
+    }
+
+    public String addRecipe(Recipe recipe, String username) throws IOException {
+        User user = mapper.readValue(getUser(username), User.class);
+        user.getRecipeContainer().addItem(recipe);
+        Path path = Paths.get("src/main/resources/storage/" + username + ".json");
+        HandlePersistency.writeUser(user, new FileWriter(path.toFile(), StandardCharsets.UTF_8));
+        return getUser(username);
+    }
+
     public String saveNewUser(String username) {
         String formattedUsername = formatUsername(username);
         if (!getUsernameList().contains(formattedUsername)) {
-            User newUser = new User(new IngredientContainer(), new RecipeContainer(), formattedUsername);
+            User newUser =
+                new User(new IngredientContainer(), new RecipeContainer(), formattedUsername);
             try {
                 Path path = Paths.get(
                     "src/main/resources/storage/" + formattedUsername + ".json");
-                HandlePersistency.writeUser(newUser, new FileWriter(path.toFile(), StandardCharsets.UTF_8));
+                HandlePersistency
+                    .writeUser(newUser, new FileWriter(path.toFile(), StandardCharsets.UTF_8));
                 return getUser(formattedUsername);
             } catch (Exception e) {
                 //LOG.error("Could not write userdata to file");
