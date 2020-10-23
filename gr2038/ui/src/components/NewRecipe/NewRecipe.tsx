@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './newRecipe.scss';
+import UserContext from '../UserContext/UserContext';
 
 const NewRecipe = () => {
   const [instructions, setInstructions] = useState<string[]>([]);
   const [instructionField, setInstructionField] = useState('');
-  const [ingredients, setIngredients] = useState<string[]>([]);
+  const [ingredients, setIngredients] = useState<Ingredient[]>([]);
   const [ingredientNameField, setIngredientNameField] = useState('');
   const [ingredientQuantity, setIngredientQuantity] = useState('');
   const [unitField, setUnitField] = useState('none');
@@ -13,6 +15,15 @@ const NewRecipe = () => {
   const [portionsField, setPortionsField] = useState('');
   const [timeField, setTimeField] = useState('');
   const [descriptionField, setDescriptionField] = useState('');
+  const [units, setUnits] = useState<string[]>([]);
+  const { user, setUser } = useContext(UserContext);
+  const history = useHistory();
+
+  useEffect(() => {
+    axios.get('/units').then((response) => {
+      setUnits(response.data.replace('[', '').replace(']', '').split(', '));
+    });
+  }, []);
 
   //Should maybe change these functions out with useState and having components for the ingredient list and instruction list.
   const addInstruction = () => {
@@ -22,10 +33,13 @@ const NewRecipe = () => {
   };
   const addIngredient = () => {
     if (ingredientNameField && ingredientQuantity && unitField !== 'none') {
-      setIngredients((prevState) => [
-        ...prevState,
-        ingredientQuantity + ' ' + unitField + ', ' + ingredientNameField,
-      ]);
+      const i = {} as Ingredient;
+      const q = {} as Quantity;
+      q.amount = parseFloat(ingredientQuantity);
+      q.unit = unitField;
+      i.quantity = q;
+      i.name = ingredientNameField;
+      setIngredients((prevState) => [...prevState, i]);
     } else {
       //Add updating a state here that causes a feedback to render
       //and use for example setTimeout to set the state back to empty when the
@@ -61,16 +75,24 @@ const NewRecipe = () => {
   const submitNewRecipeForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (instructions.length && ingredients.length) {
-      //Change USERNAME to username of current user
-      axios.post('/users/USERNAME/recipes/add', {
-        name: nameField,
-        portions: portionsField,
-        time: timeField,
-        description: descriptionField,
-        instructions: instructions,
-        ingredients: ingredients,
-      });
-      // window.location.reload();
+      axios
+        .post(`/users/${user.username}/recipes/add`, {
+          ingredientContainer: { ingredients: ingredients },
+          recipeInstructions: instructions,
+          metadata: {
+            author: user.username,
+            portion: parseFloat(portionsField),
+            image: 'http://folk.ntnu.no/anderobs/images/tikkaMasala.png',
+            recipeName: nameField,
+            recipeDescription: descriptionField,
+            minutes: parseFloat(timeField),
+          },
+        })
+        .then((response) => {
+          setUser(response.data);
+          //Should ass some feedback here of somekind.
+          history.push('/recipes');
+        });
     } else {
       const instructionsMessage =
         instructions.length > 0 ? '' : 'You need to add instrucgtions \n';
@@ -135,9 +157,13 @@ const NewRecipe = () => {
           <option value="None" disabled>
             Unit
           </option>
-          <option value="gram">gram</option>
-          <option value="dl">dl</option>
-          <option value="stk">stk</option>
+          {units.map((item: string, index: number) => {
+            return (
+              <option key={index} value={item}>
+                {item}
+              </option>
+            );
+          })}
         </select>
         <button type="button" id="addIngredientButton" onClick={addIngredient}>
           Add
@@ -179,8 +205,12 @@ const NewRecipe = () => {
           <p>Ingredients</p>
           <ol>
             {ingredients.map((ingredient, index) => (
-              <li>
-                {ingredient}
+              <li key={index}>
+                {ingredient.quantity.unit +
+                  ' ' +
+                  ingredient.quantity.amount +
+                  ' ' +
+                  ingredient.name}
                 <div
                   onClick={(e) => removeIngredient(index)}
                   className="tooltip delete-div"

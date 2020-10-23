@@ -1,9 +1,13 @@
-image:
+image: 
   file: .gitpod.Dockerfile
 
 tasks:
   - init: sdk use java 14.0.2.j9-adpt
     command: cd gr2038
+  - init: cd gr2038/ui
+    command: npm install
 
 ports:
-  - port: 6080
+  - port: 4567
+  - port: 3000
+    onOpen: open-browser
