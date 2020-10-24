@@ -1,6 +1,7 @@
 package dinnerium.server;
 
 import static spark.Spark.get;
+import static spark.Spark.internalServerError;
 import static spark.Spark.post;
 
 import dinnerium.core.Quantity;
@@ -37,10 +38,13 @@ public class RestServer {
 
         post("/users/login", (req, res) -> userService.getUserRequest(req.body()));
 
-        post("/users/register", (req, res) -> userService.saveNewUser(req.body()));
+        post("/users/register", (req, res) -> userService.registerNewUser(req.body()));
 
-        post("/users/:username/ingredients/add",
-            (req, res) -> ingredientsService.addIngredient(req.body(), req.params(":username")));
+        post("/users/:username/ingredients/add", (req, res) -> {
+            res.type("application/json");
+            LOGGER.debug(req.body()); //Change to debug something useful here.
+            return ingredientsService.addIngredient(req.body(), req.params(":username"));
+        });
 
         post("/users/:username/recipes/add",
             (req, res) -> recipeService.addRecipe(req.body(), req.params(":username")));
