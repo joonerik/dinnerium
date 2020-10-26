@@ -34,7 +34,6 @@ class MetadataDeserializer extends JsonDeserializer<Metadata> {
             ObjectNode objectNode = (ObjectNode) jsonNode;
             String author;
             double portion;
-            String image;
             String recipeName;
             String recipeDescription;
             int minutes;
@@ -48,12 +47,6 @@ class MetadataDeserializer extends JsonDeserializer<Metadata> {
             JsonNode portionNode = objectNode.get("portion");
             if (portionNode instanceof DoubleNode) {
                 portion = portionNode.asDouble();
-            } else {
-                return null;
-            }
-            JsonNode imageNode = objectNode.get("image");
-            if (imageNode instanceof TextNode) {
-                image = imageNode.asText();
             } else {
                 return null;
             }
@@ -76,7 +69,7 @@ class MetadataDeserializer extends JsonDeserializer<Metadata> {
             } else {
                 return null;
             }
-            return new Metadata(author, portion, image, recipeName, recipeDescription, minutes);
+            return new Metadata(author, portion, recipeName, recipeDescription, minutes);
         }
         return null;
     }
