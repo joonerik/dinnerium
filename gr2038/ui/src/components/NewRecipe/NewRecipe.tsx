@@ -60,7 +60,6 @@ const NewRecipe = () => {
           metadata: {
             author: user.username,
             portion: parseFloat(formData.get('portions') as string),
-            image: 'http://folk.ntnu.no/anderobs/images/tikkaMasala.png',
             recipeName: formData.get('name'),
             recipeDescription: formData.get('description'),
             minutes: parseFloat(formData.get('estimatedTime') as string),

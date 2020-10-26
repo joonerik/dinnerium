@@ -28,7 +28,6 @@ class RecipeTest {
         md = new Metadata(
             "Bakemester Harepus",
             5.0,
-            "pepper.png",
             "Pepperkaker",
             "...",
             20
