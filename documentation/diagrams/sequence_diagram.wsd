@@ -1,0 +1,6 @@
+@startuml
+User -> UserService: POST/users/register\nregisterNewUser(Bob)
+UserService -> IngredientContainer: addIngredient(Melk, Bob) 
+
+
+@enduml
