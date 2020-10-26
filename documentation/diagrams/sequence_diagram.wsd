@@ -1,6 +1,12 @@
-@startuml
-User -> UserService: POST/users/register\nregisterNewUser(Bob)
-UserService -> IngredientContainer: addIngredient(Melk, Bob) 
+@startuml sequence_diagram
+actor Bob
+Bob -> RestServer: POST/users/register\n
+RestServer -> UserService: registerNewUser(Bob)
+UserService --> RestServer: bob
+
+UserService -> IngredientContainer: addIngredient(Melk, Bob)\nPOST("/users/:bob/ingredients/add"
+UserService -> IngredientContainer: addIngredient(Frokostblanding, Bob)\nPOST("/users/:bob/ingredients/add"
+
 
 
 @enduml
