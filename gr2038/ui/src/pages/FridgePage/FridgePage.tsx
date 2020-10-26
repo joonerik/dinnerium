@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import './FridgePage.scss';
 import { useState } from 'react';
-import UserContext from '../../components/UserContext/UserContext';
+import { UserContext } from '../../components/UserContext/UserContext';
 
 interface IItem {
   item: { quantity: { unit: string; amount: number }; name: string };
@@ -19,7 +19,7 @@ const Item: FC<IItem> = ({ item }) => {
 };
 
 function Menu() {
-  const { user, setUser } = useContext(UserContext);
+  const { user, login } = useContext(UserContext);
   const [units, setUnits] = useState<string[]>([]);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ function Menu() {
     event.preventDefault();
     const formData = new FormData(event.target as HTMLFormElement);
     axios
-      .post(`/users/${user.username}/ingredients/add`, {
+      .post(`/users/${user?.username}/ingredients/add`, {
         quantity: {
           unit: formData.get('unit'),
           amount: parseFloat(formData.get('quantity') as string),
@@ -40,7 +40,7 @@ function Menu() {
         name: formData.get('name'),
       })
       .then((response) => {
-        setUser(response.data);
+        login(response.data);
       });
   };
 
@@ -89,7 +89,7 @@ function FridgePage() {
     <div className="fridgePage">
       <Menu />
       <div className="itemList">
-        {user.ingredientContainer.ingredients.map(
+        {user?.ingredientContainer?.ingredients?.map(
           (ing: Ingredient, index: number) => {
             return <Item key={index} item={ing} />;
           }

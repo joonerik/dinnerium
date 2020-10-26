@@ -2,13 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './newRecipe.scss';
-import UserContext from '../UserContext/UserContext';
+import { UserContext } from '../UserContext/UserContext';
 
 const NewRecipe = () => {
   const [instructions, setInstructions] = useState<string[]>([]);
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
   const [units, setUnits] = useState<string[]>([]);
-  const { user, setUser } = useContext(UserContext);
+  const { user, login } = useContext(UserContext);
   const history = useHistory();
 
   useEffect(() => {
@@ -54,11 +54,11 @@ const NewRecipe = () => {
     if (instructions.length && ingredients.length) {
       const formData = new FormData(e.target as HTMLFormElement);
       axios
-        .post(`/users/${user.username}/recipes/add`, {
+        .post(`/users/${user?.username}/recipes/add`, {
           ingredientContainer: { ingredients: ingredients },
           recipeInstructions: instructions,
           metadata: {
-            author: user.username,
+            author: user?.username,
             portion: parseFloat(formData.get('portions') as string),
             image: 'http://folk.ntnu.no/anderobs/images/tikkaMasala.png',
             recipeName: formData.get('name'),
@@ -67,7 +67,7 @@ const NewRecipe = () => {
           },
         })
         .then((response) => {
-          setUser(response.data);
+          login(response.data);
           //Should add some feedback here of somekind.
           history.push('/recipes');
         });

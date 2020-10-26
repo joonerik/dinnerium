@@ -1,23 +1,23 @@
 import React, { useContext, useState } from 'react';
 import '../../assets/styles/defaults.scss';
 import axios from 'axios';
-import UserContext from '../../components/UserContext/UserContext';
+import { UserContext } from '../../components/UserContext/UserContext';
 import './loginPage.scss';
 
 import dinneriumLogo from '../../assets/static/dinnerium-min.png';
 
 const LoginPage = () => {
-  const [name, setName] = useState<string>('');
-  const [isAction, setAction] = useState<string>('');
-  const { setUser } = useContext(UserContext);
+  const [name, setName] = useState<IUser['username']>('');
+  const [isAction, setAction] = useState<'register' | 'login'>('login');
+  const { login } = useContext(UserContext);
 
   const submitForm = (
     event: React.FormEvent<HTMLFormElement>,
-    action: String
+    action: 'register' | 'login'
   ) => {
     event.preventDefault();
     axios.post('/users/' + action, { username: name }).then((res) => {
-      setUser(res.data);
+      login(res.data);
     });
   };
 
