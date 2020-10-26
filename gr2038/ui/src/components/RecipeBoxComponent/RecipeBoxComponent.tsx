@@ -63,7 +63,7 @@ const RecipeBoxComponent = () => {
               <Link to="/newRecipe">New recipe</Link>
             </h1>
           </div>
-          <hr></hr>
+          <hr />
           <div id="recipeInfo">
             <h2>{displayRecipeName}</h2>
             <p>{displayRecipeDescription}</p>
@@ -86,9 +86,17 @@ const RecipeBoxComponent = () => {
               )}
             </ul>
             <div id="recipeMetadata">
-              <p>{displayRecipeAuthor && 'Forfatter ' + displayRecipeAuthor}</p>
-              <p>{displayRecipeMinutes}</p>
-              <p>{displayRecipePortion}</p>
+              <p>{displayRecipeAuthor && 'Author: ' + displayRecipeAuthor}</p>
+              <p>
+                {displayRecipeMinutes
+                  ? 'Time: ' + displayRecipeMinutes + ' minutes'
+                  : ''}
+              </p>
+              <p>
+                {displayRecipePortion
+                  ? 'Portions: ' + displayRecipePortion
+                  : ''}
+              </p>
             </div>
           </div>
         </div>
