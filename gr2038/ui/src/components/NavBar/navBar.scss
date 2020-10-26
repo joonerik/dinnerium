@@ -3,13 +3,42 @@
   display: flex;
   flex-direction: row;
   background-color: $color-blue;
+  height: 60px;
+  &__logo {
+    display: flex;
+    width: 108.73px;
+    height: 47.33px;
+    margin-left: 20px;
+  }
   &__ul {
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: row;
     flex-grow: 1;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    .active {
+      a {
+        color: $color-red;
+      }
+    }
     li {
       list-style-type: none;
+      a {
+        text-decoration: none;
+        color: $color-dark;
+        font: $font;
+        &:hover {
+          color: $color-red;
+        }
+      }
+      ul {
+        width: 600px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
     }
   }
 }
