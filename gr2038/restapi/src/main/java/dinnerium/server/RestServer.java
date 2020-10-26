@@ -1,7 +1,6 @@
 package dinnerium.server;
 
 import static spark.Spark.get;
-import static spark.Spark.internalServerError;
 import static spark.Spark.post;
 
 import dinnerium.core.Quantity;
