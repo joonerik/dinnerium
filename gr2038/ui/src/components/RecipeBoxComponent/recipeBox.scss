@@ -145,7 +145,7 @@
       padding: 20px;
       width: 250px;
       height: 200px;
-      margin-bottom: 5%;
+      margin-top: 5%;
       color: $color-yellow;
       text-align: center;
 
@@ -157,9 +157,10 @@
         text-align: center;
       }
 
-      #portionsIcon {
-        width: 5px;
-        height: 5px;
+      #portionsIcon,
+      #minutesIcon {
+        width: 10px;
+        height: 10px;
       }
     }
   }
