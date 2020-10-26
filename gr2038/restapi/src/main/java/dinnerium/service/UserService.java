@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -62,7 +63,7 @@ public class UserService {
         return getUser(username);
     }
 
-    public String saveNewUser(String username) {
+    public String registerNewUser(String username) {
         String formattedUsername = formatUsername(username);
         if (!getUsernameList().contains(formattedUsername)) {
             User newUser =
