@@ -76,7 +76,6 @@ class DinneriumModuleTest {
         "      \"metadata\" : {\n" +
         "        \"author\" : \"bestUsername\",\n" +
         "        \"portion\" : 4.0,\n" +
-        "        \"image\" : \"http://folk.ntnu.no/anderobs/images/tikkaMasala.png\",\n" +
         "        \"recipeName\" : \"Lasagne\",\n" +
         "        \"recipeDescription\" : \"God og smakfull lasagne\",\n" +
         "        \"minutes\" : 90\n" +
@@ -101,7 +100,6 @@ class DinneriumModuleTest {
         "      \"metadata\" : {\n" +
         "        \"author\" : \"bestUsername\",\n" +
         "        \"portion\" : 2.0,\n" +
-        "        \"image\" : \"http://folk.ntnu.no/anderobs/images/tikkaMasala.png\",\n" +
         "        \"recipeName\" : \"Tikka masala\",\n" +
         "        \"recipeDescription\" : \"Describing description of tikka masala\",\n" +
         "        \"minutes\" : 60\n" +
@@ -245,7 +243,6 @@ class DinneriumModuleTest {
 
     private void compareMetadata(Metadata expectedMetadata, Metadata m2) {
         assertEquals(expectedMetadata.getAuthor(), m2.getAuthor());
-        assertEquals(expectedMetadata.getImage(), m2.getImage());
         assertEquals(expectedMetadata.getMinutes(), m2.getMinutes());
         assertEquals(expectedMetadata.getRecipeDescription(), m2.getRecipeDescription());
         assertEquals(expectedMetadata.getRecipeName(), m2.getRecipeName());
@@ -278,8 +275,7 @@ class DinneriumModuleTest {
             for (int j = 0; j < amounts[i].length; j++) {
                 ic.addItem(new Ingredient(new Quantity(amounts[i][j], units[i][j]), names[i][j]));
             }
-            Metadata md = new Metadata("bestUsername", portions[i],
-                "http://folk.ntnu.no/anderobs/images/tikkaMasala.png", recipeName[i],
+            Metadata md = new Metadata("bestUsername", portions[i], recipeName[i],
                 descriptions[i], minutes[i]);
             rc.addItem(new Recipe(ic, new RecipeInstructions(Arrays.asList(instructions[i])), md));
         }

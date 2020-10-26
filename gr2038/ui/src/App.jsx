@@ -5,6 +5,8 @@ import FridgePage from './pages/FridgePage/FridgePage';
 import RecipePage from './pages/RecipePage/RecipePage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import UserContext from './components/UserContext/UserContext';
+import SettingsPage from './pages/SettingsPage/SettingsPage';
+import NewRecipe from './components/NewRecipe/NewRecipe';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -19,6 +21,9 @@ function App() {
           <>
             <NavBar />
             <Switch>
+              <Route path="/" exact>
+                <RecipePage />
+              </Route>
               <Route path="/fridge">
                 <FridgePage />
               </Route>
@@ -26,7 +31,7 @@ function App() {
                 <RecipePage />
               </Route>
               <Route path="/settings">
-                <LoginPage />
+                <SettingsPage />
               </Route>
               <Route path="/newRecipe">
                 <RecipePage />

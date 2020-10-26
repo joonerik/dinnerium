@@ -4,21 +4,24 @@
 @media (min-width: 700px) {
   .wrapper {
     display: inline-grid;
-    grid-template-columns: 400px 1fr 1fr 1fr;
+    grid-template-columns: 34% 1fr 1fr 1fr;
     grid-column-gap: 50px;
     width: 100%;
+    margin: auto;
 
     .sideBar {
       background-color: $color-light;
+      float: left;
+      min-height: 750px;
       grid-row-start: 1;
-      grid-row-end: 15;
+      grid-row-end: 100;
 
       h1 {
-        padding: 20px;
         display: inline-block;
         &:hover {
           color: $color-blue;
         }
+        padding-left: 30px;
       }
 
       hr {
@@ -27,19 +30,29 @@
       }
 
       p {
-        padding: 20px;
         width: 90%;
+      }
+
+      #recipeInfo {
+        padding-left: 30px;
+        display: block;
+      }
+
+      #recipeMetadata {
+        display: inline-block;
+        float: left;
+        margin-top: 50px;
+        width: 100%;
       }
     }
 
     .recipeBox {
-      margin-bottom: 0;
       h1 {
         color: red;
         margin-top: auto;
+        text-decoration: underline;
       }
-      width: 270px;
-      margin: auto;
+      width: 230px;
       margin-top: 20px;
     }
 
@@ -47,12 +60,12 @@
       border: 5px solid $color-yellow;
       border-radius: 10px;
       background: $color-dark;
-      padding: 20px;
-      width: 250px;
-      height: 300px;
-      margin-bottom: 5%;
+      padding: 10px;
+      width: 210px;
+      height: 250px;
       color: $color-yellow;
       text-align: center;
+      cursor: pointer;
 
       img {
         height: 50%;
@@ -62,17 +75,20 @@
         text-align: center;
       }
 
-      #recipeContainer {
-        float: left;
-      }
-      #ingredientContainer {
-        float: right;
-        margin: right;
-      }
+      #metadata {
+        img {
+          width: 15px;
+          height: 15px;
+        }
+        p {
+          float: left;
+          margin-left: 20%;
+        }
 
-      #portionsIcon {
-        width: 15px;
-        height: 15px;
+        p + p {
+          float: right;
+          margin-right: 30%;
+        }
       }
     }
   }
@@ -128,8 +144,8 @@
       background: $color-dark;
       padding: 20px;
       width: 250px;
-      height: 300px;
-      margin-bottom: 5%;
+      height: 200px;
+      margin-top: 5%;
       color: $color-yellow;
       text-align: center;
 
@@ -141,9 +157,10 @@
         text-align: center;
       }
 
-      #portionsIcon {
-        width: 5px;
-        height: 5px;
+      #portionsIcon,
+      #minutesIcon {
+        width: 10px;
+        height: 10px;
       }
     }
   }

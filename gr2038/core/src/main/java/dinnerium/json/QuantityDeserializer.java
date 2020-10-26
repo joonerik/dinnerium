@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.DoubleNode;
+import com.fasterxml.jackson.databind.node.IntNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import dinnerium.core.Quantity;
@@ -36,7 +37,7 @@ class QuantityDeserializer extends JsonDeserializer<Quantity> {
             String unit;
 
             JsonNode amountNode = objectNode.get("amount");
-            if (amountNode instanceof DoubleNode) {
+            if (amountNode instanceof DoubleNode || amountNode instanceof IntNode) {
                 amount = ((amountNode).asDouble());
             } else {
                 return null;
