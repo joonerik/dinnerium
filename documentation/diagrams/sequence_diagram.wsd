@@ -4,9 +4,9 @@ Bob -> RestServer: POST/users/register\n
 RestServer -> UserService: registerNewUser(Bob)
 UserService --> RestServer: bob
 
+Bob -> RestServer: POST("/users/:bob/ingredients/add"
 UserService -> IngredientContainer: addIngredient(Melk, Bob)\nPOST("/users/:bob/ingredients/add"
 UserService -> IngredientContainer: addIngredient(Frokostblanding, Bob)\nPOST("/users/:bob/ingredients/add"
-
 
 
 @enduml
