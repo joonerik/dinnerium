@@ -4,7 +4,6 @@ public class Metadata {
 
     private final String author;
     private final double portion;
-    private final String image;
     private final String recipeName;
     private final String recipeDescription;
     private final int minutes;
@@ -20,10 +19,9 @@ public class Metadata {
      * @param minutes           the time it takes to make the recipe.
      */
     public Metadata(String author, double portion,
-                    String image, String recipeName, String recipeDescription, int minutes) {
-        if (validateString(author, image, recipeDescription, recipeName)) {
+                    String recipeName, String recipeDescription, int minutes) {
+        if (validateString(author, recipeDescription, recipeName)) {
             this.author = author;
-            this.image = image;
             this.recipeName = recipeName;
             this.recipeDescription = recipeDescription;
 
@@ -44,9 +42,9 @@ public class Metadata {
         return portion != 0.0 && minutes != 0;
     }
 
-    private boolean validateString(String author, String image, String recipeDescription,
+    private boolean validateString(String author, String recipeDescription,
                                    String recipeName) {
-        return !author.isBlank() && !image.isBlank() && !recipeDescription.isBlank()
+        return !author.isBlank() && !recipeDescription.isBlank()
             && !recipeName.isBlank();
     }
 
@@ -57,10 +55,6 @@ public class Metadata {
 
     public Double getPortion() {
         return portion;
-    }
-
-    public String getImage() {
-        return image;
     }
 
     public String getRecipeName() {
