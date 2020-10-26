@@ -76,7 +76,6 @@ const RecipeBoxComponent = () => {
           <div className="recipeBox">
             <div className="recipeBoxDescription">
               <h1>{item.metadata.recipeName}</h1>
-              <img src={item.metadata.image} alt="lul"></img>
               <p>Something missing bro</p>
               <p>{item.metadata.minutes} minutes</p>
               <p>
