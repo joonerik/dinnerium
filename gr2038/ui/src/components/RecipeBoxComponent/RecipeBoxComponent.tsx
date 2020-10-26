@@ -17,10 +17,10 @@ const RecipeBoxComponent = () => {
   >('');
   const [displayRecipePortion, setDisplayRecipePortion] = useState<
     Metadata['portion'] | undefined
-  >(0);
+  >();
   const [displayRecipeMinutes, setDiplayRecipeMinutes] = useState<
     Metadata['minutes'] | undefined
-  >(0);
+  >();
   const [displayRecipeInstructions, setDisplayRecipeInstructions] = useState<
     RecipeInstructions
   >();
@@ -88,14 +88,11 @@ const RecipeBoxComponent = () => {
             <div id="recipeMetadata">
               <p>{displayRecipeAuthor && 'Author: ' + displayRecipeAuthor}</p>
               <p>
-                {displayRecipeMinutes
-                  ? 'Time: ' + displayRecipeMinutes + ' minutes'
-                  : ''}
+                {displayRecipeMinutes &&
+                  'Time: ' + displayRecipeMinutes + ' minutes'}
               </p>
               <p>
-                {displayRecipePortion
-                  ? 'Portions: ' + displayRecipePortion
-                  : ''}
+                {displayRecipePortion && 'Portions: ' + displayRecipePortion}
               </p>
             </div>
           </div>
