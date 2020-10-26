@@ -28,12 +28,14 @@ const RecipeBoxComponent = () => {
     setDisplayRecipeDescription(
       user.recipeContainer.recipes[index].metadata.recipeDescription
     );
-    setDisplayRecipeAuthor(user.recipeContainer.recipes[index].metadata.author);
+    setDisplayRecipeAuthor(
+      'Av: ' + user.recipeContainer.recipes[index].metadata.author
+    );
     setDisplayRecipePortion(
-      user.recipeContainer.recipes[index].metadata.portion
+      'Porsjoner: ' + user.recipeContainer.recipes[index].metadata.portion
     );
     setDiplayRecipeMinutes(
-      user.recipeContainer.recipes[index].metadata.minutes
+      'Tid: ' + user.recipeContainer.recipes[index].metadata.minutes
     );
     setDisplayRecipeInstructions(
       user.recipeContainer.recipes[index].recipeInstructions
@@ -57,7 +59,7 @@ const RecipeBoxComponent = () => {
             <h2>{displayRecipeName}</h2>
             <p>{displayRecipeDescription}</p>
 
-            <ul id="f">
+            <ul>
               {displayRecipeInstructions?.map(
                 (instruction: string, index: number) => (
                   <li key={index}>{instruction}</li>
@@ -68,16 +70,17 @@ const RecipeBoxComponent = () => {
               {displayRecipeIngredients?.map(
                 (ingredient: Ingredient, index: number) => (
                   <li key={index + 0.1}>
-                    {ingredient.name}
-                    {ingredient.quantity.amount}
+                    {ingredient.name} {ingredient.quantity.amount}{' '}
                     {ingredient.quantity.unit}
                   </li>
                 )
               )}
             </ul>
-            <p>{displayRecipeAuthor}</p>
-            <p>{displayRecipeMinutes}</p>
-            <p>{displayRecipePortion}</p>
+            <div id="recipeMetadata">
+              <p>{displayRecipeAuthor}</p>
+              <p>{displayRecipeMinutes}</p>
+              <p>{displayRecipePortion}</p>
+            </div>
           </div>
         </div>
         {user.recipeContainer.recipes.map((item: Recipe, index: number) => (
