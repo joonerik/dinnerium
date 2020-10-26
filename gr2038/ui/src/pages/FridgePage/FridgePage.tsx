@@ -20,9 +20,6 @@ const Item: FC<IItem> = ({ item }) => {
 
 function Menu() {
   const { user, setUser } = useContext(UserContext);
-  const [name, setName] = useState('');
-  const [amount, setAmount] = useState(0);
-  const [unit, setUnit] = useState('');
   const [units, setUnits] = useState<string[]>([]);
 
   useEffect(() => {
@@ -33,49 +30,44 @@ function Menu() {
 
   const postIngdredient = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (unit && amount && name) {
-        axios
-          .post(`/users/${user.username}/ingredients/add`, {
-            quantity: { unit: unit, amount: amount },
-            name: name,
-          })
-          .then((response) => {
-            setUser(response.data);
-          });
-    } else {
-        //Add some actual errorhandling.
-        alert("You need to fill out all the fields");
-    }
+    const formData = new FormData(event.target as HTMLFormElement);
+    axios
+      .post(`/users/${user.username}/ingredients/add`, {
+        quantity: {
+          unit: formData.get('unit'),
+          amount: parseFloat(formData.get('quantity') as string),
+        },
+        name: formData.get('name'),
+      })
+      .then((response) => {
+        setUser(response.data);
+      });
   };
 
   return (
-    <form
-      className="addIngredientMenu"
-      onSubmit={(event) => postIngdredient(event)}
-    >
+    <form className="addIngredientMenu" onSubmit={postIngdredient}>
       <input
         className="addIngredientElement"
         placeholder="Name"
         type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        name="name"
+        required
       />
       <input
         className="addIngredientElement"
         placeholder="Quantity"
         type="number"
-        value={amount}
-        onChange={(e) => setAmount(parseFloat(e.target.value))}
+        name="quantity"
+        required
       />
       <select
         className="addIngredientElement"
-        placeholder="unit"
-        defaultValue={'None'}
-        name="Unit"
-        onChange={(e) => setUnit(e.target.value)}
+        defaultValue=""
+        name="unit"
+        required
       >
-        <option value="None" disabled>
-            Units
+        <option value="" disabled>
+          Units
         </option>
         {units.map((item: string, index: number) => {
           return (
