@@ -13,7 +13,6 @@ public class Metadata {
      *
      * @param author            the author of the Recipe.
      * @param portion           the amount of portions the Recipe is meant for.
-     * @param image             the image of the recipe.
      * @param recipeName        the name of the dish the recipe is for.
      * @param recipeDescription a description of the dish the recipe makes.
      * @param minutes           the time it takes to make the recipe.
