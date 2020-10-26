@@ -32,7 +32,6 @@ type RecipeInstructions = string[];
 interface Metadata {
   author: string;
   portion: number;
-  image: string;
   recipeName: string;
   recipeDescription: string;
   minutes: number;

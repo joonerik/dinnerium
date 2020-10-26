@@ -15,7 +15,6 @@ class MetadataTest {
         md = new Metadata(
             "Bakemester Harepus",
             5.0,
-            "pepper.png",
             "Pepperkaker",
             "...",
             20
@@ -30,11 +29,6 @@ class MetadataTest {
     @Test
     void testGetPortion() {
         assertEquals(md.getPortion(), 5.0);
-    }
-
-    @Test
-    void testGetImage() {
-        assertEquals(md.getImage(), "pepper.png");
     }
 
     @Test
@@ -58,7 +52,6 @@ class MetadataTest {
             Metadata metadata = new Metadata(
                 "Bakemester Harepus",
                 0.0,
-                "pepper.png",
                 "Pepperkaker",
                 "...",
                 20
@@ -72,7 +65,6 @@ class MetadataTest {
             Metadata metadata = new Metadata(
                 "Bakemester Harepus",
                 5.0,
-                "pepper.png",
                 "Pepperkaker",
                 "...",
                 0
@@ -86,7 +78,6 @@ class MetadataTest {
             Metadata metadata = new Metadata(
                 "",
                 5.0,
-                "pepper.png",
                 "Pepperkaker",
                 "...",
                 20
@@ -97,9 +88,8 @@ class MetadataTest {
             Metadata metadata = new Metadata(
                 "Bakemester Harepus",
                 5.0,
-                "",
                 "Pepperkaker",
-                "...",
+                "",
                 20
             );
         });
@@ -108,7 +98,6 @@ class MetadataTest {
             Metadata metadata = new Metadata(
                 "Bakemester Harepus",
                 5.0,
-                "pepper.png",
                 "",
                 "...",
                 20
@@ -119,7 +108,6 @@ class MetadataTest {
             Metadata metadata = new Metadata(
                 "Bakemester Harepus",
                 5.0,
-                "pepper.png",
                 "Pepperkaker",
                 "",
                 20
@@ -130,7 +118,6 @@ class MetadataTest {
             Metadata metadata = new Metadata(
                 "  ",
                 5.0,
-                "pepper.png",
                 "Pepperkaker",
                 "...",
                 20
@@ -142,7 +129,6 @@ class MetadataTest {
                 "Bakemester Harepus",
                 5.0,
                 "",
-                "Pepperkaker",
                 "...",
                 20
             );

@@ -23,7 +23,6 @@ class MetadataSerializer extends JsonSerializer<Metadata> {
         jsonGen.writeStartObject();
         jsonGen.writeStringField("author", metadata.getAuthor());
         jsonGen.writeNumberField("portion", metadata.getPortion());
-        jsonGen.writeStringField("image", metadata.getImage());
         jsonGen.writeStringField("recipeName", metadata.getRecipeName());
         jsonGen.writeStringField("recipeDescription", metadata.getRecipeDescription());
         jsonGen.writeNumberField("minutes", metadata.getMinutes());
