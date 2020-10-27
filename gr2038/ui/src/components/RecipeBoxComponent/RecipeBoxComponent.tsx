@@ -71,14 +71,14 @@ const RecipeBoxComponent = () => {
             <ul>
               {displayRecipeInstructions?.map(
                 (instruction: string, index: number) => (
-                  <li key={index * 3.2213}>{instruction}</li>
+                  <li key={index + 1 * 3.2213}>{instruction}</li>
                 )
               )}
             </ul>
             <ul>
               {displayRecipeIngredients?.map(
                 (ingredient: Ingredient, index: number) => (
-                  <li key={index * 0.90023}>
+                  <li key={index + 1 * 0.90023}>
                     {ingredient.name} {ingredient.quantity.amount}{' '}
                     {ingredient.quantity.unit}
                   </li>
@@ -98,15 +98,15 @@ const RecipeBoxComponent = () => {
           </div>
         </div>
         {user?.recipeContainer?.recipes?.map((item: Recipe, index: number) => (
-          <div key={index * 6.292} className="recipeBox">
+          <div key={index + 1 * 6.292} className="recipeBox">
             <div
               className="recipeBoxDescription"
               onClick={() => displayRecipeMetadata(index)}
             >
-              <h1 key={index}>{item.metadata.recipeName}</h1>
-              <h3 key={index * 1.238}>{item.metadata.recipeDescription}</h3>
+              <h1 key={index + 1 * 2.539}>{item.metadata.recipeName}</h1>
+              <h3 key={index + 1 * 1.238}>{item.metadata.recipeDescription}</h3>
               <span id="metadata">
-                <p key={index * 0.73}>
+                <p key={index + 1 * 0.73}>
                   <img
                     id="minutesIcon"
                     src="https://cdn4.iconfinder.com/data/icons/cooking/100/1-512.png"
@@ -114,7 +114,7 @@ const RecipeBoxComponent = () => {
                   ></img>
                   {item.metadata.minutes}
                 </p>
-                <p key={index * 0.89}>
+                <p key={index + 1 * 0.89}>
                   <img
                     id="portionsIcon"
                     src="https://cdn4.iconfinder.com/data/icons/election-and-campaign/128/2-512.png"
