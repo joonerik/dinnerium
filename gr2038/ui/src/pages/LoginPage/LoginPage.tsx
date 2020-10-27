@@ -9,7 +9,7 @@ import dinneriumLogo from '../../assets/static/dinnerium-min.png';
 const LoginPage = () => {
   const [name, setName] = useState<IUser['username']>('');
   const [isAction, setAction] = useState<'register' | 'login'>('login');
-  const { login } = useContext(UserContext);
+  const { updateUser } = useContext(UserContext);
 
   const submitForm = (
     event: React.FormEvent<HTMLFormElement>,
@@ -17,7 +17,7 @@ const LoginPage = () => {
   ) => {
     event.preventDefault();
     axios.post('/users/' + action, { username: name }).then((res) => {
-      login(res.data);
+      updateUser(res.data);
     });
   };
 

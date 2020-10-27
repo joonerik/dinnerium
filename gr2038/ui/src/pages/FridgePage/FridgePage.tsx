@@ -19,7 +19,7 @@ const Item: FC<IItem> = ({ item }) => {
 };
 
 function Menu() {
-  const { user, login } = useContext(UserContext);
+  const { user, updateUser } = useContext(UserContext);
   const [units, setUnits] = useState<string[]>([]);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function Menu() {
         name: formData.get('name'),
       })
       .then((response) => {
-        login(response.data);
+        updateUser(response.data);
       });
   };
 

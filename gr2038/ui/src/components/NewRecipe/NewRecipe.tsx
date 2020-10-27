@@ -8,7 +8,7 @@ const NewRecipe = () => {
   const [instructions, setInstructions] = useState<string[]>([]);
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
   const [units, setUnits] = useState<string[]>([]);
-  const { user, login } = useContext(UserContext);
+  const { user, updateUser } = useContext(UserContext);
   const history = useHistory();
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const NewRecipe = () => {
           },
         })
         .then((response) => {
-          login(response.data);
+          updateUser(response.data);
           //Should add some feedback here of somekind.
           history.push('/recipes');
         });
