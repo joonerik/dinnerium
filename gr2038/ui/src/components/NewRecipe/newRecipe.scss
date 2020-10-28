@@ -4,6 +4,7 @@
 .new-recipe-wrapper {
   display: flex;
   flex-direction: row;
+  min-height: calc(100vh - 60px);
 }
 .new-recipe-container {
   color: $color-light;
@@ -24,6 +25,8 @@
       margin-bottom: 20px;
       background-color: $color-yellow;
       border-radius: 5px;
+      text-decoration: none;
+      border: none;
     }
     input,
     select,
