@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './recipeSideBar.scss';
 
 interface ISideBar {
@@ -23,17 +23,41 @@ const RecipeSideBar: FC<ISideBar> = ({
   recipePortion,
   isEmpty,
 }) => {
+  const location = useLocation();
+  const isActive = (path: string) => location.pathname === path;
   return (
     <div className="sideBar">
       <header>
-        <h2 id="titleRecipes">Recipes</h2>
+        <h2 id="titleRecipes">
+          <Link
+            to="/recipes"
+            className={
+              isActive('/recipes') ? 'sidebar-link side-active' : 'sidebar-link'
+            }
+          >
+            Recipes
+          </Link>
+        </h2>
         <h2 id="titleNewRecipeLink">
-          <Link to="/newRecipe">New recipe</Link>
+          <Link
+            to="/newRecipe"
+            className={
+              isActive('/newRecipe')
+                ? 'sidebar-link side-active'
+                : 'sidebar-link'
+            }
+          >
+            New recipe
+          </Link>
         </h2>
       </header>
 
       <div className="recipe__info">
-        {isEmpty ? (
+        {isEmpty && isActive('/newRecipe') ? (
+          <h2>
+            <i>Add your favorite dish!</i>
+          </h2>
+        ) : isEmpty && isActive('/recipes') ? (
           <h2>
             <i>Select a dish</i>
           </h2>

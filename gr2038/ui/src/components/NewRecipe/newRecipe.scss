@@ -1,6 +1,10 @@
 @import '../../assets/styles/variables';
 @import '../../assets/styles/defaults.scss';
 
+.new-recipe-wrapper {
+  display: flex;
+  flex-direction: row;
+}
 .new-recipe-container {
   color: $color-light;
   width: 40%;

@@ -12,13 +12,12 @@
     flex-direction: row;
     justify-content: space-evenly;
     border-bottom: 2px solid $color-light;
-    h2 {
+    .sidebar-link {
+      text-decoration: none;
+      color: $color-blue;
+    }
+    .side-active {
       color: $color-yellow;
-      cursor: not-allowed;
-      a {
-        text-decoration: none;
-        color: $color-blue;
-      }
     }
   }
   .recipe__ {
