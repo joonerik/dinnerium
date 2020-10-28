@@ -1,4 +1,4 @@
-describe('Login or register', () => {
+describe('Add item to fridge', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000');
   });
@@ -9,5 +9,10 @@ describe('Login or register', () => {
 
   it('Test login', () => {
     cy.login('data');
+  });
+
+  it('Register', () => {
+    cy.get('.login__modal__input').type('ruben');
+    cy.get('.login__modal__btnContainer').contains('Register').click();
   });
 });
