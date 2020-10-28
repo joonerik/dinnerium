@@ -7,6 +7,7 @@
   min-height: 100%;
   color: $color-light;
   min-width: 400px;
+  max-width: 400px;
   header {
     display: flex;
     flex-direction: row;
@@ -46,6 +47,8 @@
         font-style: italic;
         font-size: 1rem;
         color: $color-blue;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       #recipeMetadata {
         display: flex;
