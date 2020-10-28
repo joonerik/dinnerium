@@ -23,3 +23,18 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('login', (username) => {
+  cy.get('.login__modal__input').type(username);
+  cy.get('.login__modal__btnContainer').contains('Login').click();
+  //   cy.get('input[name=ingredient]').clear();
+
+  //   cy.get('input[name=quantity]').clear();
+});
+
+Cypress.Commands.add('addIngredient', (ingredient, quantity, unit) => {
+  cy.get('input[name="ingredient"]').type(ingredient);
+  cy.get('input[name="quantity"]').type(quantity);
+  cy.get('select').select(unit);
+  cy.get('#addIngredientButton').click();
+});

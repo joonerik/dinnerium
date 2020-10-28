@@ -163,10 +163,10 @@ const NewRecipe = () => {
           <ol>
             {ingredients.map((ingredient, index) => (
               <li key={index}>
-                {ingredient.quantity.unit +
+                {ingredient.quantity.amount +
                   ' ' +
-                  ingredient.quantity.amount +
-                  ' ' +
+                  ingredient.quantity.unit +
+                  '  -  ' +
                   ingredient.name}
                 <div
                   onClick={(e) => removeIngredient(index)}

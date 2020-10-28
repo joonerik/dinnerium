@@ -7,8 +7,7 @@ describe('Login or register', () => {
     cy.focused().should('have.class', 'login__modal__input');
   });
 
-  it('Login', () => {
-    cy.get('.login__modal__input').type('data');
-    cy.get('.login__modal__btnContainer').contains('Login').click();
+  it('Test login', () => {
+    cy.login('data');
   });
 });
