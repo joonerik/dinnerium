@@ -17,20 +17,25 @@ describe('Login or register', () => {
       'A great Mexican dish, which happens to be quite popular in Norway, although the Norwegian taco is quite different'
     );
 
-    // cy.get('input[name="ingredient"]').type('Minced meat');
-    // cy.get('input[name="quantity"]').type('400'); // string?
-    // cy.get('select').select('gram');
-    // cy.get('#addIngredientButton').click();
     cy.addIngredient('Minced meat', 400, 'gram');
+    cy.addIngredient('Taco powder', 1, 'stk');
+    cy.addIngredient('Grated cheese', 100, 'gram');
+    cy.addIngredient('Salad', 1, 'stk');
+    cy.addIngredient('Romme', 1, 'stk');
+    cy.addIngredient('Tacosaus', 1, 'stk');
+    cy.addIngredient('Beer', 3, 'liter');
 
-    // cy.get('input[name="ingredient"]').type('Grated cheese');
-    // cy.get('input[name="quantity"]').type('100'); // string?
-    // cy.get('select').select('gram');
-    // cy.get('#addIngredientButton').click();
+    // cy.get('input[name="ingredient"]').type('Ananas');
+    // cy.get('input[name="quantity"]').type(5);
+    // cy.get('select').select('kg');
+    // cy.get('.instructions').find('li:last-child').get('.tooltop').click();
 
-    // cy.get('input[name="ingredient"]').type('Minced meat');
-    // cy.get('input[name="quantity"]').type('400'); // string?
-    // cy.get('select').select('gram');
-    // cy.get('#addIngredientButton').click();
+    cy.addInstruction('Cook the minced meat');
+    cy.addInstruction('Add the powder and mix it');
+    cy.addInstruction('Cut the salad');
+    cy.addInstruction('Eat it as you like, and enjoy!');
+
+    cy.get('#recipeForm').submit();
+    // cy.get('#recipeForm').clear();
   });
 });
