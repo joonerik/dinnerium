@@ -32,6 +32,7 @@ const LoginPage = () => {
           name="username"
           required
           className="login__modal__input"
+          autoFocus
         />
 
         <div className="login__modal__btnContainer">
