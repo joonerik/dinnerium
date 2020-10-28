@@ -9,7 +9,10 @@ describe('Login or register', () => {
 
   it('Add new recipe', () => {
     cy.login('data');
-    // h2 id="titlNewRecipeLink"
+
+    // uncomment when merged/updated
+    // cy.contains('Recipes').click();
+    // cy.contains('#titleNewRecipeLink').click();
     cy.get('input[name="name"]').type('Taco');
     cy.get('input[name="estimatedTime"]').type('20'); //string??
     cy.get('input[name="portions"]').type('2.5'); //string??
@@ -25,6 +28,7 @@ describe('Login or register', () => {
     cy.addIngredient('Tacosaus', 1, 'stk');
     cy.addIngredient('Beer', 3, 'liter');
 
+    // test for removing an element. Need to figure out how to find last element
     // cy.get('input[name="ingredient"]').type('Ananas');
     // cy.get('input[name="quantity"]').type(5);
     // cy.get('select').select('kg');
@@ -35,7 +39,8 @@ describe('Login or register', () => {
     cy.addInstruction('Cut the salad');
     cy.addInstruction('Eat it as you like, and enjoy!');
 
-    cy.get('#recipeForm').submit();
+    // uncomment when merged/updated
+    // cy.get('#recipeForm').submit();
     // cy.get('#recipeForm').clear();
   });
 });
