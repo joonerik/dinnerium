@@ -25,7 +25,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "npx prettier --write 'src/**/*.{ts,tsx,scss}'"
+    "format": "npx prettier --write 'src/**/*.{ts,tsx,scss}'",
+    "cypress": "cypress open"
   },
   "proxy": "http://localhost:4567",
   "eslintConfig": {
