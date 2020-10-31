@@ -28,16 +28,16 @@ describe('Login or register', () => {
     cy.addIngredient('Tacosaus', 1, 'stk');
     cy.addIngredient('Beer', 3, 'liter');
 
-    // test for removing an element. Need to figure out how to find last element
-    // cy.get('input[name="ingredient"]').type('Ananas');
-    // cy.get('input[name="quantity"]').type(5);
-    // cy.get('select').select('kg');
-    // cy.get('.instructions').find('li:last-child').get('.tooltop').click();
+    cy.addIngredient('Ananas', 5, 'kg');
+    cy.get('.ingredients').find('ol').last().find('div').last().click();
 
     cy.addInstruction('Cook the minced meat');
     cy.addInstruction('Add the powder and mix it');
     cy.addInstruction('Cut the salad');
     cy.addInstruction('Eat it as you like, and enjoy!');
+
+    cy.addInstruction('If any leftovers, throw it');
+    cy.get('.instructions').find('ol').last().find('div').last().click();
 
     // uncomment when merged/updated
     // cy.get('#recipeForm').submit();
