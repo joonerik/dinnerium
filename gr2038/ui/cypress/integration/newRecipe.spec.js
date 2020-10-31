@@ -1,4 +1,5 @@
 describe('Login or register', () => {
+  // go to web application
   beforeEach(() => {
     cy.visit('http://localhost:3000');
   });
@@ -8,11 +9,14 @@ describe('Login or register', () => {
   });
 
   it('Add new recipe', () => {
+    // login to data user
     cy.login('data');
 
     // uncomment when merged/updated
     // cy.contains('Recipes').click();
     // cy.contains('#titleNewRecipeLink').click();
+
+    // write recipe info
     cy.get('input[name="name"]').type('Taco');
     cy.get('input[name="estimatedTime"]').type('20'); //string??
     cy.get('input[name="portions"]').type('2.5'); //string??
@@ -20,6 +24,7 @@ describe('Login or register', () => {
       'A great Mexican dish, which happens to be quite popular in Norway, although the Norwegian taco is quite different'
     );
 
+    // add ingredients
     cy.addIngredient('Minced meat', 400, 'gram');
     cy.addIngredient('Taco powder', 1, 'stk');
     cy.addIngredient('Grated cheese', 100, 'gram');
@@ -28,14 +33,17 @@ describe('Login or register', () => {
     cy.addIngredient('Tacosaus', 1, 'stk');
     cy.addIngredient('Beer', 3, 'liter');
 
+    // add an ingredient and check remove button
     cy.addIngredient('Ananas', 5, 'kg');
     cy.get('.ingredients').find('ol').last().find('div').last().click();
 
+    // add instructions
     cy.addInstruction('Cook the minced meat');
     cy.addInstruction('Add the powder and mix it');
     cy.addInstruction('Cut the salad');
     cy.addInstruction('Eat it as you like, and enjoy!');
 
+    // add an instruction and check remove button
     cy.addInstruction('If any leftovers, throw it');
     cy.get('.instructions').find('ol').last().find('div').last().click();
 
