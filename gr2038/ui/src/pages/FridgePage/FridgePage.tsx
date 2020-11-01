@@ -1,4 +1,6 @@
 import React, { FC, useContext, useEffect } from 'react';
+import { ToastContainer, toast, Zoom, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
 import './FridgePage.scss';
@@ -41,6 +43,16 @@ function Menu() {
       })
       .then((response) => {
         setUser(response.data);
+      })
+      .catch((err) => {
+        toast('Invalid ingedient name!', {
+          autoClose: 3000,
+          position: toast.POSITION.TOP_RIGHT,
+          closeButton: false,
+          hideProgressBar: true,
+          closeOnClick: true,
+          className: 'toast-fail',
+        });
       });
   };
 

@@ -3,10 +3,19 @@ import '../../assets/styles/defaults.scss';
 import axios from 'axios';
 import UserContext from '../../components/UserContext/UserContext';
 import './loginPage.scss';
+import { ToastContainer, toast, Zoom, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import dinneriumLogo from '../../assets/static/dinnerium-min.png';
 
 const LoginPage = () => {
+  const toastUserNotFound = () => {
+    toast('Username not found! Please register', {
+      className: 'toast-fail',
+      draggable: true,
+    });
+  };
+
   const [name, setName] = useState<string>('');
   const [isAction, setAction] = useState<string>('');
   const { setUser } = useContext(UserContext);
@@ -52,6 +61,7 @@ const LoginPage = () => {
           </button>
         </div>
       </form>
+      <ToastContainer draggable={false} transition={Zoom} autoClose={8000} />
     </div>
   );
 };
