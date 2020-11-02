@@ -63,6 +63,9 @@ public class InvalidDeserializerTest {
         try {
             c = mapper.readValue("[\"list\", \"notObject\"]", Container.class);
             assertNull(c, "Container should have been null here");
+
+            c = mapper.readValue("{\"ingredients\" : \"notArray\"}", Container.class);
+            assertNull(c, "Container should have been null here");
         } catch (IOException e) {
             fail(e.getMessage());
         }
