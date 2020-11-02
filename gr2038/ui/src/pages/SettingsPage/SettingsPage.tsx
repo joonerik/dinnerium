@@ -11,6 +11,7 @@ const SettingsPage = () => {
     history.push('/');
     logOut();
   };
+
   return (
     <section className="logout__container">
       <header className="logout__header">

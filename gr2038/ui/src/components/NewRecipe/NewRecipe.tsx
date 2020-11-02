@@ -168,7 +168,7 @@ const NewRecipe = () => {
               <p id="feedback_text">Instructions</p>
               <ol>
                 {instructions.map((instruction, index) => (
-                  <li key={index}>
+                  <li key={index + instruction}>
                     {instruction}
                     <div
                       onClick={(e) => removeInstruction(index)}
@@ -185,7 +185,7 @@ const NewRecipe = () => {
               <p>Ingredients</p>
               <ol>
                 {ingredients.map((ingredient, index) => (
-                  <li key={index}>
+                  <li key={ingredient.toString() + index}>
                     {ingredient.quantity.amount +
                       ' ' +
                       ingredient.quantity.unit +

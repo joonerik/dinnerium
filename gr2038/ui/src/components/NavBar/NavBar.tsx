@@ -6,6 +6,7 @@ import logo from '../../assets/static/dinnerium-min.png';
 const NavBar = () => {
   const location = useLocation();
   const isActive = (path: string) => location.pathname === path;
+
   return (
     <nav className="nav">
       <ul className="nav__ul">

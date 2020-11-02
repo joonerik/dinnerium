@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './recipeSideBar.scss';
 
+//ISideBar - optional props hence isEmpty bool
 interface ISideBar {
   recipeName?: Metadata['recipeName'];
   recipeDescription?: Metadata['recipeDescription'];
@@ -25,6 +26,7 @@ const RecipeSideBar: FC<ISideBar> = ({
 }) => {
   const location = useLocation();
   const isActive = (path: string) => location.pathname === path;
+
   return (
     <div className="sideBar">
       <header>
@@ -76,7 +78,7 @@ const RecipeSideBar: FC<ISideBar> = ({
             <ul>
               {recipeIngredients?.map(
                 (ingredient: Ingredient, index: number) => (
-                  <li key={index + 1 * 0.90023}>
+                  <li key={ingredient.toString() + index}>
                     {ingredient.name} {ingredient.quantity.amount}{' '}
                     {ingredient.quantity.unit}
                   </li>
@@ -86,7 +88,7 @@ const RecipeSideBar: FC<ISideBar> = ({
             <h3 className="ul-header">Instructions</h3>
             <ul>
               {recipeInstructions?.map((instruction: string, index: number) => (
-                <li key={index + 1 * 3.2213}>{instruction}</li>
+                <li key={instruction + index}>{instruction}</li>
               ))}
             </ul>
           </>

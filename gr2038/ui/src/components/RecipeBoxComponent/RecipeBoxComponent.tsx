@@ -1,12 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import './recipeBox.scss';
 import { UserContext } from '../UserContext/UserContext';
 import RecipeSideBar from '../RecipeSideBar/RecipeSideBar';
-interface IDisplays {
-  recipe: Recipe;
-}
 
-const RecipeBoxComponent = () => {
+const RecipeBoxComponent: FC = () => {
   const [recipe, setRecipe] = useState<Recipe | null>(null);
 
   const { user } = useContext(UserContext);
@@ -36,20 +33,20 @@ const RecipeBoxComponent = () => {
       <div className="grid-wrapper">
         {user.recipeContainer.recipes.map((item: Recipe, index: number) => (
           <div
-            key={index + 1 * 6.292}
+            key={item.metadata.recipeName + index}
             className={
               item === recipe ? 'recipeBox active-recipe' : 'recipeBox'
             }
             onClick={() => displayRecipeMetadata(index)}
           >
             <div className="recipeBoxDescription">
-              <h2 key={index + 1 * 2.539}>{item.metadata.recipeName}</h2>
+              <h2>{item.metadata.recipeName}</h2>
               <span className="box-metadata">
-                <p key={index + 1 * 0.73}>{item.metadata.minutes} minutes</p>
+                <p>{item.metadata.minutes} minutes</p>
                 <span>|</span>
-                <p key={index + 1 * 0.89}>{item.metadata.portion} portions</p>
+                <p>{item.metadata.portion} portions</p>
               </span>
-              <h4 key={index + 1 * 1.238}>{item.metadata.recipeDescription}</h4>
+              <h4>{item.metadata.recipeDescription}</h4>
             </div>
           </div>
         ))}
