@@ -7,6 +7,7 @@ import dinnerium.core.Quantity;
 import dinnerium.service.IngredientsService;
 import dinnerium.service.RecipeService;
 import dinnerium.service.UserService;
+import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,8 +23,6 @@ public class RestServer {
         final UserService userService = new UserService();
         final IngredientsService ingredientsService = new IngredientsService();
         final RecipeService recipeService = new RecipeService();
-        //Check if we should add response type as res.type("application/json");
-        //https://www.the-lazy-dev.com/en/spark-for-beginners-create-restful-api-with-java-and-mongodb/
 
         get("/units", (req, res) -> {
             res.type("application/json");
@@ -45,22 +44,35 @@ public class RestServer {
             res.type("application/json");
             String response = userService.registerUser(req.body());
             if (response.equals("null")) {
-                res.status(404);
+                res.status(400);
             } else {
-                res.status(200);
+                res.status(201);
             }
             return response;
         });
 
         post("/users/:username/ingredients/add", (req, res) -> {
             res.type("application/json");
-            LOGGER.debug(req.body()); //Change to debug something useful here.
-            return ingredientsService.addIngredient(req.body(), req.params(":username"));
+            String response = "null";
+            try {
+                response = ingredientsService.addIngredient(req.body(), req.params(":username"));
+                res.status(202);
+            } catch (IOException e) {
+                res.status(400);
+            }
+            return response;
         });
 
         post("/users/:username/recipes/add", (req, res) -> {
             res.type("application/json");
-            return recipeService.addRecipe(req.body(), req.params(":username"));
+            String response = "null";
+            try {
+                response = recipeService.addRecipe(req.body(), req.params(":username"));
+                res.status(202);
+            } catch (IOException e) {
+                res.status(400);
+            }
+            return response;
         });
     }
 }

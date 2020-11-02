@@ -24,12 +24,25 @@ public class UserService {
     private final ObjectMapper mapper;
     private final HandlePersistency handlePersistency;
 
+    /**
+     * Instantiate a UserService object with a HandlePersistency object to the handlePersistency
+     * field to take care of file handeling, and registers DinneriumModule as a module to the
+     * ObjectMapper.
+     */
     public UserService() {
         mapper = new ObjectMapper();
         mapper.registerModule(new DinneriumModule());
         handlePersistency = new HandlePersistency();
     }
 
+    /**
+     * Returns the user on json-format corresponding to the username provided, if no user with the
+     * username exists return null.
+     *
+     * @param username the username of the user to be retrieved.
+     * @return the user on json-format if the user exists, null if not.
+     * @throws IOException if it is not possible to read the file containing the userdata.
+     */
     public String getUser(String username) throws IOException {
         String formattedUsername = formatUsername(username);
         if (getUsernameList().contains(formattedUsername)) {
@@ -38,6 +51,15 @@ public class UserService {
         return "null";
     }
 
+    /**
+     * Registers a new user with the username provided, and returns the new user on json format,
+     * returns null if a user with the username already exists.
+     *
+     * @param username the username of the user to register.
+     * @return the new user on json format, null if there already exists a user with the username.
+     * @throws IOException if it is not possible to create a file for the new user, or if it is not
+     *      possible to read the userdata after it is created.
+     */
     public String registerUser(String username) throws IOException {
         String formattedUsername = formatUsername(username);
         if (!getUsernameList().contains(formattedUsername)) {
@@ -48,6 +70,16 @@ public class UserService {
         }
     }
 
+    /**
+     * Adds the ingredient provided to the user with username corresponding to the one provided,
+     * returns the user on json format with the ingredient added to it.
+     *
+     * @param ingredient the ingredient to be added to the user with corresponding username to
+     *      the one provided.
+     * @param username the username of the user where the ingredient is to be added.
+     * @return the user on json-format with the new ingredient added to it.
+     * @throws IOException if it is not possible to add the ingredient to the user.
+     */
     public String addIngredient(Ingredient ingredient, String username) throws IOException {
         User user = mapper.readValue(getUserString(username), User.class);
         user.getIngredientContainer().addItem(ingredient);
@@ -55,6 +87,15 @@ public class UserService {
         return getUserString(username);
     }
 
+    /**
+     * summary.
+     *
+     * @param recipe the recipe to be added to the user with corresponding username to
+     *      the one provided.
+     * @param username the username of the user where the recipe is to be added.
+     * @return the user on json-format with the new recipe added to it.
+     * @throws IOException if it is not possible to add the recipe to the user.
+     */
     public String addRecipe(Recipe recipe, String username) throws IOException {
         User user = mapper.readValue(getUserString(username), User.class);
         user.getRecipeContainer().addItem(recipe);
@@ -65,13 +106,24 @@ public class UserService {
     private void saveUser(User user) throws IOException {
         Path path = Paths.get(
             "src/main/resources/storage/" + user.getUsername() + ".json");
-        handlePersistency
-            .writeUser(user, new FileWriter(path.toFile(), StandardCharsets.UTF_8));
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(path.toFile(), StandardCharsets.UTF_8);
+            handlePersistency.writeUser(user, writer);
+        } catch (IOException e) {
+            if (writer != null) {
+                writer.close();
+            }
+        } finally {
+            if (writer != null) {
+                writer.close();
+            }
+        }
     }
 
     private String getUserString(String username) throws IOException {
         String file = "src/main/resources/storage/" + username + ".json";
-        return new String(Files.readAllBytes(Paths.get(file)));
+        return Files.readString(Paths.get(file));
     }
 
     private List<String> getUsernameList() {
@@ -93,11 +145,4 @@ public class UserService {
             .toLowerCase();
     }
 
-    /*public String getContainerFromUser(String username, String container) throws IOException {
-        return JsonParser
-            .parseString(getUser(username))
-            .getAsJsonObject()
-            .get(container)
-            .toString();
-    }*/
 }
