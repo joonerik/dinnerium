@@ -3,6 +3,8 @@ import '../../assets/styles/defaults.scss';
 import axios from 'axios';
 import { UserContext } from '../../components/UserContext/UserContext';
 import './loginPage.scss';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import dinneriumLogo from '../../assets/static/dinnerium-min.png';
 
@@ -16,9 +18,22 @@ const LoginPage = () => {
     action: 'register' | 'login'
   ) => {
     event.preventDefault();
-    axios.post('/users/' + action, { username: name }).then((res) => {
-      updateUser(res.data);
-    });
+    axios
+      .post('/users/' + action, { username: name })
+      .then((res) => {
+        updateUser(res.data);
+      })
+      .catch(() => {
+        toast.error('User not found! Please register a user', {
+          position: 'top-center',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
 
   return (
@@ -32,6 +47,7 @@ const LoginPage = () => {
           name="username"
           required
           className="login__modal__input"
+          autoFocus
         />
 
         <div className="login__modal__btnContainer">
@@ -51,6 +67,17 @@ const LoginPage = () => {
           </button>
         </div>
       </form>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />{' '}
     </div>
   );
 };
