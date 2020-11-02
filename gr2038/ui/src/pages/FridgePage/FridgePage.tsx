@@ -45,15 +45,7 @@ function Menu() {
         setUser(response.data);
       })
       .catch(() => {
-        toast.error('Invalid ingredient name!', {
-          position: 'top-center',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        toast.error('Invalid ingredient name!');
       });
   };
 

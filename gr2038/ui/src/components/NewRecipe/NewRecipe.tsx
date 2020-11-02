@@ -76,15 +76,7 @@ const NewRecipe = () => {
         instructions.length > 0
           ? 'You need to add instructions'
           : 'You need to add ingredients';
-      toast.error(toastMessage, {
-        position: 'top-center',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.error(toastMessage);
     }
   };
 
