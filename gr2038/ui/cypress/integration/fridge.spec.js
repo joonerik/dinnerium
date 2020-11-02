@@ -12,8 +12,7 @@ describe('Add item to fridge', () => {
   });
 
   it('Login', () => {
-    cy.get('.login__modal__input').type('data');
-    cy.get('.login__modal__btnContainer').contains('Login').click();
+    cy.login('data');
     cy.contains('Fridge').click();
     cy.get('input[name="name"]').type('flour');
     cy.get('input[name="quantity"]').type('8');
@@ -23,8 +22,7 @@ describe('Add item to fridge', () => {
   });
 
   it('Test error handling', () => {
-    cy.get('.login__modal__input').type('data');
-    cy.get('.login__modal__btnContainer').contains('Login').click();
+    cy.login('data');
     cy.contains('Fridge').click();
     cy.get('input[name="name"]').type('12345');
     cy.get('input[name="quantity"]').type('8');
