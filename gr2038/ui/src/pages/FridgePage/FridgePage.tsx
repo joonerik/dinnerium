@@ -101,6 +101,7 @@ function FridgePage() {
         )}
       </div>
       <ToastContainer
+        containerId="toastContainer"
         position="top-center"
         autoClose={3000}
         hideProgressBar={false}

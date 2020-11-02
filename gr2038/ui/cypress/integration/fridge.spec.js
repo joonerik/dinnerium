@@ -20,8 +20,16 @@ describe('Add item to fridge', () => {
     cy.get('select[name="unit"]').select('dl');
     cy.get('button').contains('Add').click();
     cy.get('.item').contains('8dl flour');
+  });
 
-    cy.contains('Settings').click();
-    cy.contains('Logout').click();
+  it('Test error handling', () => {
+    cy.get('.login__modal__input').type('data');
+    cy.get('.login__modal__btnContainer').contains('Login').click();
+    cy.contains('Fridge').click();
+    cy.get('input[name="name"]').type('12345');
+    cy.get('input[name="quantity"]').type('8');
+    cy.get('select[name="unit"]').select('dl');
+    cy.get('button').contains('Add').click();
+    cy.get('#toastContainer').should('have.text', 'Invalid ingredient name!');
   });
 });
