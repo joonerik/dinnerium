@@ -117,6 +117,60 @@
         "recipeDescription" : "dfs",
         "minutes" : 2
       }
+    }, {
+      "ingredientContainer" : {
+        "ingredients" : [ {
+          "quantity" : {
+            "unit" : "gram",
+            "amount" : 400.0
+          },
+          "name" : "minced meat"
+        }, {
+          "quantity" : {
+            "unit" : "stk",
+            "amount" : 1.0
+          },
+          "name" : "taco powder"
+        }, {
+          "quantity" : {
+            "unit" : "gram",
+            "amount" : 100.0
+          },
+          "name" : "grated cheese"
+        }, {
+          "quantity" : {
+            "unit" : "stk",
+            "amount" : 1.0
+          },
+          "name" : "salad"
+        }, {
+          "quantity" : {
+            "unit" : "stk",
+            "amount" : 1.0
+          },
+          "name" : "romme"
+        }, {
+          "quantity" : {
+            "unit" : "stk",
+            "amount" : 1.0
+          },
+          "name" : "tacosaus"
+        }, {
+          "quantity" : {
+            "unit" : "liter",
+            "amount" : 3.0
+          },
+          "name" : "beer"
+        } ]
+      },
+      "recipeInstructions" : [ "Cook the minced meat", "Add the powder and mix it", "Cut the salad", "Eat it as you like, and enjoy!" ],
+      "metadata" : {
+        "author" : "data",
+        "portion" : 2.5,
+        "recipeName" : "Taco",
+        "recipeDescription" : "A great Mexican dish, which happens to be quite popular in Norway, although the Norwegian taco is quite different",
+        "minutes" : 20
+      }
     } ]
   },
   "username" : "data"

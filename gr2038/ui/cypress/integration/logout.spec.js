@@ -4,7 +4,7 @@ describe('Logout', () => {
   });
 
   it('Logout', () => {
-    cy.login('data');
+    cy.login('test');
     cy.contains('Settings').click();
     cy.get('button').click();
     cy.get('.login__modal').should('have.class', 'login__modal');

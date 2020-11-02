@@ -75,8 +75,8 @@ const NewRecipe = () => {
     } else {
       const toastMessage =
         instructions.length > 0
-          ? 'You need to add instructions'
-          : 'You need to add ingredients';
+          ? 'You need to add ingredients'
+          : 'You need to add instructions';
       toast.error(toastMessage);
     }
   };

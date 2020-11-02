@@ -9,13 +9,30 @@ describe('Login or register', () => {
   });
 
   it('Test error handling to add new recipe', () => {
-    cy.login('data');
+    cy.login('test');
     cy.contains('Recipes').click();
     cy.get('#titleNewRecipeLink').click();
+    cy.get('input[name="name"]').type('Test recipe');
+    cy.get('input[name="estimatedTime"]').type('20');
+    cy.get('input[name="portions"]').type('2.5');
+    cy.get('textarea[name="description"]').type('This recipe is a test');
+
+    cy.get('#recipeForm').submit();
+    cy.get('#toastContainer').should(
+      'have.text',
+      'You need to add instructions'
+    );
+    cy.addInstruction('A instruction');
+    cy.wait(3000);
+    cy.get('#recipeForm').submit();
+    cy.get('#toastContainer').should(
+      'have.text',
+      'You need to add ingredients'
+    );
   });
 
   it('Add new recipe', () => {
-    cy.login('data');
+    cy.login('test');
 
     cy.contains('Recipes').click();
     cy.get('#titleNewRecipeLink').click();
