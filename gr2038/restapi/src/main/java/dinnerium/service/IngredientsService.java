@@ -18,6 +18,9 @@ public class IngredientsService {
 
     public String addIngredient(String requestBody, String username) throws IOException {
         Ingredient ingredient = mapper.readValue(requestBody, Ingredient.class);
+        if (ingredient == null) {
+            throw new IOException("Ingredient not on proper json-format");
+        }
         return userService.addIngredient(ingredient, username);
     }
 }

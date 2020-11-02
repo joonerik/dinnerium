@@ -65,13 +65,24 @@ public class UserService {
     private void saveUser(User user) throws IOException {
         Path path = Paths.get(
             "src/main/resources/storage/" + user.getUsername() + ".json");
-        handlePersistency
-            .writeUser(user, new FileWriter(path.toFile(), StandardCharsets.UTF_8));
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(path.toFile(), StandardCharsets.UTF_8);
+            handlePersistency.writeUser(user, writer);
+        } catch (IOException e) {
+            if (writer != null) {
+                writer.close();
+            }
+        } finally {
+            if (writer != null) {
+                writer.close();
+            }
+        }
     }
 
     private String getUserString(String username) throws IOException {
         String file = "src/main/resources/storage/" + username + ".json";
-        return new String(Files.readAllBytes(Paths.get(file)));
+        return Files.readString(Paths.get(file));
     }
 
     private List<String> getUsernameList() {
@@ -93,11 +104,4 @@ public class UserService {
             .toLowerCase();
     }
 
-    /*public String getContainerFromUser(String username, String container) throws IOException {
-        return JsonParser
-            .parseString(getUser(username))
-            .getAsJsonObject()
-            .get(container)
-            .toString();
-    }*/
 }

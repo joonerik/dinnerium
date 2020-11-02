@@ -17,6 +17,9 @@ public class RecipeService {
 
     public String addRecipe(String requestBody, String username) throws IOException {
         Recipe recipe = mapper.readValue(requestBody, Recipe.class);
+        if (recipe == null) {
+            throw new IOException("Recipe not on the proper format");
+        }
         return userService.addRecipe(recipe, username);
     }
 }
