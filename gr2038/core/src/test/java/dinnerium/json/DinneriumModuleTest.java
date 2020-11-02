@@ -26,6 +26,7 @@ import org.junit.jupiter.api.Test;
 class DinneriumModuleTest {
 
     private ObjectMapper mapper;
+    private HandlePersistency handlePersistency = new HandlePersistency();
     private final String expectedUserString = "" +
         "{\n" +
         "  \"ingredientContainer\" : {\n" +
@@ -123,7 +124,7 @@ class DinneriumModuleTest {
 
         try {
             StringWriter writer = new StringWriter();
-            HandlePersistency.writeUser(expectedUser, writer);
+            handlePersistency.writeUser(expectedUser, writer);
             String serializedObject = writer.toString().replaceAll("\\s+", "");
             assertEquals(expectedUserString.replaceAll("\\s+", ""), serializedObject);
         } catch (IOException e) {
@@ -146,7 +147,7 @@ class DinneriumModuleTest {
     public void testReader() {
         try {
             User jsonUser =
-                HandlePersistency.readUserFromReader(new StringReader(expectedUserString));
+                handlePersistency.readUserFromReader(new StringReader(expectedUserString));
             compareUsers(createExceptedUser(), jsonUser);
         } catch (IOException e) {
             fail(e.getMessage());
@@ -158,7 +159,7 @@ class DinneriumModuleTest {
         try {
             User user = createExceptedUser();
             StringWriter writer = new StringWriter();
-            HandlePersistency.writeUser(user, writer);
+            handlePersistency.writeUser(user, writer);
             String json = writer.toString();
             assertEquals(expectedUserString.replaceAll("\\s+", ""),
                 json.replaceAll("\\s+", ""));

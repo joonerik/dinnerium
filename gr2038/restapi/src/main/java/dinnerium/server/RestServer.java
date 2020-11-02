@@ -24,20 +24,33 @@ public class RestServer {
         final RecipeService recipeService = new RecipeService();
         //Check if we should add response type as res.type("application/json");
         //https://www.the-lazy-dev.com/en/spark-for-beginners-create-restful-api-with-java-and-mongodb/
-        get("/users/:name", (req, res) -> userService.getUser(req.params(":name")));
 
-        get("/users/:username/ingredients", (req, res) -> userService
-            .getContainerFromUser(req.params(":username"), "ingredientContainer"));
+        get("/units", (req, res) -> {
+            res.type("application/json");
+            return Quantity.units;
+        });
 
-        get("/users/:username/recipes",
-            (req, res) -> userService
-                .getContainerFromUser(req.params(":username"), "recipeContainer"));
+        post("/users/login", (req, res) -> {
+            res.type("application/json");
+            String response = userService.getUser(req.body());
+            if (response.equals("null")) {
+                res.status(404);
+            } else {
+                res.status(200);
+            }
+            return response;
+        });
 
-        get("/units", (req, res) -> Quantity.units);
-
-        post("/users/login", (req, res) -> userService.getUserRequest(req.body()));
-
-        post("/users/register", (req, res) -> userService.registerNewUser(req.body()));
+        post("/users/register", (req, res) -> {
+            res.type("application/json");
+            String response = userService.registerUser(req.body());
+            if (response.equals("null")) {
+                res.status(404);
+            } else {
+                res.status(200);
+            }
+            return response;
+        });
 
         post("/users/:username/ingredients/add", (req, res) -> {
             res.type("application/json");
@@ -45,7 +58,9 @@ public class RestServer {
             return ingredientsService.addIngredient(req.body(), req.params(":username"));
         });
 
-        post("/users/:username/recipes/add",
-            (req, res) -> recipeService.addRecipe(req.body(), req.params(":username")));
+        post("/users/:username/recipes/add", (req, res) -> {
+            res.type("application/json");
+            return recipeService.addRecipe(req.body(), req.params(":username"));
+        });
     }
 }
