@@ -75,8 +75,8 @@ const NewRecipe = () => {
     } else {
       const toastMessage =
         instructions.length > 0
-          ? 'You need to add instructions'
-          : 'You need to add ingredients';
+          ? 'You need to add ingredients'
+          : 'You need to add instructions';
       toast.error(toastMessage);
     }
   };
@@ -208,6 +208,7 @@ const NewRecipe = () => {
             </button>
           </form>
           <ToastContainer
+            containerId="toastContainer"
             position="top-center"
             autoClose={3000}
             hideProgressBar={false}

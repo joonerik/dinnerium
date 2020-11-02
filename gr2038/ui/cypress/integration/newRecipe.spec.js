@@ -8,18 +8,39 @@ describe('Login or register', () => {
     cy.focused().should('have.class', 'login__modal__input');
   });
 
+  it('Test error handling to add new recipe', () => {
+    cy.login('data');
+    cy.contains('Recipes').click();
+    cy.get('#titleNewRecipeLink').click();
+    cy.get('input[name="name"]').type('Test recipe');
+    cy.get('input[name="estimatedTime"]').type('20');
+    cy.get('input[name="portions"]').type('2.5');
+    cy.get('textarea[name="description"]').type('This recipe is a test');
+
+    cy.get('#recipeForm').submit();
+    cy.get('#toastContainer').should(
+      'have.text',
+      'You need to add instructions'
+    );
+    cy.addInstruction('A instruction');
+    cy.wait(3000);
+    cy.get('#recipeForm').submit();
+    cy.get('#toastContainer').should(
+      'have.text',
+      'You need to add ingredients'
+    );
+  });
+
   it('Add new recipe', () => {
-    // login to data user
     cy.login('data');
 
-    // uncomment when merged/updated
-    // cy.contains('Recipes').click();
-    // cy.contains('#titleNewRecipeLink').click();
+    cy.contains('Recipes').click();
+    cy.get('#titleNewRecipeLink').click();
 
     // write recipe info
     cy.get('input[name="name"]').type('Taco');
-    cy.get('input[name="estimatedTime"]').type('20'); //string??
-    cy.get('input[name="portions"]').type('2.5'); //string??
+    cy.get('input[name="estimatedTime"]').type('20');
+    cy.get('input[name="portions"]').type('2.5');
     cy.get('textarea[name="description"]').type(
       'A great Mexican dish, which happens to be quite popular in Norway, although the Norwegian taco is quite different'
     );
@@ -48,7 +69,6 @@ describe('Login or register', () => {
     cy.get('.instructions').find('ol').last().find('div').last().click();
 
     // uncomment when merged/updated
-    // cy.get('#recipeForm').submit();
-    // cy.get('#recipeForm').clear();
+    cy.get('#recipeForm').submit();
   });
 });

@@ -60,6 +60,7 @@ const LoginPage = () => {
         </div>
       </form>
       <ToastContainer
+        containerId="toastContainer"
         position="top-center"
         autoClose={3000}
         hideProgressBar={false}
