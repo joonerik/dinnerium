@@ -7,6 +7,12 @@
   min-height: calc(100vh - 60px);
 }
 .new-recipe-container {
+  color: $color-light;
+  width: 40%;
+  margin: 70.6px auto;
+  display: flex;
+  flex-direction: column;
+
   .first-part-form {
     min-height: 230px;
     display: flex;
@@ -14,12 +20,6 @@
     justify-content: space-between;
     margin-bottom: 20px;
   }
-  color: $color-light;
-  width: 40%;
-  margin: 70.6px auto;
-  display: flex;
-
-  flex-direction: column;
 
   .ingredients > p,
   .instructions > p {
@@ -135,4 +135,12 @@
 
 #addRecipeBtn {
   background-color: $color-yellow;
+}
+
+@media screen and (max-width: 1250px) {
+  .new-recipe-container {
+    color: $color-light;
+    width: 100%;
+    margin: 70.6px 20px;
+  }
 }

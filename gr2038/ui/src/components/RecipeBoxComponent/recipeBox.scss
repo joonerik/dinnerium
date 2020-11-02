@@ -54,3 +54,16 @@
 .active-recipe {
   box-shadow: inset 0px 0px 0px 2px $color-red;
 }
+
+@media screen and (max-width: 1250px) {
+  .grid-wrapper {
+    display: inline-grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media screen and (max-width: 950px) {
+  .grid-wrapper {
+    display: inline-grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
