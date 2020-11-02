@@ -32,7 +32,7 @@ describe('Login or register', () => {
   });
 
   it('Add new recipe', () => {
-    cy.login('test');
+    cy.login('data');
 
     cy.contains('Recipes').click();
     cy.get('#titleNewRecipeLink').click();
