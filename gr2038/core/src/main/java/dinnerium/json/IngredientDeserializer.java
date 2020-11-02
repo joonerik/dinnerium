@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import dinnerium.core.Ingredient;
+import dinnerium.core.Quantity;
 import java.io.IOException;
 
 class IngredientDeserializer extends JsonDeserializer<Ingredient> {
@@ -29,19 +30,24 @@ class IngredientDeserializer extends JsonDeserializer<Ingredient> {
     public Ingredient deserialize(JsonNode jsonNode) {
         if (jsonNode instanceof ObjectNode) {
             ObjectNode objectNode = (ObjectNode) jsonNode;
-            Ingredient ingredient = new Ingredient();
+            Quantity quantity;
+            String name;
 
             JsonNode quantityNode = objectNode.get("quantity");
             QuantityDeserializer qd = new QuantityDeserializer();
             if (quantityNode instanceof ObjectNode) {
-                ingredient.setQuantity(qd.deserialize(quantityNode));
+                quantity = qd.deserialize(quantityNode);
+            } else {
+                return null;
             }
 
             JsonNode nameNode = objectNode.get("name");
             if (nameNode instanceof TextNode) {
-                ingredient.setName(nameNode.asText());
+                name = nameNode.asText();
+            } else {
+                return null;
             }
-            return ingredient;
+            return new Ingredient(quantity, name);
         }
         return null;
     }

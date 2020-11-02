@@ -28,10 +28,12 @@ import java.util.stream.Collectors;
 
 public class UserService {
     private final ObjectMapper mapper;
+    private final HandlePersistency handlePersistency;
 
     public UserService() {
         mapper = new ObjectMapper();
         mapper.registerModule(new DinneriumModule());
+        handlePersistency = new HandlePersistency();
     }
 
     public String getUser(String username) throws IOException {
@@ -51,7 +53,7 @@ public class UserService {
         User user = mapper.readValue(getUser(username), User.class);
         user.getIngredientContainer().addItem(ingredient);
         Path path = Paths.get("src/main/resources/storage/" + username + ".json");
-        HandlePersistency.writeUser(user, new FileWriter(path.toFile(), StandardCharsets.UTF_8));
+        handlePersistency.writeUser(user, new FileWriter(path.toFile(), StandardCharsets.UTF_8));
         return getUser(username);
     }
 
@@ -59,7 +61,7 @@ public class UserService {
         User user = mapper.readValue(getUser(username), User.class);
         user.getRecipeContainer().addItem(recipe);
         Path path = Paths.get("src/main/resources/storage/" + username + ".json");
-        HandlePersistency.writeUser(user, new FileWriter(path.toFile(), StandardCharsets.UTF_8));
+        handlePersistency.writeUser(user, new FileWriter(path.toFile(), StandardCharsets.UTF_8));
         return getUser(username);
     }
 
@@ -71,7 +73,7 @@ public class UserService {
             try {
                 Path path = Paths.get(
                     "src/main/resources/storage/" + formattedUsername + ".json");
-                HandlePersistency
+                handlePersistency
                     .writeUser(newUser, new FileWriter(path.toFile(), StandardCharsets.UTF_8));
                 return getUser(formattedUsername);
             } catch (Exception e) {

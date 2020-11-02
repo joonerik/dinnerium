@@ -9,9 +9,6 @@ public class Ingredient {
     private Quantity quantity;
     private String name;
 
-    /**Empty constructor is used in the IngredientDeserializer class. */
-    public Ingredient() {}
-
     /**Each ingredient requires a quantity which contains a unit and a name. */
     public Ingredient(Quantity quantity, String name) {
         this.setName(name);
