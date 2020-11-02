@@ -3,14 +3,15 @@ import React, { FC, useState } from 'react';
 interface IUserContext {
   user: IUser | null;
   logOut: () => void;
-  login: (user: IUser | null) => void;
+  updateUser: (user: IUser | null) => void;
 }
 
 export const UserContext = React.createContext<IUserContext>({
   user: null,
   logOut: () => null,
-  login: () => null,
+  updateUser: () => null,
 });
+
 export const UserProvider: FC = ({ children }) => {
   const [user, setUser] = useState<IUser | null>(null);
   const defaultValue: IUserContext = {
@@ -18,7 +19,7 @@ export const UserProvider: FC = ({ children }) => {
     logOut: () => {
       setUser(null);
     },
-    login: (user: IUser | null) => {
+    updateUser: (user: IUser | null) => {
       setUser(user);
     },
   };

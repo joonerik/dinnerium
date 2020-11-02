@@ -1,4 +1,6 @@
 import React, { FC, useContext, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
 import './FridgePage.scss';
@@ -19,7 +21,7 @@ const Item: FC<IItem> = ({ item }) => {
 };
 
 function Menu() {
-  const { user, login } = useContext(UserContext);
+  const { user, updateUser } = useContext(UserContext);
   const [units, setUnits] = useState<string[]>([]);
 
   useEffect(() => {
@@ -40,7 +42,10 @@ function Menu() {
         name: formData.get('name'),
       })
       .then((response) => {
-        login(response.data);
+        updateUser(response.data);
+      })
+      .catch(() => {
+        toast.error('Invalid ingredient name!');
       });
   };
 
@@ -95,6 +100,18 @@ function FridgePage() {
           }
         )}
       </div>
+      <ToastContainer
+        containerId="toastContainer"
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

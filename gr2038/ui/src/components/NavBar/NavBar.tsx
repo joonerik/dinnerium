@@ -6,11 +6,12 @@ import logo from '../../assets/static/dinnerium-min.png';
 const NavBar = () => {
   const location = useLocation();
   const isActive = (path: string) => location.pathname === path;
+
   return (
     <nav className="nav">
       <ul className="nav__ul">
         <li>
-          <Link to="/recipes">
+          <Link to="/fridge">
             <img src={logo} alt="dinnerium logo" className="nav__logo" />
           </Link>
         </li>

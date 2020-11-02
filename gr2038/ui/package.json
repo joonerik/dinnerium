@@ -17,6 +17,7 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
+    "react-toastify": "^6.0.9",
     "start": "^5.1.0",
     "typescript": "~3.7.2"
   },
@@ -25,7 +26,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "npx prettier --write 'src/**/*.{ts,tsx,scss}'"
+    "format": "npx prettier --write 'src/**/*.{ts,tsx,scss}'",
+    "cypress": "rm ../restapi/src/main/resources/storage/ruben.json & cypress run",
+    "cypress:open": "cypress open"
   },
   "proxy": "http://localhost:4567",
   "eslintConfig": {
@@ -42,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cypress": "^5.4.0"
   }
 }
