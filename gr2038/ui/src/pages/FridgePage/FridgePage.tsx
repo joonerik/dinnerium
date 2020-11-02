@@ -1,5 +1,5 @@
 import React, { FC, useContext, useEffect } from 'react';
-import { ToastContainer, toast, Zoom, Bounce } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
@@ -44,14 +44,15 @@ function Menu() {
       .then((response) => {
         setUser(response.data);
       })
-      .catch((err) => {
-        toast('Invalid ingedient name!', {
+      .catch(() => {
+        toast.error('Invalid ingredient name!', {
+          position: 'top-center',
           autoClose: 3000,
-          position: toast.POSITION.TOP_RIGHT,
-          closeButton: false,
-          hideProgressBar: true,
+          hideProgressBar: false,
           closeOnClick: true,
-          className: 'toast-fail',
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
         });
       });
   };
@@ -107,6 +108,17 @@ function FridgePage() {
           }
         )}
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

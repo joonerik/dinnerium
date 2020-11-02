@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './newRecipe.scss';
+import { ToastContainer, toast } from 'react-toastify';
 import UserContext from '../UserContext/UserContext';
 
 const NewRecipe = () => {
@@ -71,11 +72,19 @@ const NewRecipe = () => {
           history.push('/recipes');
         });
     } else {
-      const instructionsMessage =
-        instructions.length > 0 ? '' : 'You need to add instrucgtions \n';
-      const ingredientsMessage =
-        ingredients.length > 0 ? '' : 'You need to add ingredients';
-      alert(instructionsMessage + ingredientsMessage);
+      const toastMessage =
+        instructions.length > 0
+          ? 'You need to add instructions'
+          : 'You need to add ingredients';
+      toast.error(toastMessage, {
+        position: 'top-center',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -183,6 +192,17 @@ const NewRecipe = () => {
           Add recipe
         </button>
       </form>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
