@@ -7,10 +7,6 @@ describe('Add item to fridge', () => {
     cy.focused().should('have.class', 'login__modal__input');
   });
 
-  it('Register', () => {
-    cy.get('.login__modal__btnContainer').contains('Register').click();
-  });
-
   it('Login', () => {
     cy.login('data');
     cy.contains('Fridge').click();

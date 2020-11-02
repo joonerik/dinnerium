@@ -9,7 +9,7 @@ describe('Login or register', () => {
   });
 
   it('Test error handling to add new recipe', () => {
-    cy.login('test');
+    cy.login('data');
     cy.contains('Recipes').click();
     cy.get('#titleNewRecipeLink').click();
     cy.get('input[name="name"]').type('Test recipe');
