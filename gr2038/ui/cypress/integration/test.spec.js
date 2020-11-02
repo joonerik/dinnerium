@@ -11,10 +11,10 @@ describe('Add item to fridge', () => {
     cy.login('data');
   });
 
-  it('Test login', () => {
+  it('Test login error handling', () => {
     cy.login('shouldNotExist');
-    cy.get('ToastContainer').should(
-      'contain',
+    cy.get('#toastContainer').should(
+      'have.text',
       'User not found! Please register a user'
     );
   });
