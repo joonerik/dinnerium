@@ -27,7 +27,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "npx prettier --write 'src/**/*.{ts,tsx,scss}'",
-    "cypress": "rm ../restapi/src/main/resources/storage/ruben.json & cypress run"
+    "cypress": "rm ../restapi/src/main/resources/storage/ruben.json & cypress run",
+    "cypress:open": "cypress open"
   },
   "proxy": "http://localhost:4567",
   "eslintConfig": {
