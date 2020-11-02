@@ -10,7 +10,6 @@ import FridgePage from './pages/FridgePage/FridgePage';
 import RecipePage from './pages/RecipePage/RecipePage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SettingsPage from './pages/SettingsPage/SettingsPage';
-//import NewRecipe from './components/NewRecipe/NewRecipe';
 import { UserContext } from './components/UserContext/UserContext';
 import NewRecipe from './components/NewRecipe/NewRecipe';
 

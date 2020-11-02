@@ -203,7 +203,7 @@ const NewRecipe = () => {
               </ol>
             </div>
             <br />
-            <button type="submit" form="recipeForm">
+            <button type="submit" form="recipeForm" id="addRecipeBtn">
               Add recipe
             </button>
           </form>
