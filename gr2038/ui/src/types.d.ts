@@ -1,6 +1,6 @@
 interface IUser {
-  ingredientContainer?: IngredientContainer;
-  recipeContainer?: RecipeContainer;
+  ingredientContainer: IngredientContainer;
+  recipeContainer: RecipeContainer;
   username: string;
 }
 
@@ -19,7 +19,7 @@ interface IngredientContainer {
 }
 
 interface RecipeContainer {
-  recipes?: Recipe[];
+  recipes: Recipe[];
 }
 
 interface Recipe {

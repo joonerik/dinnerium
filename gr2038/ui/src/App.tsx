@@ -1,0 +1,43 @@
+import React from 'react';
+import NavBar from './components/NavBar/NavBar';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import FridgePage from './pages/FridgePage/FridgePage';
+import RecipePage from './pages/RecipePage/RecipePage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import SettingsPage from './pages/SettingsPage/SettingsPage';
+//import NewRecipe from './components/NewRecipe/NewRecipe';
+import { UserContext } from './components/UserContext/UserContext';
+
+function App() {
+  const { user } = React.useContext(UserContext);
+  return (
+    <Router>
+      {user === null ? (
+        <LoginPage />
+      ) : (
+        <>
+          <NavBar />
+          <Switch>
+            <Route path="/" exact>
+              <RecipePage />
+            </Route>
+            <Route path="/fridge">
+              <FridgePage />
+            </Route>
+            <Route path="/recipes">
+              <RecipePage />
+            </Route>
+            <Route path="/settings">
+              <SettingsPage />
+            </Route>
+            <Route path="/newRecipe">
+              <RecipePage />
+            </Route>
+          </Switch>
+        </>
+      )}
+    </Router>
+  );
+}
+
+export default App;
