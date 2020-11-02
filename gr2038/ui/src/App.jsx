@@ -6,7 +6,7 @@ import RecipePage from './pages/RecipePage/RecipePage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import UserContext from './components/UserContext/UserContext';
 import SettingsPage from './pages/SettingsPage/SettingsPage';
-import NewRecipe from './components/NewRecipe/NewRecipe';
+//import NewRecipe from './components/NewRecipe/NewRecipe';
 
 function App() {
   const [user, setUser] = useState(null);

@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 //import data from '../../../../core/src/main/resources/dinnerium/storage/data.json';
 //import data from '../data.json';
-import axios from 'axios';
 import './recipeBox.scss';
 import UserContext from '../UserContext/UserContext';
 import { Link } from 'react-router-dom';
