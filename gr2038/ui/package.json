@@ -27,7 +27,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "npx prettier --write 'src/**/*.{ts,tsx,scss}'",
-    "cypress": "rm ../restapi/src/main/resources/storage/ruben.json & cypress run",
+    "remove": "rm ../restapi/src/main/resources/storage/ruben.json & rm -rf cypress/results/json/",
+    "cypress": "npm run remove & cypress run",
     "cypress:open": "cypress open",
     "cypress:report": "generate-mochawesome-report"
   },
