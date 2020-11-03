@@ -1,0 +1,143 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-11-03T08:51:06.501Z",
+    "end": "2020-11-03T08:51:09.961Z",
+    "duration": 3460,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d846ea72-5990-4faa-8f2d-800a1d42981b",
+      "title": "",
+      "fullFile": "cypress/integration/fridge.spec.js",
+      "file": "cypress/integration/fridge.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "64a9056b-7cc4-42d2-96b4-6978161acaf2",
+          "title": "Add item to fridge",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Focus on input form",
+              "fullTitle": "Add item to fridge Focus on input form",
+              "timedOut": null,
+              "duration": 535,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.focused().should('have.class', 'login__modal__input');",
+              "err": {},
+              "uuid": "3eacafad-4bf2-4422-a722-2140771132a6",
+              "parentUUID": "64a9056b-7cc4-42d2-96b4-6978161acaf2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Login",
+              "fullTitle": "Add item to fridge Login",
+              "timedOut": null,
+              "duration": 1071,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login('data');\ncy.contains('Fridge').click();\ncy.get('input[name=\"name\"]').type('flour');\ncy.get('input[name=\"quantity\"]').type('8');\ncy.get('select[name=\"unit\"]').select('dl');\ncy.get('button').contains('Add').click();\ncy.get('.item').contains('8dl flour');",
+              "err": {},
+              "uuid": "3c5bf09a-f70c-4a66-80ef-81ed405decb8",
+              "parentUUID": "64a9056b-7cc4-42d2-96b4-6978161acaf2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Test error handling",
+              "fullTitle": "Add item to fridge Test error handling",
+              "timedOut": null,
+              "duration": 1014,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login('data');\ncy.contains('Fridge').click();\ncy.get('input[name=\"name\"]').type('12345');\ncy.get('input[name=\"quantity\"]').type('8');\ncy.get('select[name=\"unit\"]').select('dl');\ncy.get('button').contains('Add').click();\ncy.get('#toastContainer').should('have.text', 'Invalid ingredient name!');",
+              "err": {},
+              "uuid": "51ecbcc5-661b-4d5e-9f8d-531bb580422c",
+              "parentUUID": "64a9056b-7cc4-42d2-96b4-6978161acaf2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "3eacafad-4bf2-4422-a722-2140771132a6",
+            "3c5bf09a-f70c-4a66-80ef-81ed405decb8",
+            "51ecbcc5-661b-4d5e-9f8d-531bb580422c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2620,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results/json",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

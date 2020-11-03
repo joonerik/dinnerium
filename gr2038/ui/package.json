@@ -28,7 +28,8 @@
     "eject": "react-scripts eject",
     "format": "npx prettier --write 'src/**/*.{ts,tsx,scss}'",
     "cypress": "rm ../restapi/src/main/resources/storage/ruben.json & cypress run",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "cypress:report": "generate-mochawesome-report"
   },
   "proxy": "http://localhost:4567",
   "eslintConfig": {
@@ -47,6 +48,7 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^5.4.0"
+    "cypress": "^5.4.0",
+    "cypress-mochawesome-reporter": "^1.2.0"
   }
 }

@@ -1,5 +1,6 @@
 {
   "video": false,
   "screenshotOnRunFailure": false,
-  "port": 6969
+  "port": 6969,
+  "reporter": "cypress-mochawesome-reporter"
 }
