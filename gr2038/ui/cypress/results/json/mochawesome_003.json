@@ -5,9 +5,9 @@
     "passes": 4,
     "pending": 0,
     "failures": 0,
-    "start": "2020-11-03T10:43:08.243Z",
-    "end": "2020-11-03T10:43:10.563Z",
-    "duration": 2320,
+    "start": "2020-11-03T10:53:09.004Z",
+    "end": "2020-11-03T10:53:11.354Z",
+    "duration": 2350,
     "testsRegistered": 4,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "5efa52d3-be27-4a40-9184-40e0cc2de11b",
+      "uuid": "a1b5cdd2-b4d1-4bfa-988e-dad1d82e07be",
       "title": "",
       "fullFile": "cypress/integration/test.spec.js",
       "file": "cypress/integration/test.spec.js",
@@ -27,8 +27,8 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "8836af53-5b3c-4cbb-85e0-5cd608efc8bc",
-          "title": "Add item to fridge",
+          "uuid": "6c6b18b0-247e-46e3-94b7-c03dd9cf51fa",
+          "title": "Login page",
           "fullFile": "",
           "file": "",
           "beforeHooks": [],
@@ -36,9 +36,9 @@
           "tests": [
             {
               "title": "Focus on input form",
-              "fullTitle": "Add item to fridge Focus on input form",
+              "fullTitle": "Login page Focus on input form",
               "timedOut": null,
-              "duration": 326,
+              "duration": 337,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,16 +47,16 @@
               "context": null,
               "code": "cy.focused().should('have.class', 'login__modal__input');",
               "err": {},
-              "uuid": "78f08a3f-b078-4811-8546-835d15141079",
-              "parentUUID": "8836af53-5b3c-4cbb-85e0-5cd608efc8bc",
+              "uuid": "5686977f-7ca1-4961-b909-e8c1282c7672",
+              "parentUUID": "6c6b18b0-247e-46e3-94b7-c03dd9cf51fa",
               "isHook": false,
               "skipped": false
             },
             {
               "title": "Test login",
-              "fullTitle": "Add item to fridge Test login",
+              "fullTitle": "Login page Test login",
               "timedOut": null,
-              "duration": 341,
+              "duration": 344,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -65,16 +65,16 @@
               "context": null,
               "code": "cy.login('data');",
               "err": {},
-              "uuid": "86ea822b-9a20-4fde-b524-ffaba617b572",
-              "parentUUID": "8836af53-5b3c-4cbb-85e0-5cd608efc8bc",
+              "uuid": "e0c35b9c-fe7d-4c8a-b713-cfb15c45b5e0",
+              "parentUUID": "6c6b18b0-247e-46e3-94b7-c03dd9cf51fa",
               "isHook": false,
               "skipped": false
             },
             {
               "title": "Test login error handling",
-              "fullTitle": "Add item to fridge Test login error handling",
+              "fullTitle": "Login page Test login error handling",
               "timedOut": null,
-              "duration": 486,
+              "duration": 469,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -83,16 +83,16 @@
               "context": null,
               "code": "cy.login('shouldNotExist');\ncy.get('#toastContainer').should('have.text', 'User not found! Please register a user');",
               "err": {},
-              "uuid": "73d6a759-bfd9-404d-aa57-5b982431f8fe",
-              "parentUUID": "8836af53-5b3c-4cbb-85e0-5cd608efc8bc",
+              "uuid": "d6083e20-0ff5-4657-9083-227a64177169",
+              "parentUUID": "6c6b18b0-247e-46e3-94b7-c03dd9cf51fa",
               "isHook": false,
               "skipped": false
             },
             {
               "title": "Register",
-              "fullTitle": "Add item to fridge Register",
+              "fullTitle": "Login page Register",
               "timedOut": null,
-              "duration": 300,
+              "duration": 337,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -101,23 +101,23 @@
               "context": null,
               "code": "cy.get('.login__modal__input').type('ruben');\ncy.get('.login__modal__btnContainer').contains('Register').click();",
               "err": {},
-              "uuid": "639141c5-ae4e-4f13-80ca-078390ef758b",
-              "parentUUID": "8836af53-5b3c-4cbb-85e0-5cd608efc8bc",
+              "uuid": "47e025ea-850b-4977-8972-f607141e6ec5",
+              "parentUUID": "6c6b18b0-247e-46e3-94b7-c03dd9cf51fa",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "78f08a3f-b078-4811-8546-835d15141079",
-            "86ea822b-9a20-4fde-b524-ffaba617b572",
-            "73d6a759-bfd9-404d-aa57-5b982431f8fe",
-            "639141c5-ae4e-4f13-80ca-078390ef758b"
+            "5686977f-7ca1-4961-b909-e8c1282c7672",
+            "e0c35b9c-fe7d-4c8a-b713-cfb15c45b5e0",
+            "d6083e20-0ff5-4657-9083-227a64177169",
+            "47e025ea-850b-4977-8972-f607141e6ec5"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 1453,
+          "duration": 1487,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -139,7 +139,7 @@
     },
     "mochawesome": {
       "options": {
-        "quiet": false,
+        "quiet": true,
         "reportFilename": "mochawesome",
         "saveHtml": false,
         "saveJson": true,
@@ -155,6 +155,7 @@
         "overwrite": false,
         "html": false,
         "json": true,
+        "quiet": true,
         "reportTitle": "Front end tests"
       },
       "version": "5.1.0"

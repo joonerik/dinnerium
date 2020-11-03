@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2020-11-03T10:42:35.050Z",
-    "end": "2020-11-03T10:42:38.516Z",
-    "duration": 3466,
+    "start": "2020-11-03T10:52:36.387Z",
+    "end": "2020-11-03T10:52:39.793Z",
+    "duration": 3406,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "2971f69d-b5e7-4182-9b28-8eb0813cd79e",
+      "uuid": "0dae020f-673c-4829-b9bd-261a1847aa52",
       "title": "",
       "fullFile": "cypress/integration/fridge.spec.js",
       "file": "cypress/integration/fridge.spec.js",
@@ -27,8 +27,8 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "1f494bea-6380-4f03-801f-86b5a55519c3",
-          "title": "Add item to fridge",
+          "uuid": "e7a7017c-89f8-4df1-b9dd-dec770c64ceb",
+          "title": "Fridge page",
           "fullFile": "",
           "file": "",
           "beforeHooks": [],
@@ -36,9 +36,9 @@
           "tests": [
             {
               "title": "Focus on input form",
-              "fullTitle": "Add item to fridge Focus on input form",
+              "fullTitle": "Fridge page Focus on input form",
               "timedOut": null,
-              "duration": 540,
+              "duration": 510,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,16 +47,16 @@
               "context": null,
               "code": "cy.focused().should('have.class', 'login__modal__input');",
               "err": {},
-              "uuid": "d76968a2-ff8e-4aa5-a439-a59bb5e49ae1",
-              "parentUUID": "1f494bea-6380-4f03-801f-86b5a55519c3",
+              "uuid": "b9fa2fb2-b5f1-4dfb-90f9-4efb380574c5",
+              "parentUUID": "e7a7017c-89f8-4df1-b9dd-dec770c64ceb",
               "isHook": false,
               "skipped": false
             },
             {
               "title": "Login",
-              "fullTitle": "Add item to fridge Login",
+              "fullTitle": "Fridge page Login",
               "timedOut": null,
-              "duration": 1054,
+              "duration": 1050,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -65,16 +65,16 @@
               "context": null,
               "code": "cy.login('data');\ncy.contains('Fridge').click();\ncy.get('input[name=\"name\"]').type('flour');\ncy.get('input[name=\"quantity\"]').type('8');\ncy.get('select[name=\"unit\"]').select('dl');\ncy.get('button').contains('Add').click();\ncy.get('.item').contains('8dl flour');",
               "err": {},
-              "uuid": "6dd839dd-e980-4d24-97ab-80f62a411286",
-              "parentUUID": "1f494bea-6380-4f03-801f-86b5a55519c3",
+              "uuid": "11efdc05-207b-4f18-b18e-66eb3eafc9ac",
+              "parentUUID": "e7a7017c-89f8-4df1-b9dd-dec770c64ceb",
               "isHook": false,
               "skipped": false
             },
             {
               "title": "Test error handling",
-              "fullTitle": "Add item to fridge Test error handling",
+              "fullTitle": "Fridge page Test error handling",
               "timedOut": null,
-              "duration": 1009,
+              "duration": 996,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -83,22 +83,22 @@
               "context": null,
               "code": "cy.login('data');\ncy.contains('Fridge').click();\ncy.get('input[name=\"name\"]').type('12345');\ncy.get('input[name=\"quantity\"]').type('8');\ncy.get('select[name=\"unit\"]').select('dl');\ncy.get('button').contains('Add').click();\ncy.get('#toastContainer').should('have.text', 'Invalid ingredient name!');",
               "err": {},
-              "uuid": "9cb5d9f1-7f35-4901-90d2-23c58fc19d7e",
-              "parentUUID": "1f494bea-6380-4f03-801f-86b5a55519c3",
+              "uuid": "57095309-47b9-4956-a86e-b32c5089423f",
+              "parentUUID": "e7a7017c-89f8-4df1-b9dd-dec770c64ceb",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "d76968a2-ff8e-4aa5-a439-a59bb5e49ae1",
-            "6dd839dd-e980-4d24-97ab-80f62a411286",
-            "9cb5d9f1-7f35-4901-90d2-23c58fc19d7e"
+            "b9fa2fb2-b5f1-4dfb-90f9-4efb380574c5",
+            "11efdc05-207b-4f18-b18e-66eb3eafc9ac",
+            "57095309-47b9-4956-a86e-b32c5089423f"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 2603,
+          "duration": 2556,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -120,7 +120,7 @@
     },
     "mochawesome": {
       "options": {
-        "quiet": false,
+        "quiet": true,
         "reportFilename": "mochawesome",
         "saveHtml": false,
         "saveJson": true,
@@ -136,6 +136,7 @@
         "overwrite": false,
         "html": false,
         "json": true,
+        "quiet": true,
         "reportTitle": "Front end tests"
       },
       "version": "5.1.0"
