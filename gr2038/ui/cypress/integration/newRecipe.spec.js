@@ -1,4 +1,4 @@
-describe('Login or register', () => {
+describe('New recipe page', () => {
   // go to web application
   beforeEach(() => {
     cy.visit('http://localhost:3000');

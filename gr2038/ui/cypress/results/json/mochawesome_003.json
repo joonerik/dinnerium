@@ -5,9 +5,9 @@
     "passes": 4,
     "pending": 0,
     "failures": 0,
-    "start": "2020-11-03T08:51:39.639Z",
-    "end": "2020-11-03T08:51:41.962Z",
-    "duration": 2323,
+    "start": "2020-11-03T10:43:08.243Z",
+    "end": "2020-11-03T10:43:10.563Z",
+    "duration": 2320,
     "testsRegistered": 4,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "d7907922-cf9c-41c1-a60a-22b2d9ccc009",
+      "uuid": "5efa52d3-be27-4a40-9184-40e0cc2de11b",
       "title": "",
       "fullFile": "cypress/integration/test.spec.js",
       "file": "cypress/integration/test.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "0c4e965a-eaa2-40b6-8019-3b16b6bf5899",
+          "uuid": "8836af53-5b3c-4cbb-85e0-5cd608efc8bc",
           "title": "Add item to fridge",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Focus on input form",
               "fullTitle": "Add item to fridge Focus on input form",
               "timedOut": null,
-              "duration": 332,
+              "duration": 326,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.focused().should('have.class', 'login__modal__input');",
               "err": {},
-              "uuid": "c5adedae-ab35-4c19-b8d0-c9c8e97c846d",
-              "parentUUID": "0c4e965a-eaa2-40b6-8019-3b16b6bf5899",
+              "uuid": "78f08a3f-b078-4811-8546-835d15141079",
+              "parentUUID": "8836af53-5b3c-4cbb-85e0-5cd608efc8bc",
               "isHook": false,
               "skipped": false
             },
@@ -65,8 +65,8 @@
               "context": null,
               "code": "cy.login('data');",
               "err": {},
-              "uuid": "83837a4a-d936-4522-b1c1-e150c4269fff",
-              "parentUUID": "0c4e965a-eaa2-40b6-8019-3b16b6bf5899",
+              "uuid": "86ea822b-9a20-4fde-b524-ffaba617b572",
+              "parentUUID": "8836af53-5b3c-4cbb-85e0-5cd608efc8bc",
               "isHook": false,
               "skipped": false
             },
@@ -74,7 +74,7 @@
               "title": "Test login error handling",
               "fullTitle": "Add item to fridge Test login error handling",
               "timedOut": null,
-              "duration": 477,
+              "duration": 486,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -83,8 +83,8 @@
               "context": null,
               "code": "cy.login('shouldNotExist');\ncy.get('#toastContainer').should('have.text', 'User not found! Please register a user');",
               "err": {},
-              "uuid": "d4767c98-5150-4df9-bd60-866c829dea81",
-              "parentUUID": "0c4e965a-eaa2-40b6-8019-3b16b6bf5899",
+              "uuid": "73d6a759-bfd9-404d-aa57-5b982431f8fe",
+              "parentUUID": "8836af53-5b3c-4cbb-85e0-5cd608efc8bc",
               "isHook": false,
               "skipped": false
             },
@@ -92,7 +92,7 @@
               "title": "Register",
               "fullTitle": "Add item to fridge Register",
               "timedOut": null,
-              "duration": 303,
+              "duration": 300,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -101,18 +101,18 @@
               "context": null,
               "code": "cy.get('.login__modal__input').type('ruben');\ncy.get('.login__modal__btnContainer').contains('Register').click();",
               "err": {},
-              "uuid": "e3a7e41d-f205-4082-85f9-fad9001879e5",
-              "parentUUID": "0c4e965a-eaa2-40b6-8019-3b16b6bf5899",
+              "uuid": "639141c5-ae4e-4f13-80ca-078390ef758b",
+              "parentUUID": "8836af53-5b3c-4cbb-85e0-5cd608efc8bc",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "c5adedae-ab35-4c19-b8d0-c9c8e97c846d",
-            "83837a4a-d936-4522-b1c1-e150c4269fff",
-            "d4767c98-5150-4df9-bd60-866c829dea81",
-            "e3a7e41d-f205-4082-85f9-fad9001879e5"
+            "78f08a3f-b078-4811-8546-835d15141079",
+            "86ea822b-9a20-4fde-b524-ffaba617b572",
+            "73d6a759-bfd9-404d-aa57-5b982431f8fe",
+            "639141c5-ae4e-4f13-80ca-078390ef758b"
           ],
           "failures": [],
           "pending": [],
@@ -154,7 +154,8 @@
         "reportDir": "cypress/results/json",
         "overwrite": false,
         "html": false,
-        "json": true
+        "json": true,
+        "reportTitle": "Front end tests"
       },
       "version": "5.1.0"
     }

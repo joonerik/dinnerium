@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2020-11-03T08:51:10.894Z",
-    "end": "2020-11-03T08:51:12.797Z",
-    "duration": 1903,
+    "start": "2020-11-03T10:42:39.572Z",
+    "end": "2020-11-03T10:42:41.420Z",
+    "duration": 1848,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "a552e915-3726-4e18-b7f1-5ccd42e24767",
+      "uuid": "ed7536f7-dce2-40b2-a57c-9093a0ef3d32",
       "title": "",
       "fullFile": "cypress/integration/logout.spec.js",
       "file": "cypress/integration/logout.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "18d68040-bb4c-4d07-a7a4-e1ad33532870",
+          "uuid": "3a5a5617-34e2-4e06-a350-a3becc366fb6",
           "title": "Logout",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Logout",
               "fullTitle": "Logout Logout",
               "timedOut": null,
-              "duration": 942,
+              "duration": 814,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "cy.login('data');\ncy.contains('Settings').click();\ncy.get('button').click();\ncy.get('.login__modal').should('have.class', 'login__modal');",
               "err": {},
-              "uuid": "54613a9c-93fd-438f-80d6-ba062ec107a2",
-              "parentUUID": "18d68040-bb4c-4d07-a7a4-e1ad33532870",
+              "uuid": "402024a5-5493-42aa-ae23-608edf63a374",
+              "parentUUID": "3a5a5617-34e2-4e06-a350-a3becc366fb6",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "54613a9c-93fd-438f-80d6-ba062ec107a2"
+            "402024a5-5493-42aa-ae23-608edf63a374"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 942,
+          "duration": 814,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -97,7 +97,8 @@
         "reportDir": "cypress/results/json",
         "overwrite": false,
         "html": false,
-        "json": true
+        "json": true,
+        "reportTitle": "Front end tests"
       },
       "version": "5.1.0"
     }

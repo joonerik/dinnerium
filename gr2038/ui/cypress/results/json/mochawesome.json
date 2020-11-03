@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2020-11-03T08:51:06.501Z",
-    "end": "2020-11-03T08:51:09.961Z",
-    "duration": 3460,
+    "start": "2020-11-03T10:42:35.050Z",
+    "end": "2020-11-03T10:42:38.516Z",
+    "duration": 3466,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "d846ea72-5990-4faa-8f2d-800a1d42981b",
+      "uuid": "2971f69d-b5e7-4182-9b28-8eb0813cd79e",
       "title": "",
       "fullFile": "cypress/integration/fridge.spec.js",
       "file": "cypress/integration/fridge.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "64a9056b-7cc4-42d2-96b4-6978161acaf2",
+          "uuid": "1f494bea-6380-4f03-801f-86b5a55519c3",
           "title": "Add item to fridge",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Focus on input form",
               "fullTitle": "Add item to fridge Focus on input form",
               "timedOut": null,
-              "duration": 535,
+              "duration": 540,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.focused().should('have.class', 'login__modal__input');",
               "err": {},
-              "uuid": "3eacafad-4bf2-4422-a722-2140771132a6",
-              "parentUUID": "64a9056b-7cc4-42d2-96b4-6978161acaf2",
+              "uuid": "d76968a2-ff8e-4aa5-a439-a59bb5e49ae1",
+              "parentUUID": "1f494bea-6380-4f03-801f-86b5a55519c3",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "Login",
               "fullTitle": "Add item to fridge Login",
               "timedOut": null,
-              "duration": 1071,
+              "duration": 1054,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "cy.login('data');\ncy.contains('Fridge').click();\ncy.get('input[name=\"name\"]').type('flour');\ncy.get('input[name=\"quantity\"]').type('8');\ncy.get('select[name=\"unit\"]').select('dl');\ncy.get('button').contains('Add').click();\ncy.get('.item').contains('8dl flour');",
               "err": {},
-              "uuid": "3c5bf09a-f70c-4a66-80ef-81ed405decb8",
-              "parentUUID": "64a9056b-7cc4-42d2-96b4-6978161acaf2",
+              "uuid": "6dd839dd-e980-4d24-97ab-80f62a411286",
+              "parentUUID": "1f494bea-6380-4f03-801f-86b5a55519c3",
               "isHook": false,
               "skipped": false
             },
@@ -74,7 +74,7 @@
               "title": "Test error handling",
               "fullTitle": "Add item to fridge Test error handling",
               "timedOut": null,
-              "duration": 1014,
+              "duration": 1009,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -83,22 +83,22 @@
               "context": null,
               "code": "cy.login('data');\ncy.contains('Fridge').click();\ncy.get('input[name=\"name\"]').type('12345');\ncy.get('input[name=\"quantity\"]').type('8');\ncy.get('select[name=\"unit\"]').select('dl');\ncy.get('button').contains('Add').click();\ncy.get('#toastContainer').should('have.text', 'Invalid ingredient name!');",
               "err": {},
-              "uuid": "51ecbcc5-661b-4d5e-9f8d-531bb580422c",
-              "parentUUID": "64a9056b-7cc4-42d2-96b4-6978161acaf2",
+              "uuid": "9cb5d9f1-7f35-4901-90d2-23c58fc19d7e",
+              "parentUUID": "1f494bea-6380-4f03-801f-86b5a55519c3",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "3eacafad-4bf2-4422-a722-2140771132a6",
-            "3c5bf09a-f70c-4a66-80ef-81ed405decb8",
-            "51ecbcc5-661b-4d5e-9f8d-531bb580422c"
+            "d76968a2-ff8e-4aa5-a439-a59bb5e49ae1",
+            "6dd839dd-e980-4d24-97ab-80f62a411286",
+            "9cb5d9f1-7f35-4901-90d2-23c58fc19d7e"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 2620,
+          "duration": 2603,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -135,7 +135,8 @@
         "reportDir": "cypress/results/json",
         "overwrite": false,
         "html": false,
-        "json": true
+        "json": true,
+        "reportTitle": "Front end tests"
       },
       "version": "5.1.0"
     }
