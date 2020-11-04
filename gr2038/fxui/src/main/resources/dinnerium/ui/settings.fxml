@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+
+<Pane xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="dinnerium.ui.SettingsController"
+      fx:id="settingsPane" layoutX="125.0" layoutY="60.0" prefHeight="543.0" prefWidth="650.0"
+      style="-fx-border-width: 3; -fx-border-color: #F4C20D; -fx-border-radius: 10;"
+      visible="false">
+    <Text fx:id="greetUserText" fill="#f4c20d" layoutX="225.0" layoutY="49.0" strokeType="OUTSIDE"
+          strokeWidth="0.0" textAlignment="CENTER" underline="true" wrappingWidth="200.255859375">
+        <font>
+            <Font size="26.0"/>
+        </font>
+    </Text>
+    <Button layoutX="299.0" layoutY="111.0" mnemonicParsing="false" onAction="#handleLogout"
+            styleClass="button-style" text="Logout"/>
+</Pane>
