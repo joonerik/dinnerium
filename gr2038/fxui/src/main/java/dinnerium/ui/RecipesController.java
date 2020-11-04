@@ -98,7 +98,7 @@ public class RecipesController {
             newRecipeIngredients.add(i);
             newRecipeNameIngredientInput.clear();
             newRecipeAmountInput.clear();
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             FeedbackHandler.showMessage(msgPane, "Quantityfield is empty", 'E');
         } catch (IllegalArgumentException e) {
             FeedbackHandler.showMessage(msgPane, e.getMessage(), 'E');
@@ -145,8 +145,8 @@ public class RecipesController {
 
             clearRecipeFields();
             changeSubScene("recipes");
-        } catch (NumberFormatException e){
-            FeedbackHandler.showMessage(msgPane, "Quantiy or minutes invalid", FeedbackHandler.ERROR);
+        } catch (NumberFormatException e) {
+            FeedbackHandler.showMessage(msgPane, "Quantiy or minutes invalid", 'E');
         } catch (IllegalArgumentException e) {
             FeedbackHandler.showMessage(msgPane, e.getMessage(), FeedbackHandler.ERROR);
         }
