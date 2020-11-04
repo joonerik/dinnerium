@@ -65,7 +65,7 @@ const RecipeSideBar: FC<ISideBar> = ({
           </h2>
         ) : (
           <>
-            <h2>{recipeName}</h2>
+            <h2 className="recipe__name">{recipeName}</h2>
             <p className="recipe__info__description">{recipeDescription}</p>
             <div id="recipeMetadata">
               <p>{recipeAuthor && 'made by ' + recipeAuthor}</p>

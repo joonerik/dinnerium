@@ -1,4 +1,4 @@
-describe('Add item to fridge', () => {
+describe('Login page', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000');
   });

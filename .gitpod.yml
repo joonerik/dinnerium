@@ -1,4 +1,4 @@
-image: 
+image:
   file: .gitpod.Dockerfile
 
 tasks:
@@ -10,6 +10,5 @@ tasks:
 ports:
   - port: 4567
   - port: 6969
-    onOpen: open-browser
   - port: 3000
     onOpen: open-browser
