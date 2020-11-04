@@ -1,11 +1,7 @@
-describe('Login or register', () => {
+describe('New recipe page', () => {
   // go to web application
   beforeEach(() => {
     cy.visit('http://localhost:3000');
-  });
-
-  it('Focus on input form', () => {
-    cy.focused().should('have.class', 'login__modal__input');
   });
 
   it('Test error handling to add new recipe', () => {
@@ -70,5 +66,8 @@ describe('Login or register', () => {
 
     // uncomment when merged/updated
     cy.get('#recipeForm').submit();
+    // cy.get('.recipeBox').last().should('have.class', 'active-recipe');
+    cy.get('.recipeBox').last().click();
+    cy.get('.recipe__name').should('have.text', 'Taco');
   });
 });

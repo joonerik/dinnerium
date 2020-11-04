@@ -30,7 +30,8 @@
     "remove": "rm ../restapi/src/main/resources/storage/ruben.json & rm -rf cypress/results/json/",
     "cypress": "npm run remove & cypress run",
     "cypress:open": "cypress open",
-    "cypress:report": "generate-mochawesome-report"
+    "cypress:report": "generate-mochawesome-report & open cypress/reports/html/mochawesome.html",
+    "open:report": "open cypress/reports/html/mochawesome.html"
   },
   "proxy": "http://localhost:4567",
   "eslintConfig": {

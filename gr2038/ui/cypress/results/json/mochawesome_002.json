@@ -5,9 +5,9 @@
     "passes": 3,
     "pending": 0,
     "failures": 0,
-    "start": "2020-11-03T08:51:13.805Z",
-    "end": "2020-11-03T08:51:38.583Z",
-    "duration": 24778,
+    "start": "2020-11-03T10:52:43.432Z",
+    "end": "2020-11-03T10:53:08.006Z",
+    "duration": 24574,
     "testsRegistered": 3,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "63fcbdfa-d5cd-4b24-be36-3e337a4db278",
+      "uuid": "f4f05eb5-7c52-4491-af59-da04b53f806a",
       "title": "",
       "fullFile": "cypress/integration/newRecipe.spec.js",
       "file": "cypress/integration/newRecipe.spec.js",
@@ -27,8 +27,8 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "d13b5b08-dd5e-4189-8747-9b04924ee4a6",
-          "title": "Login or register",
+          "uuid": "a0087400-5c8e-462d-a714-0231d365a3f2",
+          "title": "New recipe page",
           "fullFile": "",
           "file": "",
           "beforeHooks": [],
@@ -36,9 +36,9 @@
           "tests": [
             {
               "title": "Focus on input form",
-              "fullTitle": "Login or register Focus on input form",
+              "fullTitle": "New recipe page Focus on input form",
               "timedOut": null,
-              "duration": 409,
+              "duration": 330,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,16 +47,16 @@
               "context": null,
               "code": "cy.focused().should('have.class', 'login__modal__input');",
               "err": {},
-              "uuid": "9f3c151e-456a-4e6d-9b15-34f9b3ef493e",
-              "parentUUID": "d13b5b08-dd5e-4189-8747-9b04924ee4a6",
+              "uuid": "fd8bf8ed-4673-43b6-8153-37025d15c102",
+              "parentUUID": "a0087400-5c8e-462d-a714-0231d365a3f2",
               "isHook": false,
               "skipped": false
             },
             {
               "title": "Test error handling to add new recipe",
-              "fullTitle": "Login or register Test error handling to add new recipe",
+              "fullTitle": "New recipe page Test error handling to add new recipe",
               "timedOut": null,
-              "duration": 5824,
+              "duration": 5697,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -65,16 +65,16 @@
               "context": null,
               "code": "cy.login('data');\ncy.contains('Recipes').click();\ncy.get('#titleNewRecipeLink').click();\ncy.get('input[name=\"name\"]').type('Test recipe');\ncy.get('input[name=\"estimatedTime\"]').type('20');\ncy.get('input[name=\"portions\"]').type('2.5');\ncy.get('textarea[name=\"description\"]').type('This recipe is a test');\ncy.get('#recipeForm').submit();\ncy.get('#toastContainer').should('have.text', 'You need to add instructions');\ncy.addInstruction('A instruction');\ncy.wait(3000);\ncy.get('#recipeForm').submit();\ncy.get('#toastContainer').should('have.text', 'You need to add ingredients');",
               "err": {},
-              "uuid": "b2bb6afb-4019-4d83-a2d8-230021e23dd3",
-              "parentUUID": "d13b5b08-dd5e-4189-8747-9b04924ee4a6",
+              "uuid": "86aa88ab-baa8-4c12-b8f2-7109d10cd723",
+              "parentUUID": "a0087400-5c8e-462d-a714-0231d365a3f2",
               "isHook": false,
               "skipped": false
             },
             {
               "title": "Add new recipe",
-              "fullTitle": "Login or register Add new recipe",
+              "fullTitle": "New recipe page Add new recipe",
               "timedOut": null,
-              "duration": 17692,
+              "duration": 17657,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -83,22 +83,22 @@
               "context": null,
               "code": "cy.login('data');\ncy.contains('Recipes').click();\ncy.get('#titleNewRecipeLink').click(); // write recipe info\ncy.get('input[name=\"name\"]').type('Taco');\ncy.get('input[name=\"estimatedTime\"]').type('20');\ncy.get('input[name=\"portions\"]').type('2.5');\ncy.get('textarea[name=\"description\"]').type('A great Mexican dish, which happens to be quite popular in Norway, although the Norwegian taco is quite different'); // add ingredients\ncy.addIngredient('Minced meat', 400, 'gram');\ncy.addIngredient('Taco powder', 1, 'stk');\ncy.addIngredient('Grated cheese', 100, 'gram');\ncy.addIngredient('Salad', 1, 'stk');\ncy.addIngredient('Romme', 1, 'stk');\ncy.addIngredient('Tacosaus', 1, 'stk');\ncy.addIngredient('Beer', 3, 'liter'); // add an ingredient and check remove button\ncy.addIngredient('Ananas', 5, 'kg');\ncy.get('.ingredients').find('ol').last().find('div').last().click(); // add instructions\ncy.addInstruction('Cook the minced meat');\ncy.addInstruction('Add the powder and mix it');\ncy.addInstruction('Cut the salad');\ncy.addInstruction('Eat it as you like, and enjoy!'); // add an instruction and check remove button\ncy.addInstruction('If any leftovers, throw it');\ncy.get('.instructions').find('ol').last().find('div').last().click(); // uncomment when merged/updated\ncy.get('#recipeForm').submit();",
               "err": {},
-              "uuid": "8230ff6d-65bd-43ec-a76d-91289d392ee9",
-              "parentUUID": "d13b5b08-dd5e-4189-8747-9b04924ee4a6",
+              "uuid": "2b5f2a55-4ba3-4fc4-8d96-adecb62a4b14",
+              "parentUUID": "a0087400-5c8e-462d-a714-0231d365a3f2",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "9f3c151e-456a-4e6d-9b15-34f9b3ef493e",
-            "b2bb6afb-4019-4d83-a2d8-230021e23dd3",
-            "8230ff6d-65bd-43ec-a76d-91289d392ee9"
+            "fd8bf8ed-4673-43b6-8153-37025d15c102",
+            "86aa88ab-baa8-4c12-b8f2-7109d10cd723",
+            "2b5f2a55-4ba3-4fc4-8d96-adecb62a4b14"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 23925,
+          "duration": 23684,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -120,7 +120,7 @@
     },
     "mochawesome": {
       "options": {
-        "quiet": false,
+        "quiet": true,
         "reportFilename": "mochawesome",
         "saveHtml": false,
         "saveJson": true,
@@ -135,7 +135,9 @@
         "reportDir": "cypress/results/json",
         "overwrite": false,
         "html": false,
-        "json": true
+        "json": true,
+        "quiet": true,
+        "reportTitle": "Front end tests"
       },
       "version": "5.1.0"
     }
