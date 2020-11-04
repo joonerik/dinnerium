@@ -70,5 +70,8 @@ describe('New recipe page', () => {
 
     // uncomment when merged/updated
     cy.get('#recipeForm').submit();
+    // cy.get('.recipeBox').last().should('have.class', 'active-recipe');
+    cy.get('.recipeBox').last().click();
+    cy.get('.recipe__name').should('have.text', 'Taco');
   });
 });
