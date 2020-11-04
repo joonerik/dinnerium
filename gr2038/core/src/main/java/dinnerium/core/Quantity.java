@@ -32,6 +32,9 @@ public class Quantity {
         return unit != null && units.contains(unit);
     }
 
+    private boolean validateAmount(double amount){
+        return amount > 0.0;
+    }
     /**
      * Returns the amount of this quantity.
      *
@@ -57,7 +60,11 @@ public class Quantity {
      *
      */
     public void setAmount(double amount) {
-        this.amount = Math.round(amount * 100.0) / 100.0;
+        if(validateAmount(amount)){
+            this.amount = Math.round(amount * 100.0) / 100.0;
+        }else{
+            throw  new IllegalArgumentException("Amount must be larger than 0");
+        }
     }
 
     /**

@@ -55,6 +55,8 @@ public class FridgeController {
             navbarController.setUser(dinneriumAccess.postIngredient(user.getUsername(), i));
             updateTableView();
             FeedbackHandler.showMessage(msgPane, "New ingredient added", 'M');
+        } catch (NumberFormatException e){
+            FeedbackHandler.showMessage(msgPane, "Quantityfield is empty", 'E');
         } catch (IllegalArgumentException e) {
             FeedbackHandler.showMessage(msgPane, e.getMessage(), 'E');
         }

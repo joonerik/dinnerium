@@ -29,7 +29,7 @@ public abstract class Container<T> implements Iterable<T> {
     public void setCollection(Collection<T> container) {
         if (container.isEmpty()) {
             throw new IllegalArgumentException(
-                    container + "invalid");
+                    "Missing instructions or ingredients");
         }
         this.container = container;
     }

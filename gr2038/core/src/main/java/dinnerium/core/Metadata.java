@@ -19,32 +19,43 @@ public class Metadata {
      */
     public Metadata(String author, double portion,
                     String recipeName, String recipeDescription, int minutes) {
-        if (validateString(author, recipeDescription, recipeName)) {
+        if (validateAuthor(author)) {
             this.author = author;
-            this.recipeName = recipeName;
-            this.recipeDescription = recipeDescription;
-
         } else {
-            throw new IllegalArgumentException("Invalid string input");
+            throw new IllegalArgumentException("Author missing");
         }
-
+        if(validateRecipeName(recipeName)){
+            this.recipeName = recipeName;
+        }else{
+            throw  new IllegalArgumentException("Recipename Missing");
+        }
+        if(validateRecipeDescription(recipeDescription)){
+            this.recipeDescription = recipeDescription;
+        }else{
+            throw new IllegalArgumentException("Recipedescription missing");
+        }
         if (validateNumber(portion, minutes)) {
             this.portion = portion;
             this.minutes = minutes;
         } else {
-            throw new IllegalArgumentException("Can't be zero");
+            throw new IllegalArgumentException("Portions and minutes must be larger than zero");
         }
 
     }
 
     private boolean validateNumber(double portion, int minutes) {
-        return portion != 0.0 && minutes != 0;
+        return portion > 0.0 && minutes > 0;
     }
 
-    private boolean validateString(String author, String recipeDescription,
-                                   String recipeName) {
-        return !author.isBlank() && !recipeDescription.isBlank()
-            && !recipeName.isBlank();
+    private boolean validateAuthor(String author) {
+        return !author.isBlank();
+    }
+
+    private boolean validateRecipeName(String recipeName) {
+        return !recipeName.isBlank();
+    }
+    private boolean validateRecipeDescription(String recipeDescription) {
+        return !recipeDescription.isBlank();
     }
 
 
