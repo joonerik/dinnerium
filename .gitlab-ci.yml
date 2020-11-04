@@ -24,7 +24,6 @@ build:web:
   script:
     - cd gr2038/ui/
     - npm install
-    - npm run cypress
     - npm run build
   artifacts:
     paths:
