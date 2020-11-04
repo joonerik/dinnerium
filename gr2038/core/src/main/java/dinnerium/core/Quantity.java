@@ -6,7 +6,7 @@ import java.util.List;
 public class Quantity {
 
     public static final List<String> units =
-            List.of("stk", "dl", "gram", "liter", "kg", "ss", "ts");
+        List.of("stk", "dl", "gram", "liter", "kg", "ss", "ts");
     private double amount;
     private String unit;
 
@@ -14,7 +14,7 @@ public class Quantity {
      * Constructs a Quantity object with the amount and unit.
      *
      * @param amount of substance
-     * @param unit which amount is measured in
+     * @param unit   which amount is measured in
      */
     public Quantity(double amount, String unit) {
         this.setAmount(amount);
@@ -24,17 +24,17 @@ public class Quantity {
     /**
      * Checks if input-unit is valid.
      *
-     * @param unit
-     *        which unit
+     * @param unit which unit
      * @return true if valid
      */
     private boolean validateUnit(String unit) {
         return unit != null && units.contains(unit);
     }
 
-    private boolean validateAmount(double amount){
+    private boolean validateAmount(double amount) {
         return amount > 0.0;
     }
+
     /**
      * Returns the amount of this quantity.
      *
@@ -57,13 +57,12 @@ public class Quantity {
      * Sets how much of the unit, ex: 3 stk where 3 is amount and stk is unit.
      *
      * @param amount the amount of this quantity
-     *
      */
     public void setAmount(double amount) {
-        if(validateAmount(amount)){
+        if (validateAmount(amount)) {
             this.amount = Math.round(amount * 100.0) / 100.0;
-        }else{
-            throw  new IllegalArgumentException("Amount must be larger than 0");
+        } else {
+            throw new IllegalArgumentException("Amount must be larger than 0");
         }
     }
 
@@ -71,7 +70,6 @@ public class Quantity {
      * Sets the unit of this quantity.
      *
      * @param unit to be set
-     *
      * @throws IllegalArgumentException if the unit is not valid
      */
     public void setUnit(String unit) {
