@@ -1,31 +1,28 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './newRecipe.scss';
 import { UserContext } from '../UserContext/UserContext';
 import RecipeSideBar from '../RecipeSideBar/RecipeSideBar';
 import { ToastContainer, toast } from 'react-toastify';
+import AddIngredient from '../AddIngredient/AddIngredient';
 
 const NewRecipe = () => {
   const [instructions, setInstructions] = useState<string[]>([]);
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
-  const [units, setUnits] = useState<string[]>([]);
   const { user, updateUser } = useContext(UserContext);
   const history = useHistory();
 
-  useEffect(() => {
-    axios.get('/units').then((response) => {
-      setUnits(response.data.replace('[', '').replace(']', '').split(', '));
-    });
-  }, []);
-
   const addInstruction = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
+    const form: HTMLFormElement = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    form.reset();
     setInstructions((prevState) => [
       ...prevState,
       formData.get('instruction') as string,
     ]);
+    toast.success('Added instruction');
   };
   const removeInstruction = (index: number) => {
     let instructionsCopy = [...instructions];
@@ -35,7 +32,9 @@ const NewRecipe = () => {
 
   const addIngredient = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
+    const form: HTMLFormElement = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    form.reset();
     const i = {
       quantity: {
         amount: parseFloat(formData.get('quantity') as string),
@@ -44,6 +43,7 @@ const NewRecipe = () => {
       name: formData.get('ingredient'),
     } as Ingredient;
     setIngredients((prevState) => [...prevState, i]);
+    toast.success('Added ingredient');
   };
   const removeIngredient = (index: number) => {
     let ingredientsCopy = [...ingredients];
@@ -69,7 +69,6 @@ const NewRecipe = () => {
         })
         .then((response) => {
           updateUser(response.data);
-          //Should add some feedback here of somekind.
           history.push('/recipes');
         });
     } else {
@@ -116,42 +115,7 @@ const NewRecipe = () => {
               required
             ></textarea>
           </form>
-          <form onSubmit={addIngredient} className="form__ingredient">
-            <input
-              type="text"
-              name="ingredient"
-              placeholder="ingredient"
-              required
-              pattern="^[ A-Za-z]+$"
-            />
-            <input
-              type="number"
-              name="quantity"
-              placeholder="Amount"
-              required
-            />
-            <select
-              defaultValue=""
-              name="unit"
-              placeholder="unit"
-              required
-              className="unit-recipe"
-            >
-              <option value="" disabled>
-                Unit
-              </option>
-              {units.map((item: string, index: number) => {
-                return (
-                  <option key={index} value={item}>
-                    {item}
-                  </option>
-                );
-              })}
-            </select>
-            <button type="submit" id="addIngredientButton">
-              Add
-            </button>
-          </form>
+          <AddIngredient submitIngredientForm={addIngredient} />
         </div>
         <div className="instruction-form-container">
           <form onSubmit={addInstruction} className="form__instruction">
