@@ -28,7 +28,8 @@
     "eject": "react-scripts eject",
     "format": "npx prettier --write 'src/**/*.{ts,tsx,scss}'",
     "remove": "rm ../restapi/src/main/resources/storage/ruben.json & rm -rf cypress/results/json/",
-    "cypress": "npm run remove & cypress run",
+    "init-test-file": "echo '{\"ingredientContainer\" : {\"ingredient\" : [ ]},\"recipeContainer\" : {\"recipes\" : [ ]},\"username\" : \"data\"}' > ../restapi/src/main/resources/storage/data.json",
+    "cypress": "npm run init-test-file & npm run remove & cypress run",
     "cypress:open": "cypress open",
     "cypress:report": "generate-mochawesome-report & open cypress/reports/html/mochawesome.html",
     "open:report": "open cypress/reports/html/mochawesome.html"
