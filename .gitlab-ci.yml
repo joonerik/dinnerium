@@ -29,9 +29,10 @@ build:web:
   artifacts:
     paths:
       - gr2038/ui/node_modules/
-      - build
+      - gr2038/ui/build/
 
 test:web:
+  image: node:lts
   stage: test
   script:
     - cd gr2038/ui/
