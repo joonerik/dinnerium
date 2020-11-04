@@ -37,7 +37,7 @@ test:web:
     - cd gr2038/ui/
     - npm run cypress
   needs:
-    - job: plan:prod
+    - job: build:web
       artifacts: true
   allow_failure: false
   when: manual
