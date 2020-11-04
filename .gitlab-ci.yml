@@ -19,7 +19,7 @@ build:core:
 
 build:web:
   image: node:lts
-  stage: bundle
+  stage: build
   before_script: []
   script:
     - cd gr2038/ui/
