@@ -1,10 +1,6 @@
-describe('Add item to fridge', () => {
+describe('Fridge page', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000');
-  });
-
-  it('Focus on input form', () => {
-    cy.focused().should('have.class', 'login__modal__input');
   });
 
   it('Login', () => {
