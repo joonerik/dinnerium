@@ -24,6 +24,7 @@ build:web:
   script:
     - cd gr2038/ui/
     - npm install
+    - npm run format
     - npm run build
   artifacts:
     paths:
