@@ -4,10 +4,6 @@ describe('New recipe page', () => {
     cy.visit('http://localhost:3000');
   });
 
-  it('Focus on input form', () => {
-    cy.focused().should('have.class', 'login__modal__input');
-  });
-
   it('Test error handling to add new recipe', () => {
     cy.login('data');
     cy.contains('Recipes').click();
