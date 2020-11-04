@@ -1,5 +1,6 @@
 stages:
   - build
+  - test
 
 build:core:
   image: maven:3-jdk-14
@@ -27,5 +28,16 @@ build:web:
     - npm run build
   artifacts:
     paths:
-      - node_modules/
+      - gr2038/ui/node_modules/
       - build
+
+test:web:
+  stage: test
+  script:
+    - cd gr2038/ui/
+    - npm run cypress
+  needs:
+    - job: plan:prod
+      artifacts: true
+  allow_failure: false
+  when: manual
