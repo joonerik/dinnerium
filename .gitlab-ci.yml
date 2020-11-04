@@ -30,13 +30,13 @@ build:web:
     paths:
       - gr2038/ui/node_modules/
       - gr2038/ui/build/
-      - gr2038/ui/cypress/
 
 test:web:
   image: node:lts
   stage: test
   script:
     - cd gr2038/ui/
+    - cypress install
     - npm run cypress
   needs:
     - job: build:web
