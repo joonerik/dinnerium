@@ -95,4 +95,10 @@ public class AppController {
     List<String> getNewRecipeInstructions() {
         return new ArrayList<>(navbarViewController.recipesViewController.newRecipeInstructions);
     }
+
+    void setDinneriumAccess(DinneriumAccess dinneriumAccess) {
+        this.dinneriumAccess = dinneriumAccess;
+        navbarViewController.recipesViewController.setDinneriumAccess(dinneriumAccess);
+        navbarViewController.fridgeViewController.setDinneriumAccess(dinneriumAccess);
+    }
 }
