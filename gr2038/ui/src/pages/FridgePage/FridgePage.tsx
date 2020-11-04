@@ -1,11 +1,11 @@
-import React, { FC, useContext, useEffect } from 'react';
+import React, { FC, useContext } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
 import './FridgePage.scss';
-import { useState } from 'react';
 import { UserContext } from '../../components/UserContext/UserContext';
+import AddIngredient from '../../components/AddIngredient/AddIngredient';
 
 interface IItem {
   item: { quantity: { unit: string; amount: number }; name: string };
@@ -22,69 +22,30 @@ const Item: FC<IItem> = ({ item }) => {
 
 function Menu() {
   const { user, updateUser } = useContext(UserContext);
-  const [units, setUnits] = useState<string[]>([]);
-
-  useEffect(() => {
-    axios.get('/units').then((response) => {
-      setUnits(response.data.replace('[', '').replace(']', '').split(', '));
-    });
-  }, []);
 
   const postIngdredient = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.target as HTMLFormElement);
+    const form: HTMLFormElement = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+    form.reset();
     axios
       .post(`/users/${user?.username}/ingredients/add`, {
         quantity: {
           unit: formData.get('unit'),
           amount: parseFloat(formData.get('quantity') as string),
         },
-        name: formData.get('name'),
+        name: formData.get('ingredient'),
       })
       .then((response) => {
         updateUser(response.data);
+        toast.success('Added new ingredient to fridge');
       })
       .catch(() => {
         toast.error('Invalid ingredient name!');
       });
   };
 
-  return (
-    <form className="addIngredientMenu" onSubmit={postIngdredient}>
-      <input
-        className="addIngredientElement"
-        placeholder="Name"
-        type="text"
-        name="name"
-        required
-      />
-      <input
-        className="addIngredientElement"
-        placeholder="Quantity"
-        type="number"
-        name="quantity"
-        required
-      />
-      <select
-        className="addIngredientElement"
-        defaultValue=""
-        name="unit"
-        required
-      >
-        <option value="" disabled>
-          Units
-        </option>
-        {units.map((item: string, index: number) => {
-          return (
-            <option key={index} value={item}>
-              {item}
-            </option>
-          );
-        })}
-      </select>
-      <button className="addIngredientElement">Add</button>
-    </form>
-  );
+  return <AddIngredient submitIngredientForm={postIngdredient} />;
 }
 
 function FridgePage() {

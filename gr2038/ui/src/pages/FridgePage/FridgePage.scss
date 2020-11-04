@@ -8,21 +8,6 @@
   width: 50%;
   margin-top: 20px;
 
-  .addIngredientMenu {
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    width: 90%;
-    margin: 5%;
-
-    .addIngredientElement {
-      border: none;
-      outline: none;
-      margin: 2%;
-      background-color: $color-yellow;
-      border-radius: 5px;
-    }
-  }
-
   .item {
     text-align: center;
     border-bottom: 3px solid $color-yellow;
