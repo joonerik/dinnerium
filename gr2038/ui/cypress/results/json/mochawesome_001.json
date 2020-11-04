@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-11-03T08:51:10.894Z",
+    "end": "2020-11-03T08:51:12.797Z",
+    "duration": 1903,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "a552e915-3726-4e18-b7f1-5ccd42e24767",
+      "title": "",
+      "fullFile": "cypress/integration/logout.spec.js",
+      "file": "cypress/integration/logout.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "18d68040-bb4c-4d07-a7a4-e1ad33532870",
+          "title": "Logout",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Logout",
+              "fullTitle": "Logout Logout",
+              "timedOut": null,
+              "duration": 942,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login('data');\ncy.contains('Settings').click();\ncy.get('button').click();\ncy.get('.login__modal').should('have.class', 'login__modal');",
+              "err": {},
+              "uuid": "54613a9c-93fd-438f-80d6-ba062ec107a2",
+              "parentUUID": "18d68040-bb4c-4d07-a7a4-e1ad33532870",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "54613a9c-93fd-438f-80d6-ba062ec107a2"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 942,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results/json",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

@@ -1,4 +1,12 @@
 {
   "video": false,
-  "screenshotOnRunFailure": false
+  "screenshotOnRunFailure": false,
+  "port": 6969,
+  "reporter": "cypress-mochawesome-reporter",
+  "reporterOptions": {
+    "overwrite": false,
+    "html": false,
+    "json": true,
+    "reportTitle": "Front end tests"
+  }
 }
