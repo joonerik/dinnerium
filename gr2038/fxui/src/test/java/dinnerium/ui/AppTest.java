@@ -7,6 +7,7 @@ import dinnerium.core.Quantity;
 import dinnerium.core.Recipe;
 import dinnerium.core.RecipeContainer;
 import dinnerium.core.RecipeInstructions;
+import dinnerium.core.Units;
 import dinnerium.core.User;
 import java.util.Iterator;
 import java.util.List;
@@ -75,7 +76,7 @@ public class AppTest extends ApplicationTest {
         when(mockAccess.login("testuser")).thenReturn(user);
         when(mockAccess.login("user")).thenThrow(new IllegalArgumentException("not valid"));
         when(mockAccess.registerUser("user")).thenThrow(new IllegalArgumentException("not valid"));
-        when(mockAccess.getUnits()).thenReturn(Quantity.units);
+        when(mockAccess.getUnits()).thenReturn(Units.values());
         when(mockAccess.postIngredient(eq("testuser"), any(Ingredient.class))).thenReturn(user2);
         when(mockAccess.postRecipe(eq("testuser"), any(Recipe.class))).thenReturn(user2);
     }
