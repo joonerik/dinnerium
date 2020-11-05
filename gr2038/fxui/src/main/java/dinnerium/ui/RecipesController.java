@@ -121,11 +121,9 @@ public class RecipesController {
 
     @FXML
     void handleAddRecipe() {
-        double portions = 0.0;
-        int minutes = 0;
         try {
-            portions = Double.parseDouble(newRecipePortions.getText());
-            minutes = Integer.parseInt(newRecipeMinutes.getText());
+            double portions = Double.parseDouble(newRecipePortions.getText());
+            int minutes = Integer.parseInt(newRecipeMinutes.getText());
 
             Metadata md = new Metadata(user.getUsername(),
                 portions,

@@ -1,21 +1,31 @@
 package dinnerium.ui;
 
 import dinnerium.core.Ingredient;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Paths;
+import dinnerium.core.IngredientContainer;
+import dinnerium.core.Metadata;
+import dinnerium.core.Quantity;
+import dinnerium.core.Recipe;
+import dinnerium.core.RecipeContainer;
+import dinnerium.core.RecipeInstructions;
+import dinnerium.core.User;
 import java.util.Iterator;
+import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+
+import static org.mockito.Mockito.*;
+
+
 import org.testfx.framework.junit5.ApplicationTest;
+
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -24,89 +34,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class AppTest extends ApplicationTest {
 
     private AppController controller;
-    private static final String standardUserString = "{\n" +
-        "  \"ingredientContainer\" : {\n" +
-        "    \"ingredients\" : [ {\n" +
-        "      \"quantity\" : {\n" +
-        "        \"unit\" : \"stk\",\n" +
-        "        \"amount\" : 1.0\n" +
-        "      },\n" +
-        "      \"name\" : \"eggs\"\n" +
-        "    }, {\n" +
-        "      \"quantity\" : {\n" +
-        "        \"unit\" : \"dl\",\n" +
-        "        \"amount\" : 2.0\n" +
-        "      },\n" +
-        "      \"name\" : \"milk\"\n" +
-        "    }, {\n" +
-        "      \"quantity\" : {\n" +
-        "        \"unit\" : \"gram\",\n" +
-        "        \"amount\" : 3.0\n" +
-        "      },\n" +
-        "      \"name\" : \"sugar\"\n" +
-        "    } ]\n" +
-        "  },\n" +
-        "  \"recipeContainer\" : {\n" +
-        "    \"recipes\" : [ {\n" +
-        "      \"ingredientContainer\" : {\n" +
-        "        \"ingredients\" : [ {\n" +
-        "          \"quantity\" : {\n" +
-        "            \"unit\" : \"gram\",\n" +
-        "            \"amount\" : 400.0\n" +
-        "          },\n" +
-        "          \"name\" : \"minced meat\"\n" +
-        "        }, {\n" +
-        "          \"quantity\" : {\n" +
-        "            \"unit\" : \"gram\",\n" +
-        "            \"amount\" : 200.0\n" +
-        "          },\n" +
-        "          \"name\" : \"cheese\"\n" +
-        "        }, {\n" +
-        "          \"quantity\" : {\n" +
-        "            \"unit\" : \"stk\",\n" +
-        "            \"amount\" : 9.0\n" +
-        "          },\n" +
-        "          \"name\" : \"lasagne plates\"\n" +
-        "        } ]\n" +
-        "      },\n" +
-        "      \"recipeInstructions\" : [ \"cook\", \"bake\", \"eat\" ],\n" +
-        "      \"metadata\" : {\n" +
-        "        \"author\" : \"bestUsername\",\n" +
-        "        \"portion\" : 4.0,\n" +
-        "        \"image\" : \"http://folk.ntnu.no/anderobs/images/tikkaMasala.png\",\n" +
-        "        \"recipeName\" : \"Lasagne\",\n" +
-        "        \"recipeDescription\" : \"God og smakfull lasagne\",\n" +
-        "        \"minutes\" : 90\n" +
-        "      }\n" +
-        "    }, {\n" +
-        "      \"ingredientContainer\" : {\n" +
-        "        \"ingredients\" : [ {\n" +
-        "          \"quantity\" : {\n" +
-        "            \"unit\" : \"stk\",\n" +
-        "            \"amount\" : 2.0\n" +
-        "          },\n" +
-        "          \"name\" : \"eggs\"\n" +
-        "        }, {\n" +
-        "          \"quantity\" : {\n" +
-        "            \"unit\" : \"dl\",\n" +
-        "            \"amount\" : 3.0\n" +
-        "          },\n" +
-        "          \"name\" : \"tikka\"\n" +
-        "        } ]\n" +
-        "      },\n" +
-        "      \"recipeInstructions\" : [ \"mix\", \"doStuff\", \"serve\" ],\n" +
-        "      \"metadata\" : {\n" +
-        "        \"author\" : \"bestUsername\",\n" +
-        "        \"portion\" : 2.0,\n" +
-        "        \"image\" : \"http://folk.ntnu.no/anderobs/images/tikkaMasala.png\",\n" +
-        "        \"recipeName\" : \"Tikka masala\",\n" +
-        "        \"recipeDescription\" : \"Describing description of tikka masala\",\n" +
-        "        \"minutes\" : 60\n" +
-        "      }\n" +
-        "    } ]\n" +
-        "  },\n" +
-        "  \"username\" : \"testuser\"\n" +
-        "}";
+
+    private static final User user =
+        new User(new IngredientContainer(), new RecipeContainer(), "testuser");
+    private static final User user2 =
+        new User(new IngredientContainer(), new RecipeContainer(), "testuser");
+    private static final DinneriumAccess mockAccess = mock(DinneriumAccess.class);
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -117,25 +50,41 @@ public class AppTest extends ApplicationTest {
         stage.show();
     }
 
-    @BeforeEach
-    public void setupUser() {
-        clickOn("#usernameInput").write("testUser");
-        clickOn("#loginButton");
-    }
+    @BeforeAll
+    static void setupTestUsers() {
+        Ingredient ing1 = new Ingredient(new Quantity(1.0, "stk"), "eggs");
+        Ingredient ing2 = new Ingredient(new Quantity(2.0, "dl"), "milk");
+        Ingredient ing3 = new Ingredient(new Quantity(3.0, "gram"), "sugar");
+        Ingredient ing4 = new Ingredient(new Quantity(3.0, "dl"), "new item");
+        addIngredientsToUser(user, ing1, ing2, ing3);
+        addIngredientsToUser(user2, ing1, ing2, ing3, ing4);
 
-    @AfterAll
-    static void removeFileCreated() {
-        File file = Paths.get("../restapi/src/main/resources/storage/testuser.json").toFile();
-        assertTrue(file.delete());
+        IngredientContainer ic = new IngredientContainer();
+        ic.addItem(new Ingredient(new Quantity(2.0, "dl"), "milk"));
+        RecipeInstructions ri = new RecipeInstructions(List.of("one", "two", "three"));
+        Metadata md = new Metadata("testuser", 2.0, "name", "delicious", 30);
+        Recipe recipe = new Recipe(ic, ri, md);
+
+        user.getRecipeContainer().addItem(recipe);
+        user2.getRecipeContainer().addItem(recipe);
+        user2.getRecipeContainer().addItem(recipe);
     }
 
     @BeforeAll
-    static void createFileForTest() throws IOException {
-        File file = new File("../restapi/src/main/resources/storage/testuser.json");
-        assertTrue(file.createNewFile());
-        FileWriter writer = new FileWriter("../restapi/src/main/resources/storage/testuser.json");
-        writer.write(standardUserString);
-        writer.close();
+    static void setupMockito() {
+        when(mockAccess.login("testuser")).thenReturn(user);
+        when(mockAccess.login("user")).thenThrow(new IllegalArgumentException("not valid"));
+        when(mockAccess.registerUser("user")).thenThrow(new IllegalArgumentException("not valid"));
+        when(mockAccess.getUnits()).thenReturn(Quantity.units);
+        when(mockAccess.postIngredient(eq("testuser"), any(Ingredient.class))).thenReturn(user2);
+        when(mockAccess.postRecipe(eq("testuser"), any(Recipe.class))).thenReturn(user2);
+    }
+
+    @BeforeEach
+    public void setupUser() {
+        controller.setDinneriumAccess(mockAccess);
+        clickOn("#usernameInput").write("testUser");
+        clickOn("#loginButton");
     }
 
     @Test
@@ -154,7 +103,7 @@ public class AppTest extends ApplicationTest {
             || lookup("#recipesPane").query().isVisible()
             || lookup("#settingsPane").query().isVisible());
         assertFalse(lookup("#loginButton").query().isVisible()
-                || lookup("#usernameInput").query().isVisible());
+            || lookup("#usernameInput").query().isVisible());
         clickOn("#yourRecipesText");
         assertTrue(lookup("#recipesPane").query().isVisible());
         assertTrue(lookup("#recipesScrollPane").query().isVisible());
@@ -174,8 +123,6 @@ public class AppTest extends ApplicationTest {
         Iterator<Ingredient> expectedIterator =
             controller.getUser().getIngredientContainer().iterator();
 
-        assertTrue(actualList.hasNext());
-        assertTrue(compareIngredients(expectedIterator.next(), (Ingredient) actualList.next()));
         assertTrue(actualList.hasNext());
         assertTrue(compareIngredients(expectedIterator.next(), (Ingredient) actualList.next()));
         assertTrue(actualList.hasNext());
@@ -212,7 +159,7 @@ public class AppTest extends ApplicationTest {
         assertEquals(1,
             lookup("#recipesAnchorPane").queryParent().getChildrenUnmodifiable().size());
         clickOn("#hideRecipeInformationButton");
-        assertEquals(2,
+        assertEquals(1,
             lookup("#recipesAnchorPane").queryParent().getChildrenUnmodifiable().size());
     }
 
@@ -228,8 +175,6 @@ public class AppTest extends ApplicationTest {
         clickOn("#newRecipeAmountInput").write("400");
         clickOn("#newRecipeUnitComboBox");
         type(KeyCode.DOWN);
-        type(KeyCode.DOWN);
-        type(KeyCode.DOWN);
         type(KeyCode.ENTER);
         clickOn("#newRecipeAddButton");
         assertEquals(1, controller.getNewRecipeIngredients().size());
@@ -239,6 +184,8 @@ public class AppTest extends ApplicationTest {
         clickOn("#newRecipeAddInstruction");
         assertEquals(2, controller.getNewRecipeInstructions().size());
         clickOn("#addRecipeButton");
+        assertEquals(2,
+            lookup("#recipesAnchorPane").queryParent().getChildrenUnmodifiable().size());
     }
 
     @Test
@@ -255,23 +202,23 @@ public class AppTest extends ApplicationTest {
         clickOn("#addButton");
         checkMsgPaneVisible();
     }
+
     @Test
     public void testRegisterUser() {
         clickOn("#settingsText");
         clickOn("#logoutButton");
-        clickOn("#usernameInput").write("testUser");
+        clickOn("#usernameInput").write("user");
         clickOn("#registerButton");
         checkMsgPaneVisible();
         lookup("#usernameInput").queryTextInputControl().clear();
 
-        clickOn("#usernameInput").write("userdontexist");
+        clickOn("#usernameInput").write("user");
         clickOn("#loginButton");
         checkMsgPaneVisible();
 
         clickOn("#registerButton");
-        File file = Paths.get("../restapi/src/main/resources/storage/userdontexist.json").toFile();
-        assertTrue(file.delete());
     }
+
     @Test
     void testInvalidInputsForNewRecipe() {
         clickOn("#yourRecipesText");
@@ -288,6 +235,7 @@ public class AppTest extends ApplicationTest {
         clickOn("#addRecipeButton");
         checkMsgPaneVisible();
     }
+
     @Test
     void testDeleteInstructionsAndIngredients() {
         clickOn("#yourRecipesText");
@@ -305,8 +253,11 @@ public class AppTest extends ApplicationTest {
         }
         clickOn("#deleteIng_1");
 
-        assertEquals(1, controller.navbarViewController.recipesViewController.getNewRecipeIngredients().size());
-        assertEquals(1, controller.navbarViewController.recipesViewController.getNewRecipeIngredientsButtons().size());
+        assertEquals(1,
+            controller.navbarViewController.recipesViewController.getNewRecipeIngredients().size());
+        assertEquals(1,
+            controller.navbarViewController.recipesViewController.getNewRecipeIngredientsButtons()
+                .size());
 
         clickOn("#instructionTextArea").write("don't delete me");
         clickOn("#newRecipeAddInstruction");
@@ -314,8 +265,18 @@ public class AppTest extends ApplicationTest {
         clickOn("#newRecipeAddInstruction");
         clickOn("#deleteInst_2");
 
-        assertEquals(1, controller.navbarViewController.recipesViewController.getNewRecipeInstructions().size());
-        assertEquals(1, controller.navbarViewController.recipesViewController.getNewRecipeInstructionsButtons().size());
+        assertEquals(1,
+            controller.navbarViewController.recipesViewController.getNewRecipeInstructions()
+                .size());
+        assertEquals(1,
+            controller.navbarViewController.recipesViewController.getNewRecipeInstructionsButtons()
+                .size());
+    }
+
+    private static void addIngredientsToUser(User user, Ingredient ...ingredients) {
+        for (Ingredient i : ingredients) {
+            user.getIngredientContainer().addItem(i);
+        }
     }
 
     private void checkMsgPaneVisible() {

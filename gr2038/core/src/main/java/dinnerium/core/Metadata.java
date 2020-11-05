@@ -24,14 +24,14 @@ public class Metadata {
         } else {
             throw new IllegalArgumentException("Author missing");
         }
-        if(validateRecipeName(recipeName)){
+        if (validateRecipeName(recipeName)) {
             this.recipeName = recipeName;
-        }else{
-            throw  new IllegalArgumentException("Recipename Missing");
+        } else {
+            throw new IllegalArgumentException("Recipename Missing");
         }
-        if(validateRecipeDescription(recipeDescription)){
+        if (validateRecipeDescription(recipeDescription)) {
             this.recipeDescription = recipeDescription;
-        }else{
+        } else {
             throw new IllegalArgumentException("Recipedescription missing");
         }
         if (validateNumber(portion, minutes)) {
@@ -54,6 +54,7 @@ public class Metadata {
     private boolean validateRecipeName(String recipeName) {
         return !recipeName.isBlank();
     }
+
     private boolean validateRecipeDescription(String recipeDescription) {
         return !recipeDescription.isBlank();
     }
