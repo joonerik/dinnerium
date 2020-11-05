@@ -13,7 +13,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RemoteDinneriumAccess implements DinneriumAccess {
 
@@ -43,25 +42,6 @@ public class RemoteDinneriumAccess implements DinneriumAccess {
         } catch (IOException | InterruptedException | IllegalArgumentException e) {
             throw new IllegalArgumentException("No user with username: " + username);
         }
-    }
-
-    private HttpRequest createUserRequest(String action, String username) {
-        return HttpRequest.newBuilder(URI.create(apiBaseUri + "users/" + action))
-            .header("Content-Type", "application/json")
-            .header("Accept", "application/json")
-            .POST(HttpRequest.BodyPublishers.ofString("{username:\"" + username + "\"}"))
-            .build();
-    }
-
-    private User getResponseUser(HttpRequest request) throws IOException, InterruptedException {
-        final HttpResponse<String> response =
-            HttpClient.newBuilder().build().send(request, HttpResponse.BodyHandlers.ofString());
-        String responseString = response.body();
-        User user = mapper.readValue(responseString, User.class);
-        if (user == null) {
-            throw new IllegalArgumentException();
-        }
-        return user;
     }
 
     @Override
@@ -104,13 +84,48 @@ public class RemoteDinneriumAccess implements DinneriumAccess {
         try {
             final HttpResponse<String> response =
                 HttpClient.newBuilder().build().send(request, HttpResponse.BodyHandlers.ofString());
-            return (Units[]) Arrays.stream(response.body()
-                .replace("[", "")
-                .replace("]", "")
-                .split(", "))
-                .map(Units::valueOf).toArray();
+            return createUnitsArray(response.body());
         } catch (IOException | InterruptedException e) {
             throw new IllegalArgumentException("Could not get units from the server.");
         }
+    }
+
+    private HttpRequest createUserRequest(String action, String username) {
+        return HttpRequest.newBuilder(URI.create(apiBaseUri + "users/" + action))
+            .header("Content-Type", "application/json")
+            .header("Accept", "application/json")
+            .POST(HttpRequest.BodyPublishers.ofString("{username:\"" + username + "\"}"))
+            .build();
+    }
+
+    private User getResponseUser(HttpRequest request) throws IOException, InterruptedException {
+        final HttpResponse<String> response =
+            HttpClient.newBuilder().build().send(request, HttpResponse.BodyHandlers.ofString());
+        String responseString = response.body();
+        User user = mapper.readValue(responseString, User.class);
+        if (user == null) {
+            throw new IllegalArgumentException();
+        }
+        return user;
+    }
+
+    /**
+     * Method for creating an array of Units, retrieved from the response body. First creates a list
+     * of strings and then converts them to an array of units that is returned. Has to be done as
+     * it is not possible to do it without converting it to a list og strings first.
+     *
+     * @param responseBody the response body containing the list of units.
+     * @return an array containing all the Units form the http-response body.
+     */
+    private Units[] createUnitsArray(String responseBody) {
+        List<String> temp = Arrays.asList(responseBody
+            .replace("[", "")
+            .replace("]", "")
+            .split(", "));
+        Units[] units = new Units[temp.size()];
+        for (int i = 0; i < temp.size(); i++) {
+            units[i] = Units.valueOf(temp.get(i));
+        }
+        return units;
     }
 }
