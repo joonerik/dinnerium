@@ -1,34 +1,19 @@
 package dinnerium.core;
 
-import java.util.List;
-
-
 public class Quantity {
 
-    public static final List<String> units =
-        List.of("stk", "dl", "gram", "liter", "kg", "ss", "ts");
     private double amount;
-    private String unit;
+    private Units unit;
 
     /**
      * Constructs a Quantity object with the amount and unit.
      *
-     * @param amount of substance
-     * @param unit   which amount is measured in
+     * @param amount of substance.
+     * @param unit   the unit the amount is measured in.
      */
     public Quantity(double amount, String unit) {
         this.setAmount(amount);
         this.setUnit(unit);
-    }
-
-    /**
-     * Checks if input-unit is valid.
-     *
-     * @param unit which unit
-     * @return true if valid
-     */
-    private boolean validateUnit(String unit) {
-        return unit != null && units.contains(unit);
     }
 
     private boolean validateAmount(double amount) {
@@ -50,7 +35,7 @@ public class Quantity {
      * @return unit
      */
     public String getUnit() {
-        return unit;
+        return unit.toString();
     }
 
     /**
@@ -73,9 +58,9 @@ public class Quantity {
      * @throws IllegalArgumentException if the unit is not valid
      */
     public void setUnit(String unit) {
-        if (validateUnit(unit)) {
-            this.unit = unit;
-        } else {
+        try {
+            this.unit = Units.valueOf(unit);
+        } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Please select a valid unit");
         }
     }
