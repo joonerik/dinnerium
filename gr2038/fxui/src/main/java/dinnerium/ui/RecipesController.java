@@ -6,6 +6,7 @@ import dinnerium.core.Metadata;
 import dinnerium.core.Quantity;
 import dinnerium.core.Recipe;
 import dinnerium.core.RecipeInstructions;
+import dinnerium.core.Units;
 import dinnerium.core.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +55,7 @@ public class RecipesController {
     @FXML
     TextField newRecipeAmountInput;
     @FXML
-    ComboBox<String> newRecipeUnitComboBox;
+    ComboBox<Units> newRecipeUnitComboBox;
     @FXML
     Button newRecipeAddButton;
     @FXML
@@ -89,7 +90,8 @@ public class RecipesController {
     void handleNewRecipeAddIngredient() {
         try {
             String amountText = newRecipeAmountInput.getText();
-            String unit = newRecipeUnitComboBox.getSelectionModel().getSelectedItem();
+            //TODO check if unit should be represented as Units.
+            String unit = newRecipeUnitComboBox.getSelectionModel().getSelectedItem().toString();
             String name = newRecipeNameIngredientInput.getText();
             Ingredient i = new Ingredient(new Quantity(Double.parseDouble(amountText), unit), name);
             Button button = createDeleteButton(i, newRecipeIngredientsButtons);
@@ -100,6 +102,8 @@ public class RecipesController {
             newRecipeAmountInput.clear();
         } catch (NumberFormatException e) {
             FeedbackHandler.showMessage(msgPane, "Quantityfield is empty", 'E');
+        } catch (NullPointerException e) {
+            FeedbackHandler.showMessage(msgPane, "Unit is not selected", 'E');
         } catch (IllegalArgumentException e) {
             FeedbackHandler.showMessage(msgPane, e.getMessage(), 'E');
         }

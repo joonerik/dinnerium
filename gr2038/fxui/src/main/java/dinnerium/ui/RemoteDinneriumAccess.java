@@ -3,6 +3,7 @@ package dinnerium.ui;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dinnerium.core.Ingredient;
 import dinnerium.core.Recipe;
+import dinnerium.core.Units;
 import dinnerium.core.User;
 import dinnerium.json.DinneriumModule;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RemoteDinneriumAccess implements DinneriumAccess {
 
@@ -94,7 +96,7 @@ public class RemoteDinneriumAccess implements DinneriumAccess {
     }
 
     @Override
-    public List<String> getUnits() {
+    public Units[] getUnits() {
         HttpRequest request = HttpRequest.newBuilder(URI.create(apiBaseUri + "units"))
             .header("Accept", "application/json")
             .GET()
@@ -102,10 +104,11 @@ public class RemoteDinneriumAccess implements DinneriumAccess {
         try {
             final HttpResponse<String> response =
                 HttpClient.newBuilder().build().send(request, HttpResponse.BodyHandlers.ofString());
-            return Arrays.asList(response.body()
+            return (Units[]) Arrays.stream(response.body()
                 .replace("[", "")
                 .replace("]", "")
-                .split(", "));
+                .split(", "))
+                .map(Units::valueOf).toArray();
         } catch (IOException | InterruptedException e) {
             throw new IllegalArgumentException("Could not get units from the server.");
         }

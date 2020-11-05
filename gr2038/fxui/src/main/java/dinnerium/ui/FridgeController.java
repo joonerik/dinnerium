@@ -2,6 +2,7 @@ package dinnerium.ui;
 
 import dinnerium.core.Ingredient;
 import dinnerium.core.Quantity;
+import dinnerium.core.Units;
 import dinnerium.core.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,7 +29,7 @@ public class FridgeController {
     @FXML
     TextField amountInput;
     @FXML
-    ComboBox<String> unitComboBox;
+    ComboBox<Units> unitComboBox;
     @FXML
     TableView<Ingredient> ingredientTableView;
     @FXML
@@ -48,7 +49,8 @@ public class FridgeController {
     void handleAddIngredient() {
         try {
             String amountText = amountInput.getText();
-            String unit = unitComboBox.getSelectionModel().getSelectedItem();
+            //TODO check if unit should be represented as Units.
+            String unit = unitComboBox.getSelectionModel().getSelectedItem().toString();
             String name = nameInput.getText();
             Ingredient i = new Ingredient(new Quantity(Double.parseDouble(amountText), unit), name);
 
@@ -57,6 +59,8 @@ public class FridgeController {
             FeedbackHandler.showMessage(msgPane, "New ingredient added", 'M');
         } catch (NumberFormatException e) {
             FeedbackHandler.showMessage(msgPane, "Quantityfield is empty", 'E');
+        } catch (NullPointerException e) {
+            FeedbackHandler.showMessage(msgPane, "Unit not selected", 'E');
         } catch (IllegalArgumentException e) {
             FeedbackHandler.showMessage(msgPane, e.getMessage(), 'E');
         }

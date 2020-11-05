@@ -2,6 +2,7 @@ package dinnerium.ui;
 
 import dinnerium.core.Ingredient;
 import dinnerium.core.Recipe;
+import dinnerium.core.Units;
 import dinnerium.core.User;
 import java.util.List;
 
@@ -15,5 +16,5 @@ public interface DinneriumAccess {
 
     User postRecipe(String username, Recipe recipe) throws IllegalArgumentException;
 
-    List<String> getUnits();
+    Units[] getUnits();
 }
