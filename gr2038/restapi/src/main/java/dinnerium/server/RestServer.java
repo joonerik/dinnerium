@@ -3,7 +3,6 @@ package dinnerium.server;
 import static spark.Spark.get;
 import static spark.Spark.post;
 
-import dinnerium.core.Quantity;
 import dinnerium.core.Units;
 import dinnerium.service.IngredientsService;
 import dinnerium.service.RecipeService;
