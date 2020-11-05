@@ -90,7 +90,6 @@ public class RecipesController {
     void handleNewRecipeAddIngredient() {
         try {
             String amountText = newRecipeAmountInput.getText();
-            //TODO check if unit should be represented as Units.
             String unit = newRecipeUnitComboBox.getSelectionModel().getSelectedItem().toString();
             String name = newRecipeNameIngredientInput.getText();
             Ingredient i = new Ingredient(new Quantity(Double.parseDouble(amountText), unit), name);

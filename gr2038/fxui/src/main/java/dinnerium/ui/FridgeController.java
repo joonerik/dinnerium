@@ -49,7 +49,6 @@ public class FridgeController {
     void handleAddIngredient() {
         try {
             String amountText = amountInput.getText();
-            //TODO check if unit should be represented as Units.
             String unit = unitComboBox.getSelectionModel().getSelectedItem().toString();
             String name = nameInput.getText();
             Ingredient i = new Ingredient(new Quantity(Double.parseDouble(amountText), unit), name);
