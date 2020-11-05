@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 import dinnerium.core.Quantity;
+import dinnerium.core.Units;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -130,7 +132,7 @@ class RestServerTest {
                 .GET()
                 .build();
             HttpResponse<String> response = HttpClient.newBuilder().build().send(request, HttpResponse.BodyHandlers.ofString());
-            assertEquals(Quantity.units.toString(), response.body());
+            assertEquals(Arrays.toString(Units.values()), response.body());
         } catch (IOException | InterruptedException e) {
             fail(e.getMessage());
         }
