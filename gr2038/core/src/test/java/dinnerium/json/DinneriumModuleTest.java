@@ -219,7 +219,7 @@ class DinneriumModuleTest {
             expectedRecipe.getIngredientContainer().getContainerSize());
         compareRecipeInstructions(expectedRecipe.getRecipeInstructions(),
             r2.getRecipeInstructions());
-        compareMetadata(expectedRecipe.getMetadata(), r2.getMetadata());
+        compareMetadata(expectedRecipe.getRecipeMetadata(), r2.getRecipeMetadata());
     }
 
     private void compareRecipeInstructions(RecipeInstructions expectedInstructions,

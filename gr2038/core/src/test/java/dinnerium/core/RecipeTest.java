@@ -48,6 +48,6 @@ class RecipeTest {
 
     @Test
     void getMetadata() {
-        assertEquals(r.getMetadata(), md);
+        assertEquals(r.getRecipeMetadata(), md);
     }
 }

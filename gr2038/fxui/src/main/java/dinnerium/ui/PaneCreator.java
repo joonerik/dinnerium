@@ -24,7 +24,7 @@ public class PaneCreator {
         pane.setPrefWidth(522);
         pane.setPrefHeight(167);
 
-        Text recipeName = new Text(recipe.getMetadata().getRecipeName());
+        Text recipeName = new Text(recipe.getRecipeMetadata().getRecipeName());
         recipeName.getStyleClass().add("recipe-name");
         recipeName.setLayoutX(1);
         recipeName.setLayoutY(25);
@@ -36,13 +36,13 @@ public class PaneCreator {
         childPane.getStyleClass().add("child-pane");
 
         Text recipeInfo = new Text(recipe.getIngredientContainer().getContainerSize()
-            + " ingredients required  | " + recipe.getMetadata().getMinutes() + " minutes");
+            + " ingredients required  | " + recipe.getRecipeMetadata().getMinutes() + " minutes");
         recipeInfo.setLayoutY(30);
         recipeInfo.setLayoutX(127);
         recipeInfo.getStyleClass().add("recipe-info");
         recipeInfo.setWrappingWidth(390);
 
-        Text recipeDescription = new Text(recipe.getMetadata().getRecipeDescription());
+        Text recipeDescription = new Text(recipe.getRecipeMetadata().getRecipeDescription());
         recipeDescription.setWrappingWidth(370);
         recipeDescription.getStyleClass().add("recipe-description");
         recipeDescription.setLayoutX(132);
@@ -78,20 +78,20 @@ public class PaneCreator {
         recipeInfoPane.setLayoutY(10);
         recipeInfoPane.setLayoutX(64);
 
-        Text recipeName = new Text(recipe.getMetadata().getRecipeName());
+        Text recipeName = new Text(recipe.getRecipeMetadata().getRecipeName());
         recipeName.getStyleClass().add("recipe-info-name");
         recipeName.setLayoutY(26);
         recipeName.setWrappingWidth(522);
 
-        Text recipeDescription = new Text(recipe.getMetadata().getRecipeDescription());
+        Text recipeDescription = new Text(recipe.getRecipeMetadata().getRecipeDescription());
         recipeDescription.getStyleClass().add("recipe-info-description");
         recipeDescription.setLayoutY(80);
         recipeDescription.setLayoutX(20);
         recipeDescription.setWrappingWidth(482);
 
-        Text metadata = new Text("Author: " + recipe.getMetadata().getAuthor() + "\n"
-            + "Portions: " + recipe.getMetadata().getPortion() + "\n"
-            + "Time: " + recipe.getMetadata().getMinutes() + " minutes");
+        Text metadata = new Text("Author: " + recipe.getRecipeMetadata().getAuthor() + "\n"
+            + "Portions: " + recipe.getRecipeMetadata().getPortion() + "\n"
+            + "Time: " + recipe.getRecipeMetadata().getMinutes() + " minutes");
         metadata.getStyleClass().add("recipe-info-metadata");
         metadata.setLayoutY(15);
         metadata.setLayoutX(10);

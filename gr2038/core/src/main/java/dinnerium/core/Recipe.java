@@ -44,7 +44,7 @@ public class Recipe {
      *
      * @return recipeMetadata
      */
-    public RecipeMetadata getMetadata() {
+    public RecipeMetadata getRecipeMetadata() {
         return recipeMetadata;
     }
 }
