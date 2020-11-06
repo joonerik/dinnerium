@@ -9,6 +9,7 @@ tasks:
 
 ports:
   - port: 4567
+  - port: 6080
   - port: 6969
   - port: 3000
     onOpen: open-browser

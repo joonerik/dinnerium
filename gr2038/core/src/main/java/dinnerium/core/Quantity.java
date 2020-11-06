@@ -1,38 +1,31 @@
 package dinnerium.core;
 
-import java.util.List;
-
-
 public class Quantity {
 
-    public static final List<String> units =
-        List.of("stk", "dl", "gram", "liter", "kg", "ss", "ts");
-    private double amount;
-    private String unit;
+    private final double amount;
+    private final Units unit;
 
     /**
-     * Constructs a Quantity object with the amount and unit.
+     * Constructs a Quantity object with the amount and unit. Validates if the amount if larger
+     * than 0, if not throws IllegalArgumentException. Validates if the unit is in the Enum Units,
+     * if not, throws IllegalArgumentException.
      *
-     * @param amount of substance
-     * @param unit   which amount is measured in
+     * @param amount of substance.
+     * @param unit   the unit the amount is measured in.
+     * @throws IllegalArgumentException if the amount is smaller than 0 or the unit is not in the
+     *      Enum Units.
      */
     public Quantity(double amount, String unit) {
-        this.setAmount(amount);
-        this.setUnit(unit);
-    }
-
-    /**
-     * Checks if input-unit is valid.
-     *
-     * @param unit which unit
-     * @return true if valid
-     */
-    private boolean validateUnit(String unit) {
-        return unit != null && units.contains(unit);
-    }
-
-    private boolean validateAmount(double amount) {
-        return amount > 0.0;
+        if (amount > 0.0) {
+            this.amount = Math.round(amount * 100.0) / 100.0;
+        } else {
+            throw new IllegalArgumentException("Amount must be larger than 0");
+        }
+        try {
+            this.unit = Units.valueOf(unit);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Please select a valid unit");
+        }
     }
 
     /**
@@ -50,34 +43,7 @@ public class Quantity {
      * @return unit
      */
     public String getUnit() {
-        return unit;
-    }
-
-    /**
-     * Sets how much of the unit, ex: 3 stk where 3 is amount and stk is unit.
-     *
-     * @param amount the amount of this quantity
-     */
-    public void setAmount(double amount) {
-        if (validateAmount(amount)) {
-            this.amount = Math.round(amount * 100.0) / 100.0;
-        } else {
-            throw new IllegalArgumentException("Amount must be larger than 0");
-        }
-    }
-
-    /**
-     * Sets the unit of this quantity.
-     *
-     * @param unit to be set
-     * @throws IllegalArgumentException if the unit is not valid
-     */
-    public void setUnit(String unit) {
-        if (validateUnit(unit)) {
-            this.unit = unit;
-        } else {
-            throw new IllegalArgumentException("Please select a valid unit");
-        }
+        return unit.toString();
     }
 
     /**

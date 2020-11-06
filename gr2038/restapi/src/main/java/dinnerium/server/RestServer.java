@@ -3,11 +3,12 @@ package dinnerium.server;
 import static spark.Spark.get;
 import static spark.Spark.post;
 
-import dinnerium.core.Quantity;
+import dinnerium.core.Units;
 import dinnerium.service.IngredientsService;
 import dinnerium.service.RecipeService;
 import dinnerium.service.UserService;
 import java.io.IOException;
+import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +27,7 @@ public class RestServer {
 
         get("/units", (req, res) -> {
             res.type("application/json");
-            return Quantity.units;
+            return Arrays.toString(Units.values());
         });
 
         post("/users/login", (req, res) -> {
