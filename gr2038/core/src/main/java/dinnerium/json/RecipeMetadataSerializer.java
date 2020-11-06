@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import dinnerium.core.RecipeMetadata;
 import java.io.IOException;
 
-class MetadataSerializer extends JsonSerializer<RecipeMetadata> {
+class RecipeMetadataSerializer extends JsonSerializer<RecipeMetadata> {
 
     /**
      * Converts the RecipeMetadata object to a string in json format.

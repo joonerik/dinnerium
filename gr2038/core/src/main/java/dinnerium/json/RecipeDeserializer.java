@@ -54,9 +54,9 @@ class RecipeDeserializer extends JsonDeserializer<Recipe> {
             }
 
             JsonNode metadataContainerNode = objectNode.get("metadata");
-            MetadataDeserializer metadataDeserializer = new MetadataDeserializer();
+            RecipeMetadataDeserializer recipeMetadataDeserializer = new RecipeMetadataDeserializer();
             if (metadataContainerNode instanceof ObjectNode) {
-                md = metadataDeserializer.deserialize(metadataContainerNode);
+                md = recipeMetadataDeserializer.deserialize(metadataContainerNode);
             } else {
                 return null;
             }

@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.node.TextNode;
 import dinnerium.core.RecipeMetadata;
 import java.io.IOException;
 
-class MetadataDeserializer extends JsonDeserializer<RecipeMetadata> {
+class RecipeMetadataDeserializer extends JsonDeserializer<RecipeMetadata> {
 
     @Override
     public RecipeMetadata deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException {
