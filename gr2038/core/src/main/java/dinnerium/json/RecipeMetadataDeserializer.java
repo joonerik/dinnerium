@@ -15,7 +15,8 @@ import java.io.IOException;
 class RecipeMetadataDeserializer extends JsonDeserializer<RecipeMetadata> {
 
     @Override
-    public RecipeMetadata deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException {
+    public RecipeMetadata deserialize(JsonParser parser, DeserializationContext ctxt)
+        throws IOException {
         TreeNode treeNode = parser.getCodec().readTree(parser);
         return deserialize((JsonNode) treeNode);
     }
@@ -24,9 +25,8 @@ class RecipeMetadataDeserializer extends JsonDeserializer<RecipeMetadata> {
      * Converts the RecipeMetadata from string in json file to a RecipeMetadata object.
      *
      * @param jsonNode the json node to be deserialized to a RecipeMetadata object.
-     * @return RecipeMetadata
-     *         RecipeMetadata that is read from file, null if the jsonNode is not on the correct format.
-     *
+     * @return RecipeMetadata RecipeMetadata that is read from file,
+     *          null if the jsonNode is not on the correct format.
      */
 
     public RecipeMetadata deserialize(JsonNode jsonNode) {
