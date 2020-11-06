@@ -57,7 +57,7 @@ public class FridgeController {
             updateTableView();
             FeedbackHandler.showMessage(msgPane, "New ingredient added", 'M');
         } catch (NumberFormatException e) {
-            FeedbackHandler.showMessage(msgPane, "Quantityfield is empty", 'E');
+            FeedbackHandler.showMessage(msgPane, "Quantity field invalid", 'E');
         } catch (NullPointerException e) {
             FeedbackHandler.showMessage(msgPane, "Unit not selected", 'E');
         } catch (IllegalArgumentException e) {
