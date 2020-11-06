@@ -16,7 +16,7 @@ public class Quantity {
      *      Enum Units.
      */
     public Quantity(double amount, String unit) {
-        if (validateAmount(amount)) {
+        if (amount > 0.0) {
             this.amount = Math.round(amount * 100.0) / 100.0;
         } else {
             throw new IllegalArgumentException("Amount must be larger than 0");
@@ -26,10 +26,6 @@ public class Quantity {
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Please select a valid unit");
         }
-    }
-
-    private boolean validateAmount(double amount) {
-        return amount > 0.0;
     }
 
     /**
