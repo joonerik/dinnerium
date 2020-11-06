@@ -16,7 +16,7 @@ public class RecipeInstructions implements Iterable<String> {
     }
 
     /**
-     * Sets an instruction.
+     * Adds an instruction.
      *
      * @param instruction description of a step
      *
