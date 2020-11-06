@@ -100,7 +100,7 @@ public class RecipesController {
             newRecipeNameIngredientInput.clear();
             newRecipeAmountInput.clear();
         } catch (NumberFormatException e) {
-            FeedbackHandler.showMessage(msgPane, "Quantityfield is empty", 'E');
+            FeedbackHandler.showMessage(msgPane, "Quantity field is empty", 'E');
         } catch (NullPointerException e) {
             FeedbackHandler.showMessage(msgPane, "Unit is not selected", 'E');
         } catch (IllegalArgumentException e) {
@@ -133,7 +133,6 @@ public class RecipesController {
                 newRecipeRecipeName.getText(),
                 newRecipeRecipeDescription.getText(),
                 minutes);
-
             IngredientContainer ic =
                 new IngredientContainer(new ArrayList<>(this.newRecipeIngredients));
             RecipeInstructions rc =
@@ -147,7 +146,7 @@ public class RecipesController {
             clearRecipeFields();
             changeSubScene("recipes");
         } catch (NumberFormatException e) {
-            FeedbackHandler.showMessage(msgPane, "Quantiy or minutes invalid", 'E');
+            FeedbackHandler.showMessage(msgPane, "Quantity or minutes invalid", 'E');
         } catch (IllegalArgumentException e) {
             FeedbackHandler.showMessage(msgPane, e.getMessage(), FeedbackHandler.ERROR);
         }
