@@ -2,18 +2,30 @@ package dinnerium.core;
 
 public class Quantity {
 
-    private double amount;
-    private Units unit;
+    private final double amount;
+    private final Units unit;
 
     /**
-     * Constructs a Quantity object with the amount and unit.
+     * Constructs a Quantity object with the amount and unit. Validates if the amount if larger
+     * than 0, if not throws IllegalArgumentException. Validates if the unit is in the Enum Units,
+     * if not, throws IllegalArgumentException.
      *
      * @param amount of substance.
      * @param unit   the unit the amount is measured in.
+     * @throws IllegalArgumentException if the amount is smaller than 0 or the unit is not in the
+     *      Enum Units.
      */
     public Quantity(double amount, String unit) {
-        this.setAmount(amount);
-        this.setUnit(unit);
+        if (validateAmount(amount)) {
+            this.amount = Math.round(amount * 100.0) / 100.0;
+        } else {
+            throw new IllegalArgumentException("Amount must be larger than 0");
+        }
+        try {
+            this.unit = Units.valueOf(unit);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Please select a valid unit");
+        }
     }
 
     private boolean validateAmount(double amount) {
@@ -36,33 +48,6 @@ public class Quantity {
      */
     public String getUnit() {
         return unit.toString();
-    }
-
-    /**
-     * Sets how much of the unit, ex: 3 stk where 3 is amount and stk is unit.
-     *
-     * @param amount the amount of this quantity
-     */
-    public void setAmount(double amount) {
-        if (validateAmount(amount)) {
-            this.amount = Math.round(amount * 100.0) / 100.0;
-        } else {
-            throw new IllegalArgumentException("Amount must be larger than 0");
-        }
-    }
-
-    /**
-     * Sets the unit of this quantity.
-     *
-     * @param unit to be set
-     * @throws IllegalArgumentException if the unit is not valid
-     */
-    public void setUnit(String unit) {
-        try {
-            this.unit = Units.valueOf(unit);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Please select a valid unit");
-        }
     }
 
     /**

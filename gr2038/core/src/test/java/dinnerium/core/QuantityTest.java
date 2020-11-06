@@ -10,9 +10,11 @@ public class QuantityTest {
 
     @Test
     public void checkUnitTest() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            Quantity quantity = new Quantity(12, "lb");
-        });
+        assertThrows(IllegalArgumentException.class, () -> new Quantity(12, "lb"));
+    }
+
+    @Test void testIllegalAmount() {
+        assertThrows(IllegalAccessException.class, () -> new Quantity(-1, "stk"));
     }
 
     @Test
@@ -25,18 +27,6 @@ public class QuantityTest {
         assertEquals("dl", q.getUnit());
     }
 
-    @Test
-    public void setAmountTest() {
-        q.setAmount(2.0);
-
-        assertEquals(2.0, q.getAmount());
-    }
-
-    @Test
-    public void setUnitTest() {
-        q.setUnit("stk");
-        assertEquals("stk", q.getUnit());
-    }
 
     @Test
     void testToString() {
