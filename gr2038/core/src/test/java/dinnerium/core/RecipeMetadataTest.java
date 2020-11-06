@@ -6,13 +6,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class MetadataTest {
+class RecipeMetadataTest {
 
-    Metadata md;
+    RecipeMetadata md;
 
     @BeforeEach
     public void setUp() {
-        md = new Metadata(
+        md = new RecipeMetadata(
             "Bakemester Harepus",
             5.0,
             "Pepperkaker",
@@ -49,7 +49,7 @@ class MetadataTest {
     @Test
     void testValidatePortion() {
         assertThrows(IllegalArgumentException.class, () -> {
-            Metadata metadata = new Metadata(
+            RecipeMetadata recipeMetadata = new RecipeMetadata(
                 "Bakemester Harepus",
                 0.0,
                 "Pepperkaker",
@@ -62,7 +62,7 @@ class MetadataTest {
     @Test
     void testValidateMinutes() {
         assertThrows(IllegalArgumentException.class, () -> {
-            Metadata metadata = new Metadata(
+            RecipeMetadata recipeMetadata = new RecipeMetadata(
                 "Bakemester Harepus",
                 5.0,
                 "Pepperkaker",
@@ -75,7 +75,7 @@ class MetadataTest {
     @Test
     void testValidateString() {
         assertThrows(IllegalArgumentException.class, () -> {
-            Metadata metadata = new Metadata(
+            RecipeMetadata recipeMetadata = new RecipeMetadata(
                 "",
                 5.0,
                 "Pepperkaker",
@@ -85,7 +85,7 @@ class MetadataTest {
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Metadata metadata = new Metadata(
+            RecipeMetadata recipeMetadata = new RecipeMetadata(
                 "Bakemester Harepus",
                 5.0,
                 "Pepperkaker",
@@ -95,7 +95,7 @@ class MetadataTest {
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Metadata metadata = new Metadata(
+            RecipeMetadata recipeMetadata = new RecipeMetadata(
                 "Bakemester Harepus",
                 5.0,
                 "",
@@ -105,7 +105,7 @@ class MetadataTest {
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Metadata metadata = new Metadata(
+            RecipeMetadata recipeMetadata = new RecipeMetadata(
                 "Bakemester Harepus",
                 5.0,
                 "Pepperkaker",
@@ -115,7 +115,7 @@ class MetadataTest {
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Metadata metadata = new Metadata(
+            RecipeMetadata recipeMetadata = new RecipeMetadata(
                 "  ",
                 5.0,
                 "Pepperkaker",
@@ -125,7 +125,7 @@ class MetadataTest {
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Metadata metadata = new Metadata(
+            RecipeMetadata recipeMetadata = new RecipeMetadata(
                 "Bakemester Harepus",
                 5.0,
                 "",

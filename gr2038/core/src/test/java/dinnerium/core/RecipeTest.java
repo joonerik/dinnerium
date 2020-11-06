@@ -13,7 +13,7 @@ class RecipeTest {
     Recipe r;
     IngredientContainer ic;
     RecipeInstructions ri;
-    Metadata md;
+    RecipeMetadata md;
 
     @BeforeEach
     public void setUp() {
@@ -25,7 +25,7 @@ class RecipeTest {
 
         ic = new IngredientContainer(c2);
         ri = new RecipeInstructions(c1);
-        md = new Metadata(
+        md = new RecipeMetadata(
             "Bakemester Harepus",
             5.0,
             "Pepperkaker",

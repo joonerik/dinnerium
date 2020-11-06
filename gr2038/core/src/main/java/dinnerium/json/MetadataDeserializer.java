@@ -9,27 +9,27 @@ import com.fasterxml.jackson.databind.node.DoubleNode;
 import com.fasterxml.jackson.databind.node.IntNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
-import dinnerium.core.Metadata;
+import dinnerium.core.RecipeMetadata;
 import java.io.IOException;
 
-class MetadataDeserializer extends JsonDeserializer<Metadata> {
+class MetadataDeserializer extends JsonDeserializer<RecipeMetadata> {
 
     @Override
-    public Metadata deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException {
+    public RecipeMetadata deserialize(JsonParser parser, DeserializationContext ctxt) throws IOException {
         TreeNode treeNode = parser.getCodec().readTree(parser);
         return deserialize((JsonNode) treeNode);
     }
 
     /**
-     * Converts the Metadata from string in json file to a Metadata object.
+     * Converts the RecipeMetadata from string in json file to a RecipeMetadata object.
      *
-     * @param jsonNode the json node to be deserialized to a Metadata object.
-     * @return Metadata
-     *         Metadata that is read from file, null if the jsonNode is not on the correct format.
+     * @param jsonNode the json node to be deserialized to a RecipeMetadata object.
+     * @return RecipeMetadata
+     *         RecipeMetadata that is read from file, null if the jsonNode is not on the correct format.
      *
      */
 
-    public Metadata deserialize(JsonNode jsonNode) {
+    public RecipeMetadata deserialize(JsonNode jsonNode) {
         if (jsonNode instanceof ObjectNode) {
             ObjectNode objectNode = (ObjectNode) jsonNode;
             String author;
@@ -69,7 +69,7 @@ class MetadataDeserializer extends JsonDeserializer<Metadata> {
             } else {
                 return null;
             }
-            return new Metadata(author, portion, recipeName, recipeDescription, minutes);
+            return new RecipeMetadata(author, portion, recipeName, recipeDescription, minutes);
         }
         return null;
     }

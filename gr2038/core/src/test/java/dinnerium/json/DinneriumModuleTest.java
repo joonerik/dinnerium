@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dinnerium.core.Ingredient;
 import dinnerium.core.IngredientContainer;
-import dinnerium.core.Metadata;
+import dinnerium.core.RecipeMetadata;
 import dinnerium.core.Quantity;
 import dinnerium.core.Recipe;
 import dinnerium.core.RecipeContainer;
@@ -242,11 +242,11 @@ class DinneriumModuleTest {
         assertEquals(expectedIngredient.getQuantity().getUnit(), i2.getQuantity().getUnit());
     }
 
-    private void compareMetadata(Metadata expectedMetadata, Metadata m2) {
-        assertEquals(expectedMetadata.getAuthor(), m2.getAuthor());
-        assertEquals(expectedMetadata.getMinutes(), m2.getMinutes());
-        assertEquals(expectedMetadata.getRecipeDescription(), m2.getRecipeDescription());
-        assertEquals(expectedMetadata.getRecipeName(), m2.getRecipeName());
+    private void compareMetadata(RecipeMetadata expectedRecipeMetadata, RecipeMetadata m2) {
+        assertEquals(expectedRecipeMetadata.getAuthor(), m2.getAuthor());
+        assertEquals(expectedRecipeMetadata.getMinutes(), m2.getMinutes());
+        assertEquals(expectedRecipeMetadata.getRecipeDescription(), m2.getRecipeDescription());
+        assertEquals(expectedRecipeMetadata.getRecipeName(), m2.getRecipeName());
     }
 
     private User createExceptedUser() {
@@ -276,7 +276,7 @@ class DinneriumModuleTest {
             for (int j = 0; j < amounts[i].length; j++) {
                 ic.addItem(new Ingredient(new Quantity(amounts[i][j], units[i][j]), names[i][j]));
             }
-            Metadata md = new Metadata("bestUsername", portions[i], recipeName[i],
+            RecipeMetadata md = new RecipeMetadata("bestUsername", portions[i], recipeName[i],
                 descriptions[i], minutes[i]);
             rc.addItem(new Recipe(ic, new RecipeInstructions(Arrays.asList(instructions[i])), md));
         }

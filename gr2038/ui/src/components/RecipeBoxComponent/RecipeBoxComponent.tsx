@@ -18,13 +18,13 @@ const RecipeBoxComponent: FC = () => {
     <div className="page-wrapper">
       {recipe ? (
         <RecipeSideBar
-          recipeAuthor={recipe.metadata.author}
-          recipeDescription={recipe.metadata.recipeDescription}
+          recipeAuthor={recipe.recipeMetadata.author}
+          recipeDescription={recipe.recipeMetadata.recipeDescription}
           recipeIngredients={recipe.ingredientContainer.ingredients}
           recipeInstructions={recipe.recipeInstructions}
-          recipeMinutes={recipe.metadata.minutes}
-          recipeName={recipe.metadata.recipeName}
-          recipePortion={recipe.metadata.portion}
+          recipeMinutes={recipe.recipeMetadata.minutes}
+          recipeName={recipe.recipeMetadata.recipeName}
+          recipePortion={recipe.recipeMetadata.portion}
           isEmpty={false}
         />
       ) : (
@@ -33,20 +33,20 @@ const RecipeBoxComponent: FC = () => {
       <div className="grid-wrapper">
         {user.recipeContainer.recipes.map((item: Recipe, index: number) => (
           <div
-            key={item.metadata.recipeName + index}
+            key={item.recipeMetadata.recipeName + index}
             className={
               item === recipe ? 'recipeBox active-recipe' : 'recipeBox'
             }
             onClick={() => displayRecipeMetadata(index)}
           >
             <div className="recipeBoxDescription">
-              <h2>{item.metadata.recipeName}</h2>
-              <span className="box-metadata">
-                <p>{item.metadata.minutes} minutes</p>
+              <h2>{item.recipeMetadata.recipeName}</h2>
+              <span className="box-recipeMetadata">
+                <p>{item.recipeMetadata.minutes} minutes</p>
                 <span>|</span>
-                <p>{item.metadata.portion} portions</p>
+                <p>{item.recipeMetadata.portion} portions</p>
               </span>
-              <h4>{item.metadata.recipeDescription}</h4>
+              <h4>{item.recipeMetadata.recipeDescription}</h4>
             </div>
           </div>
         ))}

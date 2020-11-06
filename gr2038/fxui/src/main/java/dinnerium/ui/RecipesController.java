@@ -2,7 +2,7 @@ package dinnerium.ui;
 
 import dinnerium.core.Ingredient;
 import dinnerium.core.IngredientContainer;
-import dinnerium.core.Metadata;
+import dinnerium.core.RecipeMetadata;
 import dinnerium.core.Quantity;
 import dinnerium.core.Recipe;
 import dinnerium.core.RecipeInstructions;
@@ -128,7 +128,7 @@ public class RecipesController {
             double portions = Double.parseDouble(newRecipePortions.getText());
             int minutes = Integer.parseInt(newRecipeMinutes.getText());
 
-            Metadata md = new Metadata(user.getUsername(),
+            RecipeMetadata md = new RecipeMetadata(user.getUsername(),
                 portions,
                 newRecipeRecipeName.getText(),
                 newRecipeRecipeDescription.getText(),

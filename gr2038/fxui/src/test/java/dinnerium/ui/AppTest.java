@@ -2,7 +2,7 @@ package dinnerium.ui;
 
 import dinnerium.core.Ingredient;
 import dinnerium.core.IngredientContainer;
-import dinnerium.core.Metadata;
+import dinnerium.core.RecipeMetadata;
 import dinnerium.core.Quantity;
 import dinnerium.core.Recipe;
 import dinnerium.core.RecipeContainer;
@@ -63,7 +63,7 @@ public class AppTest extends ApplicationTest {
         IngredientContainer ic = new IngredientContainer();
         ic.addItem(new Ingredient(new Quantity(2.0, "dl"), "milk"));
         RecipeInstructions ri = new RecipeInstructions(List.of("one", "two", "three"));
-        Metadata md = new Metadata("testuser", 2.0, "name", "delicious", 30);
+        RecipeMetadata md = new RecipeMetadata("testuser", 2.0, "name", "delicious", 30);
         Recipe recipe = new Recipe(ic, ri, md);
 
         user.getRecipeContainer().addItem(recipe);
