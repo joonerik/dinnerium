@@ -22,11 +22,11 @@ public class RecipeInstructions implements Iterable<String> {
      *
      * @throws IllegalArgumentException if the instruction is empty
      */
-    public void setInstruction(String instruction) {
+    public void addInstruction(String instruction) {
         if (instruction != null && !instruction.isBlank()) {
             instructions.add(instruction);
         } else {
-            throw new IllegalArgumentException("String is null!");
+            throw new IllegalArgumentException("String is null");
         }
     }
 
