@@ -14,7 +14,7 @@ public class QuantityTest {
     }
 
     @Test void testIllegalAmount() {
-        assertThrows(IllegalAccessException.class, () -> new Quantity(-1, "stk"));
+        assertThrows(IllegalArgumentException.class, () -> new Quantity(-1, "stk"));
     }
 
     @Test
