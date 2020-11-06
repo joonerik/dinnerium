@@ -18,10 +18,8 @@ public class RecipeInstructions implements Iterable<String> {
     /**
      * sets the collection and thus the instructions.
      *
-     * @param instructions
-     *        of collection
-     * @throws IllegalArgumentException
-     *        if instructions is empty
+     * @param instructions of collection
+     * @throws IllegalArgumentException if instructions is empty
      */
     public void setInstructions(Collection<String> instructions) {
         if (instructions.isEmpty()) {
@@ -35,7 +33,6 @@ public class RecipeInstructions implements Iterable<String> {
      * Sets an instruction.
      *
      * @param instruction description of a step
-     *
      * @throws IllegalArgumentException if the instruction is empty
      */
     public void setInstruction(String instruction) {
@@ -50,7 +47,6 @@ public class RecipeInstructions implements Iterable<String> {
      * Returns a copy of the collection containing the instructions.
      *
      * @return a copy of the recipe instructions.
-     *
      */
     public Collection<String> getInstructions() {
         return new ArrayList<>(this.instructions);

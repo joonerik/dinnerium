@@ -20,6 +20,7 @@ class RecipeTest {
         Quantity q = new Quantity(1000.0, "gram");
         Ingredient i = new Ingredient(q, "Pepper");
         Collection<String> c1 = new ArrayList<>();
+        c1.add("This is an instruction");
         Collection<Ingredient> c2 = new ArrayList<>();
         c2.add(i);
 
