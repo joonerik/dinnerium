@@ -25,11 +25,11 @@ interface RecipeContainer {
 interface Recipe {
   ingredientContainer: IngredientContainer;
   recipeInstructions: RecipeInstructions;
-  recipeMetadata: RecipeMetadata;
+  metadata: Metadata;
 }
 type RecipeInstructions = string[];
 
-interface RecipeMetadata {
+interface Metadata {
   author: string;
   portion: number;
   recipeName: string;
