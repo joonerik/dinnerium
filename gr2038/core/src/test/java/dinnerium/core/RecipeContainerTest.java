@@ -49,34 +49,34 @@ class RecipeContainerTest {
     }
 
     @Test
-    public void testAddItem() {
+    public void testAddRecipe() {
         assertThrows(IllegalArgumentException.class, () -> {
                 RecipeContainer rc = new RecipeContainer();
-                rc.addItem(null);
+                rc.addRecipe(null);
         });
     }
 
 
     @Test
     public void testGetContainer() {
-        recipeContainer.addItem(recipe1);
-        recipeContainer.addItem(recipe2);
+        recipeContainer.addRecipe(recipe1);
+        recipeContainer.addRecipe(recipe2);
         assertEquals(recipeContainer.getContainer(), new ArrayList<>(Arrays.asList(recipe1, recipe2)));
     }
 
     @Test
     public void testGetContainerSize() {
-        recipeContainer.addItem(recipe1);
-        recipeContainer.addItem(recipe2);
+        recipeContainer.addRecipe(recipe1);
+        recipeContainer.addRecipe(recipe2);
         assertEquals(recipeContainer.getContainerSize(), 2);
-        recipeContainer.addItem(recipe1);
+        recipeContainer.addRecipe(recipe1);
         assertEquals(recipeContainer.getContainerSize(), 3);
     }
 
     @Test
     public void testIterator() {
         assertFalse(recipeContainer.iterator().hasNext());
-        recipeContainer.addItem(recipe2);
+        recipeContainer.addRecipe(recipe2);
         assertTrue(recipeContainer.iterator().hasNext());
         assertEquals(recipeContainer.iterator().next(), recipe2);
     }

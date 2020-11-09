@@ -61,14 +61,14 @@ public class AppTest extends ApplicationTest {
         addIngredientsToUser(user2, ing1, ing2, ing3, ing4);
 
         IngredientContainer ic = new IngredientContainer();
-        ic.addItem(new Ingredient(new Quantity(2.0, "dl"), "milk"));
+        ic.addIngredient(new Ingredient(new Quantity(2.0, "dl"), "milk"));
         RecipeInstructions ri = new RecipeInstructions(List.of("one", "two", "three"));
         Metadata md = new Metadata("testuser", 2.0, "name", "delicious", 30);
         Recipe recipe = new Recipe(ic, ri, md);
 
-        user.getRecipeContainer().addItem(recipe);
-        user2.getRecipeContainer().addItem(recipe);
-        user2.getRecipeContainer().addItem(recipe);
+        user.getRecipeContainer().addRecipe(recipe);
+        user2.getRecipeContainer().addRecipe(recipe);
+        user2.getRecipeContainer().addRecipe(recipe);
     }
 
     @BeforeAll
@@ -276,7 +276,7 @@ public class AppTest extends ApplicationTest {
 
     private static void addIngredientsToUser(User user, Ingredient ...ingredients) {
         for (Ingredient i : ingredients) {
-            user.getIngredientContainer().addItem(i);
+            user.getIngredientContainer().addIngredient(i);
         }
     }
 

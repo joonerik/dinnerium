@@ -140,14 +140,14 @@ public class RecipesController {
                 new RecipeInstructions(new ArrayList<>(this.newRecipeInstructions));
             Recipe recipe = new Recipe(ic, rc, md);
 
-            this.user.getRecipeContainer().addItem(recipe);
+            this.user.getRecipeContainer().addRecipe(recipe);
             updateRecipeAnchorPane(recipe);
             dinneriumAccess.postRecipe(user.getUsername(), recipe);
 
             clearRecipeFields();
             changeSubScene("recipes");
         } catch (NumberFormatException e) {
-            FeedbackHandler.showMessage(msgPane, "Quantiy or minutes invalid", 'E');
+            FeedbackHandler.showMessage(msgPane, "Quantity or minutes invalid", 'E');
         } catch (IllegalArgumentException e) {
             FeedbackHandler.showMessage(msgPane, e.getMessage(), FeedbackHandler.ERROR);
         }

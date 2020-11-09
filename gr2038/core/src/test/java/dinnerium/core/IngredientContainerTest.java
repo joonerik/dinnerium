@@ -20,7 +20,7 @@ public class IngredientContainerTest {
 
         IngredientContainer ic = new IngredientContainer(ict);
 
-        ic.addItem(i);
+        ic.addIngredient(i);
 
         assertEquals(ict, ic.getContainer());
     }
