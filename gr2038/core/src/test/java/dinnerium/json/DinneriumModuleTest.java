@@ -26,7 +26,7 @@ import org.junit.jupiter.api.Test;
 class DinneriumModuleTest {
 
     private ObjectMapper mapper;
-    private HandlePersistency handlePersistency = new HandlePersistency();
+    private final HandlePersistency handlePersistency = new HandlePersistency();
     private final String expectedUserString = "" +
         "{\n" +
         "  \"ingredientContainer\" : {\n" +

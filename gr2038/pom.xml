@@ -149,5 +149,6 @@
     <modules>
         <module>core</module>
         <module>restapi</module>
+        <module>fxui</module>
     </modules>
 </project>

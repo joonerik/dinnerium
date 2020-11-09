@@ -1,0 +1,20 @@
+.error{
+    -fx-background-color: #E32B2B;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+.warning{
+    -fx-background-color: #F4C20D;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+.msg{
+    -fx-background-color: #66C3B1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+.feedback-text{
+    -fx-font-size: 20px;
+    -fx-font-family: monospace;
+    -fx-font-weight: bold;
+}
