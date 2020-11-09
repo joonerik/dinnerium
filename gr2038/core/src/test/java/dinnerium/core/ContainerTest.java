@@ -41,8 +41,8 @@ public class ContainerTest {
     private final Recipe recipe1 = new Recipe(ic1, recipeInstructions1, recipeMetadata1);
     private final Recipe recipe2 = new Recipe(ic2, recipeInstructions2, recipeMetadata2);
 
-    Quantity q = new Quantity(1.0, "dl");
-    Ingredient i = new Ingredient(q, "milk");
+    final Quantity q = new Quantity(1.0, "dl");
+    final Ingredient i = new Ingredient(q, "milk");
 
     @Test
     void testCollection() {

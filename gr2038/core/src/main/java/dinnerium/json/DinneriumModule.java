@@ -4,10 +4,10 @@ import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import dinnerium.core.Container;
 import dinnerium.core.Ingredient;
-import dinnerium.core.RecipeMetadata;
 import dinnerium.core.Quantity;
 import dinnerium.core.Recipe;
 import dinnerium.core.RecipeInstructions;
+import dinnerium.core.RecipeMetadata;
 import dinnerium.core.User;
 
 @SuppressWarnings("serial")
