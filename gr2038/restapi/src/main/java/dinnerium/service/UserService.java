@@ -105,7 +105,7 @@ public class UserService {
 
     private void saveUser(User user) throws IOException {
         Path path = Paths.get(
-            "src/main/resources/storage/" + user.getUsername() + ".json");
+            "../restapi/src/main/resources/storage/" + user.getUsername() + ".json");
         FileWriter writer = null;
         try {
             writer = new FileWriter(path.toFile(), StandardCharsets.UTF_8);
@@ -122,12 +122,12 @@ public class UserService {
     }
 
     private String getUserString(String username) throws IOException {
-        String file = "src/main/resources/storage/" + username + ".json";
+        String file = "../restapi/src/main/resources/storage/" + username + ".json";
         return Files.readString(Paths.get(file));
     }
 
     private List<String> getUsernameList() {
-        File[] files = new File("src/main/resources/storage/").listFiles();
+        File[] files = new File("../restapi/src/main/resources/storage/").listFiles();
         List<String> filenames = new ArrayList<>();
         if (files != null) {
             return Arrays.stream(files)
