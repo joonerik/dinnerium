@@ -21,13 +21,13 @@ class RecipeContainerTest {
     private final RecipeInstructions recipeInstructions1 = new RecipeInstructions(Arrays.asList("Bland", "Hell i vann", "Pisk"));
     private final RecipeInstructions recipeInstructions2 = new RecipeInstructions(Arrays.asList("Bland", "Pisk"));
 
-    private final Metadata metadata1 = new Metadata("Ole", 3.0,
+    private final RecipeMetadata recipeMetadata1 = new RecipeMetadata("Ole", 3.0,
         "Eggedosis m/vann", "God eggedosis med vann!", 10);
-    private final Metadata metadata2 = new Metadata("Kari", 1.5,
+    private final RecipeMetadata recipeMetadata2 = new RecipeMetadata("Kari", 1.5,
         "Eggedosis", "Vanlig eggedosis!", 7);
 
-    private final Recipe recipe1 = new Recipe(ic1, recipeInstructions1, metadata1);
-    private final Recipe recipe2 = new Recipe(ic2, recipeInstructions2, metadata2);
+    private final Recipe recipe1 = new Recipe(ic1, recipeInstructions1, recipeMetadata1);
+    private final Recipe recipe2 = new Recipe(ic2, recipeInstructions2, recipeMetadata2);
 
     @Test
     void testCollection() {

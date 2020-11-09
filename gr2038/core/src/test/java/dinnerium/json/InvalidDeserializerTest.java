@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dinnerium.core.Container;
 import dinnerium.core.Ingredient;
-import dinnerium.core.Metadata;
+import dinnerium.core.RecipeMetadata;
 import dinnerium.core.Quantity;
 import dinnerium.core.Recipe;
 import dinnerium.core.RecipeInstructions;
@@ -149,29 +149,29 @@ public class InvalidDeserializerTest {
             "        \"recipeDescription\" : 22,\n" +
             "        \"minutes\" : \"tretti\"\n" +
             "      }";
-        Metadata md;
+        RecipeMetadata md;
         try {
-            md = mapper.readValue(metadataJson, Metadata.class);
-            assertNull(md, "Metadata should have been null");
+            md = mapper.readValue(metadataJson, RecipeMetadata.class);
+            assertNull(md, "RecipeMetadata should have been null");
 
             metadataJson = metadataJson.replace("55", "\"user\"");
-            md = mapper.readValue(metadataJson, Metadata.class);
-            assertNull(md, "Metadata should have been null");
+            md = mapper.readValue(metadataJson, RecipeMetadata.class);
+            assertNull(md, "RecipeMetadata should have been null");
 
             metadataJson = metadataJson.replace("\"sekstiseks\"", "4.0");
-            md = mapper.readValue(metadataJson, Metadata.class);
-            assertNull(md, "Metadata should have been null");
+            md = mapper.readValue(metadataJson, RecipeMetadata.class);
+            assertNull(md, "RecipeMetadata should have been null");
 
             metadataJson = metadataJson.replace("99", "\"pastaBrokkoli\"");
-            md = mapper.readValue(metadataJson, Metadata.class);
-            assertNull(md, "Metadata should have been null");
+            md = mapper.readValue(metadataJson, RecipeMetadata.class);
+            assertNull(md, "RecipeMetadata should have been null");
 
             metadataJson = metadataJson.replace("22", "\"Description\"");
-            md = mapper.readValue(metadataJson, Metadata.class);
-            assertNull(md, "Metadata should have been null");
+            md = mapper.readValue(metadataJson, RecipeMetadata.class);
+            assertNull(md, "RecipeMetadata should have been null");
 
-            md = mapper.readValue("\"attribute\":\"NotObject\"", Metadata.class);
-            assertNull(md, "Metadata should have been null");
+            md = mapper.readValue("\"attribute\":\"NotObject\"", RecipeMetadata.class);
+            assertNull(md, "RecipeMetadata should have been null");
         } catch (IOException e) {
             fail(e.getMessage());
         }

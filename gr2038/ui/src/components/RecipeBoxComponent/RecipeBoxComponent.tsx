@@ -41,7 +41,7 @@ const RecipeBoxComponent: FC = () => {
           >
             <div className="recipeBoxDescription">
               <h2>{item.metadata.recipeName}</h2>
-              <span className="box-metadata">
+              <span className="box-recipeMetadata">
                 <p>{item.metadata.minutes} minutes</p>
                 <span>|</span>
                 <p>{item.metadata.portion} portions</p>

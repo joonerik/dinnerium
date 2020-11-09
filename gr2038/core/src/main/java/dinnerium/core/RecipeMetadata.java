@@ -1,6 +1,6 @@
 package dinnerium.core;
 
-public class Metadata {
+public class RecipeMetadata {
 
     private final String author;
     private final double portion;
@@ -9,7 +9,7 @@ public class Metadata {
     private final int minutes;
 
     /**
-     * Constructor for a Metadata object.
+     * Constructor for a RecipeMetadata object.
      *
      * @param author            the author of the Recipe.
      * @param portion           the amount of portions the Recipe is meant for.
@@ -17,8 +17,8 @@ public class Metadata {
      * @param recipeDescription a description of the dish the recipe makes.
      * @param minutes           the time it takes to make the recipe.
      */
-    public Metadata(String author, double portion,
-                    String recipeName, String recipeDescription, int minutes) {
+    public RecipeMetadata(String author, double portion,
+                          String recipeName, String recipeDescription, int minutes) {
         if (validateAuthor(author)) {
             this.author = author;
         } else {

@@ -15,10 +15,11 @@ class UserTest {
     private final RecipeContainer recipeContainer = new RecipeContainer();
     private final RecipeInstructions recipeInstructions = new RecipeInstructions(Arrays.asList("Bland", "Pisk"));
 
-    private final Metadata metadata = new Metadata("Ole", 3.0,
+    private final RecipeMetadata recipeMetadata = new RecipeMetadata("Ole", 3.0,
         "Eggedosis m/vann", "God eggedosis med vann!", 10);
 
-    private final Recipe recipe = new Recipe(ingredientContainer, recipeInstructions, metadata);
+    private final Recipe recipe = new Recipe(ingredientContainer, recipeInstructions,
+        recipeMetadata);
 
     private final User user = new User(ingredientContainer, recipeContainer, "Ole");
 

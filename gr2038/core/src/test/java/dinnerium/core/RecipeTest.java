@@ -13,19 +13,20 @@ class RecipeTest {
     Recipe r;
     IngredientContainer ic;
     RecipeInstructions ri;
-    Metadata md;
+    RecipeMetadata md;
 
     @BeforeEach
     public void setUp() {
         Quantity q = new Quantity(1000.0, "gram");
         Ingredient i = new Ingredient(q, "Pepper");
         Collection<String> c1 = new ArrayList<>();
+        c1.add("This is an instruction");
         Collection<Ingredient> c2 = new ArrayList<>();
         c2.add(i);
 
         ic = new IngredientContainer(c2);
         ri = new RecipeInstructions(c1);
-        md = new Metadata(
+        md = new RecipeMetadata(
             "Bakemester Harepus",
             5.0,
             "Pepperkaker",
@@ -48,6 +49,6 @@ class RecipeTest {
 
     @Test
     void getMetadata() {
-        assertEquals(r.getMetadata(), md);
+        assertEquals(r.getRecipeMetadata(), md);
     }
 }

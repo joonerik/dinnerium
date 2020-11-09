@@ -23,6 +23,8 @@ class RecipeInstructionsTest {
     @Test
     void getInstructions() {
         assertEquals(ri.getInstructions(), c);
+        assertThrows(IllegalArgumentException.class,
+            () -> new RecipeInstructions(new ArrayList<String>()));
     }
 
     @Test
