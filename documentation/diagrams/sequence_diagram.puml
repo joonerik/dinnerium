@@ -5,6 +5,9 @@ RestServer -> UserService: registerNewUser(Bob)
 UserService --> RestServer: bob
 
 Bob -> RestServer: POST("/users/:bob/ingredients/add"
+RestServer -> UserService: POST("/users/:bob/ingredients/add"
+UserService --> RestServer: bob
+
 UserService -> IngredientContainer: addIngredient(Melk, Bob)\nPOST("/users/:bob/ingredients/add"
 UserService -> IngredientContainer: addIngredient(Frokostblanding, Bob)\nPOST("/users/:bob/ingredients/add"
 
