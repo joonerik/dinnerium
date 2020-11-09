@@ -148,7 +148,11 @@ public class RecipesController {
         } catch (NumberFormatException e) {
             FeedbackHandler.showMessage(msgPane, "Quantity or minutes invalid", 'E');
         } catch (IllegalArgumentException e) {
-            FeedbackHandler.showMessage(msgPane, e.getMessage(), FeedbackHandler.ERROR);
+            if (e.getMessage().equals("Missing content")) {
+                FeedbackHandler.showMessage(msgPane, "Missing ingredients", FeedbackHandler.ERROR);
+            } else {
+                FeedbackHandler.showMessage(msgPane, e.getMessage(), FeedbackHandler.ERROR);
+            }
         }
     }
 
