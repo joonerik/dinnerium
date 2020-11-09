@@ -48,7 +48,7 @@ class ContainerDeserializer extends JsonDeserializer<Container> {
                     for (JsonNode elementNode : (ingredientsNode)) {
                         Ingredient ingredient = ingredientDeserializer.deserialize(elementNode);
                         if (ingredient != null) {
-                            ingredients.addItem(ingredient);
+                            ingredients.addIngredient(ingredient);
                         }
                     }
                     return ingredients;
@@ -62,7 +62,7 @@ class ContainerDeserializer extends JsonDeserializer<Container> {
                     for (JsonNode elementNode : recipesNode) {
                         Recipe r = recipeDeserializer.deserialize(elementNode);
                         if (r != null) {
-                            recipes.addItem(r);
+                            recipes.addRecipe(r);
                         }
                     }
                 }

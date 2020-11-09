@@ -19,9 +19,9 @@ public class IngredientContainerTest {
         }};
 
         IngredientContainer ic = new IngredientContainer(ict);
-
-        ic.addItem(i);
-
+        assertEquals(ict, ic.getContainer());
+        ic.addIngredient(i);
+        ict.add(i);
         assertEquals(ict, ic.getContainer());
     }
 }

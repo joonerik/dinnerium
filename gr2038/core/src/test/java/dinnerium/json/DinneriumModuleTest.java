@@ -251,9 +251,9 @@ class DinneriumModuleTest {
 
     private User createExceptedUser() {
         IngredientContainer ic = new IngredientContainer();
-        ic.addItem(new Ingredient(new Quantity(1, "stk"), "eggs"));
-        ic.addItem(new Ingredient(new Quantity(2, "dl"), "milk"));
-        ic.addItem(new Ingredient(new Quantity(3, "gram"), "sugar"));
+        ic.addIngredient(new Ingredient(new Quantity(1, "stk"), "eggs"));
+        ic.addIngredient(new Ingredient(new Quantity(2, "dl"), "milk"));
+        ic.addIngredient(new Ingredient(new Quantity(3, "gram"), "sugar"));
         RecipeContainer rc = createExpectedRecipeContainer();
 
         return new User(ic, rc, "bestUsername");
@@ -274,11 +274,11 @@ class DinneriumModuleTest {
         for (int i = 0; i < recipeName.length; i++) {
             IngredientContainer ic = new IngredientContainer();
             for (int j = 0; j < amounts[i].length; j++) {
-                ic.addItem(new Ingredient(new Quantity(amounts[i][j], units[i][j]), names[i][j]));
+                ic.addIngredient(new Ingredient(new Quantity(amounts[i][j], units[i][j]), names[i][j]));
             }
             RecipeMetadata md = new RecipeMetadata("bestUsername", portions[i], recipeName[i],
                 descriptions[i], minutes[i]);
-            rc.addItem(new Recipe(ic, new RecipeInstructions(Arrays.asList(instructions[i])), md));
+            rc.addRecipe(new Recipe(ic, new RecipeInstructions(Arrays.asList(instructions[i])), md));
         }
         return rc;
     }

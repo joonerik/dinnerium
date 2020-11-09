@@ -82,7 +82,7 @@ public class UserService {
      */
     public String addIngredient(Ingredient ingredient, String username) throws IOException {
         User user = mapper.readValue(getUserString(username), User.class);
-        user.getIngredientContainer().addItem(ingredient);
+        user.getIngredientContainer().addIngredient(ingredient);
         saveUser(user);
         return getUserString(username);
     }
@@ -98,7 +98,7 @@ public class UserService {
      */
     public String addRecipe(Recipe recipe, String username) throws IOException {
         User user = mapper.readValue(getUserString(username), User.class);
-        user.getRecipeContainer().addItem(recipe);
+        user.getRecipeContainer().addRecipe(recipe);
         saveUser(user);
         return getUserString(username);
     }

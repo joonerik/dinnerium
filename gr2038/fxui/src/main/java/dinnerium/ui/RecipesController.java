@@ -139,7 +139,7 @@ public class RecipesController {
                 new RecipeInstructions(new ArrayList<>(this.newRecipeInstructions));
             Recipe recipe = new Recipe(ic, rc, md);
 
-            this.user.getRecipeContainer().addItem(recipe);
+            this.user.getRecipeContainer().addRecipe(recipe);
             updateRecipeAnchorPane(recipe);
             dinneriumAccess.postRecipe(user.getUsername(), recipe);
 

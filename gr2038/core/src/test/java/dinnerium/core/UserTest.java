@@ -41,7 +41,7 @@ class UserTest {
 
     @Test
     void addRecipeToContainer() {
-        recipeContainer.addItem(recipe);
+        recipeContainer.addRecipe(recipe);
         assertEquals(1, user.getRecipeContainer().getContainerSize());
     }
 
