@@ -2,7 +2,7 @@ package dinnerium.ui;
 
 import dinnerium.core.Ingredient;
 import dinnerium.core.IngredientContainer;
-import dinnerium.core.Metadata;
+import dinnerium.core.RecipeMetadata;
 import dinnerium.core.Quantity;
 import dinnerium.core.Recipe;
 import dinnerium.core.RecipeInstructions;
@@ -100,7 +100,7 @@ public class RecipesController {
             newRecipeNameIngredientInput.clear();
             newRecipeAmountInput.clear();
         } catch (NumberFormatException e) {
-            FeedbackHandler.showMessage(msgPane, "Quantityfield is empty", 'E');
+            FeedbackHandler.showMessage(msgPane, "Quantity field is empty", 'E');
         } catch (NullPointerException e) {
             FeedbackHandler.showMessage(msgPane, "Unit is not selected", 'E');
         } catch (IllegalArgumentException e) {
@@ -128,28 +128,31 @@ public class RecipesController {
             double portions = Double.parseDouble(newRecipePortions.getText());
             int minutes = Integer.parseInt(newRecipeMinutes.getText());
 
-            Metadata md = new Metadata(user.getUsername(),
+            RecipeMetadata md = new RecipeMetadata(user.getUsername(),
                 portions,
                 newRecipeRecipeName.getText(),
                 newRecipeRecipeDescription.getText(),
                 minutes);
-
             IngredientContainer ic =
                 new IngredientContainer(new ArrayList<>(this.newRecipeIngredients));
             RecipeInstructions rc =
                 new RecipeInstructions(new ArrayList<>(this.newRecipeInstructions));
             Recipe recipe = new Recipe(ic, rc, md);
 
-            this.user.getRecipeContainer().addItem(recipe);
+            this.user.getRecipeContainer().addRecipe(recipe);
             updateRecipeAnchorPane(recipe);
             dinneriumAccess.postRecipe(user.getUsername(), recipe);
 
             clearRecipeFields();
             changeSubScene("recipes");
         } catch (NumberFormatException e) {
-            FeedbackHandler.showMessage(msgPane, "Quantiy or minutes invalid", 'E');
+            FeedbackHandler.showMessage(msgPane, "Quantity or minutes invalid", 'E');
         } catch (IllegalArgumentException e) {
-            FeedbackHandler.showMessage(msgPane, e.getMessage(), FeedbackHandler.ERROR);
+            if (e.getMessage().equals("Missing content")) {
+                FeedbackHandler.showMessage(msgPane, "Missing ingredients", FeedbackHandler.ERROR);
+            } else {
+                FeedbackHandler.showMessage(msgPane, e.getMessage(), FeedbackHandler.ERROR);
+            }
         }
     }
 

@@ -23,7 +23,7 @@ class RecipeSerializer extends JsonSerializer<Recipe> {
         jsonGen.writeStartObject();
         jsonGen.writeObjectField("ingredientContainer", recipe.getIngredientContainer());
         jsonGen.writeObjectField("recipeInstructions", recipe.getRecipeInstructions());
-        jsonGen.writeObjectField("metadata", recipe.getMetadata());
+        jsonGen.writeObjectField("metadata", recipe.getRecipeMetadata());
         jsonGen.writeEndObject();
     }
 }

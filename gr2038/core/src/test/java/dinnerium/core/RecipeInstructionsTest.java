@@ -23,19 +23,21 @@ class RecipeInstructionsTest {
     @Test
     void getInstructions() {
         assertEquals(ri.getInstructions(), c);
+        assertThrows(IllegalArgumentException.class,
+            () -> new RecipeInstructions(new ArrayList<String>()));
     }
 
     @Test
-    void setInstruction() {
+    void addInstruction() {
         c.add("Do more");
-        ri.setInstruction("Do more");
+        ri.addInstruction("Do more");
         assertEquals(ri.getInstructions(), c);
 
-        assertThrows(IllegalArgumentException.class, () -> ri.setInstruction(""));
+        assertThrows(IllegalArgumentException.class, () -> ri.addInstruction(""));
 
-        assertThrows(IllegalArgumentException.class, () -> ri.setInstruction(null));
+        assertThrows(IllegalArgumentException.class, () -> ri.addInstruction(null));
 
-        assertThrows(IllegalArgumentException.class, () -> ri.setInstruction("   "));
+        assertThrows(IllegalArgumentException.class, () -> ri.addInstruction("   "));
 
     }
 
