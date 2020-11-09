@@ -95,7 +95,6 @@ public class ContainerTest {
         assertEquals(ict, ic.getContainer());
     }
 
-
     @Test
     public void testGetContainer() {
         recipeContainer.addRecipe(recipe1);
@@ -116,9 +115,10 @@ public class ContainerTest {
         assertEquals(recipeContainer.getContainerSize(), 2);
         recipeContainer.addRecipe(recipe1);
         assertEquals(recipeContainer.getContainerSize(), 3);
+
         ingredientContainer.addIngredient(ingredient1);
         ingredientContainer.addIngredient(ingredient2);
-        assertEquals(recipeContainer.getContainerSize(), 2);
+        assertEquals(ingredientContainer.getContainerSize(), 2);
     }
 
     @Test
@@ -133,6 +133,4 @@ public class ContainerTest {
         assertTrue(ingredientContainer.iterator().hasNext());
         assertEquals(ingredientContainer.iterator().next(), ingredient2);
     }
-
-
 }
