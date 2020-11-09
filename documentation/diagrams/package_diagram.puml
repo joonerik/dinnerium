@@ -1,21 +1,21 @@
 @startuml
 
 component core {
-	package simpleex.core
-	package simpleex.json
+	package dinnerium.core
+	package dinnerium.json
 }
 
 component jackson {
 }
 
-simpleex.json ..> jackson
+dinnerium.json ..> jackson
 
 component fxui {
-	package simpleex.ui
+	package dinnerium.ui
 }
 
-simpleex.ui ..> simpleex.core
-simpleex.ui ..> simpleex.json
+dinnerium.ui ..> dinnerium.core
+dinnerium.ui ..> dinnerium.json
 
 component javafx {
 	component fxml {
@@ -26,31 +26,19 @@ fxui ..> javafx
 fxui ..> fxml
 
 component restapi {
-	package simpleex.restapi
+	component Spark {
+		package wtf
+	}
+	package dinnerium.restapi
 }
 
-simpleex.restapi ..> simpleex.core
-simpleex.restapi ..> simpleex.json
-
-component jaxrs {
+component ui {
+	
 }
 
-restapi ..> jaxrs
 
-component restserver {
-	package simpleex.restserver
-}
+dinnerium.restapi ..> dinnerium.core
+dinnerium.restapi ..> dinnerium.json
 
-simpleex.restserver ..> simpleex.core
-simpleex.restserver ..> simpleex.restapi
-
-component jersey {
-}
-
-component grizzly2 {
-}
-
-restserver ..> jersey
-restserver ..> grizzly2
 
 @enduml
