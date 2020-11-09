@@ -13,7 +13,7 @@ class Recipe {
 class Quantity {
     - double amount
     - Units unit
-    -- 
+    --
     + Quantity(double , String)
     + double getAmount()
     + String getUnit()
@@ -75,7 +75,6 @@ class RecipeInstructions {
     + Collection<String> getInstructions()
     + void setInstructions()
     + Iterator<String> iterator()
-    
 }
 
 class RecipeMetadata {
@@ -106,7 +105,6 @@ class User {
     + String getUsername()
     + void setUsername(String)
     - void validateUsername(String)
-
 }
 
 interface Iterable
