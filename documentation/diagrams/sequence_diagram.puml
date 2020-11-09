@@ -9,5 +9,7 @@ RestServer -> UserService: POST("/users/:bob/ingredients/add"
 UserService --> RestServer: bob
 
 UserService -> IngredientContainer: addIngredient(Melk, Bob)\nPOST("/users/:bob/ingredients/add"
+IngredientContainer --> UserService: bob
 UserService -> IngredientContainer: addIngredient(Frokostblanding, Bob)\nPOST("/users/:bob/ingredients/add"
+IngredientContainer --> UserService: bob
 @enduml
