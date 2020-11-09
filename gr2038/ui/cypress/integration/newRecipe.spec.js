@@ -1,11 +1,7 @@
-describe('Login or register', () => {
+describe('New recipe page', () => {
   // go to web application
   beforeEach(() => {
     cy.visit('http://localhost:3000');
-  });
-
-  it('Focus on input form', () => {
-    cy.focused().should('have.class', 'login__modal__input');
   });
 
   it('Test error handling to add new recipe', () => {
@@ -40,7 +36,7 @@ describe('Login or register', () => {
     // write recipe info
     cy.get('input[name="name"]').type('Taco');
     cy.get('input[name="estimatedTime"]').type('20');
-    cy.get('input[name="portions"]').type('2.5');
+    cy.get('input[name="portions"]').type('2');
     cy.get('textarea[name="description"]').type(
       'A great Mexican dish, which happens to be quite popular in Norway, although the Norwegian taco is quite different'
     );
@@ -69,6 +65,9 @@ describe('Login or register', () => {
     cy.get('.instructions').find('ol').last().find('div').last().click();
 
     // uncomment when merged/updated
-    cy.get('#recipeForm').submit();
+    cy.get('#addRecipeBtn').click();
+    // cy.get('.recipeBox').last().should('have.class', 'active-recipe');
+    cy.get('.recipeBox').last().click();
+    cy.get('.recipe__name').should('have.text', 'Taco');
   });
 });

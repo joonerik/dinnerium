@@ -48,24 +48,6 @@
     display: inline-block;
     border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
   }
-  input,
-  textarea {
-    background-color: $color-dark-light;
-    text-decoration: none;
-    border: 2px solid $color-blue;
-    border-radius: 5px;
-    color: $color-light;
-    outline: none;
-    font-family: $font;
-    font-size: 1rem;
-    padding: 10px;
-
-    &::placeholder {
-      color: $color-light;
-      font-style: italic;
-      opacity: 0.6;
-    }
-  }
   button {
     font-family: $font;
     font-size: 1rem;
@@ -112,11 +94,6 @@
         justify-content: space-between;
         align-items: center;
       }
-    }
-    &ingredient {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
     }
     &instruction {
       display: flex;

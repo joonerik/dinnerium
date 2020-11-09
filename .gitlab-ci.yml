@@ -1,19 +1,31 @@
-image: maven:3-jdk-14
-
 stages:
   - build
 
-core-build:
+build:core:
+  image: maven:3-jdk-14
   stage: build
-  script: 
+  script:
     - cd gr2038/core/
     - mvn package
     - cat target/site/jacoco/index.html
   artifacts:
-    expose_as: 'code coverage'
+    expose_as: "code coverage"
     paths:
       - core/target/surefire-reports/
       - core/target/site/jacoco/index.html
     reports:
       junit:
         - core/target/surefire-reports/TEST-*.xml
+
+build:web:
+  image: node:lts
+  stage: build
+  before_script: []
+  script:
+    - cd gr2038/ui/
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - gr2038/ui/node_modules/
+      - gr2038/ui/build/
