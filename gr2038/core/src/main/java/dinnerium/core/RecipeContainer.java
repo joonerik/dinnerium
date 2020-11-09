@@ -11,4 +11,9 @@ public class RecipeContainer extends Container<Recipe> {
     public RecipeContainer(Collection<Recipe> container) {
         super(container);
     }
+
+    public void addRecipe(Recipe recipe) {
+        super.addItem(recipe);
+    }
+
 }

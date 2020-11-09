@@ -31,7 +31,7 @@ public abstract class Container<T> implements Iterable<T> {
             throw new IllegalArgumentException(
                     "Missing instructions or ingredients");
         }
-        this.container = container;
+        this.container = new ArrayList<>(container);
     }
 
     /**
