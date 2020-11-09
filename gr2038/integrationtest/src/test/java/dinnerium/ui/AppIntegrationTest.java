@@ -31,21 +31,98 @@ public class AppIntegrationTest extends ApplicationTest {
 
     private AppController controller;
 
+    private static final String testUserString = "{\n" +
+        "  \"ingredientContainer\" : {\n" +
+        "    \"ingredients\" : [ {\n" +
+        "      \"quantity\" : {\n" +
+        "        \"unit\" : \"stk\",\n" +
+        "        \"amount\" : 1.0\n" +
+        "      },\n" +
+        "      \"name\" : \"eggs\"\n" +
+        "    }, {\n" +
+        "      \"quantity\" : {\n" +
+        "        \"unit\" : \"dl\",\n" +
+        "        \"amount\" : 2.0\n" +
+        "      },\n" +
+        "      \"name\" : \"milk\"\n" +
+        "    }, {\n" +
+        "      \"quantity\" : {\n" +
+        "        \"unit\" : \"gram\",\n" +
+        "        \"amount\" : 3.0\n" +
+        "      },\n" +
+        "      \"name\" : \"sugar\"\n" +
+        "    } ]\n" +
+        "  },\n" +
+        "  \"recipeContainer\" : {\n" +
+        "    \"recipes\" : [ {\n" +
+        "      \"ingredientContainer\" : {\n" +
+        "        \"ingredients\" : [ {\n" +
+        "          \"quantity\" : {\n" +
+        "            \"unit\" : \"gram\",\n" +
+        "            \"amount\" : 400.0\n" +
+        "          },\n" +
+        "          \"name\" : \"minced meat\"\n" +
+        "        }, {\n" +
+        "          \"quantity\" : {\n" +
+        "            \"unit\" : \"gram\",\n" +
+        "            \"amount\" : 200.0\n" +
+        "          },\n" +
+        "          \"name\" : \"cheese\"\n" +
+        "        }, {\n" +
+        "          \"quantity\" : {\n" +
+        "            \"unit\" : \"stk\",\n" +
+        "            \"amount\" : 9.0\n" +
+        "          },\n" +
+        "          \"name\" : \"lasagne plates\"\n" +
+        "        } ]\n" +
+        "      },\n" +
+        "      \"recipeInstructions\" : [ \"cook\", \"bake\", \"eat\" ],\n" +
+        "      \"metadata\" : {\n" +
+        "        \"author\" : \"bestUsername\",\n" +
+        "        \"portion\" : 4.0,\n" +
+        "        \"recipeName\" : \"Lasagne\",\n" +
+        "        \"recipeDescription\" : \"God og smakfull lasagne\",\n" +
+        "        \"minutes\" : 90\n" +
+        "      }\n" +
+        "    } ]\n" +
+        "  },\n" +
+        "  \"username\" : \"testuser\"\n" +
+        "}";
+
     @BeforeAll
     public static void startServer() {
         RestServer.main(new String[] {});
         Spark.awaitInitialization();
     }
 
-    @BeforeEach
-    void login() {
-        clickOn("#usernameInput").write("testUser");
-        clickOn("#loginButton");
+    @BeforeAll
+    static void createTestFile() {
+        File file = Paths.get("../restapi/src/main/resources/storage/testuser.json").toFile();
+        try {
+            assertTrue(file.createNewFile());
+            FileWriter writer = new FileWriter(file);
+            writer.write(testUserString);
+            writer.close();
+        } catch (IOException e) {
+            fail(e.getMessage());
+        }
     }
 
     @AfterAll
     static void teardown() {
         Spark.stop();
+    }
+
+    @AfterAll
+    static void removeTestFile() {
+        File file = Paths.get("../restapi/src/main/resources/storage/testuser.json").toFile();
+        assertTrue(file.delete());
+    }
+
+    @BeforeEach
+    void login() {
+        clickOn("#usernameInput").write("testUser");
+        clickOn("#loginButton");
     }
 
     @Override
@@ -55,22 +132,6 @@ public class AppIntegrationTest extends ApplicationTest {
         controller = loader.getController();
         stage.setScene(new Scene(parent));
         stage.show();
-    }
-
-    @BeforeAll
-    static void createTestFile() {
-        File file = Paths.get("../restapi/src/main/resources/storage/bestusername.json").toFile();
-        try {
-            assertTrue(file.createNewFile());
-        } catch (IOException e) {
-            fail(e.getMessage());
-        }
-    }
-
-    @AfterAll
-    static void removeFileCreated() {
-        File file = Paths.get("../restapi/src/main/resources/storage/bestusername.json").toFile();
-        assertTrue(file.delete());
     }
 
     @Test
