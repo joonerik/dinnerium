@@ -10,6 +10,7 @@ import dinnerium.core.Ingredient;
 import dinnerium.core.Units;
 import dinnerium.server.RestServer;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -26,7 +27,7 @@ import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 import spark.Spark;
 
-public class TestAppIT extends ApplicationTest {
+public class AppIntegrationTest extends ApplicationTest {
 
     private AppController controller;
 
@@ -40,6 +41,11 @@ public class TestAppIT extends ApplicationTest {
     void login() {
         clickOn("#usernameInput").write("testUser");
         clickOn("#loginButton");
+    }
+
+    @AfterAll
+    static void teardown() {
+        Spark.stop();
     }
 
     @Override
@@ -61,11 +67,11 @@ public class TestAppIT extends ApplicationTest {
         }
     }
 
-    @AfterAll
+/*    @AfterAll
     static void removeFileCreated() {
         File file = Paths.get("../restapi/src/main/resources/storage/bestusername.json").toFile();
         assertTrue(file.delete());
-    }
+    }*/
 
     @Test
     public void testSetupUser() {
