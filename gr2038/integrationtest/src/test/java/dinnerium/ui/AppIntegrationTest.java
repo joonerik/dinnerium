@@ -67,11 +67,11 @@ public class AppIntegrationTest extends ApplicationTest {
         }
     }
 
-/*    @AfterAll
+    @AfterAll
     static void removeFileCreated() {
         File file = Paths.get("../restapi/src/main/resources/storage/bestusername.json").toFile();
         assertTrue(file.delete());
-    }*/
+    }
 
     @Test
     public void testSetupUser() {
