@@ -1,0 +1,52 @@
+@startuml sequence_diagram
+class Recipe {
+    
+}
+
+class Quantity {
+    
+}
+
+class Ingredient {
+    
+}
+
+class Container {
+    
+}
+
+class IngredientContainer {
+    
+}
+
+class RecipeContainer {
+
+}
+
+class RecipeInstructions {
+    
+}
+
+class RecipeMetadata {
+    
+}
+
+class User {
+    
+}
+
+interface Iterable
+interface Iterable
+
+User --> RecipeContainer
+User --> IngredientContainer
+Recipe --> IngredientContainer
+Recipe --> RecipeInstructions
+Recipe --> RecipeMetadata
+IngredientContainer --> Ingredient
+Ingredient --> Quantity
+class Container implements Iterable
+class RecipeInstructions implements Iterable
+class RecipeContainer extends Container
+class IngredientContainer extends Container
+@enduml
