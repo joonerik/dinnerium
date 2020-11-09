@@ -69,10 +69,8 @@ class RecipeContainerTest {
         recipeContainer.addItem(recipe1);
         recipeContainer.addItem(recipe2);
         assertEquals(recipeContainer.getContainerSize(), 2);
-        recipeContainer.getContainer().clear();
-        assertEquals(recipeContainer.getContainerSize(), 0);
         recipeContainer.addItem(recipe1);
-        assertEquals(recipeContainer.getContainerSize(), 1);
+        assertEquals(recipeContainer.getContainerSize(), 3);
     }
 
     @Test
