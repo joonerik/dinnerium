@@ -26,19 +26,27 @@ fxui ..> javafx
 fxui ..> fxml
 
 component restapi {
-	component Spark {
-		package wtf
-	}
-	package dinnerium.restapi
+	package dinnerium.server
+	package dinnerium.service
 }
+
+component spark {
+}
+
+component gson {
+}
+
+restapi ..> spark
+restapi ..> gson
 
 component ui {
-	
+	package lol
+	package hehe
 }
 
 
-dinnerium.restapi ..> dinnerium.core
-dinnerium.restapi ..> dinnerium.json
+dinnerium.service ..> dinnerium.core
+dinnerium.service ..> dinnerium.json
 
 
 @enduml
