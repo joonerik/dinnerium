@@ -1,0 +1,30 @@
+@startuml sequence_diagram
+actor Bob
+Bob -> RestServer: write Bob\nclick Register
+RestServer -> "userService : UserService": POST/users/register
+RestServer -> "userService : UserService": << create >>
+RestServer -> "ingredientService : IngredientService": << create >>
+RestServer -> "recipeService : RecipeService": << create >>
+"userService : UserService" -> "userService : UserService": registerNewUser(bob)
+"userService : UserService" --> RestServer: bob
+RestServer --> Bob: 'data': bob\n'HTTP Status Code': 201
+' RestServer -> UserService: registerUser({username:Bob})
+' UserService -> User_Bob: new User()
+' UserService -> UserService: saveUser(Bob)
+' UserService --> RestServer: bob
+' & RestServer --> Bob: 'data': bob\n'HTTP Status Code': 201
+...
+' Bob -> RestServer: write Melk, 1, l\nclick Add\nPOST("/users/:bob/ingredients/add"
+' RestServer -> IngredientsService: addIngredient(Milk, bob)
+' IngredientsService -> UserService: addIngredient(Milk, bob)
+' UserService --> IngredientsService: bob
+' & IngredientsService --> RestServer: bob
+' User_Bob --> IngredientContainer: addIngredient(Milk)
+
+...
+...
+' UserService -> IngredientContainer: addIngredient(Melk, Bob)\nPOST("/users/:bob/ingredients/add"
+' IngredientContainer --> UserService: bob
+' UserService -> IngredientContainer: addIngredient(Frokostblanding, Bob)\nPOST("/users/:bob/ingredients/add"
+' IngredientContainer --> UserService: bob
+@enduml
