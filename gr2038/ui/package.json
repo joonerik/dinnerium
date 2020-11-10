@@ -33,7 +33,6 @@
     "cypress:open": "npm run init-test-file & cypress open",
     "cypress:report": "generate-mochawesome-report & open cypress/reports/html/mochawesome.html",
     "test:react": "start-server-and-test start http://localhost:3000 cypress"
-
   },
   "proxy": "http://localhost:4567",
   "eslintConfig": {
