@@ -31,7 +31,9 @@
     "init-test-file": "echo '{\"ingredientContainer\" : {\"ingredients\" : [ ]},\"recipeContainer\" : {\"recipes\" : [ ]},\"username\" : \"data\"}' > ../restapi/src/main/resources/storage/data.json",
     "cypress": "npm run init-test-file & npm run remove & cypress run",
     "cypress:open": "npm run init-test-file & cypress open",
-    "cypress:report": "generate-mochawesome-report & open cypress/reports/html/mochawesome.html"
+    "cypress:report": "generate-mochawesome-report & open cypress/reports/html/mochawesome.html",
+    "test:react": "start-server-and-test start http://localhost:3000 cypress"
+
   },
   "proxy": "http://localhost:4567",
   "eslintConfig": {
@@ -51,6 +53,7 @@
   },
   "devDependencies": {
     "cypress": "^5.4.0",
-    "cypress-mochawesome-reporter": "^1.2.0"
+    "cypress-mochawesome-reporter": "^1.2.0",
+    "start-server-and-test": "^1.11.5"
   }
 }
