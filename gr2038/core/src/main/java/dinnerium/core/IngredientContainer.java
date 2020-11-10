@@ -13,5 +13,9 @@ public class IngredientContainer extends Container<Ingredient> {
         super(container);
     }
 
+    public void addIngredient(Ingredient ingredient) {
+        super.addItem(ingredient);
+    }
+
 
 }

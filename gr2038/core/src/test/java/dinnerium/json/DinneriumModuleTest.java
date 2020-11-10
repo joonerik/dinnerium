@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dinnerium.core.Ingredient;
 import dinnerium.core.IngredientContainer;
-import dinnerium.core.Metadata;
+import dinnerium.core.RecipeMetadata;
 import dinnerium.core.Quantity;
 import dinnerium.core.Recipe;
 import dinnerium.core.RecipeContainer;
@@ -26,6 +26,7 @@ import org.junit.jupiter.api.Test;
 class DinneriumModuleTest {
 
     private ObjectMapper mapper;
+    private final HandlePersistency handlePersistency = new HandlePersistency();
     private final String expectedUserString = "" +
         "{\n" +
         "  \"ingredientContainer\" : {\n" +
@@ -123,7 +124,7 @@ class DinneriumModuleTest {
 
         try {
             StringWriter writer = new StringWriter();
-            HandlePersistency.writeUser(expectedUser, writer);
+            handlePersistency.writeUser(expectedUser, writer);
             String serializedObject = writer.toString().replaceAll("\\s+", "");
             assertEquals(expectedUserString.replaceAll("\\s+", ""), serializedObject);
         } catch (IOException e) {
@@ -146,7 +147,7 @@ class DinneriumModuleTest {
     public void testReader() {
         try {
             User jsonUser =
-                HandlePersistency.readUserFromReader(new StringReader(expectedUserString));
+                handlePersistency.readUserFromReader(new StringReader(expectedUserString));
             compareUsers(createExceptedUser(), jsonUser);
         } catch (IOException e) {
             fail(e.getMessage());
@@ -158,7 +159,7 @@ class DinneriumModuleTest {
         try {
             User user = createExceptedUser();
             StringWriter writer = new StringWriter();
-            HandlePersistency.writeUser(user, writer);
+            handlePersistency.writeUser(user, writer);
             String json = writer.toString();
             assertEquals(expectedUserString.replaceAll("\\s+", ""),
                 json.replaceAll("\\s+", ""));
@@ -218,7 +219,7 @@ class DinneriumModuleTest {
             expectedRecipe.getIngredientContainer().getContainerSize());
         compareRecipeInstructions(expectedRecipe.getRecipeInstructions(),
             r2.getRecipeInstructions());
-        compareMetadata(expectedRecipe.getMetadata(), r2.getMetadata());
+        compareMetadata(expectedRecipe.getRecipeMetadata(), r2.getRecipeMetadata());
     }
 
     private void compareRecipeInstructions(RecipeInstructions expectedInstructions,
@@ -241,18 +242,18 @@ class DinneriumModuleTest {
         assertEquals(expectedIngredient.getQuantity().getUnit(), i2.getQuantity().getUnit());
     }
 
-    private void compareMetadata(Metadata expectedMetadata, Metadata m2) {
-        assertEquals(expectedMetadata.getAuthor(), m2.getAuthor());
-        assertEquals(expectedMetadata.getMinutes(), m2.getMinutes());
-        assertEquals(expectedMetadata.getRecipeDescription(), m2.getRecipeDescription());
-        assertEquals(expectedMetadata.getRecipeName(), m2.getRecipeName());
+    private void compareMetadata(RecipeMetadata expectedRecipeMetadata, RecipeMetadata m2) {
+        assertEquals(expectedRecipeMetadata.getAuthor(), m2.getAuthor());
+        assertEquals(expectedRecipeMetadata.getMinutes(), m2.getMinutes());
+        assertEquals(expectedRecipeMetadata.getRecipeDescription(), m2.getRecipeDescription());
+        assertEquals(expectedRecipeMetadata.getRecipeName(), m2.getRecipeName());
     }
 
     private User createExceptedUser() {
         IngredientContainer ic = new IngredientContainer();
-        ic.addItem(new Ingredient(new Quantity(1, "stk"), "eggs"));
-        ic.addItem(new Ingredient(new Quantity(2, "dl"), "milk"));
-        ic.addItem(new Ingredient(new Quantity(3, "gram"), "sugar"));
+        ic.addIngredient(new Ingredient(new Quantity(1, "stk"), "eggs"));
+        ic.addIngredient(new Ingredient(new Quantity(2, "dl"), "milk"));
+        ic.addIngredient(new Ingredient(new Quantity(3, "gram"), "sugar"));
         RecipeContainer rc = createExpectedRecipeContainer();
 
         return new User(ic, rc, "bestUsername");
@@ -273,11 +274,11 @@ class DinneriumModuleTest {
         for (int i = 0; i < recipeName.length; i++) {
             IngredientContainer ic = new IngredientContainer();
             for (int j = 0; j < amounts[i].length; j++) {
-                ic.addItem(new Ingredient(new Quantity(amounts[i][j], units[i][j]), names[i][j]));
+                ic.addIngredient(new Ingredient(new Quantity(amounts[i][j], units[i][j]), names[i][j]));
             }
-            Metadata md = new Metadata("bestUsername", portions[i], recipeName[i],
+            RecipeMetadata md = new RecipeMetadata("bestUsername", portions[i], recipeName[i],
                 descriptions[i], minutes[i]);
-            rc.addItem(new Recipe(ic, new RecipeInstructions(Arrays.asList(instructions[i])), md));
+            rc.addRecipe(new Recipe(ic, new RecipeInstructions(Arrays.asList(instructions[i])), md));
         }
         return rc;
     }

@@ -1,24 +1,31 @@
 import React, { useContext, useState } from 'react';
 import '../../assets/styles/defaults.scss';
 import axios from 'axios';
-import UserContext from '../../components/UserContext/UserContext';
+import { UserContext } from '../../components/UserContext/UserContext';
 import './loginPage.scss';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import dinneriumLogo from '../../assets/static/dinnerium-min.png';
 
 const LoginPage = () => {
-  const [name, setName] = useState<string>('');
-  const [isAction, setAction] = useState<string>('');
-  const { setUser } = useContext(UserContext);
+  const [name, setName] = useState<IUser['username']>('');
+  const [isAction, setAction] = useState<'register' | 'login'>('login');
+  const { updateUser } = useContext(UserContext);
 
   const submitForm = (
     event: React.FormEvent<HTMLFormElement>,
-    action: String
+    action: 'register' | 'login'
   ) => {
     event.preventDefault();
-    axios.post('/users/' + action, { username: name }).then((res) => {
-      setUser(res.data);
-    });
+    axios
+      .post('/users/' + action, { username: name })
+      .then((res) => {
+        updateUser(res.data);
+      })
+      .catch(() => {
+        toast.error('User not found! Please register a user');
+      });
   };
 
   return (
@@ -32,6 +39,7 @@ const LoginPage = () => {
           name="username"
           required
           className="login__modal__input"
+          autoFocus
         />
 
         <div className="login__modal__btnContainer">
@@ -51,6 +59,18 @@ const LoginPage = () => {
           </button>
         </div>
       </form>
+      <ToastContainer
+        containerId="toastContainer"
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />{' '}
     </div>
   );
 };

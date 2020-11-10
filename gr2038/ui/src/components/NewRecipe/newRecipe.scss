@@ -1,95 +1,35 @@
 @import '../../assets/styles/variables';
 @import '../../assets/styles/defaults.scss';
 
+.new-recipe-wrapper {
+  display: flex;
+  flex-direction: row;
+  min-height: calc(100vh - 60px);
+}
 .new-recipe-container {
   color: $color-light;
   width: 40%;
-  height: auto;
-  margin: auto;
-  //border: 2px solid $color-yellow;
-  form {
-    width: 100%;
-    margin-top: 20px;
+  margin: 70.6px auto;
+  display: flex;
+  flex-direction: column;
 
-    input,
-    textArea,
-    select,
-    button {
-      color: $color-dark;
-      width: 100%;
-      margin-bottom: 20px;
-      background-color: $color-yellow;
-      border-radius: 5px;
-    }
-    input,
-    select,
-    button {
-      height: 25px;
-      text-align: center;
-    }
-    textArea {
-      height: 60px;
-    }
-    input[name='portions'] {
-      margin-left: 5px;
-      width: 15%;
-    }
-    input[name='estimatedTime'] {
-      float: right;
-      margin-right: -5px;
-      width: 40%;
-    }
-    input[name='ingredient'],
-    input[name='quantity'] {
-      width: 20%;
-    }
-    select[name='unit'] {
-      width: 25%;
-    }
-    #addIngredientButton {
-      width: 15%;
-    }
-    input[name='ingredient'],
-    input[name='quantity'],
-    select[name='unit'] {
-      margin-right: 5%;
-    }
-    #addInstructionButton {
-      width: 100%;
-      margin-left: 0.5%;
-    }
-    #addIngredientButton {
-      margin-left: -2%;
-      background-color: $color-light;
-    }
-    button {
-      background-color: $color-yellow;
-    }
-    .instructions,
-    .ingredients {
-      width: 100%;
-      height: auto;
-      min-height: 50px;
-      border: 2px solid $color-yellow;
-    }
+  .first-part-form {
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
 
-    textArea[name='instruction'] {
-      margin-bottom: 5px;
-    }
+  .ingredients > p,
+  .instructions > p {
+    text-align: center;
+    margin-top: 0px;
+  }
 
-    .ingredients > p,
-    .instructions > p {
-      text-align: center;
-      margin-top: 0px;
-    }
-    button:hover,
-    input[type='submit']:hover {
-      cursor: pointer;
-    }
-    ol > li {
-      border-bottom: 2px solid $color-light;
-      margin-bottom: 4px;
-    }
+  ol > li {
+    border-bottom: 2px solid $color-light;
+    margin-bottom: 4px;
   }
   .delete-div {
     width: 13px;
@@ -108,7 +48,16 @@
     display: inline-block;
     border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
   }
-
+  button {
+    font-family: $font;
+    font-size: 1rem;
+    border: none;
+    color: $color-dark;
+    background-color: $color-blue;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
   /*https://www.w3schools.com/css/css_tooltip.asp*/
   .tooltip .tooltiptext {
     visibility: hidden;
@@ -130,5 +79,45 @@
   }
   #feedback_text:empty {
     display: none;
+  }
+
+  .form__ {
+    &name-port-time-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 170px;
+
+      .portion-time-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+    &instruction {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+.unit-recipe {
+  background-color: $color-dark-light;
+  outline: none;
+  border: 2px solid $color-blue;
+  padding: 10px 20px;
+  color: $color-light;
+  border-radius: 5px;
+}
+
+#addRecipeBtn {
+  background-color: $color-yellow;
+}
+
+@media screen and (max-width: 1250px) {
+  .new-recipe-container {
+    color: $color-light;
+    width: 100%;
+    margin: 70.6px 20px;
   }
 }

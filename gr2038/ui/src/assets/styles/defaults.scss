@@ -6,3 +6,22 @@
     background-color: $color-dark;
   }
 }
+
+input,
+textarea {
+  background-color: $color-dark-light;
+  text-decoration: none;
+  border: 2px solid $color-blue;
+  border-radius: 5px;
+  color: $color-light;
+  outline: none;
+  font-family: $font;
+  font-size: 1rem;
+  padding: 10px;
+
+  &::placeholder {
+    color: $color-light;
+    font-style: italic;
+    opacity: 0.6;
+  }
+}

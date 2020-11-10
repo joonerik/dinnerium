@@ -1,0 +1,126 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-11-04T11:18:16.904Z",
+    "end": "2020-11-04T11:18:48.556Z",
+    "duration": 31652,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c0db979f-6551-428f-abee-6e9c94a15aa0",
+      "title": "",
+      "fullFile": "cypress/integration/newRecipe.spec.js",
+      "file": "cypress/integration/newRecipe.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "99e66044-241a-4115-905e-024a8d8e9512",
+          "title": "New recipe page",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Test error handling to add new recipe",
+              "fullTitle": "New recipe page Test error handling to add new recipe",
+              "timedOut": null,
+              "duration": 6518,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login('data');\ncy.contains('Recipes').click();\ncy.get('#titleNewRecipeLink').click();\ncy.get('input[name=\"name\"]').type('Test recipe');\ncy.get('input[name=\"estimatedTime\"]').type('20');\ncy.get('input[name=\"portions\"]').type('2.5');\ncy.get('textarea[name=\"description\"]').type('This recipe is a test');\ncy.get('#recipeForm').submit();\ncy.get('#toastContainer').should('have.text', 'You need to add instructions');\ncy.addInstruction('A instruction');\ncy.wait(3000);\ncy.get('#recipeForm').submit();\ncy.get('#toastContainer').should('have.text', 'You need to add ingredients');",
+              "err": {},
+              "uuid": "4fd5e875-a722-45c4-8486-de00b241b9c7",
+              "parentUUID": "99e66044-241a-4115-905e-024a8d8e9512",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Add new recipe",
+              "fullTitle": "New recipe page Add new recipe",
+              "timedOut": null,
+              "duration": 24271,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login('data');\ncy.contains('Recipes').click();\ncy.get('#titleNewRecipeLink').click(); // write recipe info\ncy.get('input[name=\"name\"]').type('Taco');\ncy.get('input[name=\"estimatedTime\"]').type('20');\ncy.get('input[name=\"portions\"]').type('2');\ncy.get('textarea[name=\"description\"]').type('A great Mexican dish, which happens to be quite popular in Norway, although the Norwegian taco is quite different'); // add ingredients\ncy.addIngredient('Minced meat', 400, 'gram');\ncy.addIngredient('Taco powder', 1, 'stk');\ncy.addIngredient('Grated cheese', 100, 'gram');\ncy.addIngredient('Salad', 1, 'stk');\ncy.addIngredient('Romme', 1, 'stk');\ncy.addIngredient('Tacosaus', 1, 'stk');\ncy.addIngredient('Beer', 3, 'liter'); // add an ingredient and check remove button\ncy.addIngredient('Ananas', 5, 'kg');\ncy.get('.ingredients').find('ol').last().find('div').last().click(); // add instructions\ncy.addInstruction('Cook the minced meat');\ncy.addInstruction('Add the powder and mix it');\ncy.addInstruction('Cut the salad');\ncy.addInstruction('Eat it as you like, and enjoy!'); // add an instruction and check remove button\ncy.addInstruction('If any leftovers, throw it');\ncy.get('.instructions').find('ol').last().find('div').last().click(); // uncomment when merged/updated\ncy.wait(5000);\ncy.get('#addRecipeBtn').click();\ncy.wait(5000); // cy.get('.recipeBox').last().should('have.class', 'active-recipe');\ncy.get('.recipeBox').last().click();\ncy.get('.recipe__name').should('have.text', 'Taco');",
+              "err": {},
+              "uuid": "d4849a7b-1748-459e-99d9-e3ef616f0504",
+              "parentUUID": "99e66044-241a-4115-905e-024a8d8e9512",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4fd5e875-a722-45c4-8486-de00b241b9c7",
+            "d4849a7b-1748-459e-99d9-e3ef616f0504"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 30789,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results/json",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "quiet": true,
+        "reportTitle": "Front end tests"
+      },
+      "version": "5.1.0"
+    }
+  }
+}

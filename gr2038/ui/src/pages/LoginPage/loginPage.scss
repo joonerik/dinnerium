@@ -1,4 +1,11 @@
 @import '../../assets/styles/variables';
+.toast-fail {
+  background-color: $color-red;
+  text-align: center;
+  color: $color-dark;
+  font-family: $font;
+}
+
 .login {
   &__modal {
     display: flex;

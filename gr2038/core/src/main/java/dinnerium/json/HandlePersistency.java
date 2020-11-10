@@ -8,6 +8,13 @@ import java.io.Writer;
 
 public class HandlePersistency {
 
+    private final ObjectMapper mapper;
+
+    public HandlePersistency() {
+        mapper = new ObjectMapper();
+        mapper.registerModule(new DinneriumModule());
+    }
+
     /**
      * Writes a user to the writer.
      *
@@ -15,9 +22,7 @@ public class HandlePersistency {
      * @param writer the writer to be used to write the user object.
      * @throws IOException if it is not possible to write the user to the writer.
      */
-    public static void writeUser(User user, Writer writer) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new DinneriumModule());
+    public void writeUser(User user, Writer writer) throws IOException {
         mapper.writerWithDefaultPrettyPrinter().writeValue(writer, user);
     }
 
@@ -29,9 +34,7 @@ public class HandlePersistency {
      * @return the User object read from the reader.
      * @throws IOException if it is not possible to read from the reader.
      */
-    public static User readUserFromReader(Reader reader) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new DinneriumModule());
+    public User readUserFromReader(Reader reader) throws IOException {
         return mapper.readValue(reader, User.class);
     }
 }

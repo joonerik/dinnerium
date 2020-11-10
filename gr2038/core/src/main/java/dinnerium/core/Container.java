@@ -29,9 +29,9 @@ public abstract class Container<T> implements Iterable<T> {
     public void setCollection(Collection<T> container) {
         if (container.isEmpty()) {
             throw new IllegalArgumentException(
-                    container + "invalid");
+                    "Missing content");
         }
-        this.container = container;
+        this.container = new ArrayList<>(container);
     }
 
     /**
@@ -52,10 +52,10 @@ public abstract class Container<T> implements Iterable<T> {
     /**
      * Returns a container.
      *
-     * @return container
+     * @return new container copy
      */
     public Collection<T> getContainer() {
-        return this.container;
+        return new ArrayList<>(this.container);
     }
 
     /**
