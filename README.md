@@ -18,8 +18,7 @@ i applikasjonen. Applikasjonen skal til syvende og sist hjelpe deg å finne aktu
 
 Applikasjonen benytter Jackson-biblioteket for å lagre data i json-format. All data som utveksles mellom bruker og back end skjer gjennom et REST API, som er implementert ved hjelp av rammeverket Spark.
 
-Vi bruker implisitt lagring hvor en bruker vil kunne lagre sine varer og oppskrifter
-automatisk, uten å måtte eksplisitt tenke over lagring. Grunnen til at vi benytter implisitt lagring over en dokumentmetafor er fordi det er naturlig
+Vi bruker implisitt lagring hvor en bruker vil kunne lagre sine varer og oppskrifter automatisk, uten å måtte eksplisitt tenke over lagring. Grunnen til at vi benytter implisitt lagring over en dokumentmetafor er fordi det er naturlig
 for vår applikasjon å lagre data først når data er ferdig konstruert, f.eks at en hel oppskrift er blitt opprettet.
 
 ## Hvordan kjøre prosjektet 🚀
@@ -53,6 +52,43 @@ npm install
 npm start
 ```
 
+## Hvordan teste prosjektet 🧪
+
+### JavaFx-applikasjonen
+
+- Når man kjører _mvn install_ i _gr2038_ mappen blir automatisk testene til JavaFx-applikasjonen kjørt sammen med resten av testene til java-prosjetet. Testene til JavaFx er satt opp med test rammeverket _TestFX_ som bruker en "robot" som kan finne elementer i appen og trykke på de, og evnt skrive ting i input felter.
+
+For å kjøre testene til JavaFX applikasjonen gjør du:
+
+```bat
+cd fxui
+mvn verify
+```
+
+- Etter at testene har kjørt får du en tilbakemelding i terminalen om hvordan det har gått. Det blir også generert en html rapport i target mappen under fxui modulen, rapporten ligger i site/jacoco/index.html.
+
+### React-applikasjonen
+
+- For å teste _React_-applikasjonen har vi valgt å bruke testrammeverket _Cypress_. Når testene kjøres testes ulike funksjoner i applikasjonene ved at test rammeverket klikker seg rundt på siden og skriver ting inn i input feltene. For at testene skal fungere er RestServeren nødt til å kjøre, slik at forespørslene fra applikasjonen blir svart på. Dette betyr at man er nødt til å innstalere restapi modulen, og kjøre serveren derfra først.
+
+For å kjøre testen gjør du:
+
+```bat
+cd restapi
+mvn install
+mvn exec:java
+
+cd ../ui
+npm install
+npm run test:react
+```
+
+- Etter testene har kjørt genereres det en rapport i terminalen. Dersom du vil åpne en "brukervennlig" rapport kan du få åpnet en html fil du kan vise i Gitpod, ved hjelp av en _preview-funksjon_.
+
+```bat
+npm run cypress:report
+```
+
 ## Innhold og organisering 🎨
 
 Mappestrukturen til prosjektet er organisert følgende:
@@ -78,6 +114,6 @@ Som man ser, er de to ulike brukergrensesnittene relativt like, da det var et kr
 I mappen [documentation](documentation) kan finner man diverse diagrammer og javadoc-dokumentasjon. Denne mappen kan gjøre det lettere å forstå arkitekturen og informasjonsflyten i applikasjonen.
 Her finner man også samtlige [brukerhistorier](documentation/brukerhistorier.md). Brukerhistoriene inneholder ikke mange krav om funksjonalitet, da man i innlevering 3 kunne velge om å utvide med mer funksjonalitet, eller bytte front end modulen til f.eks React.
 
-```
+## Gitlab CI/CD
 
-```
+Vi har implementert en gitlab CI/CD pipeline som instalerer core modulen vår, og bygger react-applikasjonen når noe pushes opp til gitlab. Dette gjøres for å forsikre seg om at nye endringer ikke _brekker_ noen av testene. Fxui og integrasjonstest er ikke med da pipelinene ikke støtter måten TestFx tester applikasjonen på.
