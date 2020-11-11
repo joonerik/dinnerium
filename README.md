@@ -110,7 +110,7 @@ Mappestrukturen til prosjektet er organisert følgende:
 - **integrationtest/src/test/resources** ressurser til integrasjonstestene.
 - **restapi/src/main/java** utgjør kildekoden til RestServeren vår og service klassene den bruker.
 - **restapi/src/main/resources** Utgjør brukerdata til alle brukerne som er registrert.
-- **restapi/src/test/java** Utgjør testkoden til restapi modulen.  
+- **restapi/src/test/java** Utgjør testkoden til restapi modulen.
 - **ui/src** Utgjør kildekode til react-applikasjonen med alle sidene, og komponentene våre, samt stilark.
 - **ui/cypress** Kode for testene til react-applikasjonen, samt rapporter fra testene.
 
@@ -118,8 +118,8 @@ Man kan også finne et [mappetre her](documentation/document_tree.md)
 
 ## Brukergrensesnitt 💄
 
-![UI for fridge in  JavaFX](http://folk.ntnu.no/anderobs/images/fridge.png "JavaFX UI")
-![UI for fridge in React](/uploads/1abca2db4726c400c0a1edcd02991f08/fridgePageStyle.png "React UI")
+<img src="http://folk.ntnu.no/anderobs/images/fridge.png" alt="JavaFX UI" width="600" height="400">
+<img src="/uploads/1abca2db4726c400c0a1edcd02991f08/fridgePageStyle.png" alt="React UI" width="600" height="300">
 
 Som man ser, er de to ulike brukergrensesnittene relativt like, da det var et krav om at begge brukergrensesnittene skulle ha tilnærmet lik funksjonalitet og design. Små endringer i f.eks. fargevalg er likevel gjort.
 
