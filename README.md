@@ -10,7 +10,7 @@ Det er også rigget opp med plugins for å sjekke kodekvalitet, samt for å se e
 I master-branchen kjøres også en pipeline for å sjekke testdekningsgraden på _core_-modulen. Grunnen til at det ikke kjøres på _fxui_-modulen er at testene på
 denne modulen ikke støtter GitLab sin CI for Java 14.
 
-I del tre av prosjektet valgte vi som gruppe å benytte oss av React for å bytte front end. _børge skriv litt her om react build_. For å teste dette brukergrensesnittet brukes rammeverket Cypress.
+I del tre av prosjektet valgte vi som gruppe å benytte oss av React for å bytte front end. React gjør det lettere for flere å jobbe sammen på et større prosjekt, og det er lett å gjenbruke kode. Sammen med React bruker vi TypeScript for å få typesjekking som er sentralt for å sikre at det er lettere å oppdage bugs, og at vi sender riktig informasjon til backend. For å teste dette brukergrensesnittet brukes rammeverket Cypress.
 
 Vi ønsker å lage en applikasjon som skal hjelpe deg som bruker å planlegge middager. Dette skal skje gjennom en oversikt over varer man har tilgjengelig,
 samt oppskrifter man har brukt. Gjennom [brukerhistorie 2](documentation/brukerhistorier.md) vil man derfor kunne se varene sine og oppskrifter man tidligere har brukt og lagret
