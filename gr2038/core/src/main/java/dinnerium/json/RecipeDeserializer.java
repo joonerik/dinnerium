@@ -8,9 +8,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import dinnerium.core.IngredientContainer;
-import dinnerium.core.RecipeMetadata;
 import dinnerium.core.Recipe;
 import dinnerium.core.RecipeInstructions;
+import dinnerium.core.RecipeMetadata;
 import java.io.IOException;
 
 class RecipeDeserializer extends JsonDeserializer<Recipe> {
