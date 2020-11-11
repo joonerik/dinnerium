@@ -47,7 +47,7 @@ function Menu() {
 
   return (
     <div className="fridgePage__addIngredient">
-      <AddIngredient submitIngredientForm={postIngdredient} />;
+      <AddIngredient submitIngredientForm={postIngdredient} />
     </div>
   );
 }
