@@ -45,7 +45,11 @@ function Menu() {
       });
   };
 
-  return <AddIngredient submitIngredientForm={postIngdredient} />;
+  return (
+    <div className="fridgePage__addIngredient">
+      <AddIngredient submitIngredientForm={postIngdredient} />;
+    </div>
+  );
 }
 
 function FridgePage() {
