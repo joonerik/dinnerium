@@ -1,4 +1,4 @@
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.idi.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2020/gr2038/gr2038/)
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.idi.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2020/gr2038/dinnerium/)
 
 # Dinnerium 💥
 
@@ -23,13 +23,13 @@ for vår applikasjon å lagre data først når data er ferdig konstruert, f.eks 
 
 ## Hvordan kjøre prosjektet 🚀
 
-Fordi vi har to forskjellige brukergrensesnitt i _JavaFX_ og _React_ (som ser ganske like ut), har vi valgt å kjøre prosjektet på følgende måte:
+Fordi vi har to forskjellige brukergrensesnitt i JavaFX og React, har vi valgt å kjøre prosjektet på følgende måte:
 
 - Back end og REST API må uansett kjøres. Deretter velger man om man vil kjøre JavaFX-applikasjonen eller React-applikasjonen.
 - For å bygge prosjektet bruker man _mvn install_ fra roten, altså _gr2038_-mappen.
 
 ```bat
-cd gr2038
+cd dinnerium
 mvn install
 cd restapi
 mvn exec:java
@@ -39,7 +39,7 @@ mvn exec:java
 - For å kjøre selve JavaFX-applikasjonen kan man gå inn i _fxui_-modulen, og deretter bruke _mvn javafx:run_.
 
 ```bat
-cd gr2038/fxui
+cd dinnerium/fxui
 mvn javafx:run
 ```
 
@@ -61,7 +61,7 @@ npm start
 For å kjøre testene til JavaFX applikasjonen kan man:
 
 ```bat
-cd fxui
+cd dinnerium/fxui
 mvn verify
 ```
 
@@ -74,7 +74,7 @@ mvn verify
 For å starte serveren:
 
 ```bat
-cd restapi
+cd dinnerium/restapi
 mvn install
 mvn exec:java
 ```
@@ -90,6 +90,7 @@ npm run test:react
 - Etter at testene har kjørt genereres det testrapporter fra hver testfil. For å sammenfatte disse i et brukervennlig format, kan man åpne en html-fil ved kommandoen under. I Gitpod kan man deretter bruke _preview_-funksjonen for å se rapporten.
 
 ```bat
+cd ui
 npm run cypress:report
 ```
 

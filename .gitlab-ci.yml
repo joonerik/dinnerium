@@ -5,7 +5,7 @@ build:core:
   image: maven:3-jdk-14
   stage: build
   script:
-    - cd gr2038/core/
+    - cd dinnerium/core/
     - mvn package
     - cat target/site/jacoco/index.html
   artifacts:
@@ -22,11 +22,11 @@ build:web:
   stage: build
   before_script: []
   script:
-    - cd gr2038/ui/
+    - cd ui/
     - npm install
     - npm run format
     - npm run build
   artifacts:
     paths:
-      - gr2038/ui/node_modules/
-      - gr2038/ui/build/
+      - ui/node_modules/
+      - ui/build/
