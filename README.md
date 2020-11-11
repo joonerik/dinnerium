@@ -118,7 +118,8 @@ Man kan også finne et [mappetre her](documentation/document_tree.md)
 
 ## Brukergrensesnitt 💄
 
-![UI for fridge](http://folk.ntnu.no/anderobs/images/fridge.png "The fridge UI")
+![UI for fridge in  JavaFX](http://folk.ntnu.no/anderobs/images/fridge.png "JavaFX UI")
+![UI for fridge in React](/uploads/1abca2db4726c400c0a1edcd02991f08/fridgePageStyle.png "React UI")
 
 Som man ser, er de to ulike brukergrensesnittene relativt like, da det var et krav om at begge brukergrensesnittene skulle ha tilnærmet lik funksjonalitet og design. Små endringer i f.eks. fargevalg er likevel gjort.
 
