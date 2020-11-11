@@ -4,7 +4,7 @@ import static spark.Spark.get;
 import static spark.Spark.post;
 
 import dinnerium.core.Units;
-import dinnerium.service.IngredientsService;
+import dinnerium.service.IngredientService;
 import dinnerium.service.RecipeService;
 import dinnerium.service.UserService;
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class RestServer {
      */
     public static void main(String[] args) {
         final UserService userService = new UserService();
-        final IngredientsService ingredientsService = new IngredientsService();
+        final IngredientService ingredientService = new IngredientService();
         final RecipeService recipeService = new RecipeService();
 
         get("/units", (req, res) -> {
@@ -56,7 +56,7 @@ public class RestServer {
             res.type("application/json");
             String response = "null";
             try {
-                response = ingredientsService.addIngredient(req.body(), req.params(":username"));
+                response = ingredientService.addIngredient(req.body(), req.params(":username"));
                 res.status(202);
             } catch (IOException e) {
                 res.status(400);

@@ -5,7 +5,7 @@ import dinnerium.core.Ingredient;
 import dinnerium.json.DinneriumModule;
 import java.io.IOException;
 
-public class IngredientsService {
+public class IngredientService {
 
     private final ObjectMapper mapper;
     private final UserService userService;
@@ -14,7 +14,7 @@ public class IngredientsService {
      * Instantiate a IngredientService object with a UserService to the userService field, and
      * registers DinneriumModule as a module to the ObjectMapper.
      */
-    public IngredientsService() {
+    public IngredientService() {
         mapper = new ObjectMapper();
         userService = new UserService();
         mapper.registerModule(new DinneriumModule());
