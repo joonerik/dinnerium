@@ -1,4 +1,4 @@
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.idi.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2020/gr2038/gr2038/)
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.idi.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2020/gr2038/dinnerium/)
 
 # Dinnerium 💥
 
@@ -23,13 +23,13 @@ for vår applikasjon å lagre data først når data er ferdig konstruert, f.eks 
 Prosjektet er satt opp med maven, og delt opp i to moduler _core_ og _fxui_.
 
 ```bat
-cd gr2038
+cd dinnerium
 mvn install
 cd fxui
 mvn javafx:run
 ```
 
-- For å bygge prosjektet bruker man _mvn install_ fra roten, altså _gr2038_-mappen.
+- For å bygge prosjektet bruker man _mvn install_ fra roten, altså _dinnerium_-mappen.
 - For å kjøre prosjektet kan man gå inn i _fxui_-modulen, og deretter bruke _mvn javafx:run_.
   Man må først ha installert modulen som _fxui_ er avhengig av, altså _core_-modulen.
 
