@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import dinneriumLogo from '../../assets/static/dinnerium-min.png';
+import { stringify } from 'querystring';
 
 const LoginPage = () => {
   const [name, setName] = useState<IUser['username']>('');
@@ -24,7 +25,13 @@ const LoginPage = () => {
         updateUser(res.data);
       })
       .catch(() => {
-        toast.error('User not found! Please register a user');
+        let message: string;
+        if (action == 'register') {
+          message = 'Username already in use, please choose another one';
+        } else {
+          message = 'User not found! Please register a user';
+        }
+        toast.error(message);
       });
   };
 
