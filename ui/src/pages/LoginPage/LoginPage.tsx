@@ -7,7 +7,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import dinneriumLogo from '../../assets/static/dinnerium-min.png';
-import { stringify } from 'querystring';
 
 const LoginPage = () => {
   const [name, setName] = useState<IUser['username']>('');
