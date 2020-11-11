@@ -1,0 +1,39 @@
+@import '../../assets/styles/variables';
+.logout {
+  &__container {
+    width: 25%;
+    min-height: 300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-self: center;
+      width: 120px;
+      border-radius: 3px;
+      text-decoration: none;
+      color: $color-dark;
+      border: none;
+      padding: 15px 20px;
+      background-color: $color-red;
+      cursor: pointer;
+      &:hover {
+        background-color: $color-blue;
+      }
+    }
+  }
+  &__header {
+    text-align: center;
+    h1 {
+      font: $font;
+      color: $color-light;
+    }
+    h2 {
+      font: $font;
+      color: $color-blue;
+    }
+  }
+}

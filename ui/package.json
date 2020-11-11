@@ -1,0 +1,58 @@
+{
+  "name": "ui",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.6",
+    "axios": "^0.20.0",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3",
+    "react-toastify": "^6.0.9",
+    "start": "^5.1.0",
+    "typescript": "~3.7.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "format": "npx prettier --write 'src/**/*.{ts,tsx,scss}'",
+    "remove": "rm ../dinnerium/restapi/src/main/resources/storage/registertest.json & rm -rf cypress/results/json/",
+    "init-test-file": "echo '{\"ingredientContainer\" : {\"ingredients\" : [ ]},\"recipeContainer\" : {\"recipes\" : [ ]},\"username\" : \"data\"}' > ../dinnerium/restapi/src/main/resources/storage/data.json",
+    "cypress": "npm run init-test-file & npm run remove & cypress run",
+    "cypress:open": "npm run init-test-file & cypress open",
+    "cypress:report": "generate-mochawesome-report & open cypress/reports/html/mochawesome.html",
+    "test:react": "start-server-and-test start http://localhost:3000 cypress"
+  },
+  "proxy": "http://localhost:4567",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "cypress": "^5.4.0",
+    "cypress-mochawesome-reporter": "^1.2.0",
+    "start-server-and-test": "^1.11.5"
+  }
+}
