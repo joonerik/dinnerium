@@ -23,7 +23,7 @@ for vår applikasjon å lagre data først når data er ferdig konstruert, f.eks 
 
 ## Hvordan kjøre prosjektet 🚀
 
-Fordi vi har to forskjellige brukergrensesnitt i _JavaFX_ og _React_ (som ser ganske like ut), har vi valgt å kjøre prosjektet på følgende måte:
+Fordi vi har to forskjellige brukergrensesnitt i JavaFX og React, har vi valgt å kjøre prosjektet på følgende måte:
 
 - Back end og REST API må uansett kjøres. Deretter velger man om man vil kjøre JavaFX-applikasjonen eller React-applikasjonen.
 - For å bygge prosjektet bruker man _mvn install_ fra roten, altså _gr2038_-mappen.
@@ -39,15 +39,10 @@ mvn exec:java
 - For å kjøre selve JavaFX-applikasjonen kan man gå inn i _fxui_-modulen, og deretter bruke _mvn javafx:run_.
 
 ```bat
-cd gr2038/fxui
+cd dinnerium/fxui
 mvn javafx:run
 ```
 
-<<<<<<< HEAD
-- For å bygge prosjektet bruker man _mvn install_ fra roten, altså _dinnerium_-mappen.
-- For å kjøre prosjektet kan man gå inn i _fxui_-modulen, og deretter bruke _mvn javafx:run_.
-  Man må først ha installert modulen som _fxui_ er avhengig av, altså _core_-modulen.
-=======
 - For å bygge React-applikasjonen bruker man _npm instakk_ fra ui-mappen som ligger på rotnivå.
 - For å kjøre selve React-applikasjonen bruker man _npm start_.
 
@@ -66,7 +61,7 @@ npm start
 For å kjøre testene til JavaFX applikasjonen kan man:
 
 ```bat
-cd fxui
+cd dinnerium/fxui
 mvn verify
 ```
 
@@ -79,13 +74,12 @@ mvn verify
 For å starte serveren:
 
 ```bat
-cd restapi
+cd dinnerium/restapi
 mvn install
 mvn exec:java
 ```
 
 Deretter starter man testene fra en annen terminal:
->>>>>>> 68404ef14671d2db651189396a3d82b02c77bd66
 
 ```bat
 cd ui
@@ -96,6 +90,7 @@ npm run test:react
 - Etter at testene har kjørt genereres det testrapporter fra hver testfil. For å sammenfatte disse i et brukervennlig format, kan man åpne en html-fil ved kommandoen under. I Gitpod kan man deretter bruke _preview_-funksjonen for å se rapporten.
 
 ```bat
+cd ui
 npm run cypress:report
 ```
 
