@@ -54,24 +54,24 @@ npm start
 
 ## Hvordan teste prosjektet 🧪
 
-### JavaFx-applikasjonen
+### JavaFX-applikasjonen
 
-- Når man kjører _mvn install_ i _gr2038_ mappen blir automatisk testene til JavaFx-applikasjonen kjørt sammen med resten av testene til java-prosjetet. Testene til JavaFx er satt opp med test rammeverket _TestFX_ som bruker en "robot" som kan finne elementer i appen og trykke på de, og evnt skrive ting i input felter.
+- Når man kjører _mvn install_ i _gr2038_ mappen blir automatisk testene til JavaFX-applikasjonen kjørt sammen med resten av testene til Java-prosjektet. Testene til JavaFX er satt opp med testrammeverket _TestFX_ som kan finne elementer i applikasjonen, og kan samhandle med de.
 
-For å kjøre testene til JavaFX applikasjonen gjør du:
+For å kjøre testene til JavaFX applikasjonen kan man:
 
 ```bat
 cd fxui
 mvn verify
 ```
 
-- Etter at testene har kjørt får du en tilbakemelding i terminalen om hvordan det har gått. Det blir også generert en html rapport i target mappen under fxui modulen, rapporten ligger i site/jacoco/index.html.
+- Etter at testene har kjørt får du en tilbakemelding i terminalen om hvordan det har gått. Det blir også generert en html rapport i _target_-mappen under _fxui_-modulen. Denne ligger i site/jacoco/index.html.
 
 ### React-applikasjonen
 
-- For å teste _React_-applikasjonen har vi valgt å bruke testrammeverket _Cypress_. Når testene kjøres testes ulike funksjoner i applikasjonene ved at test rammeverket klikker seg rundt på siden og skriver ting inn i input feltene. For at testene skal fungere er RestServeren nødt til å kjøre, slik at forespørslene fra applikasjonen blir svart på. Dette betyr at man er nødt til å innstalere restapi modulen, og kjøre serveren derfra først.
+- For å teste _React_-applikasjonen har vi valgt å bruke testrammeverket _Cypress_. Når testene kjøres vil ulike funksjoner i applikasjonen testes på samme måte som JavaFX-applikasjonen. For at testene skal fungere må _RestServer_ kjøre, slik at forespørslene som testene foretar seg kan besvares. Derfor må man først installere _restapi_-modulen og kjøre serveren derfra før man starter testene.
 
-For å kjøre testen gjør du:
+For å starte serveren:
 
 ```bat
 cd restapi
@@ -79,7 +79,7 @@ mvn install
 mvn exec:java
 ```
 
-I en annen terminal gjør du følgende:
+Deretter starter man testene fra en annen terminal:
 
 ```bat
 cd ui
@@ -87,7 +87,7 @@ npm install
 npm run test:react
 ```
 
-- Etter testene har kjørt genereres det en rapport i terminalen. Dersom du vil åpne en "brukervennlig" rapport kan du få åpnet en html fil du kan vise i Gitpod, ved hjelp av en _preview-funksjon_.
+- Etter at testene har kjørt genereres det testrapporter fra hver testfil. For å sammenfatte disse i et brukervennlig format, kan man åpne en html-fil ved kommandoen under. I Gitpod kan man deretter bruke _preview_-funksjonen for å se rapporten.
 
 ```bat
 npm run cypress:report
@@ -126,4 +126,4 @@ Her finner man også samtlige [brukerhistorier](documentation/brukerhistorier.md
 
 ## Gitlab CI/CD
 
-Vi har implementert en gitlab CI/CD pipeline som instalerer core modulen vår, og bygger react-applikasjonen når noe pushes opp til gitlab. Dette gjøres for å forsikre seg om at nye endringer ikke _brekker_ noen av testene. Fxui og integrasjonstest er ikke med da pipelinene ikke støtter måten TestFx tester applikasjonen på.
+Vi har implementert en Gitlab CI/CD pipeline som installerer og tester _core_-modulen vår, og bygger React-applikasjonen for å detektere eventuelle byggfeil. Dette sjekkes hver gang noe pushes opp til Gitlab, og forsikrer oss at nye endringer ikke "brekker" applikasjonen. Testene til _fxui_-modulen og integrasjonstesten er ikke med, ettersom pipelinen ikke støtter måten TestFX tester JavaFX-applikasjonen på.
