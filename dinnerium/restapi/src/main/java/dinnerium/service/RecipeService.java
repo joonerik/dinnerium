@@ -4,10 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dinnerium.core.Recipe;
 import dinnerium.json.DinneriumModule;
 import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class RecipeService {
     private final ObjectMapper mapper;
     private final UserService userService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(RecipeService.class);
 
     /**
      * Instantiate a RecipeService object with a UserService to the userService field, and registers
@@ -31,6 +34,8 @@ public class RecipeService {
     public String addRecipe(String requestBody, String username) throws IOException {
         Recipe recipe = mapper.readValue(requestBody, Recipe.class);
         if (recipe == null) {
+            LOGGER.info("Couldn't create ingredient of request body: {}, for user {}", requestBody,
+                username);
             throw new IOException("Recipe not on the proper format");
         }
         return userService.addRecipe(recipe, username);
