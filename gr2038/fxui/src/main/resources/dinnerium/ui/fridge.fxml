@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="dinnerium.ui.FridgeController"
+      fx:id="fridgePane" layoutX="200.0" layoutY="56.0" prefHeight="392.0" prefWidth="500.0"
+      style="-fx-background-color: #42404B; -fx-border-color: #F4C20D; -fx-border-width: 3; -fx-border-radius: 10;"
+      visible="false">
+    <TextField fx:id="nameInput" alignment="CENTER" layoutX="50.0" layoutY="16.0"
+               onAction="#handleAddIngredient" prefHeight="30.0" prefWidth="124.0" promptText="Name"
+               styleClass="input-field-style"/>
+    <TextField fx:id="amountInput" alignment="CENTER" layoutX="184.0" layoutY="16.0"
+               prefHeight="30.0" prefWidth="70.0" promptText="Quantity"
+               styleClass="input-field-style"/>
+    <ComboBox fx:id="unitComboBox" layoutX="260.0" layoutY="16.0" prefHeight="30.0" prefWidth="90.0"
+              promptText="Unit" styleClass="combobox-style"/>
+    <Button fx:id="addButton" layoutX="353.0" layoutY="16.0" mnemonicParsing="false"
+            onAction="#handleAddIngredient" prefHeight="30.0" prefWidth="74.0"
+            styleClass="button-style" text="Add"/>
+    <TableView fx:id="ingredientTableView" layoutX="60.0" layoutY="96.0" prefHeight="267.0"
+               prefWidth="380.0" style="-fx-background-color: #42404B;">
+        <columns>
+            <TableColumn fx:id="quantityColumn" prefWidth="151.33334350585938" resizable="false"/>
+            <TableColumn fx:id="itemColumn" prefWidth="209.33334350585938" resizable="false"/>
+        </columns>
+    </TableView>
+</Pane>

@@ -37,13 +37,9 @@ Cypress.Commands.add('addIngredient', (ingredient, quantity, unit) => {
   cy.get('input[name="quantity"]').type(quantity);
   cy.get('select').select(unit);
   cy.get('#addIngredientButton').click();
-  cy.get('input[name="ingredient"]').clear();
-  cy.get('input[name="ingredient"]').clear();
-  cy.get('input[name="quantity"]').clear();
 });
 
 Cypress.Commands.add('addInstruction', (instruction) => {
   cy.get('textarea[name="instruction"]').type(instruction);
   cy.get('#addInstructionButton').click();
-  cy.get('textarea[name="instruction"]').clear();
 });

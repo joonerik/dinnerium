@@ -4,21 +4,21 @@ public class Recipe {
 
     private final IngredientContainer ingredientContainer;
     private final RecipeInstructions recipeInstructions;
-    private final Metadata metadata;
+    private final RecipeMetadata recipeMetadata;
 
     /**
      * Constructor for Recipe.
      *
      * @param ingredientContainer of Ingredients to be used in Recipe
      * @param recipeInstructions of instructions to be used in Recipe
-     * @param metadata of Recipe
+     * @param recipeMetadata of Recipe
      */
     public Recipe(IngredientContainer ingredientContainer,
                   RecipeInstructions recipeInstructions,
-                  Metadata metadata) {
+                  RecipeMetadata recipeMetadata) {
         this.ingredientContainer = ingredientContainer;
         this.recipeInstructions = recipeInstructions;
-        this.metadata = metadata;
+        this.recipeMetadata = recipeMetadata;
     }
 
     /**
@@ -40,11 +40,11 @@ public class Recipe {
     }
 
     /**
-     * Returns the Metadata for the recipe.
+     * Returns the RecipeMetadata for the recipe.
      *
-     * @return metadata
+     * @return recipeMetadata
      */
-    public Metadata getMetadata() {
-        return metadata;
+    public RecipeMetadata getRecipeMetadata() {
+        return recipeMetadata;
     }
 }
