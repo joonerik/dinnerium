@@ -10,7 +10,9 @@ Det er også rigget opp med plugins for å sjekke kodekvalitet, samt for å se e
 I master-branchen kjøres også en pipeline for å sjekke testdekningsgraden på _core_-modulen. Grunnen til at det ikke kjøres på _fxui_-modulen er at testene på
 denne modulen ikke støtter GitLab sin CI for Java 14.
 
-I del tre av prosjektet valgte vi som gruppe å benytte oss av React for å bytte front end. React gjør det lettere for flere å jobbe sammen på et større prosjekt, og det er lett å gjenbruke kode. Sammen med React bruker vi TypeScript for å få typesjekking som er sentralt for å sikre at det er lettere å oppdage bugs, og at vi sender riktig informasjon til backend. For å teste dette brukergrensesnittet brukes rammeverket Cypress.
+I del tre av prosjektet valgte vi som gruppe å benytte oss av React for å bytte front end. Dette gjorde vi fordi vi ønsket å lage en webapplikasjon, samt utvide
+kompetansen vår. Sammen med React bruker vi TypeScript for å få typesjekking som er sentralt for å sikre at det er lettere å oppdage bugs, og at vi sender riktig 
+informasjon til backend. For å teste dette brukergrensesnittet brukes rammeverket Cypress.
 
 Vi ønsker å lage en applikasjon som skal hjelpe deg som bruker å planlegge middager. Dette skal skje gjennom en oversikt over varer man har tilgjengelig,
 samt oppskrifter man har brukt. Gjennom [brukerhistorie 2](documentation/brukerhistorier.md) vil man derfor kunne se varene sine og oppskrifter man tidligere har brukt og lagret
@@ -26,7 +28,7 @@ for vår applikasjon å lagre data først når data er ferdig konstruert, f.eks 
 Fordi vi har to forskjellige brukergrensesnitt i JavaFX og React, har vi valgt å kjøre prosjektet på følgende måte:
 
 - Back end og REST API må uansett kjøres. Deretter velger man om man vil kjøre JavaFX-applikasjonen eller React-applikasjonen.
-- For å bygge prosjektet bruker man _mvn install_ fra roten, altså _gr2038_-mappen.
+- For å bygge prosjektet bruker man _mvn install_ fra roten, altså _dinnerium_-mappen.
 
 ```bat
 cd dinnerium
@@ -43,7 +45,7 @@ cd dinnerium/fxui
 mvn javafx:run
 ```
 
-- For å bygge React-applikasjonen bruker man _npm instakk_ fra ui-mappen som ligger på rotnivå.
+- For å bygge React-applikasjonen bruker man _npm install_ fra ui-mappen som ligger på rotnivå.
 - For å kjøre selve React-applikasjonen bruker man _npm start_.
 
 ```bat
@@ -56,9 +58,9 @@ npm start
 
 ### JavaFX-applikasjonen
 
-- Når man kjører _mvn install_ i _gr2038_ mappen blir automatisk testene til JavaFX-applikasjonen kjørt sammen med resten av testene til Java-prosjektet. Testene til JavaFX er satt opp med testrammeverket _TestFX_ som kan finne elementer i applikasjonen, og kan samhandle med de.
+- Når man kjører _mvn install_ i _dinnerium_-mappen blir automatisk testene til alle moduler kjørt, utenom _ui_-modulen som ligger på toppnivå. Testene til JavaFX er satt opp med testrammeverket _TestFX_ som kan finne elementer i applikasjonen, og kan samhandle med de.
 
-For å kjøre testene til JavaFX applikasjonen kan man:
+For å f.eks kjøre testene til kun JavaFX applikasjonen kan man:
 
 ```bat
 cd dinnerium/fxui
@@ -108,7 +110,7 @@ Mappestrukturen til prosjektet er organisert følgende:
 - **integrationtest/src/test/resources** ressurser til integrasjonstestene.
 - **restapi/src/main/java** utgjør kildekoden til RestServeren vår og service klassene den bruker.
 - **restapi/src/main/resources** Utgjør brukerdata til alle brukerne som er registrert.
-- **restapi/src/test/java** Utgjør testkoden til restapi modulen.
+- **restapi/src/test/java** Utgjør testkoden til restapi modulen.  
 - **ui/src** Utgjør kildekode til react-applikasjonen med alle sidene, og komponentene våre, samt stilark.
 - **ui/cypress** Kode for testene til react-applikasjonen, samt rapporter fra testene.
 
