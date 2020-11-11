@@ -2,7 +2,7 @@
 
 # Dinnerium 💥
 
-![logo](http://folk.ntnu.no/anderobs/images/dinnerium.png "Our logo")
+<img src="http://folk.ntnu.no/anderobs/images/dinnerium.png" alt="Our logo" width="800" height="300">
 
 Dette prosjektet er en del av emnet IT1901 gjennomført høsten 2020. Målet er å lage en trelagsapplikasjon med et domenelag, brukergrensesnitt og lagring.
 Man skal ha tester for alle lag, og prosjektet skal være konfigurert med maven. Bygget er rigget med jacoco plugin for å rapportere testdekningsgraden til prosjektet (mvn verify).
