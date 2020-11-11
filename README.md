@@ -77,8 +77,12 @@ For å kjøre testen gjør du:
 cd restapi
 mvn install
 mvn exec:java
+```
 
-cd ../ui
+I en annen terminal gjør du følgende:
+
+```bat
+cd ui
 npm install
 npm run test:react
 ```
@@ -105,7 +109,7 @@ Mappestrukturen til prosjektet er organisert følgende:
 - **restapi/src/main/resources** Utgjør brukerdata til alle brukerne som er registrert.
 - **restapi/src/test/java** Utgjør testkoden til restapi modulen.
 - **ui/src** Utgjør kildekode til react-applikasjonen med alle sidene, og komponentene våre, samt stilark.
-- **ui/cypress** Kode for testeen til react-applikasjonen, samt rapporter fra testene.
+- **ui/cypress** Kode for testene til react-applikasjonen, samt rapporter fra testene.
 
 Man kan også finne et [mappetre her](documentation/document_tree.md)
 
