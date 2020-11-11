@@ -26,7 +26,7 @@ const LoginPage = () => {
       })
       .catch(() => {
         let message: string;
-        if (action == 'register') {
+        if (action === 'register') {
           message = 'Username already in use, please choose another one';
         } else {
           message = 'User not found! Please register a user';
