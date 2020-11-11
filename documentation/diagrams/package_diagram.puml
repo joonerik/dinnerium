@@ -1,0 +1,67 @@
+@startuml
+
+component core {
+	package dinnerium.core
+	package dinnerium.json
+}
+
+component jackson {
+}
+
+component TestFX {
+}
+
+dinnerium.json ..> jackson
+
+component fxui {
+	package dinnerium.ui
+}
+
+dinnerium.ui ..> dinnerium.core
+dinnerium.ui ..> dinnerium.json
+fxui ..> TestFX
+
+component javafx {
+	component fxml {
+	}
+}
+
+fxui ..> javafx
+fxui ..> fxml
+
+component restapi {
+	package dinnerium.server
+	package dinnerium.service
+}
+
+component spark {
+}
+
+component gson {
+}
+
+restapi ..> spark
+restapi ..> gson
+
+component ui {
+	package src
+	package cypress
+}
+
+component create_react_app {
+}
+
+component Cypress {
+}
+
+src ..> create_react_app
+cypress ..> Cypress
+src ..> dinnerium.json
+src ..> dinnerium.core
+
+
+dinnerium.service ..> dinnerium.core
+dinnerium.service ..> dinnerium.json
+
+
+@enduml
