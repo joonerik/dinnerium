@@ -24,7 +24,8 @@ public class IngredientService {
     }
 
     /**
-     * summary.
+     * Adds a ingredient to the user with the corresponding username that is provided, and returns
+     * the user on json format with the new ingredient added to it.
      *
      * @param requestBody the request body containing the ingredient to be added.
      * @param username    the username of the user where the ingredient should be added.
@@ -35,7 +36,7 @@ public class IngredientService {
         Ingredient ingredient = mapper.readValue(requestBody, Ingredient.class);
         if (ingredient == null) {
             LOGGER.error("Couldn't create ingredient of request body: {}, for user {}", requestBody,
-                    username);
+                username);
             throw new IOException("Ingredient not on proper json-format");
         }
         return userService.addIngredient(ingredient, username);

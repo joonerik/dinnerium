@@ -19,32 +19,32 @@ public class RestServer {
      * Main method to start the spark rest server on http://localhost:4567. Every response is in
      * json format.
      *
-     * The localhost will contain these endpoints:
+     * <p>The localhost will contain these endpoints:</p>
      *
-     * get(/units):
-     *      Returns a list of the available units from the Enum Units.
+     * <p>get(/units):</p>
+     * Returns a list of the available units from the Enum Units.
      *
-     * post(/users/login)
-     *      Checks if a user with the username provided in the request exists, if it does not exist
-     *      it return "null" and response status code 404. If the user exists in the backend it
-     *      returns the userdata on json format and status code 200.
+     * <p>post(/users/login):</p>
+     * Checks if a user with the username provided in the request exists, if it does not exist
+     * it return "null" and response status code 404. If the user exists in the backend it
+     * returns the userdata on json format and status code 200.
      *
-     * post(/users/register)
-     *      Checks if the username provided in the request is taken, if it is, returns "null" and
-     *      status code 400. If the username is not taken, a new user with the username is
-     *      registered, and the new user is returned on json format with status code 201.
+     * <p>post(/users/register):</p>
+     * Checks if the username provided in the request is taken, if it is, returns "null" and
+     * status code 400. If the username is not taken, a new user with the username is
+     * registered, and the new user is returned on json format with status code 201.
      *
-     * post(/users/:username/ingredients/add)
-     *      Tries to add a new ingredient to the user with username :username as provided in the
-     *      request. If it is not possible to add the ingredient to the user it sets the response
-     *      status code to 400. If it is successful in adding the ingredient to the user, it returns
-     *      the user on json format with the new ingredient included, and sets status code to 202.
+     * <p>post(/users/:username/ingredients/add):</p>
+     * Tries to add a new ingredient to the user with username :username as provided in the
+     * request. If it is not possible to add the ingredient to the user it sets the response
+     * status code to 400. If it is successful in adding the ingredient to the user, it returns
+     * the user on json format with the new ingredient included, and sets status code to 202.
      *
-     * post(/users/:username/recipes/add)
-     *      Tries to add a new recipe to the user with username :username as provided in the
-     *      request. If it is not possible to add the recipe to the user it sets the response
-     *      status code to 400. If it is successful in adding the recipe to the user, it returns
-     *      the user on json format with the new recipe included, and sets status code to 202.
+     * <p>post(/users/:username/recipes/add):</p>
+     * Tries to add a new recipe to the user with username :username as provided in the
+     * request. If it is not possible to add the recipe to the user it sets the response
+     * status code to 400. If it is successful in adding the recipe to the user, it returns
+     * the user on json format with the new recipe included, and sets status code to 202.
      *
      * @param args arguments of the main method.
      */
@@ -95,7 +95,7 @@ public class RestServer {
                 res.status(400);
             }
             LOGGER.debug("Add ingredient PostRequest : {}, user: {} responseStatus: {}", req.body(),
-                    req.params(":username"), res.status());
+                req.params(":username"), res.status());
             return response;
         });
 

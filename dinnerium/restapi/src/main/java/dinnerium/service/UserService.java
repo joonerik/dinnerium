@@ -61,7 +61,7 @@ public class UserService {
      * @param username the username of the user to register.
      * @return the new user on json format, null if there already exists a user with the username.
      * @throws IOException if it is not possible to create a file for the new user, or if it is not
-     *      possible to read the userdata after it is created.
+     *                     possible to read the userdata after it is created.
      */
     public String registerUser(String username) throws IOException {
         String formattedUsername = formatUsername(username);
@@ -78,8 +78,8 @@ public class UserService {
      * returns the user on json format with the ingredient added to it.
      *
      * @param ingredient the ingredient to be added to the user with corresponding username to
-     *      the one provided.
-     * @param username the username of the user where the ingredient is to be added.
+     *                   the one provided.
+     * @param username   the username of the user where the ingredient is to be added.
      * @return the user on json-format with the new ingredient added to it.
      * @throws IOException if it is not possible to add the ingredient to the user.
      */
@@ -93,8 +93,8 @@ public class UserService {
     /**
      * summary.
      *
-     * @param recipe the recipe to be added to the user with corresponding username to
-     *      the one provided.
+     * @param recipe   the recipe to be added to the user with corresponding username to
+     *                 the one provided.
      * @param username the username of the user where the recipe is to be added.
      * @return the user on json-format with the new recipe added to it.
      * @throws IOException if it is not possible to add the recipe to the user.
