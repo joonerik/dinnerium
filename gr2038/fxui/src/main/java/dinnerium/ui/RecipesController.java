@@ -2,10 +2,10 @@ package dinnerium.ui;
 
 import dinnerium.core.Ingredient;
 import dinnerium.core.IngredientContainer;
-import dinnerium.core.RecipeMetadata;
 import dinnerium.core.Quantity;
 import dinnerium.core.Recipe;
 import dinnerium.core.RecipeInstructions;
+import dinnerium.core.RecipeMetadata;
 import dinnerium.core.Units;
 import dinnerium.core.User;
 import java.util.ArrayList;
