@@ -16,7 +16,35 @@ public class RestServer {
     private static final Logger LOGGER = LoggerFactory.getLogger(RestServer.class);
 
     /**
-     * Main method to start the spark rest server on localhost:4567.
+     * Main method to start the spark rest server on http://localhost:4567. Every response is in
+     * json format.
+     *
+     * The localhost will contain these endpoints:
+     *
+     * get(/units):
+     *      Returns a list of the available units from the Enum Units.
+     *
+     * post(/users/login)
+     *      Checks if a user with the username provided in the request exists, if it does not exist
+     *      it return "null" and response status code 404. If the user exists in the backend it
+     *      returns the userdata on json format and status code 200.
+     *
+     * post(/users/register)
+     *      Checks if the username provided in the request is taken, if it is, returns "null" and
+     *      status code 400. If the username is not taken, a new user with the username is
+     *      registered, and the new user is returned on json format with status code 201.
+     *
+     * post(/users/:username/ingredients/add)
+     *      Tries to add a new ingredient to the user with username :username as provided in the
+     *      request. If it is not possible to add the ingredient to the user it sets the response
+     *      status code to 400. If it is successful in adding the ingredient to the user, it returns
+     *      the user on json format with the new ingredient included, and sets status code to 202.
+     *
+     * post(/users/:username/recipes/add)
+     *      Tries to add a new recipe to the user with username :username as provided in the
+     *      request. If it is not possible to add the recipe to the user it sets the response
+     *      status code to 400. If it is successful in adding the recipe to the user, it returns
+     *      the user on json format with the new recipe included, and sets status code to 202.
      *
      * @param args arguments of the main method.
      */
@@ -27,6 +55,7 @@ public class RestServer {
 
         get("/units", (req, res) -> {
             res.type("application/json");
+            LOGGER.debug("getUnits request: {}", req);
             return Arrays.toString(Units.values());
         });
 
@@ -38,6 +67,8 @@ public class RestServer {
             } else {
                 res.status(200);
             }
+            LOGGER.debug("Login user post request : {}, responseStatus: {}", req.body(),
+                res.status());
             return response;
         });
 
@@ -49,6 +80,8 @@ public class RestServer {
             } else {
                 res.status(201);
             }
+            LOGGER.debug("Register user post request : {}, responseStatus: {}", req.body(),
+                res.status());
             return response;
         });
 
@@ -61,6 +94,8 @@ public class RestServer {
             } catch (IOException e) {
                 res.status(400);
             }
+            LOGGER.debug("Add ingredient PostRequest : {}, user: {} responseStatus: {}", req.body(),
+                    req.params(":username"), res.status());
             return response;
         });
 
@@ -73,6 +108,8 @@ public class RestServer {
             } catch (IOException e) {
                 res.status(400);
             }
+            LOGGER.debug("Add recipe PostRequest : {}, user: {} responseStatus: {}", req.body(),
+                req.params(":username"), res.status());
             return response;
         });
     }

@@ -19,10 +19,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class UserService {
     private final ObjectMapper mapper;
     private final HandlePersistency handlePersistency;
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 
     /**
      * Instantiate a UserService object with a HandlePersistency object to the handlePersistency
@@ -111,6 +114,7 @@ public class UserService {
             writer = new FileWriter(path.toFile(), StandardCharsets.UTF_8);
             handlePersistency.writeUser(user, writer);
         } catch (IOException e) {
+            LOGGER.error("Could not store user to file username: {} ", user.getUsername());
             if (writer != null) {
                 writer.close();
             }

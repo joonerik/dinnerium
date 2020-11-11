@@ -34,7 +34,7 @@ public class IngredientService {
     public String addIngredient(String requestBody, String username) throws IOException {
         Ingredient ingredient = mapper.readValue(requestBody, Ingredient.class);
         if (ingredient == null) {
-            LOGGER.info("Couldn't create ingredient of request body: {}, for user {}", requestBody,
+            LOGGER.error("Couldn't create ingredient of request body: {}, for user {}", requestBody,
                     username);
             throw new IOException("Ingredient not on proper json-format");
         }
