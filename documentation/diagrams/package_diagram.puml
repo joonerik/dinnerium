@@ -8,6 +8,9 @@ component core {
 component jackson {
 }
 
+component TestFX {
+}
+
 dinnerium.json ..> jackson
 
 component fxui {
@@ -16,6 +19,7 @@ component fxui {
 
 dinnerium.ui ..> dinnerium.core
 dinnerium.ui ..> dinnerium.json
+fxui ..> TestFX
 
 component javafx {
 	component fxml {
@@ -40,9 +44,20 @@ restapi ..> spark
 restapi ..> gson
 
 component ui {
-	package lol
-	package hehe
+	package src
+	package cypress
 }
+
+component create_react_app {
+}
+
+component Cypress {
+}
+
+src ..> create_react_app
+cypress ..> Cypress
+src ..> dinnerium.json
+src ..> dinnerium.core
 
 
 dinnerium.service ..> dinnerium.core
