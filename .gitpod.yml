@@ -3,12 +3,13 @@ image:
 
 tasks:
   - init: sdk use java 14.0.2.j9-adpt
-    command: cd gr2038
-  - init: cd gr2038/ui
+    command: cd dinnerium
+  - init: cd ui
     command: npm install
 
 ports:
   - port: 4567
+  - port: 6080
   - port: 6969
   - port: 3000
     onOpen: open-browser

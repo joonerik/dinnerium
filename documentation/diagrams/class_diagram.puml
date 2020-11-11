@@ -1,0 +1,125 @@
+@startuml sequence_diagram
+class Recipe {
+    - IngredientContainer ingredientContainer
+    - RecipeInstructions recipeInstructions
+    - Metadata metadata
+    --
+    + Recipe(IngredientContainer, RecipeInstructions, Metadata)
+    + IngredientContainer getIngredientContainer()
+    + RecipeInstructions getRecipeInstructions()
+    + Metadata getMetadata()
+}
+
+class Quantity {
+    - double amount
+    - Units unit
+    --
+    + Quantity(double , String)
+    + double getAmount()
+    + String getUnit()
+    + String toString()
+}
+
+enum Units {
+    stk
+    dl
+    gram
+    liter
+    kg
+    ss
+    ts
+}
+
+class Ingredient {
+    - Quantity quantity
+    - String name
+    --
+    + Ingredient()
+    + Ingredient(Quantity, String)
+    + Quantity getQuantity()
+    + String getName()
+    + void setName(String)
+    + void setQuantity(Quantity)
+    + String toString()
+    - boolean validateIngredientName(String)
+}
+
+abstract class Container {
+  - Collection<T> container
+  --
+  + Container()
+  + Container(Collection<T>) 
+  + void setCollection(Collection<T>)
+  + void addItem(T)  
+  + Collection<T> getContainer()
+  + int getContainerSize()
+  + Iterator<T> iterator()
+}
+
+class IngredientContainer {
+    --
+    + IngredientContainer()
+    + IngredientContainer(Collection<Ingredient>)
+}
+
+class RecipeContainer {
+    --
+    + RecipeContainer()
+    + RecipeContainer(Collection<Recipe>)
+}
+
+class RecipeInstructions {
+    - Collection<String> instructions
+    --
+    + RecipeInstructions(Collection<String>)
+    + Collection<String> getInstructions()
+    + void setInstructions()
+    + Iterator<String> iterator()
+}
+
+class RecipeMetadata {
+    - String author
+    - double portion
+    - String recipeName
+    - String recipeDescription
+    - int minutes
+    --
+    + Metadata(String, double, String, String, int)
+    + String getAuthor()
+    + double getPortion()
+    + String getRecipeName()
+    + String getRecipeDescription()
+    + int getMinutes()
+    - void validateNumber(double, int)
+    - void validateString(String, String, String)
+}
+
+class User {
+    - IngredientContainer ingredientContainer
+    - RecipeContainer recipeContainer
+    - String username
+    --
+    + User(IngredientContainer, RecipeContainer, String )
+    + IngredientContainer getIngredientContainer()
+    + RecipeContainer getRecipeContainer()
+    + String getUsername()
+    + void setUsername(String)
+    - void validateUsername(String)
+}
+
+interface Iterable
+interface Iterable
+
+User --> RecipeContainer
+User --> IngredientContainer
+Recipe --> IngredientContainer
+Recipe --> RecipeInstructions
+Recipe --> RecipeMetadata
+IngredientContainer --> Ingredient
+Ingredient --> Quantity
+Quantity -- Units
+abstract class Container implements Iterable
+class RecipeInstructions implements Iterable
+class RecipeContainer extends Container
+class IngredientContainer extends Container
+@enduml
