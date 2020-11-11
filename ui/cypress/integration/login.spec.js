@@ -20,7 +20,7 @@ describe('Login page', () => {
   });
 
   it('Register', () => {
-    cy.get('.login__modal__input').type('ruben');
+    cy.get('.login__modal__input').type('registertest');
     cy.get('.login__modal__btnContainer').contains('Register').click();
   });
 });
