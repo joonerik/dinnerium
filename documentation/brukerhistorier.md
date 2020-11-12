@@ -3,17 +3,6 @@
 Brukerhistorier som har til hensikt å (av)dekke krav som systemet må tilfredsstille. Det finnes ulike former for brukerhistorier, med mer eller mindre stramme krav om form, 
 her gjør vi det nokså uformelt, men prøver å oppsummere hver av dem litt strukturert.
 
-## Brukerhistorie 1 (us-1)   
-Som privatperson vil jeg ha mulighet til å åpne applikasjonen i en nettleser. 
-
-Brukeren skal kunne åpne applikasjonen i en nettleser for å bruke de ulike funksjonene den tilbyr.
-
-### Viktig å kunne se    
-- Se applikasjonen på en nettleser
-
-### Viktig å kunne gjøre 
-- Bruke applikasjonen i en nettleser
-
 ## Brukerhistorie 2 (us-2)   
 Som privatperson ønsker jeg å lagre oppskriftene mine, og ha en oversikt over hvilke varer jeg har hjemme. 
 Jeg vil også ha mulighet til å se detaljene til en oppskrift. 
