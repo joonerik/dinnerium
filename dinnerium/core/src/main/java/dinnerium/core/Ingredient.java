@@ -11,6 +11,9 @@ public class Ingredient {
 
     /**
      * Each ingredient requires a quantity which contains a unit and a name.
+     *
+     * @param quantity the quantity of the ingredient.
+     * @param name what type of ingredient it is.
      */
     public Ingredient(Quantity quantity, String name) {
         this.setName(name);
