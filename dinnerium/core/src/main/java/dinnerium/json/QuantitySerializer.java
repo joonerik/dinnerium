@@ -6,6 +6,9 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import dinnerium.core.Quantity;
 import java.io.IOException;
 
+/**
+ * Class for serializing a Quantity object to json format.
+ */
 class QuantitySerializer extends JsonSerializer<Quantity> {
 
 

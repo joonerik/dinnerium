@@ -6,6 +6,9 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import dinnerium.core.Recipe;
 import java.io.IOException;
 
+/**
+ * Class for serializing a Recipe object to json format.
+ */
 class RecipeSerializer extends JsonSerializer<Recipe> {
 
     /**

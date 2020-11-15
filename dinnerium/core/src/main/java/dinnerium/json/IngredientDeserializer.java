@@ -11,6 +11,9 @@ import dinnerium.core.Ingredient;
 import dinnerium.core.Quantity;
 import java.io.IOException;
 
+/**
+ * Class for deserializing an Ingredient object from a json format to an Ingredient Object.
+ */
 class IngredientDeserializer extends JsonDeserializer<Ingredient> {
 
     @Override

@@ -12,6 +12,9 @@ import dinnerium.core.RecipeContainer;
 import dinnerium.core.User;
 import java.io.IOException;
 
+/**
+ * Class for deserializing a User object from a json format to a User object.
+ */
 class UserDeserializer extends JsonDeserializer<User> {
 
     private final ContainerDeserializer cd = new ContainerDeserializer();

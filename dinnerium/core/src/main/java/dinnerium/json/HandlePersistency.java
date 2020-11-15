@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 
+/**
+ * Class for handling the saving/reading of objects to/from file in the project.
+ */
 public class HandlePersistency {
 
     private final ObjectMapper mapper;

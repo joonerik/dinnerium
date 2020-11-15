@@ -13,6 +13,9 @@ import dinnerium.core.RecipeInstructions;
 import dinnerium.core.RecipeMetadata;
 import java.io.IOException;
 
+/**
+ * Class for deserializing a Recipe object from a json format to a Recipe object.
+ */
 class RecipeDeserializer extends JsonDeserializer<Recipe> {
 
     @Override

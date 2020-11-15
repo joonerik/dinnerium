@@ -12,6 +12,9 @@ import com.fasterxml.jackson.databind.node.TextNode;
 import dinnerium.core.RecipeMetadata;
 import java.io.IOException;
 
+/**
+ * Class for deserializing a RecipeMetadata object from a json format to a RecipeMetadata object.
+ */
 class RecipeMetadataDeserializer extends JsonDeserializer<RecipeMetadata> {
 
     @Override
