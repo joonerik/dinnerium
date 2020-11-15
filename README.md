@@ -126,9 +126,13 @@ Man kan også finne et [mappetre her](documentation/document_tree.md)
 Som man ser, er de to ulike brukergrensesnittene relativt like, da det var et krav om at begge brukergrensesnittene skulle ha tilnærmet lik funksjonalitet og design. Små endringer i f.eks. fargevalg er likevel gjort.
 
 ## Dokumentasjon 📝
+I mappen [documentation](documentation) finner man all tilhørende dokumentasjon som ikke befinner seg i denne README-en. 
 
-I mappen [documentation](documentation) kan finner man diverse diagrammer og javadoc-dokumentasjon. Denne mappen kan gjøre det lettere å forstå arkitekturen og informasjonsflyten i applikasjonen.
-Her finner man også samtlige [brukerhistorier](documentation/brukerhistorier.md). Brukerhistoriene inneholder ikke mange krav om funksjonalitet, da man i innlevering 3 kunne velge om å utvide med mer funksjonalitet, eller bytte frontend modulen til f.eks React.
+- Diagrammer finner man [her](documentation/diagrams). Denne mappen kan gjøre det lettere å forstå arkitekturen og informasjonsflyten i applikasjonen.
+- Brukerhistorier finner man [her](documentation/brukerhistorier.md). Brukerhistoriene inneholder ikke mange krav om funksjonalitet, da man i innlevering 3 
+kunne velge om å utvide med mer funksjonalitet, eller bytte frontend modulen til f.eks React.
+- Java-doc dokumentasjon finner man [her](http://folk.ntnu.no/anderobs/javadoc/). Dette er skrevet for alle Java-klasser med 
+tilhørende metodebeskrivelser i hele prosjektet. 
 
 ## Gitlab CI/CD
 
