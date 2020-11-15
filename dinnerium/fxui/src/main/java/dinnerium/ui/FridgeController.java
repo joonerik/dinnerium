@@ -15,6 +15,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
+/**
+ * Controller for the fridge-page in the application.
+ */
 public class FridgeController {
 
     private User user;

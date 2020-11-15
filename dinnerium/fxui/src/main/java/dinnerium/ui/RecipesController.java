@@ -24,6 +24,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+/**
+ * Controller for the fridge-page in the application.
+ */
 public class RecipesController {
 
     private User user;

@@ -5,6 +5,9 @@ import dinnerium.core.Recipe;
 import dinnerium.core.Units;
 import dinnerium.core.User;
 
+/**
+ * Interface stating the methods the application needs to access data from core package.
+ */
 public interface DinneriumAccess {
 
     User registerUser(String username) throws IllegalArgumentException;

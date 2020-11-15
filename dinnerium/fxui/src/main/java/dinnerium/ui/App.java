@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+/**
+ * Class for launching the Fxui-Application.
+ */
 public class App extends Application {
 
     @Override
