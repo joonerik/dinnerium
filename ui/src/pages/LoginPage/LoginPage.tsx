@@ -34,17 +34,28 @@ const LoginPage = () => {
       });
   };
 
+  const checkValidity = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.target.setCustomValidity('');
+    if (!event.target.validity.valid) {
+      event.target.setCustomValidity('Username must be valid');
+    }
+  };
+
   return (
     <div className="login__modal">
       <img src={dinneriumLogo} alt="Logo" className="login__logo" />
       <form method="post" onSubmit={(e) => submitForm(e, isAction)}>
         <input
-          onChange={(event) => setName(event.target.value)}
+          onChange={(event) => {
+            checkValidity(event);
+            setName(event.target.value);
+          }}
           placeholder="username"
           type="text"
           name="username"
           required
           className="login__modal__input"
+          pattern="^(?=.{3,15}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
           autoFocus
         />
 
@@ -52,14 +63,18 @@ const LoginPage = () => {
           <button
             type="submit"
             value="Login"
-            onClick={() => setAction('login')}
+            onClick={() => {
+              setAction('login');
+            }}
           >
             Logg inn
           </button>
           <button
             type="submit"
             value="Register"
-            onClick={() => setAction('register')}
+            onClick={() => {
+              setAction('register');
+            }}
           >
             Registrer
           </button>
