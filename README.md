@@ -102,19 +102,19 @@ npm run cypress:report
 
 Mappestrukturen til prosjektet er organisert følgende:
 
-- **core/src/main/java** utgjør kodingsprosjektet. Videre har vi mapper for å skille koden som brukes til hva.
-- **core/src/test/java** for testkoden til kjernefunksjonaliteten til prosjektet.
-- **fxui/src/main/java** utgjør kildekoden til JavaFX-applikasjonen.
-- **fxui/src/main/resources** for ressurser som bilder, FXML-filer, stilark osv.
-- **fxui/src/test/java** for testkoden til JavaFX-applikasjonen.
-- **fxui/src/test/resources** ressurser til fxui-testene
-- **integrationtest/src/test/java** for testkoden til integrasjonstesten for JavaFX og restapiet.
-- **integrationtest/src/test/resources** ressurser til integrasjonstestene.
-- **restapi/src/main/java** utgjør kildekoden til RestServeren vår og service klassene den bruker.
-- **restapi/src/main/resources** Utgjør brukerdata til alle brukerne som er registrert.
-- **restapi/src/test/java** Utgjør testkoden til restapi modulen.
-- **ui/src** Utgjør kildekode til react-applikasjonen med alle sidene, og komponentene våre, samt stilark.
-- **ui/cypress** Kode for testene til react-applikasjonen, samt rapporter fra testene.
+- [**core/src/main/java**](/dinnerium/core/src/main/java) utgjør kodingsprosjektet. Videre har vi mapper for å skille koden som brukes til hva.
+- [**core/src/test/java**](/dinnerium/core/src/test/java) for testkoden til kjernefunksjonaliteten til prosjektet.
+- [**fxui/src/main/java**](/dinnerium/fxui/src/main/java) utgjør kildekoden til JavaFX-applikasjonen.
+- [**fxui/src/main/resources**](/dinnerium/fxui/src/main/resources) for ressurser som bilder, FXML-filer, stilark osv.
+- [**fxui/src/test/java**](/dinnerium/fxui/src/test/java) for testkoden til JavaFX-applikasjonen.
+- [**fxui/src/test/resources**](/dinnerium/fxui/src/test/resources) ressurser til fxui-testene
+- [**integrationtest/src/test/java**](/dinnerium/integrationtest/src/test/java) for testkoden til integrasjonstesten for JavaFX og restapiet.
+- [**integrationtest/src/test/resources**](/dinnerium/integrationtest/src/test/resources) ressurser til integrasjonstestene.
+- [**restapi/src/main/java**](/dinnerium/restapi/src/main/java) utgjør kildekoden til RestServeren vår og service klassene den bruker.
+- [**restapi/src/main/resources**](/dinnerium/restapi/src/main/resources) Utgjør brukerdata til alle brukerne som er registrert.
+- [**restapi/src/test/java**](/dinnerium/restapi/src/test/java) Utgjør testkoden til restapi modulen.
+- [**ui/src**](/ui/src) Utgjør kildekode til react-applikasjonen med alle sidene, og komponentene våre, samt stilark.
+- [**ui/cypress**](/ui/cypress) Kode for testene til react-applikasjonen, samt rapporter fra testene.
 
 Man kan også finne et [mappetre her](documentation/document_tree.md)
 
