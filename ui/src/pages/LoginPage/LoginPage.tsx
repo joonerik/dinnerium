@@ -37,7 +37,21 @@ const LoginPage = () => {
   const checkValidity = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.target.setCustomValidity('');
     if (!event.target.validity.valid) {
-      event.target.setCustomValidity('Username must be valid');
+      if (event.target.value.match(/(æ|ø|å)/)) {
+        event.target.setCustomValidity('Only english characters are allowed');
+      } else if (event.target.value.match(/(\s)/)) {
+        event.target.setCustomValidity('Username cannot contain spaces');
+      } else if (event.target.value.length > 15) {
+        event.target.setCustomValidity(
+          'Username must be less than 15 characters'
+        );
+      } else if (event.target.value.length < 3) {
+        event.target.setCustomValidity(
+          'Username must be longer than 3 characters'
+        );
+      } else {
+        event.target.setCustomValidity('Username must be valid');
+      }
     }
   };
 
