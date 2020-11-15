@@ -7,6 +7,9 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Class for serving the RestServer with methods needed to add Recipes to a User.
+ */
 public class RecipeService {
     private final ObjectMapper mapper;
     private final UserService userService;
