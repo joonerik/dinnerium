@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+/**
+ * An abstract class for containing different types of objects.
+ *
+ * @param <T> the type that the container is containing.
+ */
 public abstract class Container<T> implements Iterable<T> {
 
     private Collection<T> container;

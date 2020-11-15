@@ -4,9 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-/**
- * This class is for generating users.
- */
+/** Class representing a user of the application, with the users data. */
 public class User {
     private final IngredientContainer ingredientContainer;
     private final RecipeContainer recipeContainer;

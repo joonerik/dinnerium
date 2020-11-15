@@ -3,9 +3,7 @@ package dinnerium.core;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Represents an ingredient.
- */
+/** Represents an ingredient, with a Quantity and a name. */
 public class Ingredient {
 
     private Quantity quantity;

@@ -1,5 +1,6 @@
 package dinnerium.core;
 
+/** Class for representing a Recipe with corresponding ingredients, instructions and metadata. */
 public class Recipe {
 
     private final IngredientContainer ingredientContainer;
