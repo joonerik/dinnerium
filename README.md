@@ -12,7 +12,9 @@ denne modulen ikke støtter GitLab sin CI for Java 14.
 
 I del tre av prosjektet valgte vi som gruppe å benytte oss av React for å bytte frontend. Dette gjorde vi fordi vi ønsket å lage en webapplikasjon, samt utvide
 kompetansen vår. Sammen med React bruker vi TypeScript for å få typesjekking som er sentralt for å sikre at det er lettere å oppdage bugs, og at vi sender riktig 
-informasjon til backend. For å teste dette brukergrensesnittet brukes rammeverket Cypress.
+informasjon til backend. Vi bruker også Prettier for å sørge for god kodekvalitet i kildekoden til React-applikasjonen. Ved kjøring av applikasjonen vil det da dukke opp
+evt. varsler i konsollen om dårlig kodekvalitet i applikasjonen. Kommandoen _npm run format_ vil også formatere kildekoden dersom den kjøres fra ui-mappen. 
+For å teste dette brukergrensesnittet brukes rammeverket Cypress.
 
 Vi ønsker å lage en applikasjon som skal hjelpe deg som bruker å planlegge middager. Dette skal skje gjennom en oversikt over varer man har tilgjengelig,
 samt oppskrifter man har brukt. Gjennom [brukerhistorie 2](documentation/brukerhistorier.md) vil man derfor kunne se varene sine og oppskrifter man tidligere har brukt og lagret
