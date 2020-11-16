@@ -3,7 +3,6 @@ package dinnerium.core;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +12,7 @@ class UserTest {
     private final Ingredient sugar = new Ingredient(new Quantity(200.0, "gram"), "sukker");
     private final IngredientContainer ingredientContainer= new IngredientContainer(Arrays.asList(egg, sugar));
 
+    private final RecipeContainer recipeContainer = new RecipeContainer();
     private final RecipeInstructions recipeInstructions = new RecipeInstructions(Arrays.asList("Bland", "Pisk"));
 
     private final RecipeMetadata recipeMetadata = new RecipeMetadata("Ole", 3.0,
@@ -20,9 +20,7 @@ class UserTest {
 
     private final Recipe recipe = new Recipe(ingredientContainer, recipeInstructions,
         recipeMetadata);
-    private final RecipeContainer recipeContainer = new RecipeContainer(new ArrayList<>() {{
-        add(recipe);
-    }});
+
     private final User user = new User(ingredientContainer, recipeContainer, "Ole");
 
     @Test
@@ -44,7 +42,7 @@ class UserTest {
     @Test
     void addRecipeToContainer() {
         recipeContainer.addRecipe(recipe);
-        assertEquals(2, user.getRecipeContainer().getContainerSize());
+        assertEquals(1, user.getRecipeContainer().getContainerSize());
     }
 
     @Test

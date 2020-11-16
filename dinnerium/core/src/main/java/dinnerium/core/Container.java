@@ -13,6 +13,11 @@ public abstract class Container<T> implements Iterable<T> {
 
     private Collection<T> container;
 
+    /** Initializes the container as a ArrayList. */
+    public Container() {
+        this.container = new ArrayList<>();
+    }
+
     /**
      * Creates a Container object containing the provided collection of items.
      *

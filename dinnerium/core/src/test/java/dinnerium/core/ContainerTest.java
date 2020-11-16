@@ -9,10 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Iterator;
 import org.junit.jupiter.api.Test;
 
 public class ContainerTest {
+
+    private final RecipeContainer recipeContainer = new RecipeContainer();
+    private final IngredientContainer ingredientContainer = new IngredientContainer();
 
     private final Quantity quantity1 = new Quantity(2.0, "stk");
     private final Quantity quantity2 = new Quantity(5.0, "dl");
@@ -43,7 +45,7 @@ public class ContainerTest {
     final Ingredient i = new Ingredient(q, "milk");
 
     @Test
-    void testConstruction() {
+    void testCollection() {
         Collection<Recipe> recipes = new ArrayList<>() {{
             add(recipe1);
         }};
@@ -71,12 +73,9 @@ public class ContainerTest {
     }
 
     @Test
-    public void testIllegalAddRecipe() {
+    public void testAddRecipe() {
         assertThrows(IllegalArgumentException.class, () -> {
-            Collection<Recipe> rct = new ArrayList<>() {{
-               add(recipe1);
-            }};
-            RecipeContainer rc = new RecipeContainer(rct);
+            RecipeContainer rc = new RecipeContainer();
             rc.addRecipe(null);
         });
     }
@@ -96,54 +95,40 @@ public class ContainerTest {
 
     @Test
     public void testGetContainer() {
-        RecipeContainer recipeContainer = new RecipeContainer(new ArrayList<>() {{
-            add(recipe1);
-            add(recipe2);
-        }});
-        IngredientContainer ingredientContainer = new IngredientContainer(new ArrayList<>() {{
-            add(ingredient1);
-            add(ingredient2);
-        }});
+        recipeContainer.addRecipe(recipe1);
+        recipeContainer.addRecipe(recipe2);
         assertEquals(recipeContainer.getContainer(),
             new ArrayList<>(Arrays.asList(recipe1, recipe2)));
 
+        ingredientContainer.addIngredient(ingredient1);
+        ingredientContainer.addIngredient(ingredient2);
         assertEquals(ingredientContainer.getContainer(),
             new ArrayList<>(Arrays.asList(ingredient1, ingredient2)));
     }
 
     @Test
     public void testGetContainerSize() {
-        RecipeContainer recipeContainer = new RecipeContainer(new ArrayList<>() {{
-            add(recipe1);
-            add(recipe2);
-        }});
+        recipeContainer.addRecipe(recipe1);
+        recipeContainer.addRecipe(recipe2);
         assertEquals(recipeContainer.getContainerSize(), 2);
         recipeContainer.addRecipe(recipe1);
         assertEquals(recipeContainer.getContainerSize(), 3);
 
-        IngredientContainer ingredientContainer = new IngredientContainer(new ArrayList<>() {{
-            add(ingredient1);
-            add(ingredient2);
-        }});
+        ingredientContainer.addIngredient(ingredient1);
+        ingredientContainer.addIngredient(ingredient2);
         assertEquals(ingredientContainer.getContainerSize(), 2);
     }
 
     @Test
     public void testIterator() {
-        RecipeContainer recipeContainer = new RecipeContainer(new ArrayList<>() {{
-            add(recipe2);
-        }});
-        Iterator<Recipe> itRecipe = recipeContainer.iterator();
-        assertTrue(itRecipe.hasNext());
-        assertEquals(itRecipe.next(), recipe2);
-        assertFalse(itRecipe.hasNext());
+        assertFalse(recipeContainer.iterator().hasNext());
+        recipeContainer.addRecipe(recipe2);
+        assertTrue(recipeContainer.iterator().hasNext());
+        assertEquals(recipeContainer.iterator().next(), recipe2);
 
-        IngredientContainer ingredientContainer = new IngredientContainer(new ArrayList<>() {{
-            add(ingredient2);
-        }});
-        Iterator<Ingredient> itIngredient = ingredientContainer.iterator();
-        assertTrue(itIngredient.hasNext());
-        assertEquals(itIngredient.next(), ingredient2);
-        assertFalse(itIngredient.hasNext());
+        assertFalse(ingredientContainer.iterator().hasNext());
+        ingredientContainer.addIngredient(ingredient2);
+        assertTrue(ingredientContainer.iterator().hasNext());
+        assertEquals(ingredientContainer.iterator().next(), ingredient2);
     }
 }

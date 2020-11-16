@@ -41,41 +41,13 @@ public class InvalidDeserializerTest {
             u = mapper.readValue(userJson, User.class);
             assertNull(u, "User should have been null here");
             userJson = userJson.replace("24", "{\n" +
-                "    \"recipes\" : [ {\n" +
-                "        \"ingredientContainer\": {\n" +
-                "          \"ingredients\": [\n" +
-                "            {\n" +
-                "              \"quantity\": {\n" +
-                "                \"unit\": \"dl\",\n" +
-                "                \"amount\": 3.0\n" +
-                "              },\n" +
-                "              \"name\": \"ostesaus\"\n" +
-                "            }\n" +
-                "          ]\n" +
-                "        },\n" +
-                "        \"recipeInstructions\": [\n" +
-                "          \"kok pasta\"\n" +
-                "        ],\n" +
-                "        \"metadata\": {\n" +
-                "          \"author\": \"anders\",\n" +
-                "          \"portion\": 4.0,\n" +
-                "          \"recipeName\": \"Pasta og brokkoli\",\n" +
-                "          \"recipeDescription\": \"Nydelig pasta med brokkoli og ostesaus\",\n" +
-                "          \"minutes\": 30\n" +
-                "        }\n" +
-                "      } ]\n" +
+                "    \"recipes\" : [ ]\n" +
                 "  }");
 
             u = mapper.readValue(userJson, User.class);
             assertNull(u, "User should have been null here");
             userJson = userJson.replace("\"string\"", "{\n" +
-                "    \"ingredients\" : [{\n" +
-                "        \"quantity\": {\n" +
-                "          \"unit\": \"stk\",\n" +
-                "          \"amount\": 2.0\n" +
-                "        },\n" +
-                "        \"name\": \"bolle\"\n" +
-                "      }]\n" +
+                "    \"ingredients\" : [ ]\n" +
                 "  }");
 
             u = mapper.readValue(userJson, User.class);
