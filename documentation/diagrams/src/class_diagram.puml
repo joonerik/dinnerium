@@ -1,4 +1,4 @@
-@startuml sequence_diagram
+@startuml class_diagram
 
 package dinnerium.core {
     class Recipe {
