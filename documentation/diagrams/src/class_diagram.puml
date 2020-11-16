@@ -122,10 +122,10 @@ class RecipeInstructions implements Iterable
 class RecipeContainer extends Container
 class IngredientContainer extends Container
 
-IngredientService --> Ingredient
-RecipeService --> Recipe
-UserService --> User
 RestServer --> IngredientService
 RestServer --> RecipeService
 RestServer --> UserService
+IngredientService ..> Ingredient: << uses >>
+RecipeService ..> Recipe: << uses >>
+UserService ..> User: << uses >>
 @enduml
