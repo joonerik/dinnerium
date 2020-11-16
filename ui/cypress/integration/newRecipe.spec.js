@@ -4,6 +4,7 @@ describe('New recipe page', () => {
     cy.visit('http://localhost:3000');
   });
 
+  // Tests error handling while adding a new recipe (metadata, instructions, ingredients)
   it('Test error handling to add new recipe', () => {
     cy.login('data');
     cy.contains('Recipes').click();
@@ -27,6 +28,7 @@ describe('New recipe page', () => {
     );
   });
 
+  // Tests adding a new recipe
   it('Add new recipe', () => {
     cy.login('data');
 
@@ -64,9 +66,8 @@ describe('New recipe page', () => {
     cy.addInstruction('If any leftovers, throw it');
     cy.get('.instructions').find('ol').last().find('div').last().click();
 
-    // uncomment when merged/updated
+    // tests the recipe box in the Recipes page to get more info about a recipe
     cy.get('#addRecipeBtn').click();
-    // cy.get('.recipeBox').last().should('have.class', 'active-recipe');
     cy.get('.recipeBox').last().click();
     cy.get('.recipe__name').should('have.text', 'Taco');
   });
