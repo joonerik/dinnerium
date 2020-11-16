@@ -13,6 +13,8 @@ import dinnerium.core.IngredientContainer;
 import dinnerium.core.Recipe;
 import dinnerium.core.RecipeContainer;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Class for deserializing a Container object of either Recipes or Ingredients from a json format
@@ -46,31 +48,31 @@ class ContainerDeserializer extends JsonDeserializer<Container> {
         if (jsonNode instanceof  ObjectNode) {
             ObjectNode objectNode = (ObjectNode) jsonNode;
             if (objectNode.get("ingredients") != null) {
-                IngredientContainer ingredients = new IngredientContainer();
+                Collection<Ingredient> ingredients = new ArrayList<>();
                 JsonNode ingredientsNode = objectNode.get("ingredients");
                 if (ingredientsNode instanceof ArrayNode) {
                     for (JsonNode elementNode : (ingredientsNode)) {
                         Ingredient ingredient = ingredientDeserializer.deserialize(elementNode);
                         if (ingredient != null) {
-                            ingredients.addIngredient(ingredient);
+                            ingredients.add(ingredient);
                         }
                     }
-                    return ingredients;
+                    return new IngredientContainer(ingredients);
                 } else {
                     return null;
                 }
             } else {
-                RecipeContainer recipes = new RecipeContainer();
+                Collection<Recipe> recipes = new ArrayList<>();
                 JsonNode recipesNode = objectNode.get("recipes");
                 if (recipesNode instanceof ArrayNode) {
                     for (JsonNode elementNode : recipesNode) {
                         Recipe r = recipeDeserializer.deserialize(elementNode);
                         if (r != null) {
-                            recipes.addRecipe(r);
+                            recipes.add(r);
                         }
                     }
                 }
-                return recipes;
+                return new RecipeContainer(recipes);
             }
         }
         return null;
