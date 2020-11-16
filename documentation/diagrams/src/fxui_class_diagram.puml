@@ -1,0 +1,48 @@
+@startuml
+
+class AppController {
+    - User user
+    - DinneriumAccess dinneriumAccess
+    ~ NavbarController navbarViewController
+}
+
+class SettingsController {
+    - User user 
+    - NavbarController navbarController
+}
+
+class NavbarController {
+    - AppController appController
+    ~ SettingsController settingsViewController
+    ~ FridgeController fridgeViewController
+    ~ RecipesController recipesViewController
+}
+
+class FridgeController {
+    - User user
+    - NavbarController navbarController
+}
+
+class RecipesController {
+    - User user
+}
+
+class fridge_fxml {}
+class navbar_fxml {}
+class recipes_fxml {}
+class settings_fxml {}
+class app_fxml {}
+
+
+NavbarController <--> FridgeController
+NavbarController <--> SettingsController
+NavbarController --> RecipesController
+AppController <--> NavbarController
+
+AppController ..> app_fxml
+NavbarController ..> navbar_fxml
+FridgeController ..> fridge_fxml
+RecipesController ..> recipes_fxml
+SettingsController ..> settings_fxml
+
+@enduml
