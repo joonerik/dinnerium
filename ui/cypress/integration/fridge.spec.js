@@ -1,8 +1,10 @@
 describe('Fridge page', () => {
+  // go to web application
   beforeEach(() => {
     cy.visit('http://localhost:3000');
   });
 
+  // Tests error handling in the fridge
   it('Test error handling', () => {
     cy.login('data');
     cy.contains('Fridge').click();
@@ -13,6 +15,7 @@ describe('Fridge page', () => {
     cy.get('.itemList').should('be.empty');
   });
 
+  //  Login to user 'data' and tests adding an item and the feedback received
   it('Login', () => {
     cy.login('data');
     cy.contains('Fridge').click();
@@ -26,6 +29,4 @@ describe('Fridge page', () => {
       'Added new ingredient to fridge'
     );
   });
-
-  //Needs to find a solution to clearing out the data file before this works.
 });
