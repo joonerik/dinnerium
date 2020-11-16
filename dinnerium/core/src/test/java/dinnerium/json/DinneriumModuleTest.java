@@ -18,7 +18,9 @@ import dinnerium.core.User;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Iterator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -250,17 +252,19 @@ class DinneriumModuleTest {
     }
 
     private User createExceptedUser() {
-        IngredientContainer ic = new IngredientContainer();
-        ic.addIngredient(new Ingredient(new Quantity(1, "stk"), "eggs"));
-        ic.addIngredient(new Ingredient(new Quantity(2, "dl"), "milk"));
-        ic.addIngredient(new Ingredient(new Quantity(3, "gram"), "sugar"));
+        Collection<Ingredient> ingredients = new ArrayList<>();
+        ingredients.add(new Ingredient(new Quantity(1, "stk"), "eggs"));
+        ingredients.add(new Ingredient(new Quantity(2, "dl"), "milk"));
+        ingredients.add(new Ingredient(new Quantity(3, "gram"), "sugar"));
+        IngredientContainer ic = new IngredientContainer(ingredients);
+
         RecipeContainer rc = createExpectedRecipeContainer();
 
         return new User(ic, rc, "bestUsername");
     }
 
     private RecipeContainer createExpectedRecipeContainer() {
-        RecipeContainer rc = new RecipeContainer();
+        Collection<Recipe> recipes = new ArrayList<>();
         double[][] amounts = {{400, 200, 9}, {2, 3}};
         String[][] units = {{"gram", "gram", "stk"}, {"stk", "dl"}};
         String[][] names = {{"minced meat", "cheese", "lasagne plates"}, {"eggs", "tikka"}};
@@ -272,14 +276,16 @@ class DinneriumModuleTest {
         int[] minutes = {90, 60};
 
         for (int i = 0; i < recipeName.length; i++) {
-            IngredientContainer ic = new IngredientContainer();
+            Collection<Ingredient> ingredients = new ArrayList<>();
             for (int j = 0; j < amounts[i].length; j++) {
-                ic.addIngredient(new Ingredient(new Quantity(amounts[i][j], units[i][j]), names[i][j]));
+                ingredients
+                    .add(new Ingredient(new Quantity(amounts[i][j], units[i][j]), names[i][j]));
             }
             RecipeMetadata md = new RecipeMetadata("bestUsername", portions[i], recipeName[i],
                 descriptions[i], minutes[i]);
-            rc.addRecipe(new Recipe(ic, new RecipeInstructions(Arrays.asList(instructions[i])), md));
+            recipes.add(new Recipe(new IngredientContainer(ingredients),
+                new RecipeInstructions(Arrays.asList(instructions[i])), md));
         }
-        return rc;
+        return new RecipeContainer(recipes);
     }
 }
