@@ -7,6 +7,7 @@ public class IngredientContainer extends Container<Ingredient> {
 
 
     public IngredientContainer() {
+        super();
     }
 
     public IngredientContainer(Collection<Ingredient> container) {
