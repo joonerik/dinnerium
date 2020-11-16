@@ -60,12 +60,14 @@ class IngredientContainer {
     --
     + IngredientContainer()
     + IngredientContainer(Collection<Ingredient>)
+    + addIngredient()
 }
 
 class RecipeContainer {
     --
     + RecipeContainer()
     + RecipeContainer(Collection<Recipe>)
+    + addRecipe()
 }
 
 class RecipeInstructions {
