@@ -35,29 +35,26 @@ package dinnerium.core {
     }
 
     abstract class Container {
-    - Collection<T> container
-    --
-    + Container()
-    + Container(Collection<T>) 
-    + void setCollection(Collection<T>)
-    + void addItem(T)  
-    + Collection<T> getContainer()
-    + int getContainerSize()
-    + Iterator<T> iterator()
+        - Collection<T> container
+        --
+        + Container()
+        + Container(Collection<T>) 
+        + void addItem(T)  
+        + Iterator<T> iterator()
     }
 
     class IngredientContainer {
         --
         + IngredientContainer()
         + IngredientContainer(Collection<Ingredient>)
-        + addIngredient()
+        + addIngredient(Ingredient)
     }
 
     class RecipeContainer {
         --
         + RecipeContainer()
         + RecipeContainer(Collection<Recipe>)
-        + addRecipe()
+        + addRecipe(Recipe)
     }
 
     class RecipeInstructions {
@@ -91,19 +88,36 @@ package dinnerium.core {
 
 package dinnerium.restapi{
     class IngredientService {
-    - oijhbfds
+        - ObjectMapper MAPPER
+        - UserService USERSERVICE
+        - <u> Logger LOGGER
+        --
+        + String addIngredient(String, String)
     }
 
     class RecipeService {
-        - oijhbfds
+        - ObjectMapper MAPPER
+        - UserService USERSERVICE
+        - <u> Logger LOGGER
+        --
+        + String addRecipe(String, String)
     }
 
     class UserService {
-        - oijhbfds
+        - ObjectMapper MAPPER
+        - HandlePersistency HANDLEPERSISTENCY
+        - <u> Logger LOGGER
+        --
+        + String registerUser(String)
+        + String addIngredient(Ingredient, String)
+        + String addRecipe(Recipe, String)
+        - void saveUser(User)
     }
 
     class RestServer {
-        - oijhbfds
+        - <u> Logger LOGGER
+        --
+        + void <u> main(String[])
     }
 }
 
