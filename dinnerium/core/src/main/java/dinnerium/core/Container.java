@@ -24,18 +24,18 @@ public abstract class Container<T> implements Iterable<T> {
      * @param container the container of type T that the Container should be initialized with.
      */
     public Container(Collection<T> container) {
-        this.setCollection(container);
+        this.setContainer(container);
     }
 
     /**
-     * sets the collection and thus the container.
+     * sets the collection and thus the container, used to validate the input of the constructor.
      *
      * @param container
      *        of collection
      * @throws IllegalArgumentException
      *        if container is invalid/empty
      */
-    public void setCollection(Collection<T> container) {
+    private void setContainer(Collection<T> container) {
         if (container.isEmpty()) {
             throw new IllegalArgumentException(
                     "Missing content");
