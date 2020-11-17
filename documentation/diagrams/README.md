@@ -20,3 +20,8 @@ Det viser også hvordan flyten går ved REST kall.
 Dette er en oversikt over [fxui-modulen](../../dinnerium/fxui) med de tilhørende kontrollerne og fxml-arkene.
 Diagrammet viser hvordan kontrollerne henger sammen.
 ![Sekvensdiagram](fxui_class_diagram.png)
+
+## Klassediagram for ui og restapi
+
+Dette klassediagrammet viser hvordan komponentene i React er bundet sammen, fra topp til bunn. Det blir ett litt annet prinsipp enn fra det vi kjenner fra Java-klassediagrammer. Tanken er at UserProvider er den komponenten som snakker med restapi og wrapper en useContext rundt hele App-komponenten. Dette gjør at via kan tiltale vår UserProvider komponent som en lags rot-komponent til alle de andre. Ettersom App er et children av UserProvider.
+![Klassediagram](class_diagram_ui.png)
