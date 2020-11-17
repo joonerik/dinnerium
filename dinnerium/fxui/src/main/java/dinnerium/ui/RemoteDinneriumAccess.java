@@ -14,6 +14,9 @@ import java.net.http.HttpResponse;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Class implementing the DinneriumAccess methods, for accessing the data in core remotely.
+ */
 public class RemoteDinneriumAccess implements DinneriumAccess {
 
     private final ObjectMapper mapper;

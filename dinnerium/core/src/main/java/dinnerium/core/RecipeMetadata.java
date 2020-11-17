@@ -1,5 +1,6 @@
 package dinnerium.core;
 
+/** Class for the metadata for a corresponding Recipe. */
 public class RecipeMetadata {
 
     private final String author;

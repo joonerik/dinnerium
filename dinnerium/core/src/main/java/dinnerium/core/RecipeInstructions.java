@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-/**
- * Class for storing instructions for a recipe.
- */
+/** Class for storing instructions for a recipe. */
 public class RecipeInstructions implements Iterable<String> {
 
     private Collection<String> instructions;

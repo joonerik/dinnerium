@@ -12,6 +12,9 @@ import com.fasterxml.jackson.databind.node.TextNode;
 import dinnerium.core.Quantity;
 import java.io.IOException;
 
+/**
+ * Class for deserializing a Quantity object from a json format to a Quantity object.
+ */
 class QuantityDeserializer extends JsonDeserializer<Quantity> {
 
     @Override

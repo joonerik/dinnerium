@@ -1,5 +1,6 @@
 package dinnerium.core;
 
+/** Represents a Quantity, with the amount and the unit. */
 public class Quantity {
 
     private final double amount;

@@ -12,6 +12,9 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Class for starting a RestServer on http://localhost:4567 with different api endpoints.
+ */
 public class RestServer {
     private static final Logger LOGGER = LoggerFactory.getLogger(RestServer.class);
 

@@ -34,17 +34,42 @@ const LoginPage = () => {
       });
   };
 
+  const checkValidity = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.target.setCustomValidity('');
+    if (!event.target.validity.valid) {
+      if (event.target.value.match(/(æ|ø|å)/)) {
+        event.target.setCustomValidity('Only english characters are allowed');
+      } else if (event.target.value.match(/(\s)/)) {
+        event.target.setCustomValidity('Username cannot contain spaces');
+      } else if (event.target.value.length > 15) {
+        event.target.setCustomValidity(
+          'Username must be less than 15 characters'
+        );
+      } else if (event.target.value.length < 3) {
+        event.target.setCustomValidity(
+          'Username must be longer than 3 characters'
+        );
+      } else {
+        event.target.setCustomValidity('Username must be valid');
+      }
+    }
+  };
+
   return (
     <div className="login__modal">
       <img src={dinneriumLogo} alt="Logo" className="login__logo" />
       <form method="post" onSubmit={(e) => submitForm(e, isAction)}>
         <input
-          onChange={(event) => setName(event.target.value)}
+          onChange={(event) => {
+            checkValidity(event);
+            setName(event.target.value);
+          }}
           placeholder="username"
           type="text"
           name="username"
           required
           className="login__modal__input"
+          pattern="^(?=.{3,15}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
           autoFocus
         />
 
@@ -52,14 +77,18 @@ const LoginPage = () => {
           <button
             type="submit"
             value="Login"
-            onClick={() => setAction('login')}
+            onClick={() => {
+              setAction('login');
+            }}
           >
             Logg inn
           </button>
           <button
             type="submit"
             value="Register"
-            onClick={() => setAction('register')}
+            onClick={() => {
+              setAction('register');
+            }}
           >
             Registrer
           </button>

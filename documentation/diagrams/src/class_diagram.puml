@@ -1,0 +1,139 @@
+@startuml class_diagram
+
+package dinnerium.core {
+    class Recipe {
+        - IngredientContainer ingredientContainer
+        - RecipeInstructions recipeInstructions
+        - Metadata metadata
+        --
+        + Recipe(IngredientContainer, RecipeInstructions, Metadata)
+    }
+
+    class Quantity {
+        - double amount
+        - Units unit
+        --
+        + Quantity(double , String)
+    }
+
+    enum Units {
+        stk
+        dl
+        gram
+        liter
+        kg
+        ss
+        ts
+    }
+
+    class Ingredient {
+        - Quantity quantity
+        - String name
+        --
+        + Ingredient(Quantity, String)
+    }
+
+    abstract class Container {
+        - Collection<T> container
+        --
+        + Container(Collection<T>) 
+        + void addItem(T)  
+        + Iterator<T> iterator()
+    }
+
+    class IngredientContainer {
+        --
+        + IngredientContainer(Collection<Ingredient>)
+        + addIngredient(Ingredient)
+    }
+
+    class RecipeContainer {
+        --
+        + RecipeContainer(Collection<Recipe>)
+        + addRecipe(Recipe)
+    }
+
+    class RecipeInstructions {
+        - Collection<String> instructions
+        --
+        + RecipeInstructions(Collection<String>)
+        + Iterator<String> iterator()
+    }
+
+    class RecipeMetadata {
+        - String author
+        - double portion
+        - String recipeName
+        - String recipeDescription
+        - int minutes
+        --
+        + Metadata(String, double, String, String, int)
+    }
+
+    class User {
+        - IngredientContainer ingredientContainer
+        - RecipeContainer recipeContainer
+        - String username
+        --
+        + User(IngredientContainer, RecipeContainer, String )
+    }
+}
+
+
+package dinnerium.restapi{
+    class IngredientService {
+        - ObjectMapper MAPPER
+        - UserService USERSERVICE
+        - <u> Logger LOGGER
+        --
+        + String addIngredient(String, String)
+    }
+
+    class RecipeService {
+        - ObjectMapper MAPPER
+        - UserService USERSERVICE
+        - <u> Logger LOGGER
+        --
+        + String addRecipe(String, String)
+    }
+
+    class UserService {
+        - ObjectMapper MAPPER
+        - HandlePersistency HANDLEPERSISTENCY
+        - <u> Logger LOGGER
+        --
+        + String registerUser(String)
+        + String addIngredient(Ingredient, String)
+        + String addRecipe(Recipe, String)
+        - void saveUser(User)
+    }
+
+    class RestServer {
+        - <u> Logger LOGGER
+        --
+        + void <u> main(String[])
+    }
+}
+
+interface Iterable
+
+User --> RecipeContainer
+User --> IngredientContainer
+Recipe --> IngredientContainer
+Recipe --> RecipeInstructions
+Recipe --> RecipeMetadata
+IngredientContainer --> Ingredient
+Ingredient --> Quantity
+Quantity -- Units
+abstract class Container implements Iterable
+class RecipeInstructions implements Iterable
+class RecipeContainer extends Container
+class IngredientContainer extends Container
+
+RestServer --> IngredientService
+RestServer --> RecipeService
+RestServer --> UserService
+IngredientService ..> Ingredient: << uses >>
+RecipeService ..> Recipe: << uses >>
+UserService ..> User: << uses >>
+@enduml

@@ -2,11 +2,12 @@ package dinnerium.core;
 
 import java.util.Collection;
 
-/** Contains ingredients. */
+/** An implementation of Container, containing Ingredient objects. */
 public class IngredientContainer extends Container<Ingredient> {
 
 
     public IngredientContainer() {
+        super();
     }
 
     public IngredientContainer(Collection<Ingredient> container) {

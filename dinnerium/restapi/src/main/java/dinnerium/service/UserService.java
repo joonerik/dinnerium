@@ -22,6 +22,9 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Class for serving the RestServer with methods needed to handle user actions.
+ */
 public class UserService {
     private final ObjectMapper mapper;
     private final HandlePersistency handlePersistency;

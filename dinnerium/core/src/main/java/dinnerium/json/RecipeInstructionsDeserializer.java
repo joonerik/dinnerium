@@ -11,6 +11,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * Class for deserializing a RecipeInstruction object from a json format to a RecipeInstruction
+ *      object.
+ */
 class RecipeInstructionsDeserializer extends JsonDeserializer<RecipeInstructions> {
 
     @Override

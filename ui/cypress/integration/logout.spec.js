@@ -1,8 +1,10 @@
 describe('Logout page', () => {
+  // go to web application
   beforeEach(() => {
     cy.visit('http://localhost:3000');
   });
 
+  // Tests the logout functionality
   it('Logout', () => {
     cy.login('data');
     cy.contains('Settings').click();

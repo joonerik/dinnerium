@@ -10,6 +10,9 @@ import dinnerium.core.RecipeInstructions;
 import dinnerium.core.RecipeMetadata;
 import dinnerium.core.User;
 
+/**
+ * Class for creating a DinneriumModule containing all the serializers for the entire project.
+ */
 @SuppressWarnings("serial")
 public class DinneriumModule extends SimpleModule {
 

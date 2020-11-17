@@ -6,6 +6,9 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import dinnerium.core.User;
 import java.io.IOException;
 
+/**
+ * Class for serializing a User object to json format.
+ */
 class UserSerializer extends JsonSerializer<User> {
 
     /**

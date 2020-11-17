@@ -62,15 +62,13 @@ public class ContainerTest {
     }
 
     @Test
-    public void testSetCollection() {
+    public void testEmptyListConstructor() {
         assertThrows(IllegalArgumentException.class, () -> {
-            RecipeContainer rc = new RecipeContainer();
-            rc.setCollection(new ArrayList<>());
+            new RecipeContainer(new ArrayList<>());
         });
 
         assertThrows(IllegalArgumentException.class, () -> {
-            IngredientContainer ic = new IngredientContainer();
-            ic.setCollection(new ArrayList<>());
+            new IngredientContainer(new ArrayList<>());
         });
     }
 

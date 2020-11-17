@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 
 /**
- * This class is for generating users.
+ * Class representing a user in the application, with the users attributes containing related data.
  */
 public class User {
     private final IngredientContainer ingredientContainer;

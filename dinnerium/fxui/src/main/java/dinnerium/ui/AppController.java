@@ -11,6 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
+/**
+ * Class for controlling actions in the general application.
+ */
 public class AppController {
 
     User user = null;

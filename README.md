@@ -10,9 +10,13 @@ Det er også rigget opp med plugins for å sjekke kodekvalitet, samt for å se e
 I master-branchen kjøres også en pipeline for å sjekke testdekningsgraden på _core_-modulen. Grunnen til at det ikke kjøres på _fxui_-modulen er at testene på
 denne modulen ikke støtter GitLab sin CI for Java 14.
 
+JavaFX-applikasjonen benytter seg av [fem forskjellige kontrollere](documentation/diagrams/fxui_class_diagram.png) og tilhørende fxml-ark. Dette er gjort for å skille ut kode og gjør at de tilhørende scenene i applikasjonen har hver sin kontroller.
+
 I del tre av prosjektet valgte vi som gruppe å benytte oss av React for å bytte frontend. Dette gjorde vi fordi vi ønsket å lage en webapplikasjon, samt utvide
-kompetansen vår. Sammen med React bruker vi TypeScript for å få typesjekking som er sentralt for å sikre at det er lettere å oppdage bugs, og at vi sender riktig 
-informasjon til backend. For å teste dette brukergrensesnittet brukes rammeverket Cypress.
+kompetansen vår. Sammen med React bruker vi TypeScript for å få typesjekking som er sentralt for å sikre at det er lettere å oppdage bugs, og at vi sender riktig
+informasjon til backend. Vi bruker også Prettier for å sørge for god kodekvalitet i kildekoden til React-applikasjonen. Ved kjøring av applikasjonen vil det da dukke opp
+evt. varsler i konsollen om dårlig kodekvalitet i applikasjonen. Kommandoen _npm run format_ vil også formatere kildekoden dersom den kjøres fra ui-mappen.
+For å teste dette brukergrensesnittet brukes rammeverket Cypress.
 
 Vi ønsker å lage en applikasjon som skal hjelpe deg som bruker å planlegge middager. Dette skal skje gjennom en oversikt over varer man har tilgjengelig,
 samt oppskrifter man har brukt. Gjennom [brukerhistorie 2](documentation/brukerhistorier.md) vil man derfor kunne se varene sine og oppskrifter man tidligere har brukt og lagret
@@ -100,19 +104,19 @@ npm run cypress:report
 
 Mappestrukturen til prosjektet er organisert følgende:
 
-- **core/src/main/java** utgjør kodingsprosjektet. Videre har vi mapper for å skille koden som brukes til hva.
-- **core/src/test/java** for testkoden til kjernefunksjonaliteten til prosjektet.
-- **fxui/src/main/java** utgjør kildekoden til JavaFX-applikasjonen.
-- **fxui/src/main/resources** for ressurser som bilder, FXML-filer, stilark osv.
-- **fxui/src/test/java** for testkoden til JavaFX-applikasjonen.
-- **fxui/src/test/resources** ressurser til fxui-testene
-- **integrationtest/src/test/java** for testkoden til integrasjonstesten for JavaFX og restapiet.
-- **integrationtest/src/test/resources** ressurser til integrasjonstestene.
-- **restapi/src/main/java** utgjør kildekoden til RestServeren vår og service klassene den bruker.
-- **restapi/src/main/resources** Utgjør brukerdata til alle brukerne som er registrert.
-- **restapi/src/test/java** Utgjør testkoden til restapi modulen.
-- **ui/src** Utgjør kildekode til react-applikasjonen med alle sidene, og komponentene våre, samt stilark.
-- **ui/cypress** Kode for testene til react-applikasjonen, samt rapporter fra testene.
+- [**core/src/main/java**](/dinnerium/core/src/main/java) utgjør kodingsprosjektet. Videre har vi mapper for å skille koden som brukes til hva.
+- [**core/src/test/java**](/dinnerium/core/src/test/java) for testkoden til kjernefunksjonaliteten til prosjektet.
+- [**fxui/src/main/java**](/dinnerium/fxui/src/main/java) utgjør kildekoden til JavaFX-applikasjonen.
+- [**fxui/src/main/resources**](/dinnerium/fxui/src/main/resources) for ressurser som bilder, FXML-filer, stilark osv.
+- [**fxui/src/test/java**](/dinnerium/fxui/src/test/java) for testkoden til JavaFX-applikasjonen.
+- [**fxui/src/test/resources**](/dinnerium/fxui/src/test/resources) ressurser til fxui-testene
+- [**integrationtest/src/test/java**](/dinnerium/integrationtest/src/test/java) for testkoden til integrasjonstesten for JavaFX og restapiet.
+- [**integrationtest/src/test/resources**](/dinnerium/integrationtest/src/test/resources) ressurser til integrasjonstestene.
+- [**restapi/src/main/java**](/dinnerium/restapi/src/main/java) utgjør kildekoden til RestServeren vår og service klassene den bruker.
+- [**restapi/src/main/resources**](/dinnerium/restapi/src/main/resources) Utgjør brukerdata til alle brukerne som er registrert.
+- [**restapi/src/test/java**](/dinnerium/restapi/src/test/java) Utgjør testkoden til restapi modulen.
+- [**ui/src**](/ui/src) Utgjør kildekode til react-applikasjonen med alle sidene, og komponentene våre, samt stilark.
+- [**ui/cypress**](/ui/cypress) Kode for testene til react-applikasjonen, samt rapporter fra testene.
 
 Man kan også finne et [mappetre her](documentation/document_tree.md)
 
@@ -125,8 +129,13 @@ Som man ser, er de to ulike brukergrensesnittene relativt like, da det var et kr
 
 ## Dokumentasjon 📝
 
-I mappen [documentation](documentation) kan finner man diverse diagrammer og javadoc-dokumentasjon. Denne mappen kan gjøre det lettere å forstå arkitekturen og informasjonsflyten i applikasjonen.
-Her finner man også samtlige [brukerhistorier](documentation/brukerhistorier.md). Brukerhistoriene inneholder ikke mange krav om funksjonalitet, da man i innlevering 3 kunne velge om å utvide med mer funksjonalitet, eller bytte frontend modulen til f.eks React.
+I mappen [documentation](documentation) finner man all tilhørende dokumentasjon som ikke befinner seg i denne README-en.
+
+- Diagrammer finner man [her](documentation/diagrams). Denne mappen kan gjøre det lettere å forstå arkitekturen og informasjonsflyten i applikasjonen.
+- Brukerhistorier finner man [her](documentation/brukerhistorier.md). Brukerhistoriene inneholder ikke mange krav om funksjonalitet, da man i innlevering 3
+  kunne velge om å utvide med mer funksjonalitet, eller bytte frontend modulen til f.eks React.
+- Java-doc dokumentasjon finner man [her](http://folk.ntnu.no/anderobs/javadoc/). Dette er skrevet for alle Java-klasser med
+  tilhørende metodebeskrivelser i hele prosjektet.
 
 ## Gitlab CI/CD
 

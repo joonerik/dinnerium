@@ -14,6 +14,10 @@ import dinnerium.core.Recipe;
 import dinnerium.core.RecipeContainer;
 import java.io.IOException;
 
+/**
+ * Class for deserializing a Container object of either Recipes or Ingredients from a json format
+ *      to a Container object.
+ */
 class ContainerDeserializer extends JsonDeserializer<Container> {
 
     private final IngredientDeserializer ingredientDeserializer = new IngredientDeserializer();

@@ -7,6 +7,9 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Class for serving the RestServer with methods needed to add ingredients to a User.
+ */
 public class IngredientService {
 
     private final ObjectMapper mapper;

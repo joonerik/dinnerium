@@ -9,6 +9,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
+/**
+ * Class for methods used to create different panes in the application.
+ */
 public class PaneCreator {
 
     /**

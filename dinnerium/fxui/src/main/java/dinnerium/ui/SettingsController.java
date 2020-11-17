@@ -5,6 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
+/**
+ * Controller for the settings-page of the application.
+ */
 public class SettingsController {
 
     private User user;

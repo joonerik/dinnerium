@@ -6,6 +6,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+/**
+ * Controller for the navigation aspect of the application.
+ */
 public class NavbarController {
 
     private AppController appController;

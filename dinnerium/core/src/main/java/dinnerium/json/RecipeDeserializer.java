@@ -13,6 +13,9 @@ import dinnerium.core.RecipeInstructions;
 import dinnerium.core.RecipeMetadata;
 import java.io.IOException;
 
+/**
+ * Class for deserializing a Recipe object from a json format to a Recipe object.
+ */
 class RecipeDeserializer extends JsonDeserializer<Recipe> {
 
     @Override
@@ -29,6 +32,9 @@ class RecipeDeserializer extends JsonDeserializer<Recipe> {
      * finally we have converted the strings from json into actual objects
      *
      * @param jsonNode the jsonNode to be deserialized as a Recipe.
+     * @return the recipe object created during the deserializing, null if the json is not on
+     *      proper format.
+     * @throws IOException if it something goes wrong during the deserializing.
      */
     public Recipe deserialize(JsonNode jsonNode) throws IOException {
         if (jsonNode instanceof ObjectNode) {

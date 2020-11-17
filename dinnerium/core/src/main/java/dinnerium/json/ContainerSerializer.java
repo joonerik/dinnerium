@@ -8,6 +8,9 @@ import dinnerium.core.IngredientContainer;
 import dinnerium.core.RecipeContainer;
 import java.io.IOException;
 
+/**
+ * Class for serializing a Container object of either Ingredients or Recipes to json format.
+ */
 class ContainerSerializer extends JsonSerializer<Container> {
 
     /**
