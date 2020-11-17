@@ -82,7 +82,7 @@ const NewRecipe = () => {
 
   return (
     <div className="new-recipe-wrapper">
-      <RecipeSideBar isEmpty={true} />
+      <RecipeSideBar />
       <div className="new-recipe-container">
         <div className="first-part-form">
           <form

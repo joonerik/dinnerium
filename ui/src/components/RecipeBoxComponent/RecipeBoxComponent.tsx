@@ -18,17 +18,12 @@ const RecipeBoxComponent: FC = () => {
     <div className="page-wrapper">
       {recipe ? (
         <RecipeSideBar
-          recipeAuthor={recipe.metadata.author}
-          recipeDescription={recipe.metadata.recipeDescription}
+          recipeMetadata={recipe.metadata}
           recipeIngredients={recipe.ingredientContainer.ingredients}
           recipeInstructions={recipe.recipeInstructions}
-          recipeMinutes={recipe.metadata.minutes}
-          recipeName={recipe.metadata.recipeName}
-          recipePortion={recipe.metadata.portion}
-          isEmpty={false}
         />
       ) : (
-        <RecipeSideBar isEmpty={true} />
+        <RecipeSideBar />
       )}
       <div className="grid-wrapper">
         {user.recipeContainer.recipes.map((item: Recipe, index: number) => (

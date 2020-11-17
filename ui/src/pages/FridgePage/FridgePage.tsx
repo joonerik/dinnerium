@@ -8,7 +8,7 @@ import { UserContext } from '../../components/UserContext/UserContext';
 import AddIngredient from '../../components/AddIngredient/AddIngredient';
 
 interface IItem {
-  item: { quantity: { unit: string; amount: number }; name: string };
+  item: Ingredient;
 }
 
 const Item: FC<IItem> = ({ item }) => {
