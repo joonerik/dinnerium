@@ -38,72 +38,84 @@ package dinnerium.restapi{
 }
 
 package ui {
-class UserProvider<<FC>>{
-    + state: IUser | null user
-    + props: children
-    --
-    void updateUser(IUser user | null)
-    void logOut()
-}
-class App<<FC>>{    
-}
-class LoginPage<<FC>>{  
-    state: String name
-    state: register | login  isAction 
-    --
-    void submitForm(event: React.FormEvent<HTMLFormElement>, action: 'register' | 'login')
-    void checkValidity(event: React.ChangeEvent<HTMLInputElement>)
-}
-class NavBar<<FC>>{}
+    class UserProvider<<FC>>{
+        + state: IUser | null user
+        + props: children
+        --
+        void updateUser(IUser user | null)
+        void logOut()
+    }
 
-class FridgePage<<FC>>{
-} 
-class Menu<<FC>>{
-    void  postIngredient(event: React.FormEvent<HTMLFormElement>)
-}
-interface IItem{
-    Ingredient item
-}
-class Item<<FC<IItem>>> implements IItem{}
-interface IAddIngredient{
-    void submitIngredientForm (event: React.FormEvent<HTMLFormElement>)
-}
-class AddIngredient<<FC<IAddIngredient>> implements IAddIngredient{
-    state: Array<String> isUnits
-    --
-    void useEffect((),[])
-    void checkValidity (event: React.ChangeEvent<HTMLInputElement>)
-}
-class RecipePage<<FC>>{}
+    class App<<FC>>{    
+    }
 
-class RecipeBoxComponent<<FC>>{
-    state: Recipe recipe
-    --
-    void displayRecipeMetadata(index: number)
-}
-class NewRecipe<<FC>>{
-    state: String[] instructions
-    state: Ingredient[] ingredients
-    --
-    void addInstruction(e: React.FormEvent<HTMLFormElement>)
-    void removeInstruction(index: number)
-    void addIngredient(e: React.FormEvent<HTMLFormElement>)
-    void removeIngredient(index: number)
-    void submitNewRecipeForm(e: React.FormEvent<HTMLFormElement>)
-}
-interface ISideBar{
-    Metadata recipeMetadata?
-    Array<String> recipeInstructions?
-    Array<Ingredient> recipeIngredients?
-    boolean isEmpty
+    class LoginPage<<FC>>{  
+        state: String name
+        state: register | login  isAction 
+        --
+        void submitForm(event: React.FormEvent<HTMLFormElement>, action: 'register' | 'login')
+        void checkValidity(event: React.ChangeEvent<HTMLInputElement>)
+    }
 
-}
-class RecipeSideBar<<FC<ISideBar>>> implements ISideBar{}
+    class NavBar<<FC>>{}
 
-class SettingsPage<<FC>>{
-    --
-    void handleLogout()
-}
+    class FridgePage<<FC>>{
+    } 
+
+    class Menu<<FC>>{
+        void  postIngredient(event: React.FormEvent<HTMLFormElement>)
+    }
+
+    interface IItem{
+        Ingredient item
+    }
+
+    class Item<<FC<IItem>>> implements IItem{}
+
+    interface IAddIngredient{
+        void submitIngredientForm (event: React.FormEvent<HTMLFormElement>)
+    }
+
+    class AddIngredient<<FC<IAddIngredient>> implements IAddIngredient{
+        state: Array<String> isUnits
+        --
+        void useEffect((),[])
+        void checkValidity (event: React.ChangeEvent<HTMLInputElement>)
+    }
+
+    class RecipePage<<FC>>{}
+
+    class RecipeBoxComponent<<FC>>{
+        state: Recipe recipe
+        --
+        void displayRecipeMetadata(index: number)
+    }
+
+    class NewRecipe<<FC>>{
+        state: String[] instructions
+        state: Ingredient[] ingredients
+        --
+        void addInstruction(e: React.FormEvent<HTMLFormElement>)
+        void removeInstruction(index: number)
+        void addIngredient(e: React.FormEvent<HTMLFormElement>)
+        void removeIngredient(index: number)
+        void submitNewRecipeForm(e: React.FormEvent<HTMLFormElement>)
+    }
+
+    interface ISideBar{
+        Metadata recipeMetadata?
+        Array<String> recipeInstructions?
+        Array<Ingredient> recipeIngredients?
+        boolean isEmpty
+
+    }
+
+    class RecipeSideBar<<FC<ISideBar>>> implements ISideBar{}
+
+    class SettingsPage<<FC>>{
+        --
+        void handleLogout()
+    }
 
 }
 UserProvider --> App
@@ -120,5 +132,8 @@ FridgePage --> Menu
 Menu --> AddIngredient
 Menu --> Item
 App -->  SettingsPage
-UserService ..> UserProvider: <<uses>>
+UserProvider ..> dinnerium.restapi: <<uses>>
+RestServer --> RecipeService
+RestServer --> IngredientService
+RestServer --> UserService
 @enduml
