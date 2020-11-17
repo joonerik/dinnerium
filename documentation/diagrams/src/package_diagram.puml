@@ -56,8 +56,7 @@ component Cypress {
 
 src ..> create_react_app
 cypress ..> Cypress
-src ..> dinnerium.json
-src ..> dinnerium.core
+ui ..> restapi
 
 
 dinnerium.service ..> dinnerium.core
