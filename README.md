@@ -10,7 +10,8 @@ Det er også rigget opp med plugins for å sjekke kodekvalitet, samt for å se e
 I master-branchen kjøres også en pipeline for å sjekke testdekningsgraden på _core_-modulen. Grunnen til at det ikke kjøres på _fxui_-modulen er at testene på
 denne modulen ikke støtter GitLab sin CI for Java 14.
 
-JavaFX-applikasjonen benytter seg av [fem forskjellige kontrollere](documentation/diagrams/fxui_class_diagram.png) og tilhørende fxml-ark. Dette er gjort for å skille ut kode og gjør at de tilhørende scenene i applikasjonen har hver sin kontroller.
+JavaFX-applikasjonen benytter seg av [fem forskjellige kontrollere](documentation/diagrams/fxui_class_diagram.png) og tilhørende fxml-ark. Dette er gjort for å skille ut kode og gjør at de tilhørende scenene i applikasjonen har hver sin kontroller. NavbarController er "foreldre" controller
+til FridgeController, RecipeController og SettingsController ettersom at NavBarControlleren har ansvar for å bytte mellom de forskjellige scenene. 
 
 I del tre av prosjektet valgte vi som gruppe å benytte oss av React for å bytte frontend. Dette gjorde vi fordi vi ønsket å lage en webapplikasjon, samt utvide
 kompetansen vår. Sammen med React bruker vi TypeScript for å få typesjekking som er sentralt for å sikre at det er lettere å oppdage bugs, og at vi sender riktig
@@ -42,7 +43,8 @@ mvn exec:java
 ```
 
 - For å kunne kjøre JavaFX-applikasjonen må man ha installert modulen som _fxui_ er avhengig av, altså _core_-modulen. Dette skjer ved _mvn install_ ovenfor.
-- For å kjøre selve JavaFX-applikasjonen kan man gå inn i _fxui_-modulen, og deretter bruke _mvn javafx:run_.
+- For å kjøre selve JavaFX-applikasjonen kan man gå inn i _fxui_-modulen, og deretter bruke _mvn javafx:run_. 
+- JavaFX-applikasjonen vil åpnes på port 6080 i gitpod. 
 
 ```bat
 cd dinnerium/fxui
@@ -51,6 +53,7 @@ mvn javafx:run
 
 - For å bygge React-applikasjonen bruker man _npm install_ fra ui-mappen som ligger på rotnivå.
 - For å kjøre selve React-applikasjonen bruker man _npm start_.
+- React-applikasjonen vil åpnes på port 3000 i gitpod.
 
 ```bat
 cd ui
@@ -75,7 +78,7 @@ mvn verify
 
 ### React-applikasjonen
 
-- For å teste _React_-applikasjonen har vi valgt å bruke testrammeverket _Cypress_. Når testene kjøres vil ulike funksjoner i applikasjonen testes på samme måte som JavaFX-applikasjonen. For at testene skal fungere må _RestServer_ kjøre, slik at forespørslene som testene foretar seg kan besvares. Derfor må man først installere _restapi_-modulen og kjøre serveren derfra før man starter testene.
+- For å teste _React_-applikasjonen har vi valgt å bruke testrammeverket _Cypress_. Når testene kjøres vil ulike funksjoner i applikasjonen testes på samme måte som JavaFX-applikasjonen. For at testene skal fungere må _RestServer_ kjøre, slik at forespørslene som testene foretar seg kan besvares. Derfor må man først installere _restapi_-modulen og kjøre serveren derfra før man starter testene. Merk at i Gitpod vil testene kun kjøres headless.
 
 For å starte serveren:
 
