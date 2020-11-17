@@ -1,4 +1,4 @@
-@startuml
+@startuml package_diagram
 
 component core {
 	package dinnerium.core

@@ -1,4 +1,4 @@
-@startuml
+@startuml fxui_class_diagram
 
 class AppController {
     - User user

@@ -1,4 +1,4 @@
-@startuml class_diagram
+@startuml class_diagram_ui
 
 
 
@@ -36,9 +36,8 @@ package dinnerium.restapi{
         + void <u> main(String[])
     }
 }
-package dinnerium.ui {
 
-
+package ui {
 class UserProvider<<FC>>{
     + state: IUser | null user
     + props: children
