@@ -1,4 +1,4 @@
-@startuml fxui_class_diagram
+@startuml
 
 class AppController {
     - User user
@@ -34,10 +34,10 @@ class settings_fxml {}
 class app_fxml {}
 
 
-NavbarController <--> FridgeController
-NavbarController <--> SettingsController
+NavbarController -- FridgeController
+NavbarController -- SettingsController
 NavbarController --> RecipesController
-AppController <--> NavbarController
+AppController -- NavbarController
 
 AppController ..> app_fxml
 NavbarController ..> navbar_fxml
