@@ -71,6 +71,11 @@ public class AppTest extends ApplicationTest {
         user2.getRecipeContainer().addRecipe(recipe);
     }
 
+    /**
+     * Sets up the mockAccess Mockito object to return the expected values during the test, when the
+     * methods on the object is called in the controllers. We set the DinneriumAccess in the
+     * controller to be the mockAccess object before each test.
+     */
     @BeforeAll
     static void setupMockito() {
         when(mockAccess.login("testuser")).thenReturn(user);
