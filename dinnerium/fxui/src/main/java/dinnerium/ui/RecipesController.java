@@ -258,25 +258,56 @@ public class RecipesController {
         this.msgPane = msgPane;
     }
 
+
+    /**
+     * Method for setting the dinneriumAccess to a mock object during the tests to mock answers
+     *      from the server.
+     *
+     * @param dinneriumAccess the DinneriumAccess used to Mock an DinneriumAccess object during the
+     *      testing of the application.
+     */
     void setDinneriumAccess(DinneriumAccess dinneriumAccess) {
         this.dinneriumAccess = dinneriumAccess;
     }
 
-
     //getters for testing purposes
 
+    /**
+     * Method for returning the list of ingredients that has been added to the new recipe that is
+     *      being made.
+     *
+     * @return returns the list of ingredients in the new recipe being made.
+     */
     public ObservableList<Ingredient> getNewRecipeIngredients() {
         return newRecipeIngredients;
     }
 
+    /**
+     * Method for returning the list of instructions that has been added to the new recipe that is
+     *      being made.
+     *
+     * @return returns the list of instructions in the new recipe being made.
+     */
     public ObservableList<String> getNewRecipeInstructions() {
         return newRecipeInstructions;
     }
 
+    /**
+     * Method for testing purposes returning the list of delete buttons that is connected to one of
+     *      the ingredients added to the new recipe being made.
+     *
+     * @return returns the list of ingredients delete buttons.
+     */
     public List<Button> getNewRecipeIngredientsButtons() {
         return newRecipeIngredientsButtons;
     }
 
+    /**
+     * Method for testing purposes returning the list of delete buttons that is connected to one of
+     *      the ingredients added to the new recipe being made.
+     *
+     * @return returns the list of instructions delete buttons.
+     */
     public List<Button> getNewRecipeInstructionsButtons() {
         return newRecipeInstructionsButtons;
     }

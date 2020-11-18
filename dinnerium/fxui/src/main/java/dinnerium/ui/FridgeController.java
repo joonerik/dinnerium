@@ -97,6 +97,13 @@ public class FridgeController {
         this.msgPane = msgPane;
     }
 
+    /**
+     * Method for setting the dinneriumAccess to a mock object during the tests to mock answers
+     *      from the server.
+     *
+     * @param dinneriumAccess the DinneriumAccess used to Mock an DinneriumAccess object during the
+     *      testing of the application.
+     */
     void setDinneriumAccess(DinneriumAccess dinneriumAccess) {
         this.dinneriumAccess = dinneriumAccess;
     }

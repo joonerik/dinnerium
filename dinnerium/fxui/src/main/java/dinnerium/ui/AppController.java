@@ -87,18 +87,45 @@ public class AppController {
     }
 
     //Methods for testing the app controller is below here.
+
+    /**
+     * Method used during testing of the application for checking that the current user of the
+     *      controller is correct.
+     *
+     * @return the user saved in the controller.
+     */
     User getUser() {
         return this.user;
     }
 
+
+    /**
+     * Method used during testing of the application for returning the list of Ingredients
+     *      added to the new recipe that is being created.
+     *
+     * @return a copy of the Ingredients added to the new recipe that is being created.
+     */
     List<Ingredient> getNewRecipeIngredients() {
         return  new ArrayList<>(navbarViewController.recipesViewController.newRecipeIngredients);
     }
 
+    /**
+     * Method used during testing of the application for returning the list of recipeInstructions
+     *      added to the new recipe that is being created.
+     *
+     * @return a copy of the RecipeInstructions added to the new recipe that is being created.
+     */
     List<String> getNewRecipeInstructions() {
         return new ArrayList<>(navbarViewController.recipesViewController.newRecipeInstructions);
     }
 
+    /**
+     * Method for setting the dinneriumAccess to a mock object during the tests to mock answers
+     *      from the server.
+     *
+     * @param dinneriumAccess the DinneriumAccess used to Mock an DinneriumAccess object during the
+     *      testing of the application.
+     */
     void setDinneriumAccess(DinneriumAccess dinneriumAccess) {
         this.dinneriumAccess = dinneriumAccess;
         navbarViewController.recipesViewController.setDinneriumAccess(dinneriumAccess);
