@@ -38,17 +38,17 @@ class RecipeTest {
     }
 
     @Test
-    void getIngredientContainer() {
+    void testGetIngredientContainer() {
         assertEquals(r.getIngredientContainer(), ic);
     }
 
     @Test
-    void getRecipeInstructions() {
+    void testGetRecipeInstructions() {
         assertEquals(r.getRecipeInstructions(), ri);
     }
 
     @Test
-    void getMetadata() {
+    void testGetMetadata() {
         assertEquals(r.getRecipeMetadata(), md);
     }
 }

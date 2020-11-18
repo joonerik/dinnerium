@@ -24,29 +24,29 @@ class UserTest {
     private final User user = new User(ingredientContainer, recipeContainer, "Ole");
 
     @Test
-    void getIngredientContainer() {
+    void testGetIngredientContainer() {
         assertEquals(user.getIngredientContainer(), ingredientContainer);
     }
 
     @Test
-    void getRecipeContainer() {
+    void testGetRecipeContainer() {
         assertEquals(user.getRecipeContainer(), recipeContainer);
     }
 
     @Test
-    void getUsername() {
+    void testGetUsername() {
         assertEquals(user.getUsername(), "Ole");
         assertNotEquals(user.getUsername(), "ole");
     }
 
     @Test
-    void addRecipeToContainer() {
+    void testAddRecipeToContainer() {
         recipeContainer.addRecipe(recipe);
         assertEquals(1, user.getRecipeContainer().getContainerSize());
     }
 
     @Test
-    void setUsername() {
+    void testSetUsername() {
         user.setUsername("Kari");
         assertEquals(user.getUsername(), "Kari");
 

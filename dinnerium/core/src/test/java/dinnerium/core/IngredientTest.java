@@ -40,7 +40,7 @@ public class IngredientTest {
     }
 
     @Test
-    void testSetName2() {
+    void testSetIllegalName() {
         assertThrows(IllegalArgumentException.class, () -> i.setName(""));
 
         assertThrows(IllegalArgumentException.class, () -> i.setName("   "));

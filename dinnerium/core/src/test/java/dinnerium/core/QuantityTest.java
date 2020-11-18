@@ -9,11 +9,11 @@ public class QuantityTest {
     private final Quantity q = new Quantity(1.0, "dl");
 
     @Test
-    public void checkUnitTest() {
+    public void IllegalUnitTest() {
         assertThrows(IllegalArgumentException.class, () -> new Quantity(12, "lb"));
     }
 
-    @Test void testIllegalAmount() {
+    @Test void IllegalAmountTest() {
         assertThrows(IllegalArgumentException.class, () -> new Quantity(-1, "stk"));
     }
 
